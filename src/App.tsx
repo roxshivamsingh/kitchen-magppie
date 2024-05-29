@@ -1,12 +1,5 @@
-import './App.css'
-
-function App() {
-
-  return (
-    <>
-      MagpPie
-    </>
-  )
+const App = () => {
+    return <>MagpPie</>
 }
 
 export default App
