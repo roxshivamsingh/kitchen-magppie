@@ -20,6 +20,7 @@ At Magppie, we leverage the latest technologies to ensure our products and servi
 -   **Iconify:** A versatile icon framework that provides a wide range of customizable icons for our applications.
 -   **React-Query:** A powerful data-fetching library for managing server-state in our React applications.
 -   **Lodash:** A JavaScript utility library that helps us write cleaner and more efficient code.
+-   **React Router Dom:** A JavaScript utility library that helps to create routes.
 
 ## Getting Started
 

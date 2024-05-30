@@ -1,5 +1,6 @@
+import Routes from "./routes"
 const App = () => {
-    return <>MagpPie</>
+    return <Routes />
 }
 
 export default App
