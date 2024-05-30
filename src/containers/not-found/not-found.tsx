@@ -1,3 +1,7 @@
+import Sample from "../../components/sample";
+
 export default function NotFound() {
-    return <>Not found</>
+    return <Sample>
+        xxxx Vox
+    </Sample>
 }
