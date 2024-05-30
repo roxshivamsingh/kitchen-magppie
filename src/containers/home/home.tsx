@@ -22,7 +22,9 @@ const Home: React.FC = () => {
         console.log(products)
     }, [])
 
-    return <>Magppie</>
+    return <div className="text-3xl font-bold underline" >
+        MagpPie!
+    </div>
 }
 
 export default Home
