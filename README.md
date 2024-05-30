@@ -15,7 +15,7 @@
 At Magppie, we leverage the latest technologies to ensure our products and services are top-notch and meet the highest standards of quality and innovation.
 
 -   **Firebase:** A comprehensive app development platform that helps us build and improve our web and mobile applications.
--   **StyleX:** A modern CSS-in-JS library for styling our components, ensuring a seamless and consistent design.
+-   **TailwindCSS:** Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.
 -   **Strapi:** An open-source headless CMS that allows us to manage and distribute our content efficiently.
 -   **Iconify:** A versatile icon framework that provides a wide range of customizable icons for our applications.
 -   **React-Query:** A powerful data-fetching library for managing server-state in our React applications.
@@ -29,8 +29,11 @@ To get started with our project, please follow the steps below:
 1. **Install Package Manager:**
 
     ```bash
-    npm i -g pnpm
-    pnpm --version
+    corepack enable
+    yarn init -2
+    yarn set version stable
+    yarn install
+    yarn --version
     ```
 
 2. **Clone the repository:**
@@ -43,16 +46,16 @@ To get started with our project, please follow the steps below:
 
     ```bash
     cd kitchen-magppie
-    pnpm i
+    yarn
     ```
 
 4. **Run the application:**
 
     ```bash
-    pnpm dev
+    yarn run dev
     ```
 
 5. **Buiid application:**
     ```bash
-    pnpm build
+    yarn build
     ```
