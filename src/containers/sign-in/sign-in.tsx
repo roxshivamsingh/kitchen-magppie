@@ -41,7 +41,7 @@ const Login: React.FC = () => {
             <div className="w-full md:w-1.2/4 flex items-center justify-center bg-gray-100 min-h-screen">
                 <div className="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg">
                     <h2 className="text-2xl font-bold text-center">Login</h2>
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <form onSubmit="" className="space-y-4">
                         <div>
                             <label
                                 htmlFor="email"
@@ -55,8 +55,8 @@ const Login: React.FC = () => {
                                 type="email"
                                 required
                                 className="mt-1 w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                // value={email}
+                                // onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div>
@@ -72,8 +72,8 @@ const Login: React.FC = () => {
                                 type="password"
                                 required
                                 className="mt-1 w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                // value={password}
+                                // onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <div>
