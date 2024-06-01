@@ -66,10 +66,10 @@ Follow these steps to resolve errors with the Yarn package manager:
 
 ### Steps
 
-1. **Remove `yarn.lock` and `yarn.yml` files**
+1. **Remove `yarn.lock` and `.yarnrc.yml` files**
 
     ```sh
-    rm yarn.lock yarn.yml
+    rm yarn.lock .yarnrc.yml
     ```
 
 2. **Enable Corepack**
