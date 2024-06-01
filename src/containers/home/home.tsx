@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import ContactUs from '../../components/contact-us'
 
 interface Product {
     id: number
@@ -22,9 +23,7 @@ const Home: React.FC = () => {
         console.log(products)
     }, [])
 
-    return <div className="text-3xl font-bold underline" >
-        MagpPie!
-    </div>
+    return <ContactUs />
 }
 
 export default Home
