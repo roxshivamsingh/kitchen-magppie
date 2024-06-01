@@ -2,28 +2,28 @@
 
 import React from 'react'
 import kitchenlogin from '../../assets/videos/kitchen-login.mp4'
-import { useForm, SubmitHandler } from 'react-hook-form'
+// import { useForm, SubmitHandler } from 'react-hook-form'
 
-type Inputs = {
-    email: string
-    passowrd: string
-}
+// type Inputs = {
+//     email: string
+//     passowrd: string
+// }
 
 const Login: React.FC = () => {
-    const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-    } = useForm<Inputs>()
+    // const {
+    //     register,
+    //     handleSubmit,
+    //     watch,
+    //     formState: { errors },
+    // } = useForm<Inputs>()
 
-    const handleSubmit = (SubmitHandler<Inputs> = (
-        event: React.FormEvent,
-        data
-    ) => {
-        event.preventDefault()
-        console.log(data)
-    })
+    // const handleSubmit = (SubmitHandler<Inputs> = (
+    //     event: React.FormEvent,
+    //     data
+    // ) => {
+    //     event.preventDefault()
+    //     console.log(data)
+    // })
 
     return (
         <div className="min-h-screen flex md:flex-row">
