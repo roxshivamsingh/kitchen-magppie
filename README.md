@@ -59,3 +59,61 @@ To get started with our project, please follow the steps below:
     ```bash
     yarn build
     ```
+
+## Fixing Yarn Package Manager Errors
+
+Follow these steps to resolve errors with the Yarn package manager:
+
+### Steps
+
+1. **Remove `yarn.lock` and `yarn.yml` files**
+
+    ```sh
+    rm yarn.lock yarn.yml
+    ```
+
+2. **Enable Corepack**
+
+    ```sh
+    corepack enable
+    ```
+
+3. **Open the `package.json` file**
+
+4. **Reinitialize Yarn with the latest version**
+
+    ```sh
+    yarn init -2
+    ```
+
+5. **Revert changes in the `package.json` file**
+   Undo any unintended modifications in the `package.json` file that were caused by the previous step.
+
+6. **Install dependencies**
+
+    ```sh
+    yarn install
+    ```
+
+7. **Start the development server**
+    ```sh
+    yarn dev
+    ```
+
+### Detailed Explanation
+
+1. **Remove `yarn.lock` and `yarn.yml` files**: These files can sometimes cause conflicts or errors. Removing them ensures a clean slate for the next steps.
+
+2. **Enable Corepack**: Corepack enables package managers (like Yarn) to be managed by Node.js, ensuring compatibility and version management.
+
+3. **Open `package.json`**: Check the `package.json` file for any anomalies or errors that might be causing issues.
+
+4. **Reinitialize Yarn with the latest version**: Running `yarn init -2` initializes a new Yarn project with the latest Yarn 2 configuration.
+
+5. **Revert changes in the `package.json` file**: The initialization step might alter your `package.json`. Ensure it matches your project's requirements by reverting any unnecessary changes.
+
+6. **Install dependencies**: This step installs all the necessary packages defined in your `package.json`.
+
+7. **Start the development server**: Finally, start your development server to ensure everything is running smoothly.
+
+By following these steps, you can resolve common issues with Yarn and ensure your project dependencies are properly managed.
