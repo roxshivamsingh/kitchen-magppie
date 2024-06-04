@@ -1,0 +1,30 @@
+TODO 🎯
+#======================================
+✅ ADD: Authentication validation using Firebase.
+✅ ADD: A 2-second delay for login feedback with a circular progress indicator.
+✅ ADD: After clicking the Submit button, it will be disabled for 2 seconds to reduce unnecessary Firebase calls.
+
+#======================================
+
+TODO 03-06-2024 🎯
+
+ADD: Login react-form-hook and yup;
+ADD: Login firebase pipeline;
+TODO 01-05-2024 🎯
+#======================================
+ADD: Redux pipeline;
+FIX: Readme file;
+ADD: Circular progress full height centerize while firebase auth load;
+ADD: user not sign-in then redirect on sign-in route;
+
+#==========================================================================
+TODO 30-05-2024 🎯
+#======================================
+ADD: Basic routing;
+ADD: Basic Readme.md;
+REMOVE: StyleX dependencies;
+ADD: Tailwind config;
+ADD: Tailwind theme basic boilerplate code;
+
+ADD: Readme.md, Favicon,& dependencies - lodash, momentjs, iconify;
+#==========================================================================

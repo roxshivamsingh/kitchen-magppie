@@ -21,7 +21,7 @@ const Hero = () => {
             <div className="absolute top-1/2 left-0 transform px-8 -translate-y-1/2 text-right">
                 <p className="text-6xl font-light mb-6 text-white text-left">
                     Keep yourself and your <br />{' '}
-                    <p className="mt-4">family healthy</p>
+                    <span className="mt-4">family healthy</span>
                 </p>
                 <p className="text-4xl font-bold text-white text-left">
                     with the world's first{' '}

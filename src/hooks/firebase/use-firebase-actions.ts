@@ -6,6 +6,6 @@ export function useFirebaseActionAuth() {
     return useMemo(() => ({
         signIn: (row: TCredential) => auth?.signInWithEmailAndPassword(q, row.email, row.password),
         signUp: (row: TCredential) => auth?.createUserWithEmailAndPassword(q, row.email, row.password),
-    }), [])
+    }), [q])
 }
 type TCredential = { email: string, password: string }
