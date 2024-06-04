@@ -1,7 +1,6 @@
 // @ts-nocheck
 
 import React from 'react'
-import kitchenlogin from '../../assets/videos/kitchen-login.mp4'
 import * as yup from "yup"
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
@@ -20,7 +19,7 @@ const Login: React.FC = () => {
                     muted
                     className="w-full h-full object-cover"
                 >
-                    <source src={kitchenlogin} type="video/mp4" />
+                    <source src="" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>
