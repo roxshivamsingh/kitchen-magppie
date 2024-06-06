@@ -1,6 +1,9 @@
+import { Button } from 'flowbite-react'
 
 export default function NotFound() {
-    return <div>
-        Not found.
-    </div>
+    return (
+        <div>
+            <Button>Hello</Button>
+        </div>
+    )
 }

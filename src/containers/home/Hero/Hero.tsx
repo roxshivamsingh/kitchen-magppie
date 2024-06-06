@@ -1,6 +1,6 @@
 import KitchenHome from '../../../assets/videos/kitchen-home.mp4'
-import Header from './Header'
-import Sidebar from './Sidebar'
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
 
 const Hero = () => {
     return (
