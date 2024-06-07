@@ -1,12 +1,12 @@
 
-import React, { useCallback, useMemo } from 'react'
+import { useCallback } from 'react'
 import * as yup from "yup"
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useFirebaseActionAuth } from '../../hooks/firebase/use-firebase-actions'
 import { Icon } from "@iconify/react"
-const Login: React.FC = () => {
+export default function SignIn() {
     const {
         register,
         handleSubmit,
@@ -21,15 +21,12 @@ const Login: React.FC = () => {
     const values = watch();
     const isError = 'root' in errors
 
-    const variant = useMemo(() => {
-        return ({
-            secondary: isError ? 'red' : 'grey',
-            main: isError ? 'red' : 'indigo'
-        })
-    }, [isError])
+    const variant = ({
+        secondary: isError ? 'red' : 'grey',
+        main: isError ? 'red' : 'indigo'
+    })
 
-
-    const helperText = isError ? <span className='text-xs text-red-500'>Invalid Credential</span> : ''
+    const helperText = <span className='text-xs text-red-500'>{isError ? 'Invalid Credential' : ' '}</span>
 
     const onSubmit = handleSubmit((data: TFormInput) => {
         setValue('loading', true)
@@ -51,22 +48,23 @@ const Login: React.FC = () => {
         }
     }, [AuthAction, values])
 
-    const renderSubmitButton = useMemo(() => (<button
-        type='submit'
-        disabled={values?.loading}
-        className={`grid grid-cols-3 flex-row align-middle a w-full py-2 px-4 bg-${variant.main}-600 text-white rounded-md hover:bg-${variant.main}-700 focus:outline-none focus:ring-2 focus:ring-${variant.main}-500 focus:ring-offset-2`}
-    //  variant={isError ? 'danger' : 'default'}
 
-    >
-        <div className="" />
-        <div className="">
-            Login
-        </div>
-        <div className="">
-            {values.loading && <Icon icon='line-md:loading-loop' width={20} />}
+    const renderSubmitButton = (
+        <button
+            type='submit'
+            disabled={values?.loading}
+            className={`grid grid-cols-3 flex-row align-middle a w-full py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
 
-        </div>
-    </button>), [values.loading, variant.main])
+        >
+            <div className="" />
+            <div className="">
+                Login
+            </div>
+            <div className="">
+                {values.loading && <Icon icon='line-md:loading-loop' width={20} />}
+            </div>
+        </button>
+    )
 
     return (<div className="min-h-screen flex md:flex-row">
         <div className="hidden md:block md:w-3.8/4 md:h-auto">
@@ -131,7 +129,6 @@ const Login: React.FC = () => {
     )
 }
 
-export default Login
 
 type TFormInput = { email: string, password: string }
 const schema = yup.object({
