@@ -8,6 +8,14 @@ import { store } from './redux';
 
 import './index.css'
 
+// Base styles for media player and provider (~400B).
+import '@vidstack/react/player/styles/base.css';
+
+// import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>

@@ -7,21 +7,21 @@ const ContactForm = () => {
                 <Label className="block text-gray-700" value="Your Name" />
                 <TextInput
                     type="text"
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+                    className="mt-1 block w-full focus:ring focus:ring-opacity-50"
                 />
             </div>
             <div className="mb-4">
                 <Label className="block text-gray-700" value="Mobile Number" />
                 <TextInput
                     type="text"
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+                    className="mt-1 block w-full focus:ring focus:ring-opacity-50"
                 />
             </div>
             <div className="mb-4">
                 <Label className="block text-gray-700" value="Email" />
                 <TextInput
                     type="email"
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+                    className="mt-1 block w-full focus:ring focus:ring-opacity-50"
                 />
                 <small className="text-gray-500">
                     We'll only use your email to respond to your inquiry
@@ -31,7 +31,7 @@ const ContactForm = () => {
                 <Label className="block text-gray-700" value="City" />
                 <TextInput
                     type="text"
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+                    className="mt-1 block w-full focus:ring focus:ring-opacity-50"
                 />
                 <small className="text-gray-500">
                     This helps us provide better service and estimates

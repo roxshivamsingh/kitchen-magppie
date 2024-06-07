@@ -1,20 +1,11 @@
-import KitchenHome from '../../../assets/videos/kitchen-home.mp4'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
+import VideoPlayer from './components/VideoPlayer'
 
 const Hero = () => {
     return (
         <div className="relative h-screen overflow-hidden">
-            <video
-                className="object-cover w-full h-full"
-                autoPlay
-                loop
-                muted
-                playsInline
-            >
-                <source src={KitchenHome} type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+            <VideoPlayer />
             <div className="absolute top-0 left-0 right-0 py-8">
                 <Header />
             </div>
