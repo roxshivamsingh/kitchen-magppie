@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useFirebaseActionAuth } from '../../hooks/firebase/use-firebase-actions'
 import { Icon } from "@iconify/react"
+import _ from 'lodash'
 export default function SignIn() {
     const {
         register,
@@ -19,15 +20,12 @@ export default function SignIn() {
     const AuthAction = useFirebaseActionAuth()
     const navigate = useNavigate()
     const values = watch();
-    const isError = 'root' in errors
 
-    const variant = ({
-        secondary: isError ? 'red' : 'grey',
-        main: isError ? 'red' : 'indigo'
-    })
+    const isError = !!_.keys(errors).length
+    const helperText = (name: 'email' | 'password') => {
 
-    const helperText = <span className='text-xs text-red-500'>{isError ? 'Invalid Credential' : ' '}</span>
-
+        return <small className='text-xs text-red-500'>{'root' in errors ? 'Invalid Credentials' : _.get(errors, `${name}.message`)}</small>
+    }
     const onSubmit = handleSubmit((data: TFormInput) => {
         setValue('loading', true)
         setTimeout(() => {
@@ -53,7 +51,7 @@ export default function SignIn() {
         <button
             type='submit'
             disabled={values?.loading}
-            className={`grid grid-cols-3 flex-row align-middle a w-full py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
+            className={`grid grid-cols-3 flex-row align-middle a w-full py-2 px-4 ${isError ? 'bg-red-600' : 'bg-indigo-600'} text-white rounded-md ${isError ? 'hover:bg-red-700' : 'hover:bg-indigo-600'}  focus:outline-none focus:ring-2 ${isError ? 'focus:ring-red-500' : 'focus:ring-indigo-500'} focus:ring-offset-2`}
 
         >
             <div className="" />
@@ -96,10 +94,9 @@ export default function SignIn() {
                             name="email"
                             type="email"
                             {...register('email')}
-                            required
-                            className={`mt-1 w-full p-2 border border-${variant.secondary}-300 rounded-md shadow-sm focus:ring-${variant.main}-500 focus:border-${variant.main}-500`}
+                            className={`mt-1 w-full p-2 border ${isError ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm ${isError ? 'focus:ring-red-500' : 'focus:ring-gray-500'} ${isError ? 'focus:border-red-500' : 'focus:border-gray-500'}`}
                         />
-                        {helperText}
+                        {helperText('email')}
                     </div>
                     <div>
                         <label
@@ -113,10 +110,9 @@ export default function SignIn() {
                             name="password"
                             {...register('password')}
                             type="password"
-                            required
-                            className={`mt-1 w-full p-2 border border-${variant.secondary}-300 rounded-md shadow-sm focus:ring-${variant.main}-500 focus:border-${variant.main}-500`}
+                            className={`mt-1 w-full p-2 border ${isError ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm ${isError ? 'focus:ring-red-500' : 'focus:ring-gray-500'} ${isError ? 'focus:border-red-500' : 'focus:border-gray-500'}`}
                         />
-                        {helperText}
+                        {helperText('password')}
 
                     </div>
                     <div>
@@ -137,16 +133,3 @@ const schema = yup.object({
     loading: yup.boolean(),
 
 })
-
-// type TButtonProps = { onClick?: VoidFunction, variant?: 'danger' | 'default', children: ReactNode }
-
-// function Button(props: TButtonProps) {
-
-//     const variant = props?.variant == 'danger' ? 'red' : 'indigo'
-//     return (<button
-//         type="submit"
-//         className={`w-full py-2 px-4 bg-${variant}-600 text-white rounded-md hover:bg-${variant}-700 focus:outline-none focus:ring-2 focus:ring-${variant}-500 focus:ring-offset-2`}
-//     >
-//         {props.children}
-//     </button>)
-// }
