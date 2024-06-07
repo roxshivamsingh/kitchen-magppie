@@ -18,7 +18,7 @@ const ContactForm = () => {
                 />
             </div>
             <div className="mb-4">
-                <Label className="block text-gray-700" value='Email' />
+                <Label className="block text-gray-700" value="Email" />
                 <TextInput
                     type="email"
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
@@ -28,7 +28,7 @@ const ContactForm = () => {
                 </small>
             </div>
             <div className="mb-4">
-                <Label className="block text-gray-700" value='City' />
+                <Label className="block text-gray-700" value="City" />
                 <TextInput
                     type="text"
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
@@ -37,7 +37,7 @@ const ContactForm = () => {
                     This helps us provide better service and estimates
                 </small>
             </div>
-            <Button type="submit" className="mt-4 bg-blue-800 w-full">
+            <Button type="submit" className="mt-4 bg-[#c7bda8] w-full">
                 Submit
             </Button>
             <p className="mt-2 text-gray-500 text-center">
