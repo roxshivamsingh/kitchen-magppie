@@ -1,3 +1,4 @@
+import ContactUs from './ContactUs/ContactUs'
 import Features from './Features/Features'
 import Hero from './Hero/Hero'
 
@@ -6,6 +7,7 @@ const Home = () => {
         <>
             <Hero />
             <Features />
+            <ContactUs />
         </>
     )
 }
