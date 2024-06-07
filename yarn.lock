@@ -1794,6 +1794,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vidstack/react@npm:^1.11.22":
+  version: 1.11.22
+  resolution: "@vidstack/react@npm:1.11.22"
+  dependencies:
+    media-captions: "npm:^1.0.1"
+  peerDependencies:
+    "@types/react": ^18.0.0
+    react: ^18.0.0
+  checksum: 10c0/b967a0912ca7d5702147210bef2473829655cde7f4c5f0666c4f26d5ef0c2863f4c1567dda96129247359b4ee3b1d2cbaeacb3ca600e14b5b900a755fcd678bc
+  languageName: node
+  linkType: hard
+
 "@vitejs/plugin-react@npm:^4.2.1":
   version: 4.3.0
   resolution: "@vitejs/plugin-react@npm:4.3.0"
@@ -3276,6 +3288,7 @@ __metadata:
     "@types/yup": "npm:^0.32.0"
     "@typescript-eslint/eslint-plugin": "npm:^7.2.0"
     "@typescript-eslint/parser": "npm:^7.2.0"
+    "@vidstack/react": "npm:^1.11.22"
     "@vitejs/plugin-react": "npm:^4.2.1"
     autoprefixer: "npm:^10.4.19"
     axios: "npm:^1.7.2"
@@ -3293,6 +3306,7 @@ __metadata:
     react-hook-form: "npm:^7.51.5"
     react-redux: "npm:^9.1.2"
     react-router-dom: "npm:^6.23.1"
+    swiper: "npm:^11.1.4"
     tailwindcss: "npm:^3.4.3"
     typescript: "npm:^5.2.2"
     vite: "npm:^5.2.0"
@@ -3412,6 +3426,13 @@ __metadata:
     promise-retry: "npm:^2.0.1"
     ssri: "npm:^10.0.0"
   checksum: 10c0/df5f4dbb6d98153b751bccf4dc4cc500de85a96a9331db9805596c46aa9f99d9555983954e6c1266d9f981ae37a9e4647f42b9a4bb5466f867f4012e582c9e7e
+  languageName: node
+  linkType: hard
+
+"media-captions@npm:^1.0.1":
+  version: 1.0.3
+  resolution: "media-captions@npm:1.0.3"
+  checksum: 10c0/0ddbcfad1723abbb0533203e5ad7711802bc066dfa38bcae1f1ace6b39d2bf49d5fd410a5505cdbd0ad4887d04e0b6358fa68d19558b410077b398814a288065
   languageName: node
   linkType: hard
 
@@ -4473,6 +4494,13 @@ __metadata:
   version: 1.0.0
   resolution: "supports-preserve-symlinks-flag@npm:1.0.0"
   checksum: 10c0/6c4032340701a9950865f7ae8ef38578d8d7053f5e10518076e6554a9381fa91bd9c6850193695c141f32b21f979c985db07265a758867bac95de05f7d8aeb39
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^11.1.4":
+  version: 11.1.4
+  resolution: "swiper@npm:11.1.4"
+  checksum: 10c0/a1e4b87f414f67f5da6a07b33d5ee20e54062d21f8bed88195d5d56decff6afddf683e130118b7fa12668de221f794ae63f6c073761b683a4b90bbd5eb585202
   languageName: node
   linkType: hard
 

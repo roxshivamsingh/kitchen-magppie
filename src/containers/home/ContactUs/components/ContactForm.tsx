@@ -4,8 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import _ from 'lodash'
 
-
-export default function ContactForm() {
+export default function ContactUsForm() {
     const {
         register,
         handleSubmit,
@@ -89,6 +88,7 @@ export default function ContactForm() {
     </form>
     )
 }
+
 type TFormInput = {
     name: string,
     email: string,
