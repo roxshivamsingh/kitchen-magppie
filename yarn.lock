@@ -1146,14 +1146,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/react@npm:^4.1.1":
-  version: 4.1.1
-  resolution: "@iconify/react@npm:4.1.1"
+"@iconify/react@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "@iconify/react@npm:5.0.1"
   dependencies:
     "@iconify/types": "npm:^2.0.0"
   peerDependencies:
     react: ">=16"
-  checksum: 10c0/636fd1d953abd7562d7c4d9c60b5a5c6b202c5b59b0cfb7dab58c4cf5f66334f66d6736f5fe9cdc0e1b6b0c3a7d713f284a296c7fb154dbd20efd339fe0e5f6c
+  checksum: 10c0/d3fce5b2d8cc651759f228597d6855bd4b3f4d5524ff4bcc81f802538d4bb51be802b2cbfa8f04d111c3e7a9ab3c2c49304a45516573b10ad1ed4d6664caf782
   languageName: node
   linkType: hard
 
@@ -2321,9 +2321,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.668":
-  version: 1.4.794
-  resolution: "electron-to-chromium@npm:1.4.794"
-  checksum: 10c0/66c71bb8ecf375f730780fd9da9ea3ece5349c52207daf3d5a0571e7f35cd1f6710fad1f0e16a876872b03a0f936d48875bc9fea899544e74080ced6abb5a290
+  version: 1.4.795
+  resolution: "electron-to-chromium@npm:1.4.795"
+  checksum: 10c0/7a26fe5a0144085a90234d532560763d988ae3175514ffd18e3b6882096d8f877f71198180a8a7fe15858e485bb57406611c91e2c6b3bf4e8da446dc39a88a4f
   languageName: node
   linkType: hard
 
@@ -3277,7 +3277,7 @@ __metadata:
   resolution: "kitchen-magppie@workspace:."
   dependencies:
     "@hookform/resolvers": "npm:^3.4.2"
-    "@iconify/react": "npm:^4.1.1"
+    "@iconify/react": "npm:^5.0.1"
     "@reduxjs/toolkit": "npm:^2.2.5"
     "@tanstack/react-query": "npm:^5.40.0"
     "@types/lodash": "npm:^4.17.4"
