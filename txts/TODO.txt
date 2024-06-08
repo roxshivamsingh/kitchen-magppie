@@ -2,7 +2,8 @@ TODO 🎯
 #======================================
 ✅ FIX: Sign-In style wrt guidelines & add more validations.
 ✅ ADD: Contact Us validations and danger UI.
-✅ ADD: Sidebar collapse UI and sidebar floating button.
+✅ ADD: Sidebar collapse UI, floating button, & Signin button link with page.
+
 
 TODO 🎯
 #======================================
