@@ -27,7 +27,7 @@ export default function ContactUsForm() {
                 type="text"
                 name='name'
                 {...register('name')}
-                className={`mt-1 block w-full border ${'name' in errors ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm focus:ring focus:ring-opacity-50`}
+                className={`mt-1 block w-full ${'name' in errors ? 'border-red-300' : 'border-gray-300'} focus:ring focus:ring-opacity-50`}
                 color={'name' in errors ? 'failure' : ""}
                 helperText={'name' in errors && (<small className='text-red-500'>{_.get(errors, 'name.message', '')}</small>)}
             />
@@ -39,7 +39,7 @@ export default function ContactUsForm() {
                 type="text"
                 name='mobile'
                 {...register('mobile')}
-                className={`mt-1 block w-full border ${'mobile' in errors ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm focus:ring focus:ring-opacity-50`}
+                className={`mt-1 block w-full ${'mobile' in errors ? 'border-red-300' : 'border-gray-300'} focus:ring focus:ring-opacity-50`}
                 color={'mobile' in errors ? 'failure' : ""}
                 helperText={'mobile' in errors && (<small className='text-red-500'>{_.get(errors, 'mobile.message', '')}</small>)}
             />
@@ -52,7 +52,7 @@ export default function ContactUsForm() {
                 type="text"
                 name='email'
                 {...register('email')}
-                className={`mt-1 block w-full border ${'email' in errors ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm focus:ring focus:ring-opacity-50`}
+                className={`mt-1 block w-full ${'email' in errors ? 'border-red-300' : 'border-gray-300'} focus:ring focus:ring-opacity-50`}
                 color={'email' in errors ? 'failure' : ""}
                 helperText={'email' in errors && (<small className='text-red-500'>{_.get(errors, 'email.message', '')}
                     <p>
@@ -68,7 +68,7 @@ export default function ContactUsForm() {
                 type="text"
                 name='city'
                 {...register('city')}
-                className={`mt-1 block w-full border ${'city' in errors ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm focus:ring focus:ring-opacity-50 `}
+                className={`mt-1 block w-full ${'city' in errors ? 'border-red-300' : 'border-gray-300'} focus:ring focus:ring-opacity-50 `}
                 color={'city' in errors ? 'failure' : ""}
                 helperText={'city' in errors && (<small className='text-red-500'>{_.get(errors, 'city.message', '')}
                     <p>
