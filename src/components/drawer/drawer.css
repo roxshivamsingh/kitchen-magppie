@@ -1,0 +1,3 @@
+.x-drawer-container {
+    @apply w-70 #3a3939 flex flex-col items-start p-4 border-l-2 fixed top-0 right-0 h-full bg-transparent text-white transition-transform transform w-64;
+}

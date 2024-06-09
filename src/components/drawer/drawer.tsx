@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 export default function Drawer() {
     const [isOpen, setIsOpen] = useState(true);
 
-    const handleClose = useCallback(() => {
+    const onCloseDrawer = useCallback(() => {
         setIsOpen(false);
     }, []);
 
@@ -11,7 +11,7 @@ export default function Drawer() {
         <div className={`w-70 #3a3939 flex flex-col items-start p-4 border-l-2 fixed top-0 right-0 h-full bg-transparent text-white transition-transform transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} w-64`}>
             <div className="flex justify-end">
                 <button
-                    onClick={handleClose}
+                    onClick={onCloseDrawer}
                     className="bg-[#c7bda8] text-black font-bold py-1 px-2 rounded"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"></path></svg>                    </button>
