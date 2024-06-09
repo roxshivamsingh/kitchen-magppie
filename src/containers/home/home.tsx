@@ -1,4 +1,5 @@
 import ContactUs from './ContactUs/ContactUs'
+import FAQ from './FAQ/FAQ'
 import Features from './Features/Features'
 import Hero from './Hero/Hero'
 import MoreFea from './MoreFea/MoreFea'
@@ -14,6 +15,7 @@ export default function Home() {
             <MoreFea />
             <Ratings />
             <ContactUs />
+            <FAQ />
         </>
     )
 }
