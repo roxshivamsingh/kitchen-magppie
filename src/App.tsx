@@ -3,7 +3,7 @@ import { useFirebaseAuth } from './hooks/firebase/use-firebase-listeners'
 import Routes from './routes'
 // import { useLocation, useNavigate } from 'react-router-dom';
 // import { RouteEnum } from "./types/route";
-import CustomCircularProgress from './components/custom-circular-progress'
+import CustomCircularProgress from './components/CustomCircularProgress'
 import { useFirebaseDataUser } from './hooks/firebase/use-firebase-data'
 
 const App: FC = () => {

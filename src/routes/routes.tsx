@@ -2,7 +2,7 @@ import { Navigate, useRoutes } from 'react-router-dom'
 import Home from '../containers/home'
 import NotFound from '../containers/not-found'
 import SignIn from '../containers/sign-in'
-
+import Stepper from '../containers/Stepper'
 export default function Routes() {
 
 
@@ -18,6 +18,10 @@ export default function Routes() {
                 {
                     path: '/not-found',
                     element: <NotFound />,
+                },
+                {
+                    path: '/stepper',
+                    element: <Stepper />
                 },
                 {
                     path: '*',

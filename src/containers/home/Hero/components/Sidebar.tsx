@@ -7,9 +7,9 @@ export default function Sidebar() {
                     MENU
                 </h2>
                 <div className="mt-6 flex flex-col">
-                    <button className="mb-4 text-lg border-b-2 w-full text-start">
+                    <NavLink className="mb-4 text-lg border-b-2 w-full text-start" to='/stepper'>
                         GET A QUOTE IN 30 MINUTES
-                    </button>
+                    </NavLink>
                     <button className="mb-2 text-lg border-b-2 w-full text-start">
                         CONTACT US NOW
                     </button>

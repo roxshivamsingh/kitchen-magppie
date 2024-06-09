@@ -16,7 +16,6 @@ export default function SignIn() {
         formState: { errors },
         watch
     } = useForm({ resolver: yupResolver(schema) })
-
     const AuthAction = useFirebaseActionAuth()
     const navigate = useNavigate()
     const values = watch();

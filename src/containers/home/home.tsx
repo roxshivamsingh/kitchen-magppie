@@ -5,7 +5,7 @@ import MoreFea from './MoreFea/MoreFea'
 import Ratings from './Ratings/Ratings'
 import Review from './Review/Review'
 
-const Home = () => {
+export default function Home() {
     return (
         <>
             <Hero />
@@ -17,5 +17,3 @@ const Home = () => {
         </>
     )
 }
-
-export default Home
