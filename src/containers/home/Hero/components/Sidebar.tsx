@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 export default function Sidebar() {
     return (
         <>
@@ -14,9 +15,9 @@ export default function Sidebar() {
                     </button>
                 </div>
 
-                <button type="submit" className="mt-60 ml-12 text-lg">
+                <NavLink className="mt-60 ml-12 text-lg" to='/sign-in'>
                     MEMBERS LOGIN
-                </button>
+                </NavLink>
             </div>
         </>
     )
