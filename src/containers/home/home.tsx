@@ -16,6 +16,7 @@ export default function Home() {
             <Ratings />
             <ContactUs />
             <FAQ />
+
         </>
     )
 }

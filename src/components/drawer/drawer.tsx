@@ -7,7 +7,7 @@ export default function Drawer() {
         setIsOpen(false);
     }, []);
 
-    return (<>
+return (<>
         <div className={`w-70 #3a3939 flex flex-col items-start p-4 border-l-2 fixed top-0 right-0 h-full bg-transparent text-white transition-transform transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} w-64`}>
             <div className="flex justify-end">
                 <button

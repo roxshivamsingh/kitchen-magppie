@@ -96,6 +96,7 @@ export default function Stepper() {
 
                     </div>
 
+
                 </div>
             </div>
 
@@ -103,6 +104,10 @@ export default function Stepper() {
 
 }
 
+
 const STEPPER_OPTIONS = ['Style', 'Size', 'Shape']
 const backgroundImage = `url(${review})`
 const KITCHEN_OPTIONS = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14]
+
+
+
