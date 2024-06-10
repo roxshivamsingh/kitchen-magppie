@@ -1,29 +1,35 @@
-import ratings from "../../../assets/photos/ratings.png"
+import { Carousel } from 'react-responsive-carousel'
+import { RatingsData } from './data'
 
 const Ratings = () => {
     return (
-        <div className="bg-white text-[#7b766f]">
-            <div className="flex flex-col items-center mb-16">
-                <img
-                    src={ratings}
-                    alt="Kitchen"
-                    className="w-full h-auto"
-                />
-            </div>
-
-            <div className="py-16">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-5xl font-medium mb-4">
-                        Ratings and reviews
-                    </h2>
-                    <p className="text-lg mb-4">
-                        Porcelain Slabs are waterproof and non-porous and the
-                        water does not damage the surface or the body of the
-                        slab, making cleaning your kitchen a breeze. Simply hose
-                        it down for a hygienic and effortless shine.
-                    </p>
-                </div>
-            </div>
+        <div className="min-h-screen py-8 bg-white text-[#7b766f]">
+            <Carousel
+                showArrows={true}
+                showThumbs={false}
+                infiniteLoop={true}
+                autoPlay={true}
+                interval={3000}
+                className="carousel-root"
+            >
+                {RatingsData.map((rating) => (
+                    <div key={rating.id} className="flex flex-col items-center">
+                        <img
+                            src={rating.img}
+                            alt=""
+                            className="w-full object-cover"
+                        />
+                        <div className='flex flex-col justify-center items-center w-2/3 p-10'>
+                            <p className="mt-4 mb-4 text-5xl text-center">
+                                Ratings and Reviews
+                            </p>
+                            <p className="mt-4 text-medium text-center">
+                                {rating.description}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </Carousel>
         </div>
     )
 }
