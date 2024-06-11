@@ -7,10 +7,9 @@ export default function Sidebar() {
 
     const [toggle, setToggle] = useState({ main: true, login: false })
 
+    const renderMain = (<div className=" h-screen  bg-transparent p-4 border-l-2"
 
-    const renderMain = (<div
-        className=" h-screen  bg-transparent p-4 border-l-2"
-
+    // style={{ mixBlendMode: 'darken', color: "white" }}
     >
         <h2 className="text-2xl font-bold mb-4 border-b-2 w-full">
             MENU
@@ -35,6 +34,7 @@ export default function Sidebar() {
 
         {!toggle.main && (<div className="absolute right-2 top-2 bg-[#434343] rounded-2xl p-1 text-white cursor-pointer"
             onClick={() => { setToggle((prev) => ({ ...prev, main: true })) }}
+        // style={{ opacity: '0.3' }}
         >
             <Icon icon='material-symbols:menu' width={40} />
         </div>)}
@@ -52,24 +52,17 @@ export default function Sidebar() {
             titleIcon={() => <Icon icon='tabler:menu-deep' />}
             /> */}
             <Drawer.Items className="text-white flex flex-col items-start"
+
             >
 
                 <div className={`grid ${toggle.login ? 'grid-cols-2' : ''}`}>
-                    {toggle.login && (<div className="bg-white text-black h-screen w-96 p-3 flex flex-col justify-center"
-                    // onBlur={() => {
-                    //     setToggle((prev) => ({ ...prev, login: false }))
-                    // }}
-                    >
-
-                        {/* <Icon icon='material-symbols:close' width={20} /> */}
+                    {toggle.login && (<div className="bg-white text-black h-screen w-96 p-3 flex flex-col justify-center"                   >
                         <SignInForm />
                     </div>
                     )}
 
                     {renderMain}
                 </div>
-
-                {/* {renderLoginDrawer} */}
 
             </Drawer.Items>
         </Drawer>

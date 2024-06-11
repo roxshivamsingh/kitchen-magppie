@@ -16,20 +16,11 @@ import g12 from "../../assets/photos/kitchen/g12.png";
 import g13 from "../../assets/photos/kitchen/g13.png";
 import g14 from "../../assets/photos/kitchen/g14.png";
 
-
-
-
-
-
-
-
-
-
-
-
+import _ from "lodash"
 
 export default function Stepper() {
 
+    const images = _.chunk(KITCHEN_OPTIONS, 3)
     const renderCards = useMemo(() => (<div className="grid lg:grid-flow-col lg:grid-cols-4 md:grid-flow-col md:grid-cols-3 gap-4 my-10 text-sm lg:text-lg uppercase">
         {STEPPER_OPTIONS?.map((row, i) => (<div key={i}>
             <div className="shadow-lg bg-white rounded-md p-4 min-h-full">
@@ -83,16 +74,20 @@ export default function Stepper() {
 
                 </div>
                 <div className="container mx-auto">
-                    <div className="grid grid-cols-2  gap-4">
-                        {KITCHEN_OPTIONS?.map((image, i) => (
-                            <div key={i}>
-                                <img
-                                    className="h-auto max-w-full rounded-lg"
-                                    src={image}
-                                    alt=""
-                                />
-                            </div>
-                        ))}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4">
+
+                        {images?.map((items, i) => (<div className='grid gap-2' key={i}>
+                            {items?.map((image, j) => (
+                                <div key={j}>
+                                    <img
+                                        className="h-auto max-w-full rounded-lg"
+                                        src={image}
+                                        alt=""
+                                    />
+                                </div>
+
+                            ))}
+                        </div>))}
 
                     </div>
 
