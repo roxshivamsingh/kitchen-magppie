@@ -9,6 +9,43 @@ import _ from 'lodash'
 
 export default function SignIn() {
     const {
+        watch
+    } = useForm({ resolver: yupResolver(schema) })
+    const AuthAction = useFirebaseActionAuth()
+    const values = watch();
+
+    const onSignUp = useCallback(() => {
+        if (values?.email?.length && values?.password?.length) {
+            AuthAction.signUp(values as TFormInput)
+        }
+    }, [AuthAction, values])
+
+    return (<div className="min-h-screen flex md:flex-row">
+        <div className="hidden md:block md:w-3.8/4 md:h-auto">
+            <video
+                autoPlay
+                loop
+                muted
+                className="w-full h-full object-cover"
+            >
+                <source src="" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div className="w-full md:w-1.2/4 flex items-center justify-center bg-gray-100 min-h-screen">
+            <div className="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg">
+                <h2 className="text-2xl font-bold text-center"
+                    onClick={onSignUp}
+                >Login</h2>
+                <SignInForm />
+            </div>
+        </div>
+    </div>
+    )
+}
+
+export function SignInForm() {
+    const {
         register,
         handleSubmit,
         setError,
@@ -39,18 +76,14 @@ export default function SignIn() {
             })
         }, 200)
     })
-    const onSignUp = useCallback(() => {
-        if (values?.email?.length && values?.password?.length) {
-            AuthAction.signUp(values as TFormInput)
-        }
-    }, [AuthAction, values])
+
 
 
     const renderSubmitButton = (
         <button
             type='submit'
             disabled={values?.loading}
-            className={`grid grid-cols-3 flex-row align-middle a w-full py-2 px-4 ${isError ? 'bg-red-600' : 'bg-indigo-600'} text-white rounded-md ${isError ? 'hover:bg-red-700' : 'hover:bg-indigo-600'}  focus:outline-none focus:ring-2 ${isError ? 'focus:ring-red-500' : 'focus:ring-indigo-500'} focus:ring-offset-2`}
+            className={`grid grid-cols-3 flex-row align-middle w-full py-3 px-4 ${isError ? 'bg-red-600' : 'bg-black'} uppercase text-white ${isError ? 'hover:bg-red-700' : 'bg-black'}  focus:outline-none focus:ring-2 ${isError ? 'focus:ring-red-500' : 'bg-black'} focus:ring-offset-2`}
 
         >
             <div className="" />
@@ -63,65 +96,71 @@ export default function SignIn() {
         </button>
     )
 
-    return (<div className="min-h-screen flex md:flex-row">
-        <div className="hidden md:block md:w-3.8/4 md:h-auto">
-            <video
-                autoPlay
-                loop
-                muted
-                className="w-full h-full object-cover"
+    return (<form onSubmit={onSubmit} className="space-y-4">
+        <div>
+            {/* <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
             >
-                <source src="" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+                Email
+            </label> */}
+            <input
+                id="email"
+                name="email"
+                type="email"
+                {...register('email')}
+                className='w-full text-xl'
+                placeholder='Email'
+                style={{
+                    borderTop: 0,
+                    borderLeft: 0,
+                    borderRight: 0,
+                    borderColor: errors.email ? 'red' : '#c0c0c0'
+                }}
+            // className={`mt-1 w-full p-2 border ${isError ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm ${isError ? 'focus:ring-red-500' : 'focus:ring-gray-500'} ${isError ? 'focus:border-red-500' : 'focus:border-gray-500'}`}
+            />
+            {helperText('email')}
         </div>
-        <div className="w-full md:w-1.2/4 flex items-center justify-center bg-gray-100 min-h-screen">
-            <div className="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg">
-                <h2 className="text-2xl font-bold text-center"
-                    onClick={onSignUp}
-                >Login</h2>
-                <form onSubmit={onSubmit} className="space-y-4">
-                    <div>
-                        <label
-                            htmlFor="email"
-                            className="block text-sm font-medium text-gray-700"
-                        >
-                            Email
-                        </label>
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            {...register('email')}
-                            className={`mt-1 w-full p-2 border ${isError ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm ${isError ? 'focus:ring-red-500' : 'focus:ring-gray-500'} ${isError ? 'focus:border-red-500' : 'focus:border-gray-500'}`}
-                        />
-                        {helperText('email')}
-                    </div>
-                    <div>
-                        <label
-                            htmlFor="password"
-                            className="block text-sm font-medium text-gray-700"
-                        >
-                            Password
-                        </label>
-                        <input
-                            id="password"
-                            name="password"
-                            {...register('password')}
-                            type="password"
-                            className={`mt-1 w-full p-2 border ${isError ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm ${isError ? 'focus:ring-red-500' : 'focus:ring-gray-500'} ${isError ? 'focus:border-red-500' : 'focus:border-gray-500'}`}
-                        />
-                        {helperText('password')}
+        <div>
+            {/* <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+            >
+                Password
+            </label> */}
+            <input
+                id="password"
+                name="password"
+                {...register('password')}
+                type="password"
+                placeholder='Password'
+                style={{
+                    borderTop: 0,
+                    borderLeft: 0,
+                    borderRight: 0,
+                    borderColor: errors.email ? 'red' : '#c0c0c0'
 
-                    </div>
-                    <div>
-                        {renderSubmitButton}
-                    </div>
-                </form>
-            </div>
+                }}
+                className='w-full text-xl'
+            // className={`mt-1 w-full p-2 border ${isError ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm ${isError ? 'focus:ring-red-500' : 'focus:ring-gray-500'} ${isError ? 'focus:border-red-500' : 'focus:border-gray-500'}`}
+            />
+            {helperText('password')}
+
         </div>
-    </div>
-    )
+        <div className="text-right text-sm cursor-pointer "
+            style={{ marginBottom: "5rem" }}
+        >
+            Forgot Password
+
+        </div>
+        <div>
+            {renderSubmitButton}
+        </div>
+        <div className="text-center font-bold cursor-pointer" style={{ marginTop: '5rem' }}>
+            Request Access
+
+        </div>
+    </form>)
 }
 
 
