@@ -9,7 +9,7 @@ const VideoPlayer = () => {
             loop
             muted
             src={KitchenHome}
-            className="object-cover w-full h-full"
+            className="object-cover w-full min-h-screen"
         >
             <MediaProvider />
         </MediaPlayer>
