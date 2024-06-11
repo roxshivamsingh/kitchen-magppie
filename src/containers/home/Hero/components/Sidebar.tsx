@@ -39,6 +39,7 @@ export default function Sidebar() {
             <Icon icon='material-symbols:menu' width={40} />
         </div>)}
         <Drawer open={toggle.main}
+            backdrop={toggle.login}
             className=" bg-transparent p-0"
 
             onClose={() => { setToggle({ login: false, main: false }) }}
