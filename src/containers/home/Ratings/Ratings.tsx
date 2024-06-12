@@ -20,10 +20,10 @@ const Ratings = () => {
                             className="w-full object-cover"
                         />
                         <div className='flex flex-col justify-center items-center w-2/3 p-10'>
-                            <p className="mt-4 mb-4 text-5xl text-center">
+                            <p className="mt-4 mb-4 text-4xl text-center">
                                 Ratings and Reviews
                             </p>
-                            <p className="mt-4 text-medium text-center">
+                            <p className="mt-4 text-center text-lg">
                                 {rating.description}
                             </p>
                         </div>

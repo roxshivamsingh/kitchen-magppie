@@ -8,7 +8,7 @@ const Review = () => {
                 backgroundImage: `url(${review})`,
             }}
         >
-            <div className="text-white p-8 rounded-lg shadow-lg max-w-3xl">
+            <div className="text-white p-8 rounded-lg shadow-lg max-w-3xl text-start">
                 <h1 className="text-7xl font-light mb-4">
                     For people and planet
                 </h1>
