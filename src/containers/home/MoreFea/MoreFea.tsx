@@ -21,7 +21,7 @@ const MoreFea = () => {
                                 className="w-full md:w-1/2 h-auto shadow-lg"
                             />
                             <div className="mt-8 md:mt-0 md:ml-8 text-[#7b766f] text-start">
-                                <h2 className="text-5xl font-medium mb-4">
+                                <h2 className="text-4xl font-medium mb-4">
                                     {moreFeature.titleTop}
                                 </h2>
                                 <p className="text-lg">{moreFeature.descTop}</p>
@@ -30,7 +30,7 @@ const MoreFea = () => {
 
                         <div className="flex flex-col-reverse md:flex-row items-center justify-between text-[#7b766f]">
                             <div className="mt-8 md:mt-0 md:mr-8 text-start">
-                                <h2 className="text-5xl font-medium mb-4">
+                                <h2 className="text-4xl font-medium mb-4">
                                     {moreFeature.titleDown}
                                 </h2>
                                 <p className="text-lg">
