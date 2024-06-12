@@ -1,14 +1,15 @@
 import review from '../../../../../assets/photos/review.png'
 
+
 const Review = () => {
     return (
         <div
-            className="relative flex items-center justify-center min-h-screen bg-cover bg-center"
+            className="relative flex items-center justify-centermin-h-screen bg-cover bg-center min-h-screen"
             style={{
                 backgroundImage: `url(${review})`,
             }}
         >
-            <div className="text-white p-8 rounded-lg shadow-lg max-w-3xl">
+            <div className="text-white p-8 rounded-lg shadow-lg max-w-3xl w-full">
                 <h1 className="text-7xl font-light mb-4">
                     For people and planet
                 </h1>
