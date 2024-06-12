@@ -1,3 +1,11 @@
+Convert jss into valid tailwind classes
+JSS:
+{
+                    borderTop: 0,
+                    borderLeft: 0,
+                    borderRight: 0,
+                    borderColor: errors.email ? 'red' : '#c0c0c0'
+                }
 User - name, email, password
 
 

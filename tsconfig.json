@@ -23,7 +23,13 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "src"
+    "types",
+    "appHooks",
+    "config",
+    "routes",
+    "app",
+    "main/App.tsx",
+    "main/main.tsx"
   ],
   "references": [
     {
