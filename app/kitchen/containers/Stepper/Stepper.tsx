@@ -24,7 +24,7 @@ export default function Stepper() {
     const images = _.chunk(KITCHEN_OPTIONS, 3)
     const renderCards = useMemo(() => (<div className="grid lg:grid-flow-col lg:grid-cols-4 md:grid-flow-col md:grid-cols-3 gap-4 my-10 text-sm lg:text-lg uppercase">
         {STEPPER_OPTIONS?.map((row, i) => (<div key={i}>
-            <div className="shadow-lg bg-white rounded-md p-4 min-h-full">
+            <div className="shadow-lg bg-gray-200 rounded-md p-4 min-h-full">
                 <div className="flex gap-2 flex-row align-middle py-1">
                     <div className="my-auto">Step</div>
                     <div className='border px-2 rounded-2xl border-black'>{i + 1}</div>

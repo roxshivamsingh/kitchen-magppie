@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { UserReducer } from './slices/user.slice';
+import { CmsReducer } from './slices/cms.slice';
 
 
 export const store = configureStore({
     reducer: {
         user: UserReducer,
+        cms: CmsReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
