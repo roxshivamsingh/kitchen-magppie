@@ -11,7 +11,6 @@ import KitchenCreateEdit from '../app/cms/containers/KitchenCreateEdit'
 
 export default function Routes() {
 
-
     return useRoutes([
         {
             path: '/',

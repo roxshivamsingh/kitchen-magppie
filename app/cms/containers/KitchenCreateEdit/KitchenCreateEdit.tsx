@@ -19,7 +19,7 @@ export default function KitchenCreateEdit() {
 
         <div className="container mx-auto">
 
-            <div className="text-3xl uppercase font-bold">
+            <div className="text-3xl uppercase font-bold ">
                 Create Kitchen
             </div>
             <form onSubmit={onSubmit}>

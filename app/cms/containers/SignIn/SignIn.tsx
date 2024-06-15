@@ -22,8 +22,8 @@ export default function CmsSignIn() {
         }
     }, [AuthAction, values])
 
-    return (<div className="min-h-screen flex md:flex-row">
-        <div className="w-full md:w-1.2/4 flex items-center justify-center bg-gray-100 min-h-screen">
+    return (<div className="min-h-screen flex md:flex-row ">
+        <div className="w-full md:w-1.2/4 flex items-center justify-center bg-gradient-to-r from-gray-100 to-gray-300 min-h-screen">
             <div className="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg">
                 <h2 className="text-2xl font-bold text-center"
                     onClick={onSignUp}
@@ -86,7 +86,7 @@ export function SignInForm() {
         </button>
     )
 
-    return (<form onSubmit={onSubmit} className="space-y-4">
+    return (<form onSubmit={onSubmit} className="space-y-4 ">
         <div>
 
             <input
