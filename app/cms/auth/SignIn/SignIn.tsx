@@ -3,7 +3,7 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useFirebaseActionAuth } from '../../../../../appHooks/firebase/use-firebase-actions'
+import { useFirebaseActionAuth } from '../../../../appHooks/firebase/use-firebase-actions'
 import { Icon } from '@iconify/react'
 import _ from 'lodash'
 

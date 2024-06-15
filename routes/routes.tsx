@@ -3,10 +3,10 @@ import Home from '../app/kitchen/containers/home'
 import NotFound from '../app/kitchen/containers/not-found'
 import SignIn from '../app/kitchen/containers/sign-in'
 import Stepper from '../app/kitchen/containers/Stepper'
-import CmsSignIn from '../app/cms/containers/auth/SignIn/SignIn'
-import CmsHome from '../app/cms/containers/Home/Home'
-import CmsKitchen from '../app/cms/containers/kitchens/Kitchen/Kitchen'
-import KitchenCreateEdit from '../app/cms/containers/kitchens/KitchenCreateEdit'
+import CmsSignIn from '../app/cms/auth/SignIn/SignIn'
+import CmsHome from '../app/cms/Home/Home'
+import CmsKitchen from '../app/cms/kitchens/Kitchen/Kitchen'
+import KitchenCreateEdit from '../app/cms/kitchens/KitchenCreateEdit'
 
 
 export default function Routes() {

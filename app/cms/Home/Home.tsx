@@ -2,7 +2,7 @@ import { Card } from 'flowbite-react'
 
 export default function CmsHome() {
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto min-h-screen">
             <div className="text-3xl font-bold uppercase text-center mt-2">
                 Dashboard
             </div>
