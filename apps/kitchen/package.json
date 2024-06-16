@@ -2,7 +2,6 @@
   "name": "kitchen",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite --clearScreen false",
     "build": "tsc && vite build",
@@ -10,11 +9,11 @@
     "lint": "eslint \"src/**/*.ts\""
   },
   "dependencies": {
-    "@repo/ui": "^1.0.0"
+    "@repo/ui": "*"
   },
   "devDependencies": {
-    "@repo/eslint-config": "^1.0.0",
-    "@repo/typescript-config": "^1.0.0",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
     "eslint": "^8.57.0",
     "typescript": "^5.3.3",
     "vite": "^5.1.4"
