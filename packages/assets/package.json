@@ -1,0 +1,16 @@
+{
+  "name": "@repo/assets",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "exports": {
+    "./photos":"./src/photos",
+    "./videos":"./src/videos"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "latest"
+  }
+}

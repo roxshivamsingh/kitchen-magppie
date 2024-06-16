@@ -1,119 +1,81 @@
-# KITCHEN MAGPPIE
+# Turborepo starter
 
-## Description
+This is an official starter Turborepo.
 
-**Magppie** is a premium lifestyle brand that designs and manufactures kitchens, fixed furniture, and home accessories tailored to Indian culture and conditions. Our mission is to provide high-quality, innovative, and stylish kitchen solutions that cater to the diverse needs of modern Indian households.
+## Using this example
 
-### Our Kitchen Styles
+Run the following command:
 
--   **100% Wood-Free Kitchens:** These kitchens are made from Magppie's patented M Stone material, offering durability and a unique aesthetic.
--   **International Award-Winning Kitchens:** Crafted from exotic granite, these kitchens have received international recognition for their design and quality.
--   **Caesarstone Quartz Kitchens:** Made from Caesarstone quartz, these kitchens combine elegance with robust performance.
+```sh
+npx create-turbo@latest
+```
 
-## Technology Stack
+## What's inside?
 
-At Magppie, we leverage the latest technologies to ensure our products and services are top-notch and meet the highest standards of quality and innovation.
+This Turborepo includes the following packages/apps:
 
--   **Firebase:** A comprehensive app development platform that helps us build and improve our web and mobile applications.
--   **TailwindCSS:** Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.
--   **Strapi:** An open-source headless CMS that allows us to manage and distribute our content efficiently.
--   **Iconify:** A versatile icon framework that provides a wide range of customizable icons for our applications.
--   **React-Query:** A powerful data-fetching library for managing server-state in our React applications.
--   **Lodash:** A JavaScript utility library that helps us write cleaner and more efficient code.
--   **React Router Dom:** A JavaScript utility library that helps to create routes.
+### Apps and Packages
 
-## Getting Started
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-To get started with our project, please follow the steps below:
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-1. **Install Package Manager:**
+### Utilities
 
-    ```bash
-    corepack enable
-    yarn init -2
-    yarn set version stable
-    yarn install
-    yarn --version
-    ```
+This Turborepo has some additional tools already setup for you:
 
-2. **Clone the repository:**
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-    ```bash
-    https://github.com/AkshayKDev/kitchen-magppie
-    ```
+### Build
 
-3. **Install dependencies:**
+To build all apps and packages, run the following command:
 
-    ```bash
-    cd kitchen-magppie
-    yarn
-    ```
+```
+cd my-turborepo
+pnpm build
+```
 
-4. **Run the application:**
+### Develop
 
-    ```bash
-    yarn run dev
-    ```
+To develop all apps and packages, run the following command:
 
-5. **Buiid application:**
-    ```bash
-    yarn build
-    ```
+```
+cd my-turborepo
+pnpm dev
+```
 
-## Fixing Yarn Package Manager Errors
+### Remote Caching
 
-Follow these steps to resolve errors with the Yarn package manager:
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-### Steps
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
-1. **Remove `yarn.lock` and `.yarnrc.yml` files**
+```
+cd my-turborepo
+npx turbo login
+```
 
-    ```sh
-    rm yarn.lock .yarnrc.yml
-    ```
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-2. **Enable Corepack**
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
 
-    ```sh
-    corepack enable
-    ```
+```
+npx turbo link
+```
 
-3. **Open the `package.json` file**
+## Useful Links
 
-4. **Reinitialize Yarn with the latest version**
+Learn more about the power of Turborepo:
 
-    ```sh
-    yarn init -2
-    ```
-
-5. **Revert changes in the `package.json` file**
-   Undo any unintended modifications in the `package.json` file that were caused by the previous step.
-
-6. **Install dependencies**
-
-    ```sh
-    yarn install
-    ```
-
-7. **Start the development server**
-    ```sh
-    yarn dev
-    ```
-
-### Detailed Explanation
-
-1. **Remove `yarn.lock` and `yarn.yml` files**: These files can sometimes cause conflicts or errors. Removing them ensures a clean slate for the next steps.
-
-2. **Enable Corepack**: Corepack enables package managers (like Yarn) to be managed by Node.js, ensuring compatibility and version management.
-
-3. **Open `package.json`**: Check the `package.json` file for any anomalies or errors that might be causing issues.
-
-4. **Reinitialize Yarn with the latest version**: Running `yarn init -2` initializes a new Yarn project with the latest Yarn 2 configuration.
-
-5. **Revert changes in the `package.json` file**: The initialization step might alter your `package.json`. Ensure it matches your project's requirements by reverting any unnecessary changes.
-
-6. **Install dependencies**: This step installs all the necessary packages defined in your `package.json`.
-
-7. **Start the development server**: Finally, start your development server to ensure everything is running smoothly.
-
-By following these steps, you can resolve common issues with Yarn and ensure your project dependencies are properly managed.
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
