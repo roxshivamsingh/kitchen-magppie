@@ -3,7 +3,6 @@ import { Card } from "flowbite-react";
 
 export default function CmsHome() {
     return <div className="container mx-auto">
-
         <div className="text-5xl font-bold uppercase">Dashboard</div>
         <div className="grid grid-cols-1 md:grid-cols-3 space-x-2 lg:mt-10 md:mt-10">
 

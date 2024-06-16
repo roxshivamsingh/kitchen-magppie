@@ -1,1 +1,1 @@
-export * from "./Kitchen"
+export { default } from "./Kitchen"
