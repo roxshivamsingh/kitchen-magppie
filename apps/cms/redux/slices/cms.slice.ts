@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IUser } from '../../types/user';
+import { IUser } from '@repo/types/users';
 
 interface ICmsSlice {
     value: { user?: IUser };

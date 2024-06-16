@@ -1,10 +1,6 @@
 {
   "name": "@repo/config",
   "type": "module",
-  "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc"
-  },
   "exports": {
     "./firebase": "./src/firebase/firebase.config.ts"
   },

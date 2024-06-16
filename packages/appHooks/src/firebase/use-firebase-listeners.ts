@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 
-import { auth } from "../../config/firebase.config";
+import { auth } from "@repo/config/firebase";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../redux";
-import { IUser, INIT_USER } from "../../types/user";
-import { setUser } from "../../redux/slices/user.slice";
+import { useCommonDispatch } from "@repo/common-redux/hooks";
+import { IUser, INIT_USER } from "@repo/types/users";
+import { setUser } from "@repo/common-redux/slices";
 
 const { getAuth, onAuthStateChanged } = auth;
 export function useFirebaseAuth() {
     const navigate = useNavigate()
-    const dispatch = useAppDispatch()
+    const dispatch = useCommonDispatch()
     useEffect(() => {
         const q = getAuth()
         onAuthStateChanged(q, (user) => {

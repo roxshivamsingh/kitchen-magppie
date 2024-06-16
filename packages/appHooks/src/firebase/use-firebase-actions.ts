@@ -1,5 +1,5 @@
 import { useMemo } from "react"
-import { auth } from "../../config/firebase.config";
+import { auth } from "@repo/config/firebase";
 
 export function useFirebaseActionAuth() {
     const q = auth.getAuth()

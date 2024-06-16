@@ -1,10 +1,6 @@
 {
   "name": "@repo/types",
   "type": "module",
-  "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc"
-  },
   "exports": {
     "./configs": "./src/configs/index.ts",
     "./users": "./src/users/index.ts"

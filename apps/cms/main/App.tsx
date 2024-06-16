@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import { useFirebaseAuth } from '../appHooks/firebase/use-firebase-listeners'
+import { useFirebaseAuth } from '@repo/appHooks/firebase'
 import Routes from '../routes'
 // import { useLocation, useNavigate } from 'react-router-dom';
 // import { RouteEnum } from "./types/route";
 import CustomCircularProgress from '../app/kitchen/components/CustomCircularProgress'
-import { useFirebaseDataUser } from '../appHooks/firebase/use-firebase-data'
+import { useFirebaseDataUser } from '@repo/appHooks/firebase'
 
 const App: FC = () => {
     useFirebaseAuth()

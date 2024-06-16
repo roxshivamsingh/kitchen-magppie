@@ -1,12 +1,8 @@
 import { Navigate, useRoutes } from 'react-router-dom'
-import Home from '../app/kitchen/containers/home'
-import NotFound from '../app/kitchen/containers/not-found'
-import SignIn from '../app/kitchen/containers/sign-in'
-import Stepper from '../app/kitchen/containers/Stepper'
-import CmsSignIn from '../app/cms/auth/SignIn/SignIn'
-import CmsHome from '../app/cms/Home/Home'
-import CmsKitchen from '../app/cms/kitchens/Kitchen/Kitchen'
-import KitchenCreateEdit from '../app/cms/kitchens/KitchenCreateEdit'
+import Home from '../src/containers/home'
+import NotFound from '../src/containers/not-found'
+import SignIn from '../src/containers/sign-in'
+import Stepper from '../src/containers/Stepper'
 
 
 export default function Routes() {

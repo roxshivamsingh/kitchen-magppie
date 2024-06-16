@@ -1,6 +1,6 @@
-import { useAppSelector } from "../../redux";
+import { useCommonSelector } from "@repo/common-redux/hooks";
 
 export function useFirebaseDataUser() {
-    const user = useAppSelector((state) => state.user)
+    const user = useCommonSelector((state) => state.user)
     return user;
 }

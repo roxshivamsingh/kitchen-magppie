@@ -1,4 +1,4 @@
-import review from '../../../../../assets/photos/review.png'
+import review from '@repo/assets/photos/'
 
 
 const Review = () => {

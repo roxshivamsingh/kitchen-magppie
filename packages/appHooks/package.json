@@ -1,14 +1,11 @@
 {
   "name": "@repo/appHooks",
   "type": "module",
-  "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc"
-  },
   "exports": {
     "./firebase": "./src/firebase/index.ts"
   },
   "devDependencies": {
+    "@repo/config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "typescript": "latest"
   }

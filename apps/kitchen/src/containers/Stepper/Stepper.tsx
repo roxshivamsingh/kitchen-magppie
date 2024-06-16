@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import review from '../../../../assets/photos/review.png'
+import review from '@repo/assets/photos/review.png'
 import Sidebar from '../home/Hero/components/Sidebar'
 import g1 from "../../../../assets/photos/kitchen/g1.png";
 import g2 from "../../../../assets/photos/kitchen/g2.png";

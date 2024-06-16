@@ -1,0 +1,13 @@
+{
+  "name": "@repo/common-redux",
+  "type": "module",
+  "exports": {
+    "./slices": "./src/slices/index.ts",
+    "./hooks": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@repo/types": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "latest"
+  }
+}
