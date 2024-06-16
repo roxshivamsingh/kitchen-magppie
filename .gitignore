@@ -29,6 +29,8 @@ dist-ssr
 /.env/
 env
 
+txts/
+
 ###Yarn##
 # Swap the comments on the following lines if you wish to use zero-installs
 # In that case, don't forget to run `yarn config set enableGlobalCache false`!

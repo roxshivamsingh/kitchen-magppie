@@ -12,11 +12,11 @@ const KitchenRoutes = {
             index: true
         },
         {
-            path: '/not-found',
+            path: 'not-found',
             element: <NotFound />,
         },
         {
-            path: '/quote',
+            path: 'quote',
             element: <Quote />
         },
         {
