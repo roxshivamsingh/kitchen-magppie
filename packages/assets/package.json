@@ -6,8 +6,8 @@
     "build": "tsc"
   },
   "exports": {
-    "./photos":"./src/photos",
-    "./videos":"./src/videos"
+    "./photos": "./src/photos",
+    "./videos": "./src/videos"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
