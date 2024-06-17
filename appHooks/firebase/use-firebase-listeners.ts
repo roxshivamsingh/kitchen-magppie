@@ -4,7 +4,7 @@ import { auth } from "../../config/firebase.config";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux";
 import { IUser, INIT_USER } from "../../types/user";
-import { setUser } from "../../redux/slices/user.slice";
+import { setUser } from "../../app/kitchen/redux/slices/User.slice";
 
 const { getAuth, onAuthStateChanged } = auth;
 export function useFirebaseAuth() {

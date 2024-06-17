@@ -27,7 +27,7 @@
     "appHooks",
     "config",
     "routes",
-    "app",
+    "app/**/*",
     "main/App.tsx",
     "main/main.tsx"
   ],
