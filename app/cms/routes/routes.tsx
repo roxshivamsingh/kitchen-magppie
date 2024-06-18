@@ -3,27 +3,27 @@ import CmsHome from "../containers/Home/Home";
 import KitchenCreateEdit from "../kitchens/KitchenCreateEdit";
 import CmsSignIn from "../auth/SignIn";
 import CmsKitchen from "../kitchens/Kitchen"
-import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
+import AuthGuard from "../../../components/AuthGuard";
 const CmsRoutes = {
     path: 'cms',
     children: [
         {
-            element: (<PrivateRoute>
+            element: (<AuthGuard variant="cms">
                 <CmsHome />
-            </PrivateRoute>),
+            </AuthGuard>),
             index: true,
         },
         {
             path: 'kitchen',
-            element: (<PrivateRoute>
+            element: (<AuthGuard variant="cms">
                 <CmsKitchen />
-            </PrivateRoute>),
+            </AuthGuard>),
         },
         {
             path: 'kitchen/create',
-            element: (<PrivateRoute>
+            element: (<AuthGuard variant="cms">
                 <KitchenCreateEdit />
-            </PrivateRoute>),
+            </AuthGuard>),
         },
 
         {

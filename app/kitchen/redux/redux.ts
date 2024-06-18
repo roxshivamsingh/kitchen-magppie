@@ -1,9 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import UserReducer from './slices/User.slice';
+import AuthReducer from './slices/Auth.slice';
 
 const KitchenReducers = combineReducers({
-    Users: UserReducer,
+    Auth: AuthReducer,
 })
 
 export default KitchenReducers
