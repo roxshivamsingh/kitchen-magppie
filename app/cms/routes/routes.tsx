@@ -3,22 +3,29 @@ import CmsHome from "../containers/Home/Home";
 import KitchenCreateEdit from "../kitchens/KitchenCreateEdit";
 import CmsSignIn from "../auth/SignIn";
 import CmsKitchen from "../kitchens/Kitchen"
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 const CmsRoutes = {
     path: 'cms',
-    // element: (<BaseLayout />),
     children: [
         {
-            element: <CmsHome />,
-            index: true
+            element: (<PrivateRoute>
+                <CmsHome />
+            </PrivateRoute>),
+            index: true,
         },
         {
             path: 'kitchen',
-            element: <CmsKitchen />,
+            element: (<PrivateRoute>
+                <CmsKitchen />
+            </PrivateRoute>),
         },
         {
             path: 'kitchen/create',
-            element: <KitchenCreateEdit />,
+            element: (<PrivateRoute>
+                <KitchenCreateEdit />
+            </PrivateRoute>),
         },
+
         {
             path: 'sign-in',
             element: <CmsSignIn />,
