@@ -13,7 +13,7 @@ export default function Sidebar() {
             MENU
         </h2>
         <div className="mt-6 flex flex-col">
-            <NavLink className="mb-4 text-lg border-b-2 w-full text-start" to='/stepper'>
+            <NavLink className="mb-4 text-lg border-b-2 w-full text-start" to='/quote'>
                 GET A QUOTE IN 30 MINUTES
             </NavLink>
             <button className="mb-2 text-lg border-b-2 w-full text-start">
