@@ -14,4 +14,7 @@ export default function AuthGuard(props: TProps) {
     return <Navigate to={isCms ? '/cms/sign-in' : '/sign-in'} />
 }
 
-type TProps = { children: React.ReactNode, variant?: 'cms' | 'user' }
+type TProps = {
+    children: React.ReactNode,
+    variant?: 'cms' | 'user'
+}

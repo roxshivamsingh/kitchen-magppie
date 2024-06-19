@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux";
 import { IUser, INIT_USER } from "../../types/user";
 import { setUser } from "../../app/kitchen/redux/slices/Auth.slice";
+import _ from "lodash";
 
 const { getAuth, onAuthStateChanged } = auth;
 export function useFirebaseAuth() {
@@ -15,7 +16,11 @@ export function useFirebaseAuth() {
         onAuthStateChanged(q, (user) => {
             let result: IUser | null = null
             if (user?.email) {
-                result = { ...INIT_USER, email: user?.email }
+                result = {
+                    ...INIT_USER,
+                    id: _.get(user, 'reloadUserInfo.localId'),
+                    email: user?.email
+                }
             }
             dispatch(setUser(result))
         });

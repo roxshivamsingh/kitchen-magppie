@@ -3,15 +3,19 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useFirebaseActionAuth } from '../../../../appHooks/firebase/use-firebase-actions'
+import { useFirebaseCmsAuthAction } from '../../../../app/cms/utils/firebase/use-firebase-cms-actions'
 import { Icon } from '@iconify/react'
 import _ from 'lodash'
+import { useFirebaseCmsAuthListener } from '../../utils/firebase/use-firebase-cms-listeners'
+
 
 export default function CmsSignIn() {
     const { watch } = useForm({ resolver: yupResolver(schema) })
 
-    const AuthAction = useFirebaseActionAuth()
+    const AuthAction = useFirebaseCmsAuthAction()
     const values = watch()
+
+    useFirebaseCmsAuthListener()
 
     const onSignUp = useCallback(() => {
         if (values?.email?.length && values?.password?.length) {
@@ -48,6 +52,7 @@ export function SignInForm() {
     } = useForm({ resolver: yupResolver(schema) })
 
     const navigate = useNavigate()
+    const AuthAction = useFirebaseCmsAuthAction()
 
     const values = watch()
 
@@ -65,18 +70,17 @@ export function SignInForm() {
     const onSubmit = handleSubmit((data: TFormInput) => {
         setValue('loading', true)
         setTimeout(() => {
-            if (
-                CREDENTIAL?.email === data.email &&
-                CREDENTIAL?.password === data.password
-            ) {
-                navigate('/cms')
-            } else {
+            AuthAction.signIn(data).then((e) => {
+                if (e?.user) {
+                    navigate('/cms')
+                }
+            }).catch(() => {
                 setError('root', { type: 'validate' })
-            }
-            setValue('loading', false)
+            }).finally(() => {
+                setValue('loading', false)
+            })
         }, 200)
     })
-
     const renderSubmitButton = (
         <button
             type="submit"
@@ -204,8 +208,3 @@ const schema = yup.object({
     password: yup.string().required('Password is required'),
     loading: yup.boolean(),
 })
-
-const CREDENTIAL = {
-    email: import.meta.env.VITE_APP_CMS_EMAIL,
-    password: import.meta.env.VITE_APP_CMS_PASSWORD,
-}
