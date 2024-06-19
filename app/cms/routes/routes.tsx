@@ -7,6 +7,8 @@ import CmsSignIn from '../containers/auth/SignIn/SignIn'
 import CmsKitchen from '../containers/kitchens/Kitchen'
 import AuthGuard from '../../../components/AuthGuard'
 import Projects from '../containers/projects/Projects'
+import CreateProject from '../containers/projects/CreateProject'
+
 const CmsRoutes = {
     path: 'cms',
     children: [
@@ -42,6 +44,10 @@ const CmsRoutes = {
         {
             path: '/cms/projects',
             element: <Projects />,
+        },
+        {
+            path: '/cms/project/create',
+            element: <CreateProject />,
         },
     ],
 } as RouteObject
