@@ -1,4 +1,4 @@
-import rating from '../../../../assets/photos/ratings.png'
+import rating from '../../../../../assets/photos/ratings.png'
 import { FaEye, FaPen } from 'react-icons/fa'
 
 const Card = () => {
