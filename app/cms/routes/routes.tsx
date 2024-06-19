@@ -1,8 +1,10 @@
 import { RouteObject } from "react-router-dom";
 import CmsHome from "../containers/Home/Home";
-import KitchenCreateEdit from "../kitchens/KitchenCreateEdit";
-import CmsSignIn from "../auth/SignIn";
-import CmsKitchen from "../kitchens/Kitchen"
+// import CmsHome from "../../cms/Home/Home";
+
+import KitchenCreateEdit from "../containers/kitchens/KitchenCreateEdit/KitchenCreateEdit";
+import CmsSignIn from "../containers/auth/SignIn/SignIn";
+import CmsKitchen from "../containers/kitchens/Kitchen"
 import AuthGuard from "../../../components/AuthGuard";
 const CmsRoutes = {
     path: 'cms',

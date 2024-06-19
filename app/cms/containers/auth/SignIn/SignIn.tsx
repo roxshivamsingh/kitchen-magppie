@@ -6,9 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup'
 // import { Icon } from '@iconify/react'
 import _ from 'lodash'
 
-import { useFirebaseCmsAuthAction } from '../../../../app/cms/utils/firebase/use-firebase-cms-actions'
+import { useFirebaseCmsAuthAction } from '../../../../../app/cms/utils/firebase/use-firebase-cms-actions'
 
-import { useFirebaseCmsAuthListener } from '../../utils/firebase/use-firebase-cms-listeners'
+import { useFirebaseCmsAuthListener } from '../../../utils/firebase/use-firebase-cms-listeners'
 
 
 export default function CmsSignIn() {
