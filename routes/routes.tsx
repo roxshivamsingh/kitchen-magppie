@@ -5,12 +5,11 @@ import SignIn from '../app/kitchen/containers/sign-in'
 import Stepper from '../app/kitchen/containers/Stepper'
 import CmsSignIn from '../app/cms/auth/SignIn/SignIn'
 import CmsHome from '../app/cms/Home/Home'
-import CmsKitchen from '../app/cms/kitchens/Kitchen/Kitchen'
-import KitchenCreateEdit from '../app/cms/kitchens/KitchenCreateEdit'
-
+import CmsKitchen from '../app/cms/kitchens/Kitchen'
+import KitchenCreateEdit from '../app/cms/kitchens/KitchenCreateEdit/KitchenCreateEdit'
+import { CmsSignUp } from '../app/cms/auth'
 
 export default function Routes() {
-
     return useRoutes([
         {
             path: '/',
@@ -26,14 +25,14 @@ export default function Routes() {
                 },
                 {
                     path: '/stepper',
-                    element: <Stepper />
+                    element: <Stepper />,
                 },
                 {
                     path: '/cms',
                     element: <CmsHome />,
                 },
                 {
-                    path: '/cms/kitchen',
+                    path: '/cms/kitchens',
                     element: <CmsKitchen />,
                 },
                 {
@@ -43,6 +42,10 @@ export default function Routes() {
                 {
                     path: '/cms/sign-in',
                     element: <CmsSignIn />,
+                },
+                {
+                    path: '/cms/sign-up',
+                    element: <CmsSignUp />,
                 },
             ],
         },

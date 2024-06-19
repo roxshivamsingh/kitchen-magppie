@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useFirebaseActionAuth } from '../../../../appHooks/firebase/use-firebase-actions'
-import { Icon } from '@iconify/react'
+// import { Icon } from '@iconify/react'
 import _ from 'lodash'
 
 export default function CmsSignIn() {
@@ -90,11 +90,11 @@ export function SignInForm() {
         >
             <div className="" />
             <div className="">Sign In</div>
-            <div className="">
+            {/* <div className="">
                 {values.loading && (
-                    <Icon icon="line-md:loading-loop" width={20} />
+                    // <Icon icon="line-md:loading-loop" width={20} />
                 )}
-            </div>
+            </div> */}
         </button>
     )
 
