@@ -1,14 +1,17 @@
 import { RouteObject } from 'react-router-dom'
+//====================================================================
+
 import Home from '../containers/home'
 import NotFound from '../containers/not-found'
 import SignIn from '../containers/sign-in'
 import Quote from '../containers/Quote'
-import AuthGuard from "../../../components/AuthGuard"
+// import AuthGuard from "../../../components/AuthGuard"
 const KitchenRoutes = {
     path: '',
     children: [
         {
-            element: <AuthGuard><Home /></AuthGuard>,
+            // element: <AuthGuard><Home /></AuthGuard>,
+            element: <Home />,
             index: true
         },
         {
@@ -17,7 +20,8 @@ const KitchenRoutes = {
         },
         {
             path: 'quote',
-            element: <AuthGuard><Quote /></AuthGuard>,
+            element: <Quote />,
+            // element: <AuthGuard><Quote /></AuthGuard>,
 
         },
         {
