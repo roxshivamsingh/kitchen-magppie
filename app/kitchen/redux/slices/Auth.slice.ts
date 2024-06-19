@@ -2,21 +2,21 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { IUser } from '../../../../types/user';
 
-interface IUserSlice {
+interface IAuthSlice {
     value?: IUser;
     status: 'loading' | 'success' | 'failed';
     loading: boolean,
     error: null | string | undefined;
 }
 
-const initialState: IUserSlice = {
+const initialState: IAuthSlice = {
     loading: true,
     status: 'loading',
     error: null,
 };
 
-const UserSlice = createSlice({
-    name: 'user',
+const AuthSlice = createSlice({
+    name: 'Auth',
     initialState,
     reducers: {
         setUser: (state, action: PayloadAction<IUser | undefined>) => {
@@ -27,7 +27,7 @@ const UserSlice = createSlice({
     },
 });
 
-export const { setUser } = UserSlice.actions;
+export const { setUser } = AuthSlice.actions;
 
-const UserReducer = UserSlice.reducer
-export default UserReducer;
+const AuthReducer = AuthSlice.reducer
+export default AuthReducer;

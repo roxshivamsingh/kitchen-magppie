@@ -5,7 +5,7 @@ import KitchenReducers from '../app/kitchen/redux';
 export const store = configureStore({
     reducer: {
         Cms: CmsReducers,
-        Kitchens: KitchenReducers
+        Kitchen: KitchenReducers
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
