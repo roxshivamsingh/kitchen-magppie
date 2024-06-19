@@ -3,9 +3,8 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Icon } from '@iconify/react'
+// import { Icon } from '@iconify/react'
 import _ from 'lodash'
-//====================================================================
 
 import { useFirebaseCmsAuthAction } from '../../../../app/cms/utils/firebase/use-firebase-cms-actions'
 
@@ -95,11 +94,11 @@ export function SignInForm() {
         >
             <div className="" />
             <div className="">Sign In</div>
-            <div className="">
+            {/* <div className="">
                 {values.loading && (
-                    <Icon icon="line-md:loading-loop" width={20} />
+                    // <Icon icon="line-md:loading-loop" width={20} />
                 )}
-            </div>
+            </div> */}
         </button>
     )
 
