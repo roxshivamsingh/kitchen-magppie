@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+// import { useCallback } from 'react'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -8,22 +8,22 @@ import _ from 'lodash'
 
 import { useFirebaseCmsAuthAction } from '../../../../../app/cms/utils/firebase/use-firebase-cms-actions'
 
-import { useFirebaseCmsAuthListener } from '../../../utils/firebase/use-firebase-cms-listeners'
+// import { useFirebaseCmsAuthListener } from '../../../utils/firebase/use-firebase-cms-listeners'
 
 
 export default function CmsSignIn() {
-    const { watch } = useForm({ resolver: yupResolver(schema) })
+    // const { watch } = useForm({ resolver: yupResolver(schema) })
 
-    const AuthAction = useFirebaseCmsAuthAction()
-    const values = watch()
+    // const AuthAction = useFirebaseCmsAuthAction()
+    // const values = watch()
 
-    useFirebaseCmsAuthListener()
+    // useFirebaseCmsAuthListener()
 
-    const onSignUp = useCallback(() => {
-        if (values?.email?.length && values?.password?.length) {
-            AuthAction.signUp(values as TFormInput)
-        }
-    }, [AuthAction, values])
+    // const onSignUp = useCallback(() => {
+    //     if (values?.email?.length && values?.password?.length) {
+    //         AuthAction.signUp(values as TFormInput)
+    //     }
+    // }, [AuthAction, values])
 
     return (
         <div className="min-h-screen flex md:flex-row ">
@@ -31,7 +31,7 @@ export default function CmsSignIn() {
                 <div className="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg">
                     <h2
                         className="text-2xl font-bold text-center"
-                        onClick={onSignUp}
+                    // onClick={onSignUp}
                     >
                         CMS SignIn
                     </h2>
@@ -94,16 +94,25 @@ export function SignInForm() {
         >
             <div className="" />
             <div className="">Sign In</div>
-            {/* <div className="">
+            <div className="">
                 {values.loading && (
+
+                    'Loading..'
                     // <Icon icon="line-md:loading-loop" width={20} />
                 )}
-            </div> */}
+            </div>
         </button>
     )
 
     return (
-        <form onSubmit={onSubmit} className="space-y-4 ">
+        <form onSubmit={onSubmit} className="space-y-4 "
+
+            onKeyUp={(e) => {
+                if (e.code === 'Enter') {
+                    onSubmit()
+                }
+            }}
+        >
             {/* <form>
                 <div className="mb-4">
                     <div className="relative">
