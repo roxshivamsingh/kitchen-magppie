@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import Form from '../components/Form'
-import Header from '../components/Header'
+import Header from '../../../components/Header'
 import { useAppSelector } from '../../../../../redux';
 
 export default function KitchenCreateEdit() {

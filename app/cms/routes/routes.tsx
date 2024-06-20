@@ -47,7 +47,12 @@ const CmsRoutes = {
         },
         {
             path: '/cms/projects',
-            element: <Projects />,
+            element:
+                <AuthGuard variant="cms">
+                    <Projects />
+                </AuthGuard>
+
+            ,
         },
         {
             path: '/cms/project/create',

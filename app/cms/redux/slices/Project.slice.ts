@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TProject } from '../../types/Project';
 
-type TProject = {
-    id: string,
-    name: string,
-    flats: { serial: number }[]
-}
 
 interface IProjectsSlice {
     value: TProject[];

@@ -1,6 +1,6 @@
 import { Card } from 'flowbite-react'
 import { Link } from 'react-router-dom'
-import Header from '../kitchens/components/Header'
+import Header from '../../components/Header'
 
 export default function CmsHome() {
 

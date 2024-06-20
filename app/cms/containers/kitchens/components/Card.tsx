@@ -20,7 +20,7 @@ const Card = (props: TProps) => {
                 </p>
                 <div className="flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <div
-                        className="inline-flex rounded-md shadow-sm"
+                        className="flex "
                         role="group"
                     >
                         <button
@@ -32,8 +32,10 @@ const Card = (props: TProps) => {
                         </button>
 
                         <Link
+
                             to={`/cms/kitchen/${props.item.id}/edit`}
-                            className="flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+                            className="flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+
                         >
                             <FaPen className="w-3 h-3 me-2" />
                             Edit
