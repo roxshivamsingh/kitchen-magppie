@@ -30,7 +30,8 @@ export function useFirebaseCmsAuthListener() {
                         ...doc.data()
                     } as ISuperUser))
                 })
-
+            } else {
+                dispatch(setAuth(undefined))
             }
         });
     }, [dispatch, navigate]);

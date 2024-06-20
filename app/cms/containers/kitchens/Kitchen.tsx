@@ -13,7 +13,9 @@ export default function Kitchen() {
     return (
         <div>
             <Header />
-            <Search />
+            <Search
+                onChange={(e) => { console.log(e) }}
+            />
             {loading ? <CustomCircularProgress /> : <div className="mt-10">
 
                 <div className="flex gap-2 flex-row justify-center align-middle">

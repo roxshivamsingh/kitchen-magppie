@@ -3,8 +3,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 
 import Select from './Select'
+// import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
+// import { storage as storageApp } from '../../../../../config/firebase.config';
 import { useFirebaseCmsKitchenAction } from '../../../utils/firebase/use-firebase-cms-actions'
 import { useNavigate } from 'react-router-dom'
+// import { ChangeEvent } from 'react';
 
 const Form = () => {
     const {
@@ -17,12 +20,41 @@ const Form = () => {
 
     const navigate = useNavigate()
     const onSubmit = handleSubmit((data) => {
-
         KitchenActions.add(data);
         navigate('/cms/kitchen')
 
     })
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // const onChangeFile = (e: ChangeEvent<HTMLInputElement>) => {
+    //     if (e?.target?.files?.length) {
+    //         const attachment = e?.target?.files[0];
+    //         if (attachment?.size) {
+    //             const fileName = `${+new Date()}_${attachment?.name}`;
+    //             const storageRef = ref(storageApp, `guestAttachments/${fileName}`);
+    //             const uploadTask = uploadBytesResumable(storageRef, attachment);
+    //             uploadTask.on(
+    //                 'state_changed',
+    //                 (snap) => {
+    //                     // isLoading?.onTrue();
+
+    //                     const uploading = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
+    //                     if (uploading === 100) {
+    //                         console.log('Success');
+    //                     }
+    //                 },
+    //                 (error) => {
+    //                     console.log(error);
+    //                 },
+    //                 () => {
+    //                     getDownloadURL(uploadTask.snapshot.ref).then((link: string) => {
+    //                         console.log(link)
+    //                     });
+    //                 }
+    //             );
+    //         }
+    //     }
+    // };
     return (
         <form onSubmit={onSubmit}>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
