@@ -6,24 +6,40 @@ import Select from './Select'
 // import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 // import { storage as storageApp } from '../../../../../config/firebase.config';
 import { useFirebaseCmsKitchenAction } from '../../../utils/firebase/use-firebase-cms-actions'
-import { useNavigate } from 'react-router-dom'
-// import { ChangeEvent } from 'react';
-
+import { useNavigate, useParams } from 'react-router-dom'
+import { useAppSelector } from '../../../../../redux'
+import _ from 'lodash'
 const Form = () => {
+    const KitchenActions = useFirebaseCmsKitchenAction()
+
+    const params = useParams()
+
+    const kitchens = useAppSelector(({ Cms }) => Cms.Kitchens.value);
+
+    const currentKitchen = kitchens?.find((row) => row.id === params.id)
+    const navigate = useNavigate()
+
+    const defaultValues = {
+        name: _.get(currentKitchen, 'name', ''),
+        description: _.get(currentKitchen, 'description', ''),
+    }
     const {
         register,
         handleSubmit,
         // formState: { errors },
-    } = useForm({ resolver: yupResolver(schema) })
-
-    const KitchenActions = useFirebaseCmsKitchenAction()
-
-    const navigate = useNavigate()
-    const onSubmit = handleSubmit((data) => {
-        KitchenActions.add(data);
-        navigate('/cms/kitchen')
-
+    } = useForm({
+        defaultValues,
+        resolver: yupResolver(schema)
     })
+    const onSubmit = handleSubmit((data) => {
+        if ('id' in params) {
+            KitchenActions.edit({ ...data, id: params.id });
+        } else {
+            KitchenActions.add(data);
+        }
+        navigate('/cms/kitchen')
+    })
+
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     // const onChangeFile = (e: ChangeEvent<HTMLInputElement>) => {
@@ -71,7 +87,7 @@ const Form = () => {
                         name="name"
                         type="text"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="John"
+                        placeholder="Name"
                     />
                 </div>
                 <div>

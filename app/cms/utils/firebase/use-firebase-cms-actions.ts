@@ -19,13 +19,14 @@ export function useFirebaseCmsKitchenAction() {
     const add = useCallback((item: Partial<TKitchen>) => {
         const { addDoc, collection } = firestore
         addDoc(collection(db, 'kitchens'), item)
-
     }, [])
+
     const edit = useCallback((item: Partial<TKitchen & { id: string }>) => {
         const { doc, updateDoc } = firestore;
-        const docRef = doc(db, 'kitchens');
-        updateDoc(docRef, _.omit(item, ['id', 'createdAt']));
-
+        if (item?.id?.length) {
+            const docRef = doc(db, `kitchens/${item.id}`);
+            updateDoc(docRef, _.omit(item, ['id', 'createdAt']));
+        }
     }, [])
     const remove = useCallback((id: string) => {
         const { doc, deleteDoc } = firestore;
