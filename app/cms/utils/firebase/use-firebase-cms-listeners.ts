@@ -9,6 +9,8 @@ import { useAppDispatch } from '../../../../redux';
 import { setSuperUsers } from '../../redux/slices/SuperUser.slice';
 import { INIT_SUPER_USER, ISuperUser } from '../../types/SuperUser';
 import { setAuth } from '../../redux/slices/Auth.slice';
+import { TKitchen } from '../../types/Kitchen';
+import { setKitchens } from '../../redux/slices/Kitchen.slice';
 
 const { getAuth, onAuthStateChanged } = auth;
 
@@ -56,3 +58,24 @@ export const useFirebaseCmsSuperUsersListener = () => {
     }, [dispatch])
 }
 
+
+
+export const useFirebaseCmsKitchensListener = () => {
+    const dispatch = useAppDispatch()
+    useEffect(() => {
+        const collectionRef = collection(db, `kitchens`);
+
+        onSnapshot(collectionRef, ({ docs }) => {
+            const data: TKitchen[] = [];
+            docs?.forEach((doc) => {
+                const row = doc.data();
+                data.push({
+                    ...row,
+                    id: doc.id
+                } as TKitchen);
+            });
+            dispatch(setKitchens(data))
+
+        });
+    }, [dispatch])
+}

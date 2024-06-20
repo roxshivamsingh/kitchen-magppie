@@ -1,8 +1,30 @@
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
+
 import Select from './Select'
+import { useFirebaseCmsKitchenAction } from '../../../utils/firebase/use-firebase-cms-actions'
+import { useNavigate } from 'react-router-dom'
 
 const Form = () => {
+    const {
+        register,
+        handleSubmit,
+        // formState: { errors },
+    } = useForm({ resolver: yupResolver(schema) })
+
+    const KitchenActions = useFirebaseCmsKitchenAction()
+
+    const navigate = useNavigate()
+    const onSubmit = handleSubmit((data) => {
+
+        KitchenActions.add(data);
+        navigate('/cms/kitchen')
+
+    })
+
     return (
-        <form>
+        <form onSubmit={onSubmit}>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
                     <label
@@ -12,11 +34,12 @@ const Form = () => {
                         Name
                     </label>
                     <input
+                        {...register('name')}
+
+                        name="name"
                         type="text"
-                        id="name"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John"
-                        required
                     />
                 </div>
                 <div>
@@ -27,11 +50,12 @@ const Form = () => {
                         Description
                     </label>
                     <textarea
-                        id="description"
                         rows={4}
+                        {...register('description')}
+
+                        name="description"
                         className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder=""
-                        defaultValue={''}
                     />
                 </div>
                 <div>
@@ -45,8 +69,7 @@ const Form = () => {
                         type="text"
                         id="price"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Flowbite"
-                        required
+                    // placeholder="Flowbite"
                     />
                 </div>
                 <div>
@@ -80,3 +103,8 @@ const Form = () => {
 }
 
 export default Form
+
+const schema = yup.object({
+    name: yup.string().required('Name is required'),
+    description: yup.string().required('Name is required'),
+})
