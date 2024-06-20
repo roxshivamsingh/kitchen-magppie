@@ -3,15 +3,28 @@ import Card from './components/Card'
 import Header from './components/Header'
 import Search from './components/Search'
 import { FaPlus } from 'react-icons/fa'
+import { useFirebaseCmsKitchensListener } from '../../utils/firebase/use-firebase-cms-listeners'
+import { useAppSelector } from '../../../../redux'
+import CustomCircularProgress from '../../../kitchen/components/CustomCircularProgress'
 
 export default function Kitchen() {
+    useFirebaseCmsKitchensListener()
+    const { loading, value } = useAppSelector((state) => state.Cms.Kitchens);
     return (
         <div>
             <Header />
             <Search />
-            <div className="mt-10">
-                <Card />
-            </div>
+            {loading ? <CustomCircularProgress /> : <div className="mt-10">
+
+                <div className="flex gap-2 flex-row justify-center align-middle">
+
+                    {value?.map((item, i) => (
+                        <Card item={item} key={i} />
+                    ))}
+                </div>
+
+            </div>}
+
             <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
                 <Link to="/cms/kitchen/create">
                     <button
