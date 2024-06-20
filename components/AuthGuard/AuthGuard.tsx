@@ -3,6 +3,7 @@ import { useFirebaseCmsAuthListener } from "../../app/cms/utils/firebase/use-fir
 import { useAppSelector } from "../../redux"
 import { Navigate } from "react-router-dom"
 import _ from "lodash"
+import CustomCircularProgress from "../../app/kitchen/components/CustomCircularProgress"
 
 export default function AuthGuard(props: TProps) {
 
@@ -12,14 +13,19 @@ export default function AuthGuard(props: TProps) {
 
     const user = useAppSelector((state) => _.get(state, `${isCms ? 'Cms' : 'Kitchen'}.Auth`))
 
-    if (isCms) {
-        if (user?.value?.email?.length) {
-            return props.children
+    if (user?.loading) {
+        return <CustomCircularProgress />
+    } else {
+        if (isCms) {
+            if (user?.value?.email?.length) {
+                return props.children
+            }
+            return <Navigate to={'/cms/sign-in'} />
+            // return <Navigate to={isCms ? '/cms/sign-in' : '/sign-in'} />
         }
-        return <Navigate to={'/cms/sign-in'} />
-        // return <Navigate to={isCms ? '/cms/sign-in' : '/sign-in'} />
+        return props.children
+
     }
-    return props.children
 
 }
 
