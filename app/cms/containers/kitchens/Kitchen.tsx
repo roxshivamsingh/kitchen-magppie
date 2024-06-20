@@ -6,25 +6,36 @@ import { FaPlus } from 'react-icons/fa'
 import { useFirebaseCmsKitchensListener } from '../../utils/firebase/use-firebase-cms-listeners'
 import { useAppSelector } from '../../../../redux'
 import CustomCircularProgress from '../../../kitchen/components/CustomCircularProgress'
+import { useMemo, useState } from 'react'
+import _ from 'lodash'
 
 export default function Kitchen() {
     useFirebaseCmsKitchensListener()
     const { loading, value } = useAppSelector((state) => state.Cms.Kitchens);
+    const [search, setSearch] = useState('')
+    const kitchens = useMemo(() => {
+        return value?.filter((item) => search?.length ? _.lowerCase(item.name)?.includes(_.lowerCase(search)) : true)
+    }, [search, value])
     return (
         <div>
             <Header />
             <Search
-                onChange={(e) => { console.log(e) }}
+                onChange={(e) => {
+                    console.log(e)
+                    setSearch(e)
+
+                }}
             />
             {loading ? <CustomCircularProgress /> : <div className="mt-10">
+                {kitchens?.length ? (<div className="flex gap-2 flex-row justify-center align-middle">
 
-                <div className="flex gap-2 flex-row justify-center align-middle">
-
-                    {value?.map((item, i) => (
+                    {kitchens?.map((item, i) => (
                         <Card item={item} key={i} />
                     ))}
                 </div>
-
+                ) : <div className='flex flex-row justify-center h-20 align-middle'>
+                    Not found
+                </div>}
             </div>}
 
             <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
