@@ -1,1 +1,1 @@
-import * from "./Projects"
+export * from "./Projects"
