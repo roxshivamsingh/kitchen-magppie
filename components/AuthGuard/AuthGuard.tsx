@@ -1,19 +1,26 @@
-import React from "react"
-// import { Navigate } from "react-router-dom"
-// import { useAppSelector } from "../../redux"
-// import _ from "lodash"
+import React, { useMemo } from "react"
+import { useFirebaseCmsAuthListener } from "../../app/cms/utils/firebase/use-firebase-cms-listeners"
+import { useAppSelector } from "../../redux"
+import { Navigate } from "react-router-dom"
+import _ from "lodash"
 
 export default function AuthGuard(props: TProps) {
-    // const isCms = props.variant === 'cms'
 
-    // const user = useAppSelector((state) => _.get(state, `${isCms ? 'Cms' : 'Kitchen'}.Auth`))
+    const isCms = useMemo(() => props.variant === 'cms', [props.variant])
 
+    useFirebaseCmsAuthListener()
+
+    const user = useAppSelector((state) => _.get(state, `${isCms ? 'Cms' : 'Kitchen'}.Auth`))
+
+    if (isCms) {
+        if (user?.value?.email?.length) {
+            return props.children
+        }
+        return <Navigate to={'/cms/sign-in'} />
+        // return <Navigate to={isCms ? '/cms/sign-in' : '/sign-in'} />
+    }
     return props.children
 
-    // if (user?.value?.email?.length) {
-    //     return props.children
-    // }
-    // return <Navigate to={isCms ? '/cms/sign-in' : '/sign-in'} />
 }
 
 type TProps = {

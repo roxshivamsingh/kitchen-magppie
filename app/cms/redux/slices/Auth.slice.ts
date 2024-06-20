@@ -1,12 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ISuperUser } from '../../types/SuperUser';
 
-type TAuth = {
-    id: string,
-    email: string
-}
 
 interface IAuthSlice {
-    value?: TAuth;
+    value?: ISuperUser;
     status: 'loading' | 'success' | 'failed';
     loading: boolean,
     error: null | string | undefined;
@@ -18,7 +15,7 @@ const initialState: IAuthSlice = {
     error: null,
 };
 
-type TAction = PayloadAction<TAuth>
+type TAction = PayloadAction<ISuperUser>
 const AuthSlice = createSlice({
     name: 'Auth',
     initialState,

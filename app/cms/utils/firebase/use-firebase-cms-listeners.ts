@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { collection, doc, getDoc, onSnapshot, } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import _ from 'lodash';
 
 //====================================================================
 
@@ -21,11 +20,11 @@ export function useFirebaseCmsAuthListener() {
         onAuthStateChanged(q, (user) => {
 
             if (user?.email?.length) {
-                const id = _.get(user, 'reloadUserInfo.localId')
+                const id = user.uid
                 getDoc(doc(db, 'super-users', id)).then((doc) => {
                     dispatch(setAuth({
                         ...INIT_SUPER_USER,
-                        id: _.get(user, 'reloadUserInfo.localId'),
+                        id,
                         email: user.email,
                         ...doc.data()
                     } as ISuperUser))
