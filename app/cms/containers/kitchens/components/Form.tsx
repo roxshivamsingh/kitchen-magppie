@@ -2,26 +2,22 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 
-import Select from './Select'
 // import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 // import { storage as storageApp } from '../../../../../config/firebase.config';
 import { useFirebaseCmsKitchenAction } from '../../../utils/firebase/use-firebase-cms-actions'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useAppSelector } from '../../../../../redux'
 import _ from 'lodash'
-const Form = () => {
+import { TKitchen } from '../../../types/Kitchen'
+type TProps = { item?: TKitchen }
+const Form = (props: TProps) => {
     const KitchenActions = useFirebaseCmsKitchenAction()
 
     const params = useParams()
-
-    const kitchens = useAppSelector(({ Cms }) => Cms.Kitchens.value);
-
-    const currentKitchen = kitchens?.find((row) => row.id === params.id)
     const navigate = useNavigate()
 
     const defaultValues = {
-        name: _.get(currentKitchen, 'name', ''),
-        description: _.get(currentKitchen, 'description', ''),
+        name: _.get(props.item, 'name', ''),
+        description: _.get(props.item, 'description', ''),
     }
     const {
         register,
@@ -106,7 +102,7 @@ const Form = () => {
                         placeholder=""
                     />
                 </div>
-                <div>
+                {/* <div>
                     <label
                         htmlFor="price"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -119,7 +115,7 @@ const Form = () => {
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     // placeholder="Flowbite"
                     />
-                </div>
+                </div> */}
                 <div>
                     <label
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -133,12 +129,12 @@ const Form = () => {
                         type="file"
                     />
                 </div>
-                <div>
+                {/* <div>
                     <Select label="Select Project" />
                 </div>
                 <div>
                     <Select label="Select Kitchens" />
-                </div>
+                </div> */}
             </div>
             <button
                 type="submit"

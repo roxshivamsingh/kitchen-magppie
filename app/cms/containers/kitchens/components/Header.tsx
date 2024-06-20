@@ -19,7 +19,7 @@ const Header = () => {
     return (<nav className="bg-white border-gray-200 border-b-2">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <div className="">
-                <Link to="/">
+                <Link to="/cms">
                     <span className="self-center text-2xl font-semibold whitespace-nowrap uppercase">
                         Magppie
                     </span>
