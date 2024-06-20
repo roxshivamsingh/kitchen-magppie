@@ -12,7 +12,6 @@ export default function AuthGuard(props: TProps) {
     useFirebaseCmsAuthListener()
 
     const user = useAppSelector((state) => _.get(state, `${isCms ? 'Cms' : 'Kitchen'}.Auth`))
-
     if (user?.loading) {
         return <CustomCircularProgress />
     } else {
