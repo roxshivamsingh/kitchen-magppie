@@ -30,11 +30,15 @@ const CmsRoutes = {
         },
         {
             path: 'kitchen/create',
-            element: (
-                <AuthGuard variant="cms">
-                    <KitchenCreateEdit />
-                </AuthGuard>
-            ),
+            element: (<AuthGuard variant="cms">
+                <KitchenCreateEdit />
+            </AuthGuard>),
+        },
+        {
+            path: 'kitchen/:id/edit',
+            element: (<AuthGuard variant="cms">
+                <KitchenCreateEdit />
+            </AuthGuard>),
         },
 
         {
