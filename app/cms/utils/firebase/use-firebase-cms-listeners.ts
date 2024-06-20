@@ -18,7 +18,6 @@ export function useFirebaseCmsAuthListener() {
     useEffect(() => {
         const q = getAuth()
         onAuthStateChanged(q, (user) => {
-
             if (user?.email?.length) {
                 const id = user.uid
                 getDoc(doc(db, 'super-users', id)).then((doc) => {
