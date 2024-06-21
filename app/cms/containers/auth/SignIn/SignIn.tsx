@@ -3,28 +3,12 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
-// import { Icon } from '@iconify/react'
 import _ from 'lodash'
 
 import { useFirebaseCmsAuthAction } from '../../../../../app/cms/utils/firebase/use-firebase-cms-actions'
 import CircularProgress from '../../../../../components/CircularProgress'
 
-// import { useFirebaseCmsAuthListener } from '../../../utils/firebase/use-firebase-cms-listeners'
-
-
 export default function CmsSignIn() {
-    // const { watch } = useForm({ resolver: yupResolver(schema) })
-
-    // const AuthAction = useFirebaseCmsAuthAction()
-    // const values = watch()
-
-    // useFirebaseCmsAuthListener()
-
-    // const onSignUp = useCallback(() => {
-    //     if (values?.email?.length && values?.password?.length) {
-    //         AuthAction.signUp(values as TFormInput)
-    //     }
-    // }, [AuthAction, values])
 
     return (
         <div className="min-h-screen flex md:flex-row ">
@@ -32,7 +16,6 @@ export default function CmsSignIn() {
                 <div className="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg">
                     <h2
                         className="text-2xl font-bold text-center"
-                    // onClick={onSignUp}
                     >
                         CMS SignIn
                     </h2>
@@ -56,7 +39,6 @@ export function SignInForm() {
 
     const navigate = useNavigate()
     const AuthAction = useFirebaseCmsAuthAction()
-
     const values = watch()
 
     const isError = !!_.keys(errors).length
@@ -70,19 +52,23 @@ export function SignInForm() {
         )
     }
 
-    const onSubmit = handleSubmit((data: TFormInput) => {
+    const onSubmit = handleSubmit(async (data: TFormInput) => {
         setValue('loading', true)
-        setTimeout(() => {
-            AuthAction.signIn(data).then((e) => {
-                if (e?.user) {
-                    navigate('/cms')
-                }
-            }).catch(() => {
-                setError('root', { type: 'validate' })
-            }).finally(() => {
-                setValue('loading', false)
-            })
-        }, 200)
+        try {
+            const results = await AuthAction.signIn(data)
+            if (results.user) {
+                console.log(results)
+                navigate('/cms')
+
+            }
+        }
+        catch (error) {
+            console.error(error);
+            setError('root', { type: 'validate' })
+        } finally {
+            setValue('loading', false)
+        }
+
     })
     const renderSubmitButton = (
         <button
