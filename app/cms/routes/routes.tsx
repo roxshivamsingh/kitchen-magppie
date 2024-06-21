@@ -7,7 +7,7 @@ import CmsSignIn from '../containers/auth/SignIn/SignIn'
 import CmsKitchen from '../containers/kitchens/Kitchen'
 import AuthGuard from '../../../components/AuthGuard'
 import Projects from '../containers/projects/Projects'
-import CreateEditProject from '../containers/projects/CreateEditProject'
+// import CreateEditProject from '../containers/projects/CreateEditProject'
 
 const CmsRoutes = {
     path: 'cms',
@@ -67,14 +67,14 @@ const CmsRoutes = {
                 </AuthGuard>
             ),
         },
-        {
-            path: 'project/create',
-            element: <CreateEditProject />,
-        },
-        {
-            path: 'project/:id/edit',
-            element: <CreateEditProject />,
-        },
+        // {
+        //     path: 'project/create',
+        //     element: <CreateEditProject />,
+        // },
+        // {
+        //     path: 'project/:id/edit',
+        //     element: <CreateEditProject />,
+        // },
     ],
 } as RouteObject
 

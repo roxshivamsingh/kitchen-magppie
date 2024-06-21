@@ -1,32 +1,28 @@
-// import Select from './Select'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { useFirebaseCmsProjectAction } from '../../../utils/firebase/projects/actions'
-import { useNavigate, useParams } from 'react-router-dom'
 import _ from 'lodash'
 import { TProject } from '../../../types/Project'
-import Select from 'react-select';
+import Select from 'react-select'
 import { useAppSelector } from '../../../../../redux'
 import { useFirebaseCmsKitchensListener } from '../../../utils/firebase/use-firebase-cms-listeners'
 
-type TProps = { item?: TProject }
+type TProps = { item?: TProject; id: string; closeModal: () => void }
 
 const Form = (props: TProps) => {
     const ProjectActions = useFirebaseCmsProjectAction()
-    const params = useParams()
-    const navigate = useNavigate()
 
     const schema = yup.object().shape({
         name: yup.string().required(),
         description: yup.string().required(),
-        kitchenIds: yup.array().of(yup.string())
+        kitchenIds: yup.array().of(yup.string()),
     })
 
     const defaultValues = {
         name: _.get(props, 'item.name', ''),
         description: _.get(props, 'item.description', ''),
-        kitchenIds: _.get(props, 'item.kitchenIds', []) as string[]
+        kitchenIds: _.get(props, 'item.kitchenIds', []) as string[],
     }
 
     const { register, handleSubmit, setValue } = useForm({
@@ -35,20 +31,20 @@ const Form = (props: TProps) => {
     })
 
     const onSubmit = handleSubmit((data) => {
-        if ('id' in params) {
-            ProjectActions.edit({ ...data, id: params.id })
+        if (props.id === 'create') {
+            ProjectActions.edit({ ...data, id: props.id })
         } else {
             ProjectActions.add(data)
         }
-        navigate('/cms/projects')
+        props.closeModal()
     })
+
     useFirebaseCmsKitchensListener()
     const kitchens = useAppSelector((state) => state.Cms.Kitchens.value)
     const options = kitchens?.map((row) => ({ label: row.name, value: row.id }))
+
     return (
         <form onSubmit={onSubmit}>
-
-
             <div className="flex flex-col gap-2 mb-6 md:grid-cols-2">
                 <div>
                     <label
@@ -81,7 +77,6 @@ const Form = (props: TProps) => {
                         onChange={(arr) => {
                             setValue('kitchenIds', _.uniq(_.map(arr, 'value')))
                         }}
-
                         options={options}
                     />
                 </div>
@@ -138,9 +133,9 @@ const Form = (props: TProps) => {
             </div>
             <button
                 type="submit"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="text-white w-full bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center"
             >
-                Submit
+                {props?.item?.id ? 'Edit' : 'Add'} Project
             </button>
         </form>
     )
