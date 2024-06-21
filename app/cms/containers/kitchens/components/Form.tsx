@@ -89,16 +89,14 @@ const Form = (props: TProps) => {
 
     }, [defaultValues.id])
 
-    console.log(images)
     const onSubmit = handleSubmit((data) => {
         if ('id' in params) {
             KitchenActions.edit({ ...data, id: params.id });
         } else {
             const links = images?.map((row) => _.get(row, 'url', ''))
             KitchenActions.add({ ...data, images: links });
-
         }
-        navigate('/cms/kitchen')
+        navigate('/cms/kitchens')
     })
 
 

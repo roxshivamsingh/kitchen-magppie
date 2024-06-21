@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { MdLogout } from "react-icons/md";
+import { MdLogout } from 'react-icons/md'
 
 import { useAppDispatch, useAppSelector } from '../../../redux'
 import _ from 'lodash';

@@ -7,7 +7,7 @@ import CmsSignIn from '../containers/auth/SignIn/SignIn'
 import CmsKitchen from '../containers/kitchens/Kitchen'
 import AuthGuard from '../../../components/AuthGuard'
 import Projects from '../containers/projects/Projects'
-import CreateProject from '../containers/projects/CreateProject'
+import CreateEditProject from '../containers/projects/CreateEditProject'
 
 const CmsRoutes = {
     path: 'cms',
@@ -21,7 +21,7 @@ const CmsRoutes = {
             index: true,
         },
         {
-            path: 'kitchen',
+            path: 'kitchens',
             element: (
                 <AuthGuard variant="cms">
                     <CmsKitchen />
@@ -30,15 +30,19 @@ const CmsRoutes = {
         },
         {
             path: 'kitchen/create',
-            element: (<AuthGuard variant="cms">
-                <KitchenCreateEdit />
-            </AuthGuard>),
+            element: (
+                <AuthGuard variant="cms">
+                    <KitchenCreateEdit />
+                </AuthGuard>
+            ),
         },
         {
             path: 'kitchen/:id/edit',
-            element: (<AuthGuard variant="cms">
-                <KitchenCreateEdit />
-            </AuthGuard>),
+            element: (
+                <AuthGuard variant="cms">
+                    <KitchenCreateEdit />
+                </AuthGuard>
+            ),
         },
 
         {
@@ -47,16 +51,19 @@ const CmsRoutes = {
         },
         {
             path: '/cms/projects',
-            element:
+            element: (
                 <AuthGuard variant="cms">
                     <Projects />
                 </AuthGuard>
-
-            ,
+            ),
         },
         {
-            path: '/cms/project/create',
-            element: <CreateProject />,
+            path: 'project/create',
+            element: <CreateEditProject />,
+        },
+        {
+            path: 'project/:id/edit',
+            element: <CreateEditProject />,
         },
     ],
 } as RouteObject
