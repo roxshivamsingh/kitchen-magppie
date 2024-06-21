@@ -23,7 +23,7 @@ export default function Projects() {
         <Search placeholder='Search Projects..' onChange={(e) => { setSearch(e) }} />
         <div className="mt-10">
             {loading ? <CustomCircularProgress /> : <div className="mt-10">
-                {projects?.length ? (<div className="flex gap-2 flex-row justify-center align-middle">
+                {projects?.length ? (<div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-xl mx-auto">
 
                     {projects?.map((item, i) => (
                         <Card item={item} key={i} />
