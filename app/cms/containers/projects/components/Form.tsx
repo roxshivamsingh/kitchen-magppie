@@ -79,10 +79,7 @@ const Form = (props: TProps) => {
                             options?.find((option) => option.value === id)
                         )}
                         onChange={(arr) => {
-
-
-                            setValue('kitchenIds', _.uniq([...defaultValues.kitchenIds, ..._.map(arr, 'value')]))
-                            // setSelectedOption(e)
+                            setValue('kitchenIds', _.uniq(_.map(arr, 'value')))
                         }}
 
                         options={options}
