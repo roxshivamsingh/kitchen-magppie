@@ -29,15 +29,14 @@ export default function Header() {
                     </span>
                 </Link>
             </div>
-            <div className="flex flex-row justify-center align-middle gap-3 ">
-                <div className="">
-                    <p className="font-medium flex flex-col p-0 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
-                        Welcome, &nbsp;&nbsp;<span className='text-purple-600'>
-                            {_.get(auth, 'name', 'User')}
-                        </span>
-                    </p>
+            <div className="flex flex-row justify-center align-middle gap-3">
+                <div className="font-medium flex flex-col p-0 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+                    Welcome,
                 </div>
 
+                <div className='text-purple-600'>
+                    {_.get(auth, 'name', 'User')}
+                </div>
                 <div className="m-auto">
                     <MdLogout onClick={onClickSignOut}
                         className='cursor-pointer hover:text-gray-500 '
