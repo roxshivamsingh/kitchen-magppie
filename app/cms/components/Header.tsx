@@ -6,16 +6,18 @@ import _ from 'lodash';
 import { useFirebaseCmsAuthAction } from '../utils/firebase/use-firebase-cms-actions';
 import { setAuth } from '../redux/slices/Auth.slice';
 import { useCallback } from 'react';
-const Header = () => {
+export default function Header() {
     const auth = useAppSelector(({ Cms }) => Cms.Auth.value);
     const AuthAction = useFirebaseCmsAuthAction()
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
+
     const onClickSignOut = useCallback(() => {
         AuthAction.signOut()
         dispatch(setAuth(undefined))
         navigate('/cms/sign-in')
     }, [AuthAction, dispatch, navigate])
+
     return (<nav className="bg-white border-gray-200 border-b-2">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <div className="">
@@ -43,5 +45,3 @@ const Header = () => {
     </nav>
     )
 }
-
-export default Header

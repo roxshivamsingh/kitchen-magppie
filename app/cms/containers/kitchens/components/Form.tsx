@@ -1,24 +1,46 @@
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-
-// import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
-// import { storage as storageApp } from '../../../../../config/firebase.config';
 import { useFirebaseCmsKitchenAction } from '../../../utils/firebase/use-firebase-cms-actions'
 import { useNavigate, useParams } from 'react-router-dom'
 import _ from 'lodash'
 import { TKitchen } from '../../../types/Kitchen'
+import { IoMdClose } from "react-icons/io";
+import { ChangeEvent, useCallback, useMemo, useState } from 'react'
+import { StorageError, UploadTaskSnapshot, getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import { db, storageApp } from '../../../../../config/firebase.config'
+// import CircularProgress from '../../../../../components/CircularProgress'
+import { collection, doc } from 'firebase/firestore'
+import CircularProgress from '../../../../../components/CircularProgress'
 type TProps = { item?: TKitchen }
+interface ImageData {
+    id: number;
+    src: string;
+    file: File;
+    url?: string;
+}
+
 const Form = (props: TProps) => {
     const KitchenActions = useFirebaseCmsKitchenAction()
 
     const params = useParams()
     const navigate = useNavigate()
 
-    const defaultValues = {
+
+    const generateDocumentId = useMemo(() => {
+        const colRef = collection(db, "kitchens");
+        const docRef = doc(colRef);
+        return docRef.id;
+    }, []);
+
+    const defaultValues = useMemo(() => ({
+        id: props?.item?.id?.length ? props.item.id : generateDocumentId,
         name: _.get(props.item, 'name', ''),
         description: _.get(props.item, 'description', ''),
-    }
+        images: props?.item?.images || [],
+    }), [generateDocumentId, props.item])
+    const [images, setImages] = useState<ImageData[]>([]);
+
     const {
         register,
         handleSubmit,
@@ -27,121 +49,159 @@ const Form = (props: TProps) => {
         defaultValues,
         resolver: yupResolver(schema)
     })
+    const handleRemoveImage = useCallback((id: number) => {
+        setImages(images.filter(image => image.id !== id));
+    }, [images]);
+
+
+
+    const onUploadImages = useCallback((files: File[]) => {
+        const onUploadTaskSnapshot = (snap: UploadTaskSnapshot) => {
+            const uploading = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
+            if (uploading === 100) {
+                console.log('Success');
+            }
+        }
+        const onStorageError = (error: StorageError) => {
+            console.log(error);
+        }
+        files?.forEach((image) => {
+            const fileName = `${+new Date()}_${image.name}`;
+            const storageRef = ref(storageApp, `kitchens/${defaultValues.id}/${fileName}`);
+            console.log(fileName)
+            const uploadTask = uploadBytesResumable(storageRef, image);
+
+            const onUploadComplete = () => {
+                getDownloadURL(uploadTask.snapshot.ref).then((link) => {
+                    if (link?.length) {
+                        setImages((prev) => prev?.map((row) => {
+                            return ({
+                                ...row,
+                                url: image.name === row.file.name ? link : `${row.url || ''}`
+                            })
+                        }))
+                    }
+                })
+
+            }
+            uploadTask.on('state_changed', onUploadTaskSnapshot, onStorageError, onUploadComplete);
+        })
+
+    }, [defaultValues.id])
+
+    console.log(images)
     const onSubmit = handleSubmit((data) => {
         if ('id' in params) {
             KitchenActions.edit({ ...data, id: params.id });
         } else {
-            KitchenActions.add(data);
+            const links = images?.map((row) => _.get(row, 'url', ''))
+            KitchenActions.add({ ...data, images: links });
+
         }
         navigate('/cms/kitchen')
     })
 
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // const onChangeFile = (e: ChangeEvent<HTMLInputElement>) => {
-    //     if (e?.target?.files?.length) {
-    //         const attachment = e?.target?.files[0];
-    //         if (attachment?.size) {
-    //             const fileName = `${+new Date()}_${attachment?.name}`;
-    //             const storageRef = ref(storageApp, `guestAttachments/${fileName}`);
-    //             const uploadTask = uploadBytesResumable(storageRef, attachment);
-    //             uploadTask.on(
-    //                 'state_changed',
-    //                 (snap) => {
-    //                     // isLoading?.onTrue();
+    const uploading = useMemo(() => images?.filter((row) => row.url?.length)?.length !== images?.length, [images])
 
-    //                     const uploading = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
-    //                     if (uploading === 100) {
-    //                         console.log('Success');
-    //                     }
-    //                 },
-    //                 (error) => {
-    //                     console.log(error);
-    //                 },
-    //                 () => {
-    //                     getDownloadURL(uploadTask.snapshot.ref).then((link: string) => {
-    //                         console.log(link)
-    //                     });
-    //                 }
-    //             );
-    //         }
-    //     }
-    // };
-    return (
-        <form onSubmit={onSubmit}>
-            <div className="grid gap-6 mb-6 md:grid-cols-2">
-                <div>
-                    <label
-                        htmlFor="name"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                        Name
-                    </label>
-                    <input
-                        {...register('name')}
 
-                        name="name"
-                        type="text"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Name"
-                    />
-                </div>
-                <div>
-                    <label
-                        htmlFor="description"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                        Description
-                    </label>
-                    <textarea
-                        rows={4}
-                        {...register('description')}
 
-                        name="description"
-                        className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder=""
-                    />
-                </div>
-                {/* <div>
-                    <label
-                        htmlFor="price"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                        Price
-                    </label>
-                    <input
-                        type="text"
-                        id="price"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    // placeholder="Flowbite"
-                    />
-                </div> */}
-                <div>
-                    <label
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                        htmlFor="file_input"
-                    >
-                        Upload Kitchen Media
-                    </label>
-                    <input
-                        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                        id="file_input"
-                        type="file"
-                    />
-                </div>
-                {/* <div>
-                    <Select label="Select Project" />
-                </div>
-                <div>
-                    <Select label="Select Kitchens" />
-                </div> */}
+
+    const onChangeFile = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        const files = Array.from(e.target.files || []);
+
+        const newImages = files.map((file, index) => ({
+            id: Date.now() + index,
+            src: URL.createObjectURL(file),
+            file,
+        }));
+        setImages((prev) => [...prev, ...newImages]);
+
+        onUploadImages(files)
+    }, [onUploadImages]);
+
+    const renderImageList = useMemo(() => (<div className="flex flex-wrap">
+        {images.map(image => (
+            <div key={image.id} className="relative my-2 ">
+                <img src={image.src} alt='' className="w-32 h-32 object-cover rounded-lg ms-1" />
+                <button
+                    onClick={() => handleRemoveImage(image.id)}
+                    className="absolute top-0 right-0 mt-1 mr-1 bg-red-600 text-white rounded-full p-1 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500"
+                >
+                    <IoMdClose />
+                    {/* &times; */}
+                </button>
             </div>
+        ))}
+    </div>), [handleRemoveImage, images])
+    return (
+        <form onSubmit={onSubmit} className='grid grid-cols-1 gap-5'>
+
+            {/* <div className="grid gap-6 mb-6 md:grid-cols-2"> */}
+            <div>
+                <label
+                    htmlFor="name"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                    Name
+                </label>
+                <input
+                    {...register('name')}
+
+                    name="name"
+                    type="text"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Name"
+                />
+            </div>
+            <div className="">
+
+
+                <label
+                    htmlFor="description"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                    Description
+                </label>
+                <textarea
+                    rows={4}
+                    {...register('description')}
+
+                    name="description"
+                    className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder=""
+                />
+            </div>
+            {/* </div> */}
+
+            <div>
+                <label
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    htmlFor="file_input"
+                >
+                    Upload Kitchen Media
+                </label>
+                <input
+                    className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    multiple
+                    onChange={onChangeFile}
+                    value={[]}
+                    type="file"
+                //  accept="image/*"
+                />
+            </div>
+            {/* {renderImageList} */}
+            {uploading ? <CircularProgress /> : renderImageList}
+            {/* {renderImageList} */}
+            {/* <CustomCircularProgress /> */}
             <button
+                disabled={uploading}
                 type="submit"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
             >
-                Submit
+                {props?.item?.id ? 'Edit' : 'Add'} Kitchen
             </button>
+
         </form>
     )
 }
@@ -151,4 +211,5 @@ export default Form
 const schema = yup.object({
     name: yup.string().required('Name is required'),
     description: yup.string().required('Name is required'),
+    images: yup.array().of(yup.string())
 })

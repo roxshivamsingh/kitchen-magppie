@@ -12,10 +12,11 @@ const credentials = {
     appId: import.meta.env.VITE_APP_FIREBASE_APP_ID,
     measurementId: import.meta.env.VITE_APP_FIREBASE_MEASUREMENT_ID
 }
+
 const init = app.initializeApp(credentials);
 // console.log(credentials)
 export const config = firestore.getFirestore(init);
 export const db = config;
-export const storage = getStorage(init);
+export const storageApp = getStorage(init);
 export { firestore, auth, app };
 export default config;
