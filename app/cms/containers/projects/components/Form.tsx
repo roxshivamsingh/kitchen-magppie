@@ -6,7 +6,15 @@ import { useFirebaseCmsProjectAction } from '../../../utils/firebase/projects/ac
 import { useNavigate, useParams } from 'react-router-dom'
 import _ from 'lodash'
 import { TProject } from '../../../types/Project'
+import Select from 'react-select';
+import { useState } from 'react'
+import { useAppSelector } from '../../../../../redux'
 
+const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+];
 type TProps = { item?: TProject }
 
 const Form = (props: TProps) => {
@@ -37,9 +45,17 @@ const Form = (props: TProps) => {
         }
         navigate('/cms/projects')
     })
-
+    const [selectedOption, setSelectedOption] = useState(null);
+    const kitchens = useAppSelector((state) => state.Cms.Kitchens.value)
+    console.log(kitchens)
     return (
         <form onSubmit={onSubmit}>
+
+            <Select
+                defaultValue={selectedOption}
+                onChange={setSelectedOption}
+                options={options}
+            />
             <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
                     <label
