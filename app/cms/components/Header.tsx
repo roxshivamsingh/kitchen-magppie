@@ -1,11 +1,13 @@
+import { useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { MdLogout } from 'react-icons/md'
+import _ from 'lodash';
+// ===============================================================================
 
 import { useAppDispatch, useAppSelector } from '../../../redux'
-import _ from 'lodash';
 import { useFirebaseCmsAuthAction } from '../utils/firebase/use-firebase-cms-actions';
 import { setAuth } from '../redux/slices/Auth.slice';
-import { useCallback } from 'react';
+
 export default function Header() {
     const auth = useAppSelector(({ Cms }) => Cms.Auth.value);
     const AuthAction = useFirebaseCmsAuthAction()
@@ -29,8 +31,10 @@ export default function Header() {
             </div>
             <div className="flex flex-row justify-center align-middle gap-3 ">
                 <div className="">
-                    <p className="font-medium flex flex-col p-0 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white ">
-                        Welcome, <span className='text-purple-600'>{_.get(auth, 'name', 'User')}</span>
+                    <p className="font-medium flex flex-col p-0 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+                        Welcome, &nbsp;&nbsp;<span className='text-purple-600'>
+                            {_.get(auth, 'name', 'User')}
+                        </span>
                     </p>
                 </div>
 
