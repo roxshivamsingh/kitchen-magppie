@@ -7,7 +7,6 @@ import _ from 'lodash'
 
 import { useFirebaseCmsAuthAction } from '../../../../../app/cms/utils/firebase/use-firebase-cms-actions'
 import CircularProgress from '../../../../../components/CircularProgress'
-import { useCallback } from 'react'
 
 export default function CmsSignIn() {
 
@@ -23,7 +22,6 @@ export default function CmsSignIn() {
                     <SignInForm />
                 </div>
             </div>
-
         </div>
     )
 }
@@ -34,7 +32,6 @@ export function SignInForm() {
         handleSubmit,
         setError,
         setValue,
-        reset,
         formState: { errors },
         watch,
     } = useForm({ resolver: yupResolver(schema) })
@@ -54,44 +51,37 @@ export function SignInForm() {
         )
     }
 
-    const onSubmit = handleSubmit(useCallback(async (data: TFormInput, e) => {
+    const onSubmit = handleSubmit((data: TFormInput) => {
         setValue('loading', true)
-        e.preventDefault()
-        try {
-            const results = await AuthAction.signIn(data)
-            if (results.user) {
-                console.log(results)
-                navigate('/cms')
-
-
-            }
-        }
-        catch (error) {
-            console.error(error);
-            reset();
-
-            setError('root', { type: 'validate' })
-        } finally {
-            setValue('loading', false)
-        }
-    }, [AuthAction, navigate, reset, setError, setValue]))
-
+        setTimeout(() => {
+            AuthAction.signIn(data)
+                .then((e) => {
+                    if (e?.user) {
+                        navigate('/cms')
+                    }
+                })
+                .catch(() => {
+                    setError('root', { type: 'validate' })
+                })
+                .finally(() => {
+                    setValue('loading', false)
+                })
+        }, 200)
+    })
     const renderSubmitButton = (
         <button
             type="submit"
             disabled={values?.loading}
-            className={`grid grid-cols-3 flex-row align-middle w-full py-3 px-4 ${isError ? 'bg-red-600' : 'bg-black'
+            className={`text-white w-full text-center h-12 bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center me-2 mb-2 ${isError ? 'bg-red-600' : 'bg-black'
                 } uppercase text-white ${isError ? 'hover:bg-red-700' : 'bg-black'
                 }  focus:outline-none focus:ring-2 ${isError ? 'focus:ring-red-500' : 'bg-black'
                 } focus:ring-offset-2`}
         >
-            <div className="" />
-            <div className="">Sign In</div>
-            <div className="">
-                {values.loading && (
-
-                    <CircularProgress size='xl' />
-                )}
+            <div className="flex justify-center items-center w-full">
+                <div>Sign In</div>
+                <div className="">
+                    {values.loading && <CircularProgress size="xl" />}
+                </div>
             </div>
         </button>
     )

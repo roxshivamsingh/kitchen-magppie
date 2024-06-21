@@ -2,7 +2,6 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { useFirebaseCmsKitchenAction } from '../../../utils/firebase/use-firebase-cms-actions'
-import { useNavigate, useParams } from 'react-router-dom'
 import _ from 'lodash'
 import { TKitchen } from '../../../types/Kitchen'
 import { IoMdClose } from 'react-icons/io'
@@ -19,7 +18,7 @@ import { db, storageApp } from '../../../../../config/firebase.config'
 import { collection, doc } from 'firebase/firestore'
 import CircularProgress from '../../../../../components/CircularProgress'
 
-type TProps = { item?: TKitchen }
+type TProps = { item?: TKitchen, id: string, closeModal: () => void }
 interface ImageData {
     id: number
     src: string
@@ -29,9 +28,6 @@ interface ImageData {
 
 const Form = (props: TProps) => {
     const KitchenActions = useFirebaseCmsKitchenAction()
-
-    const params = useParams()
-    const navigate = useNavigate()
 
     const generateDocumentId = useMemo(() => {
         const colRef = collection(db, 'kitchens')
@@ -116,13 +112,14 @@ const Form = (props: TProps) => {
     )
 
     const onSubmit = handleSubmit((data) => {
-        if ('id' in params) {
-            KitchenActions.edit({ ...data, id: params.id })
-        } else {
+        if (props.id === "create") {
             const links = images?.map((row) => _.get(row, 'url', ''))
             KitchenActions.add({ ...data, images: links })
+        } else {
+            KitchenActions.edit({ ...data, id: props.id })
         }
-        navigate('/cms/kitchens')
+        // toastAction({message:, color:})
+        props.closeModal();
     })
 
     const uploading = useMemo(
@@ -218,7 +215,7 @@ const Form = (props: TProps) => {
                     onChange={onChangeFile}
                     value={[]}
                     type="file"
-                    //  accept="image/*"
+                //  accept="image/*"
                 />
             </div>
             {/* {renderImageList} */}
