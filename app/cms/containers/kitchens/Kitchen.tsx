@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import Card from './components/Card'
 import Header from '../../components/Header'
 import Search from '../../components/Search'
@@ -8,11 +8,16 @@ import { useAppSelector } from '../../../../redux'
 import CustomCircularProgress from '../../../kitchen/components/CustomCircularProgress'
 import { useMemo, useState } from 'react'
 import _ from 'lodash'
+import Modal from './components/Modal'
 
 export default function Kitchen() {
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const openModal = () => setIsModalOpen(true)
+    const closeModal = () => setIsModalOpen(false)
     useFirebaseCmsKitchensListener()
     const { loading, value } = useAppSelector((state) => state.Cms.Kitchens)
     const [search, setSearch] = useState('')
+
     const kitchens = useMemo(() => {
         return value?.filter((item) =>
             search?.length
@@ -20,6 +25,7 @@ export default function Kitchen() {
                 : true
         )
     }, [search, value])
+
     return (
         <div>
             <Header />
@@ -36,7 +42,11 @@ export default function Kitchen() {
                     {kitchens?.length ? (
                         <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-xl mx-auto">
                             {kitchens?.map((item, i) => (
-                                <Card item={item} key={i} />
+                                <Card
+                                    openModal={openModal}
+                                    item={item}
+                                    key={i}
+                                />
                             ))}
                         </div>
                     ) : (
@@ -46,18 +56,15 @@ export default function Kitchen() {
                     )}
                 </div>
             )}
-
-            <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-                <Link
-                    to="/cms/kitchen/create"
-                    className=" focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900
-                   flex gap-3
-                   "
-                >
-                    <FaPlus className="w-3 h-3 my-auto" />
-                    Add Kitchen
-                </Link>
+            <div
+                className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 cursor-pointer focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900
+                   flex gap-3"
+                onClick={openModal}
+            >
+                <FaPlus className="w-3 h-3 my-auto" />
+                Add Kitchen
             </div>
+            <Modal isOpen={isModalOpen} closeModal={closeModal} />
         </div>
     )
 }
