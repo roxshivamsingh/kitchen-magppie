@@ -7,6 +7,7 @@ import _ from 'lodash';
 import { useAppDispatch, useAppSelector } from '../../../redux'
 import { useFirebaseCmsAuthAction } from '../utils/firebase/use-firebase-cms-actions';
 import { setAuth } from '../redux/slices/Auth.slice';
+import { Tooltip } from 'flowbite-react';
 
 export default function Header() {
     const auth = useAppSelector(({ Cms }) => Cms.Auth.value);
@@ -29,18 +30,25 @@ export default function Header() {
                     </span>
                 </Link>
             </div>
-            <div className="flex flex-row justify-center align-middle gap-3">
-                <div className="font-medium flex flex-col p-0 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+            <div className="flex flex-row gap-3 justify-items-center  align-middle">
+                <div className="font-medium flex flex-col border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white ">
                     Welcome,
                 </div>
 
-                <div className='text-purple-600'>
+                <div className='text-purple-600 font-medium'>
                     {_.get(auth, 'name', 'User')}
                 </div>
-                <div className="m-auto">
-                    <MdLogout onClick={onClickSignOut}
-                        className='cursor-pointer hover:text-gray-500 '
-                    />
+                <div >
+                    <Tooltip content='Sign-Out' style='light' placement='bottom'>
+
+                        <button
+                            data-tooltip-target="tooltip-default"
+                            type="button" className="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm p-1 py-1 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
+                            <MdLogout onClick={onClickSignOut}
+                                className='cursor-pointer hover:text-gray-500 '
+                            />
+                        </button>
+                    </Tooltip>
 
                 </div>
             </div>
