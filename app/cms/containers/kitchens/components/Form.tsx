@@ -2,7 +2,6 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { useFirebaseCmsKitchenAction } from '../../../utils/firebase/use-firebase-cms-actions'
-import { useNavigate, useParams } from 'react-router-dom'
 import _ from 'lodash'
 import { TKitchen } from '../../../types/Kitchen'
 import { IoMdClose } from 'react-icons/io'
@@ -19,7 +18,7 @@ import { db, storageApp } from '../../../../../config/firebase.config'
 import { collection, doc } from 'firebase/firestore'
 import CircularProgress from '../../../../../components/CircularProgress'
 
-type TProps = { item?: TKitchen, id:string, closeModal:() => void }
+type TProps = { item?: TKitchen, id: string, closeModal: () => void }
 interface ImageData {
     id: number
     src: string
@@ -29,7 +28,6 @@ interface ImageData {
 
 const Form = (props: TProps) => {
     const KitchenActions = useFirebaseCmsKitchenAction()
-    const navigate = useNavigate()
 
     const generateDocumentId = useMemo(() => {
         const colRef = collection(db, 'kitchens')
@@ -217,7 +215,7 @@ const Form = (props: TProps) => {
                     onChange={onChangeFile}
                     value={[]}
                     type="file"
-                    //  accept="image/*"
+                //  accept="image/*"
                 />
             </div>
             {/* {renderImageList} */}

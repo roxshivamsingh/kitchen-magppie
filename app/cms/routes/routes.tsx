@@ -20,6 +20,14 @@ const CmsRoutes = {
             ),
             index: true,
         },
+        // {
+        //     path: 'home',
+        //     element: (
+        //         <AuthGuard variant="cms">
+        //             <CmsHome />
+        //         </AuthGuard>
+        //     ),
+        // },
         {
             path: 'kitchens',
             element: (
@@ -47,7 +55,9 @@ const CmsRoutes = {
 
         {
             path: 'sign-in',
-            element: <CmsSignIn />,
+            element: <AuthGuard variant='cms'>
+                <CmsSignIn />
+            </AuthGuard>,
         },
         {
             path: '/cms/projects',

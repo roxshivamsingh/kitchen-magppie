@@ -4,24 +4,23 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
 import _ from 'lodash'
-import LoginBanner from '../../../../../assets/photos/kitchen/g5.png'
 
 import { useFirebaseCmsAuthAction } from '../../../../../app/cms/utils/firebase/use-firebase-cms-actions'
 import CircularProgress from '../../../../../components/CircularProgress'
-// import { Link } from 'react-router-dom'
-
-// import { useFirebaseCmsAuthListener } from '../../../utils/firebase/use-firebase-cms-listeners'
 
 export default function CmsSignIn() {
+
     return (
-        <div className="flex flex-col md:flex-row min-h-screen">
-            <SignInForm />
-            <div className="md:w-1/2 hidden md:block min-h-screen">
-                <img
-                    src={LoginBanner}
-                    alt="Placeholder"
-                    className="w-full h-full object-cover"
-                />
+        <div className="min-h-screen flex md:flex-row ">
+            <div className="w-full md:w-1.2/4 flex items-center justify-center bg-gradient-to-r from-gray-100 to-gray-300 min-h-screen">
+                <div className="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg">
+                    <h2
+                        className="text-2xl font-bold text-center"
+                    >
+                        CMS SignIn
+                    </h2>
+                    <SignInForm />
+                </div>
             </div>
         </div>
     )
@@ -39,7 +38,6 @@ export function SignInForm() {
 
     const navigate = useNavigate()
     const AuthAction = useFirebaseCmsAuthAction()
-
     const values = watch()
 
     const isError = !!_.keys(errors).length
@@ -74,13 +72,10 @@ export function SignInForm() {
         <button
             type="submit"
             disabled={values?.loading}
-            className={`text-white w-full text-center h-12 bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center me-2 mb-2 ${
-                isError ? 'bg-red-600' : 'bg-black'
-            } uppercase text-white ${
-                isError ? 'hover:bg-red-700' : 'bg-black'
-            }  focus:outline-none focus:ring-2 ${
-                isError ? 'focus:ring-red-500' : 'bg-black'
-            } focus:ring-offset-2`}
+            className={`text-white w-full text-center h-12 bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center me-2 mb-2 ${isError ? 'bg-red-600' : 'bg-black'
+                } uppercase text-white ${isError ? 'hover:bg-red-700' : 'bg-black'
+                }  focus:outline-none focus:ring-2 ${isError ? 'focus:ring-red-500' : 'bg-black'
+                } focus:ring-offset-2`}
         >
             <div className="flex justify-center items-center w-full">
                 <div>Sign In</div>
@@ -91,68 +86,36 @@ export function SignInForm() {
         </button>
     )
 
-    return (
-        <div className="md:w-1/2 bg-white md:flex md:justify-center md:items-center min-h-screen pt-60 w-full md:pt-0">
-            <div className="max-w-sm w-full px-6 py-8">
-                <h2 className="text-center font-semibold text-2xl mb-4 uppercase">
-                    sign up
-                </h2>
-                <form
-                    onSubmit={onSubmit}
-                    className="space-y-4 w-full"
-                    onKeyUp={(e) => {
-                        if (e.code === 'Enter') {
-                            onSubmit()
-                        }
-                    }}
-                >
-                    <div>
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            {...register('email')}
-                            placeholder="Email"
-                            className={`bg-gray-50 border h-12 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
-                                errors.email
-                                    ? 'border-red-500'
-                                    : 'border-gray-400'
-                            }`}
-                        />
-                        {helperText('email')}
-                    </div>
-                    <div>
-                        <input
-                            id="password"
-                            name="password"
-                            {...register('password')}
-                            type="password"
-                            placeholder="Password"
-                            className={`bg-gray-50 border h-12 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
-                                errors.password
-                                    ? 'border-red-500'
-                                    : 'border-gray-400'
-                            }`}
-                        />
-                        {helperText('password')}
-                    </div>
-                    {/* <div className="text-right text-sm cursor-pointer">
-                        Forgot Password
-                    </div> */}
-                    <div>{renderSubmitButton}</div>
-                </form>
-                {/* <div className="text-center mt-4">
-                    <p>
-                        Already have an account?
-                        <Link to="/portal/register">
-                            <span className="text-blue-500 cursor-pointer ml-2">
-                                Sign In
-                            </span>
-                        </Link>
-                    </p>
-                </div> */}
-            </div>
+    return (<form onSubmit={onSubmit} className="space-y-4 " >
+        <div>
+            <input
+                id="email"
+                name="email"
+                type="email"
+                {...register('email')}
+                placeholder="Email"
+                className={`w-full text-xl border-t-0 border-l-0 border-r-0 ${errors.email ? 'border-red-500' : 'border-gray-400'
+                    }`}
+            />
+            {helperText('email')}
         </div>
+        <div>
+            <input
+                id="password"
+                name="password"
+                {...register('password')}
+                type="password"
+                placeholder="Password"
+                className={`w-full text-xl border-t-0 border-l-0 border-r-0 ${errors.password ? 'border-red-500' : 'border-gray-400'
+                    }`}
+            />
+            {helperText('password')}
+        </div>
+        <div className="text-right text-sm cursor-pointer">
+            Forgot Password
+        </div>
+        <div>{renderSubmitButton}</div>
+    </form>
     )
 }
 
