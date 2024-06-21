@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import _ from 'lodash'
 
 import { useFirebaseCmsAuthAction } from '../../../../../app/cms/utils/firebase/use-firebase-cms-actions'
+import CircularProgress from '../../../../../components/CircularProgress'
 
 // import { useFirebaseCmsAuthListener } from '../../../utils/firebase/use-firebase-cms-listeners'
 
@@ -97,8 +98,7 @@ export function SignInForm() {
             <div className="">
                 {values.loading && (
 
-                    'Loading..'
-                    // <Icon icon="line-md:loading-loop" width={20} />
+                    <CircularProgress size='xl' />
                 )}
             </div>
         </button>
