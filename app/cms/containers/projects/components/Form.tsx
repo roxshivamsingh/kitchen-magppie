@@ -7,14 +7,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import _ from 'lodash'
 import { TProject } from '../../../types/Project'
 import Select from 'react-select';
-import { useState } from 'react'
 import { useAppSelector } from '../../../../../redux'
+import { useFirebaseCmsKitchensListener } from '../../../utils/firebase/use-firebase-cms-listeners'
 
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-];
 type TProps = { item?: TProject }
 
 const Form = (props: TProps) => {
@@ -22,17 +17,19 @@ const Form = (props: TProps) => {
     const params = useParams()
     const navigate = useNavigate()
 
-    const schema = yup.object({
+    const schema = yup.object().shape({
         name: yup.string().required(),
         description: yup.string().required(),
+        kitchenIds: yup.array().of(yup.string())
     })
 
     const defaultValues = {
-        name: _.get(props.item, 'name', ''),
-        description: _.get(props.item, 'description', ''),
+        name: _.get(props, 'item.name', ''),
+        description: _.get(props, 'item.description', ''),
+        kitchenIds: _.get(props, 'item.kitchenIds', []) as string[]
     }
 
-    const { register, handleSubmit } = useForm({
+    const { register, handleSubmit, setValue } = useForm({
         defaultValues,
         resolver: yupResolver(schema),
     })
@@ -45,18 +42,14 @@ const Form = (props: TProps) => {
         }
         navigate('/cms/projects')
     })
-    const [selectedOption, setSelectedOption] = useState(null);
+    useFirebaseCmsKitchensListener()
     const kitchens = useAppSelector((state) => state.Cms.Kitchens.value)
-    console.log(kitchens)
+    const options = kitchens?.map((row) => ({ label: row.name, value: row.id }))
     return (
         <form onSubmit={onSubmit}>
 
-            <Select
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
-                options={options}
-            />
-            <div className="grid gap-6 mb-6 md:grid-cols-2">
+
+            <div className="flex flex-col gap-2 mb-6 md:grid-cols-2">
                 <div>
                     <label
                         htmlFor="name"
@@ -71,6 +64,28 @@ const Form = (props: TProps) => {
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John"
                         required
+                    />
+                </div>
+                <div>
+                    <label
+                        htmlFor="name"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                        Select Kitchen
+                    </label>
+                    <Select
+                        isMulti
+                        defaultValue={defaultValues?.kitchenIds?.map((id) =>
+                            options?.find((option) => option.value === id)
+                        )}
+                        onChange={(arr) => {
+
+
+                            setValue('kitchenIds', _.uniq([...defaultValues.kitchenIds, ..._.map(arr, 'value')]))
+                            // setSelectedOption(e)
+                        }}
+
+                        options={options}
                     />
                 </div>
                 <div>
