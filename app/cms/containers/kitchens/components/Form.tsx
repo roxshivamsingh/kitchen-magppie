@@ -19,7 +19,7 @@ import { db, storageApp } from '../../../../../config/firebase.config'
 import { collection, doc } from 'firebase/firestore'
 import CircularProgress from '../../../../../components/CircularProgress'
 
-type TProps = { item?: TKitchen }
+type TProps = { item?: TKitchen, id:string, closeModal:() => void }
 interface ImageData {
     id: number
     src: string
@@ -29,8 +29,6 @@ interface ImageData {
 
 const Form = (props: TProps) => {
     const KitchenActions = useFirebaseCmsKitchenAction()
-
-    const params = useParams()
     const navigate = useNavigate()
 
     const generateDocumentId = useMemo(() => {
@@ -116,13 +114,14 @@ const Form = (props: TProps) => {
     )
 
     const onSubmit = handleSubmit((data) => {
-        if ('id' in params) {
-            KitchenActions.edit({ ...data, id: params.id })
-        } else {
+        if (props.id === "create") {
             const links = images?.map((row) => _.get(row, 'url', ''))
             KitchenActions.add({ ...data, images: links })
+        } else {
+            KitchenActions.edit({ ...data, id: props.id })
         }
-        navigate('/cms/kitchens')
+        // toastAction({message:, color:})
+        props.closeModal();
     })
 
     const uploading = useMemo(

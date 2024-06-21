@@ -1,19 +1,17 @@
 import { MdClose } from 'react-icons/md'
 import KitchenCreateEdit from '../KitchenCreateEdit/KitchenCreateEdit'
-import { useParams } from 'react-router-dom'
+import { Fragment } from 'react/jsx-runtime'
 
 interface ModalProps {
-    isOpen: boolean
+    id: string
     closeModal: () => void
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
-    const params = useParams()
-
+const Modal: React.FC<ModalProps> = ({ id, closeModal }) => {
     return (
-        <>
+        <Fragment key={id}>
             {/* Main modal */}
-            {isOpen && (
+            {!!id && (
                 <div className="fixed inset-0 z-50 flex justify-center items-center w-full h-full overflow-y-auto overflow-x-hidden">
                     <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" />
                     <div className="relative p-4 w-full max-w-4xl max-h-full">
@@ -22,7 +20,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                             {/* Modal header */}
                             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                                    {'id' in params ? 'Edit' : 'Add'} Kitchen
+                                    {id === 'create' ?  'Add' : 'Edit'} Kitchen
                                 </h3>
                                 <button
                                     type="button"
@@ -35,13 +33,13 @@ const Modal: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                             </div>
                             {/* Modal body */}
                             <div className="p-4 md:p-5 space-y-4">
-                                <KitchenCreateEdit />
+                                <KitchenCreateEdit id={id} closeModal={closeModal}/>
                             </div>
                         </div>
                     </div>
                 </div>
             )}
-        </>
+        </Fragment>
     )
 }
 

@@ -11,10 +11,10 @@ import _ from 'lodash'
 import Modal from './components/Modal'
 
 export default function Kitchen() {
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const openModal = () => setIsModalOpen(true)
-    const closeModal = () => setIsModalOpen(false)
-    useFirebaseCmsKitchensListener()
+    const [modalId, setIsModalId] = useState('')
+    const openModal = (id = 'create') => setIsModalId(id)
+    const closeModal = () => setIsModalId('')
+    useFirebaseCmsKitchensListener();
     const { loading, value } = useAppSelector((state) => state.Cms.Kitchens)
     const [search, setSearch] = useState('')
 
@@ -24,7 +24,7 @@ export default function Kitchen() {
                 ? _.lowerCase(item.name)?.includes(_.lowerCase(search))
                 : true
         )
-    }, [search, value])
+    }, [search, value]);
 
     return (
         <div>
@@ -59,12 +59,12 @@ export default function Kitchen() {
             <div
                 className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 cursor-pointer focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900
                    flex gap-3"
-                onClick={openModal}
+                onClick={() => openModal()}
             >
                 <FaPlus className="w-3 h-3 my-auto" />
                 Add Kitchen
             </div>
-            <Modal isOpen={isModalOpen} closeModal={closeModal} />
+            <Modal id={modalId} closeModal={closeModal} />
         </div>
     )
 }
