@@ -1,6 +1,4 @@
 import { RouteObject } from 'react-router-dom'
-
-
 import AuthGuard from '../../../components/AuthGuard'
 import {
     Projects,
