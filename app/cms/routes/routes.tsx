@@ -5,8 +5,9 @@ import {
     Kitchen,
     SignIn,
     KitchenCreateEdit,
-    Home
+    Home,
 } from '../containers'
+import { User } from '../containers/users'
 
 const CmsRoutes = {
     path: 'cms',
@@ -54,15 +55,25 @@ const CmsRoutes = {
 
         {
             path: 'sign-in',
-            element: <AuthGuard variant='cms'>
-                <SignIn />
-            </AuthGuard>,
+            element: (
+                <AuthGuard variant="cms">
+                    <SignIn />
+                </AuthGuard>
+            ),
         },
         {
             path: '/cms/projects',
             element: (
                 <AuthGuard variant="cms">
                     <Projects />
+                </AuthGuard>
+            ),
+        },
+        {
+            path: '/cms/users',
+            element: (
+                <AuthGuard variant="cms">
+                    <User />
                 </AuthGuard>
             ),
         },

@@ -17,6 +17,7 @@ import { db, storageApp } from '../../../../../config/firebase.config'
 // import CircularProgress from '../../../../../components/CircularProgress'
 import { collection, doc } from 'firebase/firestore'
 import CircularProgress from '../../../../../components/CircularProgress'
+import { toast } from 'react-toastify'
 
 type TProps = { item?: TKitchen, id: string, closeModal: () => void }
 interface ImageData {
@@ -116,8 +117,10 @@ const Form = (props: TProps) => {
         if (props.id === "create") {
             const links = images?.map((row) => _.get(row, 'url', ''))
             KitchenActions.add({ ...data, images: links })
+            toast('Kitchen Added')
         } else {
             KitchenActions.edit({ ...data, id: props.id })
+            toast('Kitchen Edited')
         }
         // toastAction({message:, color:})
         props.closeModal();

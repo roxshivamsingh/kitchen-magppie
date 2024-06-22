@@ -6,6 +6,10 @@ import Routes from '../routes'
 // import CustomCircularProgress from '../app/kitchen/components/CustomCircularProgress'
 // import { useFirebaseDataUser } from '../appHooks/firebase/use-firebase-data'
 
+// React Toastify CSS
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
+
 const App: FC = () => {
     // useFirebaseAuth()
     // const user = useFirebaseDataUser()
@@ -25,7 +29,23 @@ const App: FC = () => {
     // if (user?.loading) {
     //     return <CustomCircularProgress />
     // }
-    return <Routes />
+    return (
+        <>
+            <Routes />
+            <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+        </>
+    )
 }
 
 export default App
