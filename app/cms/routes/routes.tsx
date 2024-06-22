@@ -3,7 +3,6 @@ import { RouteObject } from 'react-router-dom'
 
 import AuthGuard from '../../../components/AuthGuard'
 import {
-    CreateEditProject,
     Projects,
     Kitchen,
     SignIn,
@@ -69,14 +68,14 @@ const CmsRoutes = {
                 </AuthGuard>
             ),
         },
-        {
-            path: 'project/create',
-            element: <CreateEditProject />,
-        },
-        {
-            path: 'project/:id/edit',
-            element: <CreateEditProject />,
-        },
+        // {
+        //     path: 'project/create',
+        //     element: <CreateEditProject />,
+        // },
+        // {
+        //     path: 'project/:id/edit',
+        //     element: <CreateEditProject />,
+        // },
     ],
 } as RouteObject
 
