@@ -3,7 +3,7 @@ import Header from '../../components/Header'
 import { useParams } from 'react-router-dom'
 import { useAppSelector } from '../../../../redux'
 
-const CreateEditProject = () => {
+export default function CreateEditProject() {
     const params = useParams()
     const projects = useAppSelector(({ Cms }) => Cms.Projects.value)
     const currentProject = projects?.find((row) => row.id === params.id)
@@ -21,4 +21,3 @@ const CreateEditProject = () => {
     )
 }
 
-export default CreateEditProject

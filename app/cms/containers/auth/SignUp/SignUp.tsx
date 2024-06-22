@@ -1,6 +1,5 @@
 import Form from '../components/Form'
-import LoginBanner from '../../../../assets/photos/kitchen/g5.png'
-
+import LoginBanner from "../../../../../assets/photos/kitchen/g5.png"
 export function CmsSignUp() {
     return (
         <div className="flex flex-col md:flex-row min-h-screen">

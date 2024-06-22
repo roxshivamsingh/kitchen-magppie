@@ -1,13 +1,15 @@
 import { RouteObject } from 'react-router-dom'
-import CmsHome from '../containers/Home/Home'
-// import CmsHome from "../../cms/Home/Home";
 
-import KitchenCreateEdit from '../containers/kitchens/KitchenCreateEdit/KitchenCreateEdit'
-import CmsSignIn from '../containers/auth/SignIn/SignIn'
-import CmsKitchen from '../containers/kitchens/Kitchen'
+
 import AuthGuard from '../../../components/AuthGuard'
-import Projects from '../containers/projects/Projects'
-import CreateEditProject from '../containers/projects/CreateEditProject'
+import {
+    CreateEditProject,
+    Projects,
+    Kitchen,
+    SignIn,
+    KitchenCreateEdit,
+    Home
+} from '../containers'
 
 const CmsRoutes = {
     path: 'cms',
@@ -15,7 +17,7 @@ const CmsRoutes = {
         {
             element: (
                 <AuthGuard variant="cms">
-                    <CmsHome />
+                    <Home />
                 </AuthGuard>
             ),
             index: true,
@@ -32,7 +34,7 @@ const CmsRoutes = {
             path: 'kitchens',
             element: (
                 <AuthGuard variant="cms">
-                    <CmsKitchen />
+                    <Kitchen />
                 </AuthGuard>
             ),
         },
@@ -56,7 +58,7 @@ const CmsRoutes = {
         {
             path: 'sign-in',
             element: <AuthGuard variant='cms'>
-                <CmsSignIn />
+                <SignIn />
             </AuthGuard>,
         },
         {

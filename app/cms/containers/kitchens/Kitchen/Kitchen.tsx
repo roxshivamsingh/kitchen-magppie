@@ -1,14 +1,13 @@
-// import { Link } from 'react-router-dom'
-import Card from './components/Card'
-import Header from '../../components/Header'
-import Search from '../../components/Search'
+import Card from '../components/Card'
+import Header from '../../../components/Header'
+import Search from '../../../components/Search'
 import { FaPlus } from 'react-icons/fa'
-import { useFirebaseCmsKitchensListener } from '../../utils/firebase/use-firebase-cms-listeners'
-import { useAppSelector } from '../../../../redux'
-import CustomCircularProgress from '../../../kitchen/components/CustomCircularProgress'
+import { useFirebaseCmsKitchensListener } from '../../../utils/firebase/use-firebase-cms-listeners'
+import { useAppSelector } from '../../../../../redux'
+import CustomCircularProgress from '../../../../kitchen/components/CustomCircularProgress'
 import { useMemo, useState } from 'react'
 import _ from 'lodash'
-import Modal from './components/Modal'
+import Modal from '../components/Modal'
 
 export default function Kitchen() {
     const [modalId, setIsModalId] = useState('')
