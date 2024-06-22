@@ -1,7 +1,7 @@
 import Form from './components/Form'
 import { useAppSelector } from '../../../../redux'
-
 type TProps = { id?: string, closeModal?: VoidFunction }
+
 export default function CreateEditProject(props: TProps) {
     const { id = 'create', closeModal } = props;
     const projects = useAppSelector(({ Cms }) => Cms.Projects.value)

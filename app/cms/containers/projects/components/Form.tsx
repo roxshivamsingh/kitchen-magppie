@@ -7,6 +7,7 @@ import { TProject } from '../../../types/Project'
 import Select from 'react-select'
 import { useAppSelector } from '../../../../../redux'
 import { useFirebaseCmsKitchensListener } from '../../../utils/firebase/use-firebase-cms-listeners'
+import { toast } from 'react-toastify'
 
 type TProps = { item?: TProject; id: string; closeModal: () => void }
 
@@ -32,9 +33,11 @@ const Form = (props: TProps) => {
 
     const onSubmit = handleSubmit((data) => {
         if (props.id === 'create') {
-            ProjectActions.edit({ ...data, id: props.id })
+            ProjectActions.add({ ...data })
+            toast('Project Added')
         } else {
-            ProjectActions.add(data)
+            ProjectActions.edit({ ...data, id: props.id })
+            toast('Project Updated')
         }
         props.closeModal()
     })

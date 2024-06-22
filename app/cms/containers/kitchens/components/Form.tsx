@@ -120,7 +120,7 @@ const Form = (props: TProps) => {
             toast('Kitchen Added')
         } else {
             KitchenActions.edit({ ...data, id: props.id })
-            toast('Kitchen Edited')
+            toast('Kitchen Updated')
         }
         // toastAction({message:, color:})
         props.closeModal();

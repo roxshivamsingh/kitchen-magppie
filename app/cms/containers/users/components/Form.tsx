@@ -17,6 +17,7 @@ import _ from 'lodash'
 // import CircularProgress from '../../../../../components/CircularProgress'
 import { ISuperUser } from '../../../types/SuperUser'
 import { useFirebaseCmsUserAction } from '../../../utils/firebase/users/actions'
+import { toast } from 'react-toastify'
 
 type TProps = { item?: ISuperUser; id: string; closeModal: () => void }
 
@@ -127,8 +128,10 @@ const Form = (props: TProps) => {
         if (props.id === 'create') {
             // const links = images?.map((row) => _.get(row, 'url', ''))
             userActions.add({ ...data })
+            toast('User Added')
         } else {
             userActions.edit({ ...data, id: props.id })
+            toast('User Updated')
         }
         // toastAction({message:, color:})
         props.closeModal()
