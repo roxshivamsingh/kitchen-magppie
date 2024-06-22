@@ -1,2 +1,3 @@
-export * from './Kitchen'
-export { default } from './KitchenCreateEdit/KitchenCreateEdit'
+import KitchenCreateEdit from "./KitchenCreateEdit";
+import { Kitchen } from "./Kitchen";
+export { KitchenCreateEdit, Kitchen }

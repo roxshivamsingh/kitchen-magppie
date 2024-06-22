@@ -1,1 +1,2 @@
-export { default } from "../Kitchen"
+import Kitchen from "./Kitchen";
+export { Kitchen }
