@@ -5,8 +5,8 @@ import { useFirebaseCmsProjectsListener } from '../../utils/firebase/use-firebas
 import { useAppSelector } from '../../../../redux'
 import { useMemo, useState } from 'react'
 import _ from 'lodash'
-import CircularProgress from '../../../../components/CircularProgress'
 import Modal from './components/Modal'
+import PageProgress from '../../../../components/PageProgress'
 
 export default function Projects() {
     const [modalId, setIsModalId] = useState('')
@@ -35,7 +35,7 @@ export default function Projects() {
             />
             <div className="mt-10">
                 {loading ? (
-                    <CircularProgress />
+                    <PageProgress />
                 ) : (
                     <div className="mt-10">
                         {projects?.length ? (

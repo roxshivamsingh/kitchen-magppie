@@ -3,10 +3,10 @@ import Search from '../../../components/Search'
 import { FaPlus } from 'react-icons/fa'
 import { useFirebaseCmsSuperUsersListener } from '../../../utils/firebase/use-firebase-cms-listeners'
 import { useAppSelector } from '../../../../../redux'
-import CircularProgress from '../../../../../components/CircularProgress'
 import { useMemo, useState } from 'react'
 import _ from 'lodash'
 import Modal from '../components/Modal'
+import PageProgress from '../../../../../components/PageProgress'
 
 export default function User() {
     const [modalId, setIsModalId] = useState('')
@@ -33,7 +33,7 @@ export default function User() {
                 }}
             />
             {loading ? (
-                <CircularProgress />
+                <PageProgress />
             ) : (
                 <div className="mt-10">
                     {users?.length ? (
