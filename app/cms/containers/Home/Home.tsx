@@ -19,11 +19,7 @@ export default function CmsHome() {
 
                         className="cursor-pointer flex justify-center items-center"
                         key={i}
-                        renderImage={() => (<img
-                            src={data.image}
-                            alt="logo"
-                            className="h-80 w-80"
-                        />)}
+                        renderImage={() => (<img src={data.image} alt="logo" className="h-80 w-80" />)}
                     >
                         <Link to={data.link} className='flex items-center'>
                             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

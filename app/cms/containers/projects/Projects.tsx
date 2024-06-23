@@ -39,7 +39,7 @@ export default function Projects() {
                 ) : (
                     <div className="mt-10">
                         {projects?.length ? (
-                            <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-screen-xl mx-auto">
+                            <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl mx-auto place-items-center">
                                 {projects?.map((item, i) => (
                                     <Card
                                         openModal={openModal}
