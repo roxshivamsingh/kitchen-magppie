@@ -1,10 +1,10 @@
 import Card from '../components/Card'
-import Header from '../../../components/Header'
+import Header from '../../../components/Header/Header'
 import Search from '../../../components/Search'
 import { FaPlus } from 'react-icons/fa'
 import { useFirebaseCmsSuperUsersListener } from '../../../utils/firebase/use-firebase-cms-listeners'
 import { useAppSelector } from '../../../../../redux'
-import CustomCircularProgress from '../../../../kitchen/components/CustomCircularProgress'
+import CircularProgress from '../../../../../components/CircularProgress'
 import { useMemo, useState } from 'react'
 import _ from 'lodash'
 import Modal from '../components/Modal'
@@ -35,7 +35,7 @@ export default function User() {
                 }}
             />
             {loading ? (
-                <CustomCircularProgress />
+                <CircularProgress />
             ) : (
                 <div className="mt-10">
                     {users?.length ? (

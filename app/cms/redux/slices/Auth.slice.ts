@@ -20,15 +20,24 @@ const AuthSlice = createSlice({
     name: 'Auth',
     initialState,
     reducers: {
+        setAuthLoading: (state, action?: PayloadAction<boolean>) => {
+            state.status = action.payload ? 'loading' : 'success';
+            state.loading = action.payload;
+        },
         setAuth: (state, action: TAction) => {
             state.status = 'success';
             state.loading = false;
             state.value = action.payload;
         },
+        setAuthSignOut: (state) => {
+            state.status = 'success';
+            state.loading = false;
+            state.value = undefined;
+        },
     },
 });
 
-export const { setAuth } = AuthSlice.actions;
+export const { setAuth, setAuthSignOut, setAuthLoading } = AuthSlice.actions;
 
 const AuthReducer = AuthSlice.reducer
 export default AuthReducer

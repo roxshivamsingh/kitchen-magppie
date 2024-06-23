@@ -1,12 +1,12 @@
 import { FaPlus } from 'react-icons/fa'
 import Card from './components/Card'
-import Header from '../../components/Header'
+import Header from '../../components/Header/Header'
 import Search from './../../components/Search'
 import { useFirebaseCmsProjectsListener } from '../../utils/firebase/use-firebase-cms-listeners'
 import { useAppSelector } from '../../../../redux'
 import { useMemo, useState } from 'react'
 import _ from 'lodash'
-import CustomCircularProgress from '../../../kitchen/components/CustomCircularProgress'
+import CircularProgress from '../../../../components/CircularProgress'
 import Modal from './components/Modal'
 
 export default function Projects() {
@@ -37,7 +37,7 @@ export default function Projects() {
             />
             <div className="mt-10">
                 {loading ? (
-                    <CustomCircularProgress />
+                    <CircularProgress />
                 ) : (
                     <div className="mt-10">
                         {projects?.length ? (

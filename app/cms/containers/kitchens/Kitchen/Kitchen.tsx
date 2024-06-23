@@ -1,10 +1,10 @@
 import Card from '../components/Card'
-import Header from '../../../components/Header'
+import Header from '../../../components/Header/Header'
 import Search from '../../../components/Search'
 import { FaPlus } from 'react-icons/fa'
 import { useFirebaseCmsKitchensListener } from '../../../utils/firebase/use-firebase-cms-listeners'
 import { useAppSelector } from '../../../../../redux'
-import CustomCircularProgress from '../../../../kitchen/components/CustomCircularProgress'
+import CircularProgress from '../../../../../components/CircularProgress'
 import { useMemo, useState } from 'react'
 import _ from 'lodash'
 import Modal from '../components/Modal'
@@ -34,9 +34,7 @@ export default function Kitchen() {
                     setSearch(e)
                 }}
             />
-            {loading ? (
-                <CustomCircularProgress />
-            ) : (
+            {loading ? (<CircularProgress />) : (
                 <div className="mt-10">
                     {kitchens?.length ? (
                         <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-xl mx-auto">
