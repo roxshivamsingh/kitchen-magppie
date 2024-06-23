@@ -1,5 +1,4 @@
 import Card from '../components/Card'
-import Header from '../../../components/Header/Header'
 import Search from '../../../components/Search'
 import { FaPlus } from 'react-icons/fa'
 import { useFirebaseCmsSuperUsersListener } from '../../../utils/firebase/use-firebase-cms-listeners'
@@ -27,7 +26,6 @@ export default function User() {
 
     return (
         <div>
-            <Header />
             <Search
                 placeholder="Search Users.."
                 onChange={(e) => {
