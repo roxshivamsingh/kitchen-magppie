@@ -1,14 +1,12 @@
 import { useEffect } from 'react';
 import { collection, doc, getDoc, onSnapshot, } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
-
 //====================================================================
 
 import { db, auth } from "../../../../config/firebase.config"
 import { useAppDispatch } from '../../../../redux';
 import { setSuperUsers } from '../../redux/slices/SuperUser.slice';
 import { INIT_SUPER_USER, ISuperUser } from '../../types/SuperUser';
-import { setAuth } from '../../redux/slices/Auth.slice';
+import { setAuth, setAuthSignOut } from '../../redux/slices/Auth.slice';
 import { TKitchen } from '../../types/Kitchen';
 import { setKitchens } from '../../redux/slices/Kitchen.slice';
 import { TProject } from '../../types/Project';
@@ -17,7 +15,6 @@ import { setProjects } from '../../redux/slices/Project.slice';
 const { getAuth, onAuthStateChanged } = auth;
 
 export function useFirebaseCmsAuthListener() {
-    const navigate = useNavigate()
     const dispatch = useAppDispatch()
     useEffect(() => {
         const q = getAuth()
@@ -33,10 +30,11 @@ export function useFirebaseCmsAuthListener() {
                     } as ISuperUser))
                 })
             } else {
-                dispatch(setAuth(undefined))
+                console.log('Not logged-in')
+                dispatch(setAuthSignOut(undefined))
             }
         });
-    }, [dispatch, navigate]);
+    }, [dispatch]);
 }
 
 export const useFirebaseCmsSuperUsersListener = () => {

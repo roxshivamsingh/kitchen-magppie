@@ -1,13 +1,17 @@
-// import { useCallback } from 'react'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
 import _ from 'lodash'
+import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
+
+//====================================================================
 
 import { useFirebaseCmsAuthAction } from '../../../../../app/cms/utils/firebase/use-firebase-cms-actions'
 import CircularProgress from '../../../../../components/CircularProgress'
-import { toast } from 'react-toastify'
+import { setAuth } from '../../../redux/slices/Auth.slice'
+import { INIT_SUPER_USER } from '../../../types/SuperUser'
 
 export default function CmsSignIn() {
     return (
@@ -38,6 +42,7 @@ export function SignInForm() {
     const AuthAction = useFirebaseCmsAuthAction()
     const values = watch()
 
+    const dispatch = useDispatch()
     const isError = !!_.keys(errors).length
     const helperText = (name: 'email' | 'password') => {
         return (
@@ -51,10 +56,15 @@ export function SignInForm() {
 
     const onSubmit = handleSubmit((data: TFormInput) => {
         setValue('loading', true)
+        // dispatch(setAuthLoading(true))
         setTimeout(() => {
             AuthAction.signIn(data)
                 .then((e) => {
                     if (e?.user) {
+                        dispatch(setAuth({
+                            ...INIT_SUPER_USER,
+                            email: e.user.email
+                        }))
                         navigate('/cms')
                         toast('Signed In SuccessFully')
                     }
@@ -65,23 +75,21 @@ export function SignInForm() {
                 })
                 .finally(() => {
                     setValue('loading', false)
+
                 })
-        }, 200)
+        }, 500)
     })
 
     const renderSubmitButton = (
         <button
             type="submit"
             disabled={values?.loading}
-            className={`text-white w-full text-center h-12 bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center me-2 mb-2 ${
-                isError ? 'bg-red-600' : 'bg-black'
-            } uppercase text-white ${
-                isError ? 'hover:bg-red-700' : 'bg-black'
-            }  focus:outline-none focus:ring-2 ${
-                isError ? 'focus:ring-red-500' : 'bg-black'
-            } focus:ring-offset-2`}
+            className={`text-white w-full text-center h-12 bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center me-2 mb-2 ${isError ? 'bg-red-600' : 'bg-black'
+                } uppercase text-white ${isError ? 'hover:bg-red-700' : 'bg-black'
+                }  focus:outline-none focus:ring-2 ${isError ? 'focus:ring-red-500' : 'bg-black'
+                } focus:ring-offset-2`}
         >
-            <div className="flex justify-center items-center w-full">
+            <div className="flex justify-center items-center gap-2 w-full">
                 <div>Sign In</div>
                 <div className="">
                     {values.loading && <CircularProgress size="xl" />}
@@ -100,9 +108,8 @@ export function SignInForm() {
                         type="email"
                         {...register('email')}
                         placeholder="Email"
-                        className={`w-full text-xl border-t-0 border-l-0 border-r-0 ${
-                            errors.email ? 'border-red-500' : 'border-gray-400'
-                        }`}
+                        className={`w-full text-xl border-t-0 border-l-0 border-r-0 ${errors.email ? 'border-red-500' : 'border-gray-400'
+                            }`}
                     />
                     {helperText('email')}
                 </div>
@@ -113,11 +120,10 @@ export function SignInForm() {
                         {...register('password')}
                         type="password"
                         placeholder="Password"
-                        className={`w-full text-xl border-t-0 border-l-0 border-r-0 ${
-                            errors.password
-                                ? 'border-red-500'
-                                : 'border-gray-400'
-                        }`}
+                        className={`w-full text-xl border-t-0 border-l-0 border-r-0 ${errors.password
+                            ? 'border-red-500'
+                            : 'border-gray-400'
+                            }`}
                     />
                     {helperText('password')}
                 </div>

@@ -1,91 +1,53 @@
 import { RouteObject } from 'react-router-dom'
-import AuthGuard from '../../../components/AuthGuard'
+
+//====================================================================
+
 import {
     Projects,
     Kitchen,
     SignIn,
     KitchenCreateEdit,
     Home,
+    User
 } from '../containers'
-import { User } from '../containers/users'
+import { useFirebaseCmsAuthListener } from '../utils/firebase'
+import { ProtectedRoute } from '../components'
 
-const CmsRoutes = {
-    path: 'cms',
-    children: [
-        {
-            element: (
-                <AuthGuard variant="cms">
-                    <Home />
-                </AuthGuard>
-            ),
-            index: true,
-        },
-        // {
-        //     path: 'home',
-        //     element: (
-        //         <AuthGuard variant="cms">
-        //             <CmsHome />
-        //         </AuthGuard>
-        //     ),
-        // },
-        {
-            path: 'kitchens',
-            element: (
-                <AuthGuard variant="cms">
-                    <Kitchen />
-                </AuthGuard>
-            ),
-        },
-        {
-            path: 'kitchen/create',
-            element: (
-                <AuthGuard variant="cms">
-                    <KitchenCreateEdit />
-                </AuthGuard>
-            ),
-        },
-        {
-            path: 'kitchen/:id/edit',
-            element: (
-                <AuthGuard variant="cms">
-                    <KitchenCreateEdit />
-                </AuthGuard>
-            ),
-        },
+export default function CmsRoutes() {
 
-        {
-            path: 'sign-in',
-            element: (
-                <AuthGuard variant="cms">
-                    <SignIn />
-                </AuthGuard>
-            ),
-        },
-        {
-            path: '/cms/projects',
-            element: (
-                <AuthGuard variant="cms">
-                    <Projects />
-                </AuthGuard>
-            ),
-        },
-        {
-            path: '/cms/users',
-            element: (
-                <AuthGuard variant="cms">
-                    <User />
-                </AuthGuard>
-            ),
-        },
-        // {
-        //     path: 'project/create',
-        //     element: <CreateEditProject />,
-        // },
-        // {
-        //     path: 'project/:id/edit',
-        //     element: <CreateEditProject />,
-        // },
-    ],
-} as RouteObject
-
-export default CmsRoutes
+    useFirebaseCmsAuthListener()
+    return ({
+        path: 'cms',
+        element: <ProtectedRoute />,
+        children: [
+            {
+                element: (<Home />),
+                index: true,
+            },
+            {
+                path: 'kitchens',
+                element: (<Kitchen />),
+            },
+            {
+                path: 'kitchen/create',
+                element: (<KitchenCreateEdit />),
+            },
+            {
+                path: 'kitchen/:id/edit',
+                element: (<KitchenCreateEdit />),
+            },
+            {
+                path: 'sign-in',
+                element: (<SignIn />),
+            },
+            {
+                path: '/cms/projects',
+                element: (<Projects />),
+            },
+            {
+                path: '/cms/users',
+                element: (<User />),
+            },
+        ]
+    }) as RouteObject
+}

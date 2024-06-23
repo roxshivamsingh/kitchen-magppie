@@ -1,13 +1,11 @@
 import { Card } from 'flowbite-react'
 import { Link, useNavigate } from 'react-router-dom'
-import Header from '../../components/Header'
 import { CmsHomeData } from './data'
 import { FaArrowRight } from 'react-icons/fa'
 
 export default function CmsHome() {
     const navigate = useNavigate()
-    return (<>
-        <Header />
+    return (
         <div className="container mx-auto items-center flex flex-col justify-center">
             <h1 className="text-3xl mb-8 md:mb-0 font-bold uppercase text-center mt-20">
                 Dashboard
@@ -37,6 +35,6 @@ export default function CmsHome() {
                 ))}
             </div>
         </div>
-    </>
+
     )
 }

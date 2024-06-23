@@ -5,7 +5,7 @@ import CmsRoutes from '../app/cms/routes/routes'
 export default function Routes() {
     return useRoutes([
         KitchenRoutes,
-        CmsRoutes,
+        CmsRoutes(),
         {
             path: '*',
             element: <Navigate to="/not-found" replace />,
