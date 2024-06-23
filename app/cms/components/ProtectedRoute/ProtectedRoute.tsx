@@ -5,6 +5,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import PageProgress from "../../../../components/PageProgress"
 import { useAppSelector } from "../../../../redux"
 import Header from "../Header"
+import { CustomBreadcrumb } from "../../../../components"
 
 export default function ProtectedRoute() {
     const { pathname } = useLocation()
@@ -24,7 +25,11 @@ export default function ProtectedRoute() {
     if (user?.value && !GUEST_ROUTES?.includes(pathname)) {
         return <div className="">
             <Header />
-            <Outlet />
+            <div className="container mx-auto p-2">
+                <CustomBreadcrumb />
+                <Outlet />
+
+            </div>
         </div>
     }
     return <Outlet />

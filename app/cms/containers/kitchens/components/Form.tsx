@@ -30,8 +30,6 @@ interface ImageData {
 
 const Form = (props: TProps) => {
     const KitchenActions = useFirebaseCmsKitchenAction()
-    // const navigate = useNavigate()
-    console.log(props.item?.images)
 
     const generateDocumentId = useMemo(() => {
         const colRef = collection(db, 'kitchens')

@@ -37,7 +37,7 @@ export default function User() {
             ) : (
                 <div className="mt-10">
                     {users?.length ? (
-                        <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-xl mx-auto">
+                        <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl mx-auto place-items-center">
                             {users?.map((item, i) => (
                                 <Card
                                     openModal={openModal}

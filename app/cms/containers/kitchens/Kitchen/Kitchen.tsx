@@ -30,7 +30,7 @@ export default function Kitchen() {
             {loading ? (<PageProgress />) : (
                 <div className="mt-10">
                     {kitchens?.length ? (
-                        <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-xl mx-auto">
+                        <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl mx-auto place-items-center">
                             {kitchens?.map((item, i) => (
                                 <Card
                                     openModal={openModal}
