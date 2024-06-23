@@ -5,6 +5,7 @@ import { useFirebaseCmsKitchenAction } from '../../../utils/firebase/use-firebas
 import _ from 'lodash'
 import { TKitchen } from '../../../types/Kitchen'
 import { IoMdClose } from 'react-icons/io'
+import { deleteObject } from 'firebase/storage'
 import { ChangeEvent, useCallback, useMemo, useState } from 'react'
 import {
     StorageError,
@@ -22,14 +23,15 @@ import { toast } from 'react-toastify'
 type TProps = { item?: TKitchen, id: string, closeModal: () => void }
 interface ImageData {
     id: number
-    src: string
-    file: File
+    src?: string
+    file?: File
     url?: string
 }
 
 const Form = (props: TProps) => {
     const KitchenActions = useFirebaseCmsKitchenAction()
     // const navigate = useNavigate()
+    console.log(props.item?.images)
 
     const generateDocumentId = useMemo(() => {
         const colRef = collection(db, 'kitchens')
@@ -46,7 +48,10 @@ const Form = (props: TProps) => {
         }),
         [generateDocumentId, props.item]
     )
-    const [images, setImages] = useState<ImageData[]>([])
+    const [images, setImages] = useState<ImageData[]>(props?.item?.images?.map((url, i) => ({
+        id: i,
+        url
+    })) || [])
 
     const {
         register,
@@ -58,7 +63,12 @@ const Form = (props: TProps) => {
     })
     const handleRemoveImage = useCallback(
         (id: number) => {
+            const file = images?.find((row) => row.id === id)
             setImages(images.filter((image) => image.id !== id))
+            if (file) {
+                const fileRef = ref(storageApp, file.url)
+                deleteObject(fileRef)
+            }
         },
         [images]
     )
@@ -82,7 +92,6 @@ const Form = (props: TProps) => {
                     storageApp,
                     `kitchens/${defaultValues.id}/${fileName}`
                 )
-                console.log(fileName)
                 const uploadTask = uploadBytesResumable(storageRef, image)
 
                 const onUploadComplete = () => {
@@ -90,13 +99,10 @@ const Form = (props: TProps) => {
                         if (link?.length) {
                             setImages((prev) =>
                                 prev?.map((row) => {
-                                    return {
-                                        ...row,
-                                        url:
-                                            image.name === row.file.name
-                                                ? link
-                                                : `${row.url || ''}`,
-                                    }
+                                    const url = image.name === row.file.name
+                                        ? link
+                                        : `${row.url || ''}`
+                                    return ({ ...row, url })
                                 })
                             )
                         }
@@ -114,12 +120,13 @@ const Form = (props: TProps) => {
     )
 
     const onSubmit = handleSubmit((data) => {
+
+        const links = images?.map((row) => _.get(row, 'url', ''))
         if (props.id === "create") {
-            const links = images?.map((row) => _.get(row, 'url', ''))
             KitchenActions.add({ ...data, images: links })
             toast('Kitchen Added')
         } else {
-            KitchenActions.edit({ ...data, id: props.id })
+            KitchenActions.edit({ ...data, id: props.id, images: links })
             toast('Kitchen Updated')
         }
         // toastAction({message:, color:})
@@ -154,7 +161,7 @@ const Form = (props: TProps) => {
                 {images.map((image) => (
                     <div key={image.id} className="relative my-2 ">
                         <img
-                            src={image.src}
+                            src={image.url}
                             alt=""
                             className="w-32 h-32 object-cover rounded-lg ms-1"
                         />

@@ -3,10 +3,10 @@ import Search from '../../../components/Search'
 import { FaPlus } from 'react-icons/fa'
 import { useFirebaseCmsKitchensListener } from '../../../utils/firebase/use-firebase-cms-listeners'
 import { useAppSelector } from '../../../../../redux'
-import CircularProgress from '../../../../../components/CircularProgress'
 import { useMemo, useState } from 'react'
 import _ from 'lodash'
 import Modal from '../components/Modal'
+import PageProgress from '../../../../../components/PageProgress'
 
 export default function Kitchen() {
     const [modalId, setIsModalId] = useState('')
@@ -26,13 +26,8 @@ export default function Kitchen() {
 
     return (
         <div>
-            <Search
-                placeholder="Search Kitchens.."
-                onChange={(e) => {
-                    setSearch(e)
-                }}
-            />
-            {loading ? (<CircularProgress />) : (
+            <Search placeholder="Search Kitchens.." onChange={(e) => { setSearch(e) }} />
+            {loading ? (<PageProgress />) : (
                 <div className="mt-10">
                     {kitchens?.length ? (
                         <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-xl mx-auto">
