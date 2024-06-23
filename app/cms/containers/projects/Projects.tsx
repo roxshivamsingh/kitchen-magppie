@@ -1,6 +1,5 @@
 import { FaPlus } from 'react-icons/fa'
 import Card from './components/Card'
-import Header from '../../components/Header/Header'
 import Search from './../../components/Search'
 import { useFirebaseCmsProjectsListener } from '../../utils/firebase/use-firebase-cms-listeners'
 import { useAppSelector } from '../../../../redux'
@@ -28,7 +27,6 @@ export default function Projects() {
 
     return (
         <div>
-            <Header />
             <Search
                 placeholder="Search Projects.."
                 onChange={(e) => {
