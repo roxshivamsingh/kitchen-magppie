@@ -37,7 +37,7 @@ export default function Sidebar() {
         </div>)}
         <Drawer open={toggle.main}
             backdrop={toggle.login}
-            className=" bg-transparent p-0"
+            className="bg-[rgb(0,0,0,0.3)] p-0 w-120"
 
             onClose={() => { setToggle({ login: false, main: false }) }}
 
@@ -52,13 +52,11 @@ export default function Sidebar() {
 
             >
 
-                <div className={`grid ${toggle.login ? 'grid-cols-2' : ''}`}>
-                    {toggle.login && (<div className="bg-white text-black h-screen w-96 p-3 flex flex-col justify-center transition-all">
+                <div className={`grid`}>
+                    {toggle.login ? (<div className="bg-white text-black h-screen w-80 p-3 flex flex-col justify-center transition-all">
                         <SignInForm />
                     </div>
-                    )}
-
-                    {renderMain}
+                    ) : renderMain}
                 </div>
 
             </Drawer.Items>
