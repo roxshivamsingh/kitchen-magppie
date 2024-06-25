@@ -37,9 +37,8 @@ export default function CustomBreadcrumb() {
                         )
                     }
                     return (
-                        <div className="inline-flex items-center">
+                        <div className="inline-flex items-center" key={i}>
                             <div className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
-                                ̣
                                 <FaHome />
                                 <Link
                                     to={option.path}
