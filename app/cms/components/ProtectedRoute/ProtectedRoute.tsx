@@ -1,11 +1,11 @@
-import { useEffect } from "react"
-import { Outlet, useLocation, useNavigate } from "react-router-dom"
+import { useEffect } from 'react'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 //====================================================================
 
-import PageProgress from "../../../../components/PageProgress"
-import { useAppSelector } from "../../../../redux"
-import Header from "../Header"
-import { CustomBreadcrumb } from "../../../../components"
+import PageProgress from '../../../../components/PageProgress'
+import { useAppSelector } from '../../../../redux'
+import Header from '../Header'
+import { CustomBreadcrumb } from '../../../../components'
 
 export default function ProtectedRoute() {
     const { pathname } = useLocation()
@@ -23,17 +23,17 @@ export default function ProtectedRoute() {
         return <PageProgress />
     }
     if (user?.value && !GUEST_ROUTES?.includes(pathname)) {
-        return <div className="">
-            <Header />
-            <div className="container mx-auto p-2">
-                <CustomBreadcrumb />
-                <Outlet />
-
+        return (
+            <div className="">
+                <Header />
+                <div className="container mx-auto p-2 max-w-7xl">
+                    <CustomBreadcrumb />
+                    <Outlet />
+                </div>
             </div>
-        </div>
+        )
     }
     return <Outlet />
-
 }
 
-const GUEST_ROUTES = ['/cms/sign-in'];
+const GUEST_ROUTES = ['/cms/sign-in']
