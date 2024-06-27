@@ -8,12 +8,13 @@ export default function Routes() {
         KitchenRoutes,
         CmsRoutes(),
         {
-            path: '*',
-            element: <Navigate to="/not-found" replace />,
-        },
-        {
             path: '/landing-page',
             element: <LandingPage />,
         },
+        {
+            path: '*',
+            element: <Navigate to="/not-found" replace />,
+        },
+
     ])
 }

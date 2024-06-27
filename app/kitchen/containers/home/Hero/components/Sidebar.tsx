@@ -7,7 +7,7 @@ export default function Sidebar() {
 
     const [toggle, setToggle] = useState({ main: true, login: false })
 
-    const renderMain = (<div className=" h-screen  bg-transparent p-4 border-l-2"
+    const renderMain = (<div className="h-screen bg-transparent p-4 border-l-2"
     >
         <h2 className="text-2xl font-bold mb-4 border-b-2 w-full">
             MENU
@@ -37,9 +37,9 @@ export default function Sidebar() {
         </div>)}
         <Drawer open={toggle.main}
             backdrop={toggle.login}
-            className="bg-[rgb(0,0,0,0.3)] p-0 w-120"
+            className="bg-[rgb(0,0,0,0.3)] p-0 w-120 "
 
-            onClose={() => { setToggle({ login: false, main: false }) }}
+            onClose={() => { setToggle({ login: false, main: true }) }}
 
             position="right"
         >
@@ -48,17 +48,14 @@ export default function Sidebar() {
             title="MENU"
             titleIcon={() => <Icon icon='tabler:menu-deep' />}
             /> */}
-            <Drawer.Items className="text-white flex flex-col items-start"
+            <Drawer.Items className="text-white flex flex-col items-start">
+                {toggle.login ? (<div className="grid grid-cols-2">
 
-            >
-
-                <div className={`grid`}>
-                    {toggle.login ? (<div className="bg-white text-black h-screen w-80 p-3 flex flex-col justify-center transition-all">
+                    <div className="bg-white text-black h-screen w-80 p-3 flex flex-col justify-center transition-all">
                         <SignInForm />
                     </div>
-                    ) : renderMain}
-                </div>
-
+                    {renderMain}
+                </div>) : renderMain}
             </Drawer.Items>
         </Drawer>
     </>
