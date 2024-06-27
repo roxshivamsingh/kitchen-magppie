@@ -1,8 +1,10 @@
+import ReviewImage from "../../assets/photos/review.png"
+
 const Hero = () => {
     return (
         <div
             className="relative bg-cover bg-center h-screen"
-            style={{ backgroundImage: `url('../../assets/photos/review.png')` }}
+            style={{ backgroundImage: `url(${ReviewImage})` }}
         >
             <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center text-white px-4">
