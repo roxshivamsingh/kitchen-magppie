@@ -39,7 +39,7 @@ export default function Sidebar() {
             backdrop={toggle.login}
             className="bg-[rgb(0,0,0,0.3)] p-0 w-120"
 
-            onClose={() => { setToggle({ login: false, main: false }) }}
+            onClose={() => { setToggle({ login: false, main: true }) }}
 
             position="right"
         >
@@ -49,16 +49,14 @@ export default function Sidebar() {
             titleIcon={() => <Icon icon='tabler:menu-deep' />}
             /> */}
             <Drawer.Items className="text-white flex flex-col items-start"
-
             >
+                {toggle.login ? (<div className="grid grid-cols-2">
 
-                <div className={`grid`}>
-                    {toggle.login ? (<div className="bg-white text-black h-screen w-80 p-3 flex flex-col justify-center transition-all">
+                    <div className="bg-white text-black h-screen w-80 p-3 flex flex-col justify-center transition-all">
                         <SignInForm />
                     </div>
-                    ) : renderMain}
-                </div>
-
+                    {renderMain}
+                </div>) : renderMain}
             </Drawer.Items>
         </Drawer>
     </>
