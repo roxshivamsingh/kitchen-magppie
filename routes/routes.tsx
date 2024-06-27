@@ -8,7 +8,7 @@ export default function Routes() {
         KitchenRoutes,
         CmsRoutes(),
         {
-            path: '/landing-page',
+            path: 'landing-page',
             element: <LandingPage />,
         },
         {
