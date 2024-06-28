@@ -5,13 +5,13 @@ import { useFirebaseCmsKitchensListener } from '../../../utils/firebase/use-fire
 import { useAppSelector } from '../../../../../redux'
 import { useMemo, useState } from 'react'
 import _ from 'lodash'
-import Modal from '../components/Modal'
+import CustomModal from '../components/CustomModal'
 import PageProgress from '../../../../../components/PageProgress'
 
 export default function Kitchen() {
     const [modalId, setIsModalId] = useState('')
     const openModal = (id = 'create') => setIsModalId(id)
-    const closeModal = () => setIsModalId('')
+    const onCloseModal = () => setIsModalId('')
     useFirebaseCmsKitchensListener();
     const { loading, value } = useAppSelector((state) => state.Cms.Kitchens)
     const [search, setSearch] = useState('')
@@ -54,7 +54,7 @@ export default function Kitchen() {
                 <FaPlus className="w-3 h-3 my-auto" />
                 Add Kitchen
             </div>
-            <Modal id={modalId} closeModal={closeModal} />
+            <CustomModal id={modalId} onCloseModal={onCloseModal} />
         </div>
     )
 }

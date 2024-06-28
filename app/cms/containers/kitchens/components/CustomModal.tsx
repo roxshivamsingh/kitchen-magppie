@@ -2,12 +2,12 @@ import { MdClose } from 'react-icons/md'
 import KitchenCreateEdit from '../KitchenCreateEdit/KitchenCreateEdit'
 import { Fragment } from 'react/jsx-runtime'
 
-interface ModalProps {
+interface IProps {
     id: string
-    closeModal: () => void
+    onCloseModal: () => void
 }
 
-const Modal: React.FC<ModalProps> = ({ id, closeModal }) => {
+export default function CustomModal({ id, onCloseModal }: IProps) {
     return (
         <Fragment key={id}>
             {/* Main modal */}
@@ -20,12 +20,12 @@ const Modal: React.FC<ModalProps> = ({ id, closeModal }) => {
                             {/* Modal header */}
                             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                                    {id === 'create' ?  'Add' : 'Edit'} Kitchen
+                                    {id === 'create' ? 'Add' : 'Edit'} Kitchen
                                 </h3>
                                 <button
                                     type="button"
                                     className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                    onClick={closeModal}
+                                    onClick={onCloseModal}
                                 >
                                     <MdClose className="h-5 w-5" />
                                     <span className="sr-only">Close modal</span>
@@ -33,7 +33,7 @@ const Modal: React.FC<ModalProps> = ({ id, closeModal }) => {
                             </div>
                             {/* Modal body */}
                             <div className="p-4 md:p-5 space-y-4">
-                                <KitchenCreateEdit id={id} closeModal={closeModal}/>
+                                <KitchenCreateEdit id={id} onCloseModal={onCloseModal} />
                             </div>
                         </div>
                     </div>
@@ -43,4 +43,3 @@ const Modal: React.FC<ModalProps> = ({ id, closeModal }) => {
     )
 }
 
-export default Modal
