@@ -32,10 +32,10 @@ export default function CmsRoutes() {
                 path: 'kitchen/create',
                 element: (<KitchenCreateEdit />),
             },
-            {
-                path: 'kitchen/:id/edit',
-                element: (<KitchenCreateEdit />),
-            },
+            // {
+            //     path: 'kitchen/:id/edit',
+            //     element: (<KitchenCreateEdit />),
+            // },
             {
                 path: 'sign-in',
                 element: (<SignIn />),

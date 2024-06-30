@@ -140,7 +140,7 @@ export default function Form(props: TProps) {
             toast('Kitchen Added')
         }
         // toastAction({message:, color:})
-        props.closeModal();
+        props.onCloseModal();
     })
 
 
@@ -315,5 +315,5 @@ export default function Form(props: TProps) {
     )
 }
 
-type TProps = { item?: TKitchen, closeModal: () => void }
+type TProps = { item?: TKitchen, onCloseModal: () => void }
 

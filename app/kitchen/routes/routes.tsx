@@ -1,3 +1,4 @@
+import { lazy } from "react"
 import { RouteObject } from 'react-router-dom'
 //====================================================================
 
@@ -6,6 +7,9 @@ import NotFound from '../containers/not-found'
 import SignIn from '../containers/sign-in'
 import Quote from '../containers/Quote'
 import LandingPage from '../../landing-page/LandingPage'
+
+const Example = lazy(() => import('./../containers/Example'))
+
 const KitchenRoutes = {
     path: '',
     children: [
@@ -20,7 +24,6 @@ const KitchenRoutes = {
         {
             path: 'quote',
             element: <Quote />,
-
         },
         {
             path: 'sign-in',
@@ -29,6 +32,10 @@ const KitchenRoutes = {
         {
             path: 'landing-page',
             element: <LandingPage />,
+        },
+        {
+            path: 'example',
+            element: <Example />,
         }
     ]
 } as RouteObject

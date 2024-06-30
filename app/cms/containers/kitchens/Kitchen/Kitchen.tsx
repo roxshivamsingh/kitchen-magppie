@@ -1,17 +1,19 @@
-import Card from '../components/Card'
-import Search from '../../../components/Search'
-import { FaPlus } from 'react-icons/fa'
-import { useFirebaseCmsKitchensListener } from '../../../utils/firebase/use-firebase-cms-listeners'
-import { useAppSelector } from '../../../../../redux'
 import { useMemo, useState } from 'react'
 import _ from 'lodash'
-import Modal from '../components/Modal'
+import { FaPlus } from 'react-icons/fa'
+//====================================================================
+
+import Card from '../components/Card'
+import Search from '../../../components/Search'
+import { useFirebaseCmsKitchensListener } from '../../../utils/firebase/use-firebase-cms-listeners'
+import { useAppSelector } from '../../../../../redux'
+import CustomModal from '../components/CustomModal'
 import PageProgress from '../../../../../components/PageProgress'
 
 export default function Kitchen() {
     const [modalId, setIsModalId] = useState('')
     const openModal = (id = 'create') => setIsModalId(id)
-    const closeModal = () => setIsModalId('')
+    const onCloseModal = () => setIsModalId('')
     useFirebaseCmsKitchensListener();
     const { loading, value } = useAppSelector((state) => state.Cms.Kitchens)
     const [search, setSearch] = useState('')
@@ -54,7 +56,7 @@ export default function Kitchen() {
                 <FaPlus className="w-3 h-3 my-auto" />
                 Add Kitchen
             </div>
-            <Modal id={modalId} closeModal={closeModal} />
+            <CustomModal id={modalId} onCloseModal={onCloseModal} />
         </div>
     )
 }
