@@ -20,3 +20,5 @@ export type TComponent = {
     typeography: TComponentTypography,
     sections: TComponentSection
 }
+
+
