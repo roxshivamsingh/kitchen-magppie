@@ -1,7 +1,8 @@
-import { _CUSTOMER_SITE_COMPONENTS } from "../../types/component";
+import { TComponentItem } from "../../types/component";
 
-export default function Intro() {
-    const data = _CUSTOMER_SITE_COMPONENTS?.find((row) => row.value === 'rating-component');
+type TProps = { data: TComponentItem }
+
+export default function Intro({ data }: TProps) {
 
     return (
         <div className="flex flex-col lg:flex-row h-screen">

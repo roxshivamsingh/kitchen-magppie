@@ -1,8 +1,7 @@
-import { _CUSTOMER_SITE_COMPONENTS } from "../../types/component";
+import { TComponentItem } from "../../types/component";
+type TProps = { data: TComponentItem }
 
-export default function About() {
-    const data = _CUSTOMER_SITE_COMPONENTS?.find((row) => row.value === 'planet-component');
-
+export default function About({ data }: TProps) {
     return (
         <div
             className="relative bg-cover bg-center h-screen"
