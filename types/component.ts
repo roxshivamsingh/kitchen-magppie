@@ -19,7 +19,7 @@ export type TComponentSection = {
 
 export type TComponent = {
     orderId: number,
-    typeography: TComponentTypography,
+    typography: TComponentTypography,
     value: string,
     links?: TComponentLink,
     sections?: TComponentSection
@@ -31,7 +31,7 @@ export const _CUSTOMER_SITE_COMPONENTS: TComponent[] = [
     {
         orderId: 0,
         value: 'first-component',
-        typeography: {
+        typography: {
             main: 'MAGPPIE',
             secondary: 'an exclusive compilation for Ms Monica Chaudhary',
             subtitle: 'Habitat Architects • India'
@@ -41,7 +41,7 @@ export const _CUSTOMER_SITE_COMPONENTS: TComponent[] = [
     {
         orderId: 1,
         value: 'planet-component',
-        typeography: {
+        typography: {
             main: 'MAGPPIE',
             secondary: 'for people and planet',
             subtitle: 'We design and build products that bring wellness at home',
@@ -52,7 +52,7 @@ export const _CUSTOMER_SITE_COMPONENTS: TComponent[] = [
     {
         orderId: 2,
         value: 'rating-component',
-        typeography: {
+        typography: {
             subtitle: 'Wellness Kitchens',
             main: 'MAGPPIE',
             secondary: '1',
@@ -66,7 +66,7 @@ export const _CUSTOMER_SITE_COMPONENTS: TComponent[] = [
     {
         orderId: 2,
         value: 'transform-component',
-        typeography: {
+        typography: {
             main: 'Transform Your Kitchen, Transform Your',
             secondary: 'Health',
             subtitle: 'Upgrade to Magppie Wellness Kitchen'

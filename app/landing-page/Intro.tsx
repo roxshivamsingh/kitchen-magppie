@@ -8,15 +8,15 @@ export default function Intro() {
             <div className="bg-[#76726c] flex items-center justify-center lg:w-2/3 h-full p-8">
                 <div className="text-center text-white max-w-xl flex flex-col justify-center items-center w-full">
                     <div className="bg-[#918e89] rounded-full w-10 h-10 flex items-center justify-center mb-4">
-                        <span className="text-xl">{data.typeography.secondary}</span>
+                        <span className="text-xl">{data.typography.secondary}</span>
                     </div>
-                    <h1 className="text-5xl font-bold mb-4">{data.typeography.main}</h1>
-                    <h2 className="text-7xl mb-4">{data.typeography.subtitle}</h2>
+                    <h1 className="text-5xl font-bold mb-4">{data.typography.main}</h1>
+                    <h2 className="text-7xl mb-4">{data.typography.subtitle}</h2>
                     <p className="text-2xl">
-                        {data.typeography.description}
+                        {data.typography.description}
                     </p>
                     <p className="text-2xl">
-                        {data.typeography.secondaryDescription}
+                        {data.typography.secondaryDescription}
                     </p>
                 </div>
             </div>
