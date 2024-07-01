@@ -1,28 +1,25 @@
-const About = () => {
+import { _CUSTOMER_SITE_COMPONENTS } from "../../types/component";
+
+export default function About() {
+    const data = _CUSTOMER_SITE_COMPONENTS?.find((row) => row.value === 'planet-component');
+
     return (
         <div
             className="relative bg-cover bg-center h-screen"
-            style={{
-                backgroundImage: `url('../../assets/photos//contact-us/contact-us-bg.png`,
-            }}
+            style={{ backgroundImage: `url('${data.links.bg}` }}
         >
             <div className="absolute inset-0 flex items-center justify-center md:w-2/3">
                 <div className="text-center text-white px-4 max-w-4xl">
-                    <h1 className="text-4xl font-bold mb-4">MAGPPIE</h1>
-                    <h2 className="text-7xl mb-4">for people and planet</h2>
+                    <h1 className="text-4xl font-bold mb-4">{data.typeography.main}</h1>
+                    <h2 className="text-7xl mb-4">{data.typeography.secondary}</h2>
                     <p className="text-2xl mb-4">
-                        We design and build products that bring wellness at home
+                        {data.typeography.subtitle}
                     </p>
                     <p className="text-lg">
-                        At MAGPPIE™, we're committed to create products that
-                        make everyday life healthier and more sustainable. Our
-                        goal is to offer solutions that prioritise personal
-                        well-being while caring for our planet.
+                        {data.typeography.description}
                     </p>
                 </div>
             </div>
         </div>
     )
 }
-
-export default About

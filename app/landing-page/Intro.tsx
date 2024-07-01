@@ -1,31 +1,32 @@
-const Intro = () => {
+import { _CUSTOMER_SITE_COMPONENTS } from "../../types/component";
+
+export default function Intro() {
+    const data = _CUSTOMER_SITE_COMPONENTS?.find((row) => row.value === 'rating-component');
+
     return (
         <div className="flex flex-col lg:flex-row h-screen">
             <div className="bg-[#76726c] flex items-center justify-center lg:w-2/3 h-full p-8">
                 <div className="text-center text-white max-w-xl flex flex-col justify-center items-center w-full">
                     <div className="bg-[#918e89] rounded-full w-10 h-10 flex items-center justify-center mb-4">
-                        <span className="text-xl">1</span>
+                        <span className="text-xl">{data.typeography.secondary}</span>
                     </div>
-                    <h1 className="text-5xl font-bold mb-4">MAGPPIE</h1>
-                    <h2 className="text-7xl mb-4">Wellness Kitchens</h2>
+                    <h1 className="text-5xl font-bold mb-4">{data.typeography.main}</h1>
+                    <h2 className="text-7xl mb-4">{data.typeography.subtitle}</h2>
                     <p className="text-2xl">
-                        Magppie Kitchens are world's first wellness kitchens,
-                        fully built in sanitised stone - Magppie Silverstone™
+                        {data.typeography.description}
                     </p>
                     <p className="text-2xl">
-                        These kitchens are fully washable, most hygienic and
-                        world's most strongest.
+                        {data.typeography.secondaryDescription}
                     </p>
                 </div>
             </div>
             <div
                 className="lg:w-1/3 h-full bg-cover bg-center"
                 style={{
-                    backgroundImage: `url('../../assets/photos/landing-page/intro.png')`,
+                    backgroundImage: `url(${data.links.illustration})`,
                 }}
             ></div>
-        </div>
+        </div >
     )
 }
 
-export default Intro
