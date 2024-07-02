@@ -7,7 +7,6 @@ import Hero from './Hero'
 import Intro from './Intro'
 
 export default function LandingPage() {
-
     useFirebaseCustomerListener()
 
     const data = useAppSelector((state) => state.Cms.CustomerSiteComponent);
@@ -15,17 +14,30 @@ export default function LandingPage() {
     if (data.status === 'loading') {
         return <PageProgress />
     }
+
     if (data?.value?.length)
-        return (<>
-            <Hero data={data.value?.find((row) => row.value === 'first-component')} />
-            <About
-                data={data.value?.find((row) => row.value === 'planet-component')}
-            />
-            <Intro data={data.value?.find((row) => row.value === 'rating-component')} />
-            <Caption
-                data={data.value?.find((row) => row.value === 'transform-component')}
-            />
-        </>)
+        return (
+            <>
+                <Hero
+                    data={data.value?.find(
+                        (row) => row.value === 'first-component'
+                    )}
+                />
+                <About
+                    data={data.value?.find(
+                        (row) => row.value === 'planet-component'
+                    )}
+                />
+                <Intro
+                    data={data.value?.find(
+                        (row) => row.value === 'rating-component'
+                    )}
+                />
+                <Caption
+                    data={data.value?.find(
+                        (row) => row.value === 'transform-component'
+                    )}
+                />
+            </>)
     return <>Components not found</>
 }
-
