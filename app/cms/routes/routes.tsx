@@ -8,29 +8,29 @@ import {
     SignIn,
     KitchenCreateEdit,
     Home,
-    User
+    User,
+    LandingPage,
 } from '../containers'
 import { useFirebaseCmsAuthListener } from '../utils/firebase'
 import { ProtectedRoute } from '../components'
 
 export default function CmsRoutes() {
-
     useFirebaseCmsAuthListener()
-    return ({
+    return {
         path: 'cms',
         element: <ProtectedRoute />,
         children: [
             {
-                element: (<Home />),
+                element: <Home />,
                 index: true,
             },
             {
                 path: 'kitchens',
-                element: (<Kitchen />),
+                element: <Kitchen />,
             },
             {
                 path: 'kitchen/create',
-                element: (<KitchenCreateEdit />),
+                element: <KitchenCreateEdit />,
             },
             // {
             //     path: 'kitchen/:id/edit',
@@ -38,16 +38,20 @@ export default function CmsRoutes() {
             // },
             {
                 path: 'sign-in',
-                element: (<SignIn />),
+                element: <SignIn />,
             },
             {
                 path: '/cms/projects',
-                element: (<Projects />),
+                element: <Projects />,
             },
             {
                 path: '/cms/users',
-                element: (<User />),
+                element: <User />,
             },
-        ]
-    }) as RouteObject
+            {
+                path: '/cms/landing-page',
+                element: <LandingPage />,
+            },
+        ],
+    } as RouteObject
 }
