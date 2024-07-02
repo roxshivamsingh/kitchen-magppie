@@ -22,9 +22,9 @@ export default function LandingPage() {
                 )}
             />
             <About
-                // data={data.value?.find(
-                //     (row) => row.value === 'planet-component'
-                // )}
+                data={data.value?.find(
+                    (row) => row.value === 'planet-component'
+                )}
             />
             <Intro
                 data={data.value?.find(
