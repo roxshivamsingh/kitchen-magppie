@@ -10,20 +10,17 @@ export type TComponentLink = { icon: string, bg: string, illustration: string }
 
 export type TComponentSectionImageItem = { link: string, typography: TComponentTypography }
 
-export type TComponentSection = {
-    links: TComponentLink,
-    typography: TComponentTypography,
-    isGallery: boolean,
-    images: TComponentSectionImageItem[],
-}
 
 export type TComponentItem = {
     orderId: number,
     id: string,
     typography: TComponentTypography,
-    value: string,
     links: TComponentLink,
-    sections: TComponentSection,
+    name: string,
+    isGallery: boolean,
+    gallery: TComponentSectionImageItem[],
+    iconLists: TComponentSectionImageItem[],
+    // section: TComponentSection,
     at: { created: Date, updated: Date }
 }
 
@@ -41,19 +38,22 @@ const INIT_CUSTOMER_SITE_COMPONENT_LINK: TComponentLink = {
     bg: '',
     illustration: '',
 }
-const INIT_CUSTOMER_SITE_COMPONENT_SECTIONS: TComponentSection = {
-    links: INIT_CUSTOMER_SITE_COMPONENT_LINK,
-    typography: INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY,
-    isGallery: false,
-    images: []
-}
+// const INIT_CUSTOMER_SITE_COMPONENT_SECTIONS: TComponentSection = {
+//     links: INIT_CUSTOMER_SITE_COMPONENT_LINK,
+//     typography: INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY,
+//     isGallery: false,
+//     images: []
+// }
 export const INIT_CUSTOMER_SITE_COMPONENT: TComponentItem = {
     typography: INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY,
     links: INIT_CUSTOMER_SITE_COMPONENT_LINK,
     orderId: -1,
     id: '',
-    value: '',
-    sections: INIT_CUSTOMER_SITE_COMPONENT_SECTIONS,
+    name: '',
+    isGallery: false,
+    iconLists: [],
+    gallery: [],
+    // sections: INIT_CUSTOMER_SITE_COMPONENT_SECTIONS,
     at: { created: new Date(), updated: new Date() }
 }
 
@@ -62,7 +62,7 @@ export const _CUSTOMER_SITE_COMPONENTS: TComponentItem[] = [
         ...INIT_CUSTOMER_SITE_COMPONENT,
 
         orderId: 0,
-        value: 'first-component',
+        name: 'first-component',
         typography: {
             ...INIT_CUSTOMER_SITE_COMPONENT.typography,
 
@@ -81,7 +81,7 @@ export const _CUSTOMER_SITE_COMPONENTS: TComponentItem[] = [
         ...INIT_CUSTOMER_SITE_COMPONENT,
 
         orderId: 1,
-        value: 'planet-component',
+        name: 'planet-component',
         typography: {
             ...INIT_CUSTOMER_SITE_COMPONENT.typography,
 
@@ -102,7 +102,7 @@ export const _CUSTOMER_SITE_COMPONENTS: TComponentItem[] = [
         ...INIT_CUSTOMER_SITE_COMPONENT,
 
         orderId: 2,
-        value: 'rating-component',
+        name: 'rating-component',
         typography: {
             ...INIT_CUSTOMER_SITE_COMPONENT.typography,
 
@@ -125,7 +125,7 @@ export const _CUSTOMER_SITE_COMPONENTS: TComponentItem[] = [
         ...INIT_CUSTOMER_SITE_COMPONENT,
 
         orderId: 3,
-        value: 'transform-component',
+        name: 'transform-component',
         typography: {
             ...INIT_CUSTOMER_SITE_COMPONENT.typography,
 
