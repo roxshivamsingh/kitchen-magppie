@@ -14,28 +14,29 @@ export default function LandingPage() {
     if (data.status === 'loading') {
         return <PageProgress />
     }
+    // return <CustomDumpButton />
 
     if (data?.value?.length)
         return (
             <>
                 <Hero
                     data={data.value?.find(
-                        (row) => row.value === 'first-component'
+                        (row) => row.name === 'first-component'
                     )}
                 />
                 <About
                     data={data.value?.find(
-                        (row) => row.value === 'planet-component'
+                        (row) => row.name === 'planet-component'
                     )}
                 />
                 <Intro
                     data={data.value?.find(
-                        (row) => row.value === 'rating-component'
+                        (row) => row.name === 'rating-component'
                     )}
                 />
                 <Caption
                     data={data.value?.find(
-                        (row) => row.value === 'transform-component'
+                        (row) => row.name === 'transform-component'
                     )}
                 />
             </>)
