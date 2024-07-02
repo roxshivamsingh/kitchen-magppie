@@ -33,13 +33,13 @@ export default function LandingPage() {
                 <div className="mt-10">
                     {kitchens?.length ? (
                         <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl mx-auto place-items-center">
-                            {kitchens?.map((item, i) => (
+                            {/* {kitchens?.map((item, i) => ( */}
                                 <Card
-                                    openModal={openModal}
-                                    item={item}
-                                    key={i}
+                                    // openModal={openModal}
+                                    // item={item}
+                                    // key={i}
                                 />
-                            ))}
+                            {/* ))} */}
                         </div>
                     ) : (
                         <div className="flex flex-row justify-center h-20 align-middle">
