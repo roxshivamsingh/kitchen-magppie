@@ -20,7 +20,6 @@ export type TComponentItem = {
     isGallery: boolean,
     gallery: TComponentSectionImageItem[],
     iconLists: TComponentSectionImageItem[],
-    // section: TComponentSection,
     at: { created: Date, updated: Date }
 }
 
