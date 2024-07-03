@@ -10,7 +10,7 @@ export default function CmsHome() {
             <h1 className="text-3xl mb-8 md:mb-0 font-bold uppercase text-center mt-20">
                 Dashboard
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 space-x-2 lg:mt-10 md:mt-10 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 space-x-2 lg:mt-10 lg:grid-cols-4 md:mt-10 gap-10">
                 {CmsHomeData.map((data, i) => (
                     <Card
                         onClick={() => {
