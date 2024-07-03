@@ -29,11 +29,11 @@ export default function LandingPage() {
 
     return (
         <div>
-            <Search placeholder="Search Sections.." onChange={(e) => { setSearch(e) }} />
+            <Search placeholder="Search Components.." onChange={(e) => { setSearch(e) }} />
             {loading ? (<PageProgress />) : (
                 <div className="mt-10">
                     {components?.length ? (
-                        <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl mx-auto place-items-center">
+                        <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl mx-auto place-items-start">
                             {components?.map((item, i) => {
                                 return <Card key={i} item={item} />
                             })}
@@ -51,7 +51,7 @@ export default function LandingPage() {
                 onClick={() => openModal()}
             >
                 <FaPlus className="w-3 h-3 my-auto" />
-                Add Section
+                Add Component
             </div>
             <CustomModal id={modalId} onCloseModal={onCloseModal} />
         </div>
