@@ -3,27 +3,28 @@ import _ from 'lodash'
 import { FaPlus } from 'react-icons/fa'
 //====================================================================
 
-import Card from '../components/Card'
+import Card from '../components/CmsLandingPageComponentCard'
 import Search from '../../../components/Search'
-import { useFirebaseCmsKitchensListener } from '../../../utils/firebase/use-firebase-cms-listeners'
 import { useAppSelector } from '../../../../../redux'
 import CustomModal from '../components/CustomModal'
 import PageProgress from '../../../../../components/PageProgress'
+import { useFirebaseCustomerListener } from '../../../utils/firebase/customer'
 
 export default function LandingPage() {
     const [modalId, setIsModalId] = useState('')
     const openModal = (id = 'create') => setIsModalId(id)
     const onCloseModal = () => setIsModalId('')
-    useFirebaseCmsKitchensListener();
-    const { loading, value } = useAppSelector((state) => state.Cms.Kitchens)
+
+    useFirebaseCustomerListener()
+    const { loading, value } = useAppSelector((state) => state.Cms.CustomerSiteComponent)
     const [search, setSearch] = useState('')
 
-    const kitchens = useMemo(() => {
-        return value?.filter((item) =>
+    const components = useMemo(() => {
+        return _.sortBy(value?.filter((item) =>
             search?.length
                 ? _.lowerCase(item.name)?.includes(_.lowerCase(search))
                 : true
-        )
+        ), 'orderId')
     }, [search, value]);
 
     return (
@@ -31,15 +32,11 @@ export default function LandingPage() {
             <Search placeholder="Search Sections.." onChange={(e) => { setSearch(e) }} />
             {loading ? (<PageProgress />) : (
                 <div className="mt-10">
-                    {kitchens?.length ? (
+                    {components?.length ? (
                         <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl mx-auto place-items-center">
-                            {/* {kitchens?.map((item, i) => ( */}
-                                <Card
-                                    // openModal={openModal}
-                                    // item={item}
-                                    // key={i}
-                                />
-                            {/* ))} */}
+                            {components?.map((item, i) => {
+                                return <Card key={i} item={item} />
+                            })}
                         </div>
                     ) : (
                         <div className="flex flex-row justify-center h-20 align-middle">
