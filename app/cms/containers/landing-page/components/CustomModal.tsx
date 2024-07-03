@@ -1,4 +1,8 @@
 import { MdClose } from 'react-icons/md'
+import * as Yup from 'yup';
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { INIT_CUSTOMER_SITE_COMPONENT, TComponentItem } from '../../../../../types/component'
 interface IProps {
     id: string
     onCloseModal: () => void
@@ -187,10 +191,7 @@ export default function CustomModal(props: IProps) {
 
 
 
-import * as Yup from 'yup';
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { INIT_CUSTOMER_SITE_COMPONENT, TComponentItem } from '../../../../../types/component'
+
 
 const typographySchema = Yup.object().shape({
     main: Yup.string(),
