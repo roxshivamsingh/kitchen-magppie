@@ -3,17 +3,16 @@ import _ from 'lodash'
 import { FaPlus } from 'react-icons/fa'
 //====================================================================
 
-import Card from '../components/CmsLandingPageComponentCard'
 import Search from '../../../components/Search'
 import { useAppSelector } from '../../../../../redux'
-import CustomModal from '../components/CustomModal'
+import { CmsLandingPageComponentCard, ComponentCreateEditForm } from "../components"
 import PageProgress from '../../../../../components/PageProgress'
 import { useFirebaseCustomerListener } from '../../../utils/firebase/customer'
+import { CustomSimpleModal } from '../../../../../components'
 
 export default function LandingPage() {
     const [modalId, setIsModalId] = useState('')
     const openModal = (id = 'create') => setIsModalId(id)
-    const onCloseModal = () => setIsModalId('')
 
     useFirebaseCustomerListener()
     const { loading, value } = useAppSelector((state) => state.Cms.CustomerSiteComponent)
@@ -35,7 +34,7 @@ export default function LandingPage() {
                     {components?.length ? (
                         <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl mx-auto place-items-start">
                             {components?.map((item, i) => {
-                                return <Card key={i} item={item} />
+                                return <CmsLandingPageComponentCard key={i} item={item} />
                             })}
                         </div>
                     ) : (
@@ -53,7 +52,11 @@ export default function LandingPage() {
                 <FaPlus className="w-3 h-3 my-auto" />
                 Add Component
             </div>
-            <CustomModal id={modalId} onCloseModal={onCloseModal} />
+            <CustomSimpleModal show={!!modalId?.length} onHide={() => { setIsModalId('') }}
+                label={`${modalId === 'create' ? 'Add' : 'Edit'} Component`}
+            >
+                <ComponentCreateEditForm />
+            </CustomSimpleModal>
         </div>
     )
 }
