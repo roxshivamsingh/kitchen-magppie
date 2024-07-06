@@ -5,9 +5,10 @@ import { FaPlus } from 'react-icons/fa'
 
 import Search from '../../../components/Search'
 import { useAppSelector } from '../../../../../redux'
-import { CmsLandingPageComponentCard, ComponentCreateEditModal } from "../components"
+import { CmsLandingPageComponentCard, ComponentCreateEditForm } from "../components"
 import PageProgress from '../../../../../components/PageProgress'
 import { useFirebaseCustomerListener } from '../../../utils/firebase/customer'
+import { CustomSimpleModal } from '../../../../../components'
 
 export default function LandingPage() {
     const [modalId, setIsModalId] = useState('')
@@ -51,7 +52,11 @@ export default function LandingPage() {
                 <FaPlus className="w-3 h-3 my-auto" />
                 Add Component
             </div>
-            <ComponentCreateEditModal id={modalId} onHide={() => { setIsModalId('') }} />
+            <CustomSimpleModal show={!!modalId?.length} onHide={() => { setIsModalId('') }}
+                label={`${modalId === 'create' ? 'Add' : 'Edit'} Component`}
+            >
+                <ComponentCreateEditForm />
+            </CustomSimpleModal>
         </div>
     )
 }

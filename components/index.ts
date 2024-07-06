@@ -1,2 +1,3 @@
 import CustomBreadcrumb from "./CustomBreadcrumb";
-export { CustomBreadcrumb }
+import CustomSimpleModal from "./CustomSimpleModal"
+export { CustomBreadcrumb, CustomSimpleModal }

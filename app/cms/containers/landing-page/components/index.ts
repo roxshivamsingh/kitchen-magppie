@@ -1,3 +1,3 @@
-import ComponentCreateEditModal from "./ComponentCreateEditModal";
+import ComponentCreateEditForm from "./ComponentCreateEditForm";
 import CmsLandingPageComponentCard from "./CmsLandingPageComponentCard"
-export { ComponentCreateEditModal, CmsLandingPageComponentCard }
+export { ComponentCreateEditForm, CmsLandingPageComponentCard }

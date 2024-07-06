@@ -1,4 +1,4 @@
-import Form from '../components/Form'
+import Form from "../../kitchens/components/Form"
 import { useAppSelector } from '../../../../../redux'
 
 type TProps = { id?: string; onCloseModal?: VoidFunction }
