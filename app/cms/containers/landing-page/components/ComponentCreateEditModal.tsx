@@ -1,23 +1,22 @@
 import { MdClose } from 'react-icons/md'
 import * as Yup from 'yup';
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { INIT_CUSTOMER_SITE_COMPONENT, TComponentItem } from '../../../../../types/component'
-interface IProps {
-    id: string
-    onCloseModal: () => void
-}
+//====================================================================
 
-export default function CustomModal(props: IProps) {
-    const { id, onCloseModal } = props
+import { INIT_CUSTOMER_SITE_COMPONENT } from '../../../../../types/component'
+type TProps = { id: string, onHide: VoidFunction }
+
+export default function ComponentCreateEditModal(props: TProps) {
+    const { id, onHide } = props
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: INIT_CUSTOMER_SITE_COMPONENT,
         resolver: yupResolver(schema),
     })
-    const onSubmit: SubmitHandler<TComponentItem> = data => {
+    const onSubmit = handleSubmit((data) => {
         console.log(data);
-    };
+    });
     return (
         <div>
 
@@ -36,14 +35,14 @@ export default function CustomModal(props: IProps) {
                                 <button
                                     type="button"
                                     className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                    onClick={onCloseModal}
+                                    onClick={onHide}
                                 >
                                     <MdClose className="h-5 w-5" />
                                     <span className="sr-only">Close modal</span>
                                 </button>
                             </div>
-                            <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded shadow-md">
-                                <div className="mb-4">
+                            <form onSubmit={onSubmit} className="bg-white p-6 rounded shadow-md">
+                                {/* <div className="mb-4">
                                     <label className="block text-sm font-medium text-gray-700">Order ID</label>
                                     <input
                                         type="number"
@@ -51,7 +50,17 @@ export default function CustomModal(props: IProps) {
                                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                     />
                                     {errors.orderId && <p className="text-red-500 text-xs mt-1">{errors.orderId.message}</p>}
+                                </div> */}
+                                <div className="mb-4">
+                                    <label className="block text-sm font-medium text-gray-700">Name</label>
+                                    <input
+                                        type="text"
+                                        {...register('name')}
+                                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                    />
+                                    {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
                                 </div>
+
                                 <h3 className="text-lg mb-2">Typography</h3>
 
                                 <div className="mb-4">
@@ -148,15 +157,6 @@ export default function CustomModal(props: IProps) {
                                 </div>
 
                                 {/* Name */}
-                                <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-700">Name</label>
-                                    <input
-                                        type="text"
-                                        {...register('name')}
-                                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                    />
-                                    {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
-                                </div>
 
                                 {/* Is Gallery */}
                                 <div className="mb-4">

@@ -2,7 +2,7 @@ import rating from '../../../../../assets/photos/ratings.png'
 import { FaPen } from 'react-icons/fa'
 import { TComponentItem } from '../../../../../types/component'
 
-type TProps = { item: TComponentItem }
+
 export default function CmsLandingPageComponentCard(props: TProps) {
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -23,3 +23,4 @@ export default function CmsLandingPageComponentCard(props: TProps) {
     )
 }
 
+type TProps = { item: TComponentItem }
