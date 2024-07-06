@@ -1,8 +1,8 @@
-import _ from 'lodash'
 import { FaHome } from 'react-icons/fa'
 import { IoIosArrowForward } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import _ from '../../types/lodash'
 
 export default function CustomBreadcrumb() {
     const { pathname } = useLocation()
@@ -30,7 +30,7 @@ export default function CustomBreadcrumb() {
                                         to={option.path}
                                         className="ms-1 text-sm font-medium text-blue-700 hover:text-blue-600 md:ms-2"
                                     >
-                                        {option.label}
+                                        {_.labelCase(option.label)}
                                     </Link>
                                 </div>
                             </div>

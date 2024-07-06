@@ -52,7 +52,10 @@ export default function LandingPage() {
                 <FaPlus className="w-3 h-3 my-auto" />
                 Add Component
             </div>
-            <CustomSimpleModal show={!!modalId?.length} onHide={() => { setIsModalId('') }}
+
+            <CustomSimpleModal
+                show={!!modalId?.length}
+                onHide={() => { setIsModalId('') }}
                 label={`${modalId === 'create' ? 'Add' : 'Edit'} Component`}
             >
                 <ComponentCreateEditForm />
