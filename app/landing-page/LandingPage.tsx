@@ -5,11 +5,13 @@ import About from './About'
 import Caption from './Caption'
 import Hero from './Hero'
 import Intro from './Intro'
+import SectionOne from './SectionOne'
+import SectionTwo from './SectionTwo'
 
 export default function LandingPage() {
     useFirebaseCustomerListener()
 
-    const data = useAppSelector((state) => state.Cms.CustomerSiteComponent);
+    const data = useAppSelector((state) => state.Cms.CustomerSiteComponent)
 
     if (data.status === 'loading') {
         return <PageProgress />
@@ -39,6 +41,9 @@ export default function LandingPage() {
                         (row) => row.name === 'transform-component'
                     )}
                 />
-            </>)
+                <SectionOne />
+                <SectionTwo />
+            </>
+        )
     return <>Components not found</>
 }
