@@ -9,20 +9,13 @@ import {
     TKitchen
 } from '../../../types/Kitchen'
 import { IoMdClose } from 'react-icons/io'
-import { deleteObject } from 'firebase/storage'
 import { useCallback, useMemo } from 'react'
-import {
-    StorageError,
-    UploadTaskSnapshot,
-    getDownloadURL,
-    ref,
-    uploadBytesResumable,
-} from 'firebase/storage'
 import SimpleDropdown from "../../../../../components/SimpleDropdown"
-import { db, storageApp } from '../../../../../config/firebase.config'
+import { db } from '../../../../../config/firebase.config'
 import { collection, doc } from 'firebase/firestore'
 import CircularProgress from '../../../../../components/CircularProgress'
 import { toast } from 'react-toastify'
+import { useFirebaseStorageActions } from '../../../../../appHooks/firebase'
 
 export default function Form(props: TProps) {
 
@@ -34,20 +27,14 @@ export default function Form(props: TProps) {
         return docRef.id
     }, [])
 
-
-
     const defaultValues = useMemo(() => {
         const init = _.omit(INIT_YUP_KITCHEN, ['createdAt']);
 
         if (props.item) {
-            return {
-                ...init,
-                ...props.item
-            }
+            return { ...init, ...props.item }
         }
         return ({
             ...init,
-
             id: props?.item?.id?.length ? props.item.id : generateDocumentId,
             name: _.get(props.item, 'name', ''),
             description: _.get(props.item, 'description', ''),
@@ -69,64 +56,45 @@ export default function Form(props: TProps) {
     })
 
     const values = watch()
+
+    const StorageActions = useFirebaseStorageActions();
+
     const handleRemoveCabinetImage = useCallback((index: number) => {
         const link = values.images?.cabinet?.find((_, j) => j === index)
-        if (link) {
-            const fileRef = ref(storageApp, link)
-            deleteObject(fileRef)
-            setValue('images.cabinet', values.images.cabinet?.filter((image) => image !== link))
+        if (link?.length) {
+            StorageActions.remove(link).then(() => {
+                setValue('images.cabinet', values.images.cabinet?.filter((image) => image !== link))
+            })
         }
     },
-        [setValue, values.images.cabinet]
+        [StorageActions, setValue, values.images.cabinet]
     )
-
     const onUploadImages = useCallback((files: File[], variant: 'cabinet' | 'hero') => {
         setValue(`loading.${variant}`, true)
-        const onUploadTaskSnapshot = (snap: UploadTaskSnapshot) => {
-            const uploading = Math.round(
-                (snap.bytesTransferred / snap.totalBytes) * 100
-            )
-            if (uploading === 100) {
-                console.log('Success')
-            }
-        }
-        const onStorageError = (error: StorageError) => {
-            console.log(error)
-        }
-        files?.forEach((image) => {
-            const fileName = `${+new Date()}_${image.name}`
-            const storageRef = ref(
-                storageApp,
-                `kitchens/${variant}/${defaultValues.id}/${fileName}`
-            )
-            const uploadTask = uploadBytesResumable(storageRef, image)
-
-            const onUploadComplete = () => {
-                getDownloadURL(uploadTask.snapshot.ref).then((link) => {
-                    if (link?.length) {
-                        if (variant === 'hero')
-                            setValue(`images.${variant}`, link)
-
-                        if (variant === 'cabinet') {
-                            setValue(`images.${variant}`, [
-                                ..._.get(values, `images.${variant}`),
-                                link
-                            ])
+        StorageActions.batch.upload({
+            files,
+            path: `kitchens/${variant}/${defaultValues.id}`,
+            onSuccess: (links) => {
+                if (links?.length) {
+                    links?.forEach((link) => {
+                        if (link?.length) {
+                            if (variant === 'hero') {
+                                setValue(`images.${variant}`, link)
+                            } else if (variant === 'cabinet') {
+                                setValue(`images.${variant}`, [
+                                    ..._.get(values, `images.${variant}`),
+                                    link
+                                ])
+                            }
                         }
-                    }
-                })
-            }
-            uploadTask.on(
-                'state_changed',
-                onUploadTaskSnapshot,
-                onStorageError,
-                onUploadComplete
-            )
+                    })
+                }
+                setValue(`loading.${variant}`, false)
+            },
         })
-        setValue(`loading.${variant}`, false)
 
     },
-        [defaultValues.id, setValue, values]
+        [StorageActions.batch, defaultValues.id, setValue, values]
     )
 
     const onSubmit = handleSubmit((data) => {
