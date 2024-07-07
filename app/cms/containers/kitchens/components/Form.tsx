@@ -8,14 +8,12 @@ import {
     KITCHEN_TIER_OPTIONS,
     TKitchen
 } from '../../../types/Kitchen'
-import { IoMdClose } from 'react-icons/io'
-import { useCallback, useMemo } from 'react'
 import SimpleDropdown from "../../../../../components/SimpleDropdown"
 import { db } from '../../../../../config/firebase.config'
 import { collection, doc } from 'firebase/firestore'
-import CircularProgress from '../../../../../components/CircularProgress'
 import { toast } from 'react-toastify'
-import { useFirebaseStorageActions } from '../../../../../appHooks/firebase'
+import ImageActions from '../../../../../components/ImageInput/ImageInput'
+import { useMemo } from 'react'
 
 export default function Form(props: TProps) {
 
@@ -57,45 +55,7 @@ export default function Form(props: TProps) {
 
     const values = watch()
 
-    const StorageActions = useFirebaseStorageActions();
 
-    const handleRemoveCabinetImage = useCallback((index: number) => {
-        const link = values.images?.cabinet?.find((_, j) => j === index)
-        if (link?.length) {
-            StorageActions.remove(link).then(() => {
-                setValue('images.cabinet', values.images.cabinet?.filter((image) => image !== link))
-            })
-        }
-    },
-        [StorageActions, setValue, values.images.cabinet]
-    )
-    const onUploadImages = useCallback((files: File[], variant: 'cabinet' | 'hero') => {
-        setValue(`loading.${variant}`, true)
-        StorageActions.batch.upload({
-            files,
-            path: `kitchens/${variant}/${defaultValues.id}`,
-            onSuccess: (links) => {
-                if (links?.length) {
-                    links?.forEach((link) => {
-                        if (link?.length) {
-                            if (variant === 'hero') {
-                                setValue(`images.${variant}`, link)
-                            } else if (variant === 'cabinet') {
-                                setValue(`images.${variant}`, [
-                                    ..._.get(values, `images.${variant}`),
-                                    link
-                                ])
-                            }
-                        }
-                    })
-                }
-                setValue(`loading.${variant}`, false)
-            },
-        })
-
-    },
-        [StorageActions.batch, defaultValues.id, setValue, values]
-    )
 
     const onSubmit = handleSubmit((data) => {
         const result = _.omit(data, ['loading']) as TKitchen
@@ -112,24 +72,6 @@ export default function Form(props: TProps) {
     })
 
 
-    const renderImageList = useMemo(() => (<div className="flex flex-wrap">
-        {values.images.cabinet.map((image, i) => (
-            <div key={i} className="relative my-2 ">
-                <img
-                    src={image}
-                    alt=""
-                    className="w-32 h-32 object-cover rounded-lg ms-1"
-                />
-                <button
-                    onClick={() => handleRemoveCabinetImage(i)}
-                    className="absolute top-0 right-0 mt-1 mr-1 bg-red-600 text-white rounded-full p-1 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500"
-                >
-                    <IoMdClose />
-                    {/* &times; */}
-                </button>
-            </div>
-        ))}
-    </div>), [handleRemoveCabinetImage, values.images.cabinet])
 
     const newLocal = "block mb-2 text-sm font-medium text-gray-900 dark:text-white"
     return (
@@ -261,16 +203,10 @@ export default function Form(props: TProps) {
                 >
                     Upload Cabinet Media
                 </label>
-                <input
-                    className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    multiple
-                    onChange={(e) => { onUploadImages(Array.from(e.target.files), 'cabinet') }}
-                    defaultValue={[]}
-                    type="file"
-                    accept="image/*"
-                />
+                <ImageActions path={`kitchens/cabinet/${defaultValues.id}`} onSuccess={(links) => {
+                    setValue(`images.cabinet`, links)
+                }} />
             </div>
-            {values.loading.cabinet ? <CircularProgress /> : renderImageList}
 
             <button
                 // disabled={uploading}

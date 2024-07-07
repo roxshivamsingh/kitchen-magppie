@@ -8,11 +8,12 @@ export default function KitchenCreateEdit(props: TProps) {
     const kitchens = useAppSelector(({ Cms }) => Cms.Kitchens.value)
     const currentKitchen = kitchens?.find((row) => row.id === id)
 
-    return (
-        <div>
-            <div className="max-w-screen-xl flex flex-col justify-between mx-auto p-4 mt-4">
-                <Form item={currentKitchen} onCloseModal={onCloseModal} />
-            </div>
+    return (<div>
+        <div className="max-w-screen-xl flex flex-col justify-between mx-auto p-4 mt-4">
+            <Form item={currentKitchen} onCloseModal={onCloseModal} />
         </div>
+    </div>
     )
 }
+
+
