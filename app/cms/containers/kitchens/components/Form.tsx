@@ -203,9 +203,10 @@ export default function Form(props: TProps) {
                 >
                     Upload Cabinet Media
                 </label>
-                <ImageActions path={`kitchens/cabinet/${defaultValues.id}`} onSuccess={(links) => {
-                    setValue(`images.cabinet`, links)
-                }} />
+                <ImageActions
+                    path={`kitchens/cabinet/${defaultValues.id}`}
+                    onSuccess={(links) => { setValue(`images.cabinet`, links) }}
+                />
             </div>
 
             <button

@@ -16,11 +16,12 @@ export default function ImageActions(props: TImageActionProps) {
     }, [StorageActions, corpus.values, props])
 
     const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-        const arr = Array.from(e.target.files)
-        if (arr?.length) {
+        const files = Array.from(e.target.files)
+        if (files?.length) {
             setCorpus((prev) => ({ ...prev, loading: true }))
+
             StorageActions.batch.upload({
-                files: arr,
+                files,
                 path: props.path,
                 onSuccess: (e) => {
                     setCorpus((prev) => ({
@@ -41,7 +42,6 @@ export default function ImageActions(props: TImageActionProps) {
             className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
             multiple
             onChange={onChangeInput}
-            defaultValue={[]}
             value={[]}
             type="file"
             accept="image/*"
