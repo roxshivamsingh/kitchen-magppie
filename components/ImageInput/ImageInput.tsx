@@ -1,9 +1,10 @@
 import { ChangeEvent, useCallback, useState } from "react"
-import { useFirebaseStorageActions } from "../../appHooks/firebase"
 import { IoMdClose } from "react-icons/io"
-import CustomCircularProgress from "../CircularProgress/CircularProgress"
+import { useFirebaseStorageActions } from "../../appHooks/firebase"
 
-export default function ImageActions(props: TImageActionProps) {
+import { CircularProgress } from ".."
+
+export default function ImageInput(props: TImageActionProps) {
 
     const [corpus, setCorpus] = useState<TCorpus>(INIT_CORPUS)
 
@@ -47,7 +48,7 @@ export default function ImageActions(props: TImageActionProps) {
             accept="image/*"
         />
         <div className="flex flex-wrap">
-            {corpus.loading ? <CustomCircularProgress /> : corpus?.values?.map((link, i) => {
+            {corpus.loading ? <CircularProgress /> : corpus?.values?.map((link, i) => {
                 return <div key={i} className="relative my-2 ">
                     <ImageCard link={link} onRemove={onRemove} />
                 </div>

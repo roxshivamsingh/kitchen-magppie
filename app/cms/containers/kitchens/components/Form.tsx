@@ -1,19 +1,19 @@
+import { useMemo } from 'react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { useFirebaseCmsKitchenAction } from '../../../utils/firebase/use-firebase-cms-actions'
 import _ from 'lodash'
+import { toast } from 'react-toastify'
+import { collection, doc } from 'firebase/firestore'
+// ==========================================================================================
+import { useFirebaseCmsKitchenAction } from '../../../utils/firebase'
 import {
     CMS_KITCHEN_YUP_SCHEMA,
     INIT_YUP_KITCHEN,
     KITCHEN_TIER_OPTIONS,
     TKitchen
 } from '../../../types/Kitchen'
-import SimpleDropdown from "../../../../../components/SimpleDropdown"
 import { db } from '../../../../../config/firebase.config'
-import { collection, doc } from 'firebase/firestore'
-import { toast } from 'react-toastify'
-import ImageActions from '../../../../../components/ImageInput/ImageInput'
-import { useMemo } from 'react'
+import { ImageInput, SimpleDropdown } from '../../../../../components'
 
 export default function Form(props: TProps) {
 
@@ -86,7 +86,6 @@ export default function Form(props: TProps) {
                 </label>
                 <input
                     defaultValue={_.get(values, 'specification.name', '')}
-
                     {...register('name')}
                     name="name"
                     type="text"
@@ -203,7 +202,7 @@ export default function Form(props: TProps) {
                 >
                     Upload Cabinet Media
                 </label>
-                <ImageActions
+                <ImageInput
                     path={`kitchens/cabinet/${defaultValues.id}`}
                     onSuccess={(links) => { setValue(`images.cabinet`, links) }}
                 />
