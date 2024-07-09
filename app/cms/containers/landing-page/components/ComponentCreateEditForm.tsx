@@ -156,6 +156,8 @@ export default function ComponentCreateEditForm(props: TProps) {
             <div className="mb-4">
                 <ImageInput
                     label='Icon'
+
+                    values={values.links.icon?.length ? [values.links.icon] : []}
                     path={`customer-site-components/icons`}
                     onSuccess={(e) => {
                         setValue('links.icon', e[0])
@@ -170,6 +172,8 @@ export default function ComponentCreateEditForm(props: TProps) {
 
             <div className="mb-4">
                 <ImageInput
+                    values={values.links.bg?.length ? [values.links.bg] : []}
+
                     label='Background'
                     path={`customer-site-components/backgrounds`}
                     onSuccess={(e) => {
@@ -187,6 +191,8 @@ export default function ComponentCreateEditForm(props: TProps) {
             <div className="mb-4">
                 <ImageInput
                     label='Illustration'
+                    values={values.links.illustration?.length ? [values.links.illustration] : []}
+
                     path={`customer-site-components/illustrations`}
                     onSuccess={(e) => {
                         setValue('links.illustration', e[0] || '')

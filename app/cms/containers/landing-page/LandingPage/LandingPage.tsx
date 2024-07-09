@@ -10,10 +10,6 @@ import { useFirebaseCustomerListener } from '../../../utils/firebase/customer'
 import { CustomSimpleModal, PageProgress } from '../../../../../components'
 import { INIT_CUSTOMER_SITE_COMPONENT, TComponentItem } from '../../../../../types/component'
 
-type TCorpusModal = { action: 'create' | 'edit' | '', value: TComponentItem, open: boolean }
-type TCorpus = { modal: TCorpusModal, search: string }
-const INIT_CORPUS_MODAL: TCorpusModal = { action: '', value: INIT_CUSTOMER_SITE_COMPONENT, open: false }
-const INIT_CORPUS: TCorpus = { modal: INIT_CORPUS_MODAL, search: '' }
 export default function LandingPage() {
     useFirebaseCustomerListener()
     const { loading, value } = useAppSelector((state) => state.Cms.CustomerSiteComponent)
@@ -25,6 +21,7 @@ export default function LandingPage() {
             modal: { ...prev.modal, ...newValue, },
         }))
     }, [])
+
     const components = useMemo(() => {
         return _.sortBy(value?.filter((item) =>
             corpus.search?.length
@@ -50,7 +47,6 @@ export default function LandingPage() {
                                             open: true,
                                             value: components?.find((row) => row.id === id)
                                         })
-
                                     }}
                                     onRemove={(e) => {
                                         console.log(e)
@@ -88,3 +84,7 @@ export default function LandingPage() {
         </div>
     )
 }
+type TCorpusModal = { action: 'create' | 'edit' | '', value: TComponentItem, open: boolean }
+type TCorpus = { modal: TCorpusModal, search: string }
+const INIT_CORPUS_MODAL: TCorpusModal = { action: '', value: INIT_CUSTOMER_SITE_COMPONENT, open: false }
+const INIT_CORPUS: TCorpus = { modal: INIT_CORPUS_MODAL, search: '' }
