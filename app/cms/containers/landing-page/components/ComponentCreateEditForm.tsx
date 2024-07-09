@@ -3,10 +3,11 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 //====================================================================
 
-import { INIT_CUSTOMER_SITE_COMPONENT as defaultValues } from '../../../../../types/component'
+import { TComponentItem } from '../../../../../types/component'
 import { CustomToggle, ImageInput } from '../../../../../components'
 
-export default function ComponentCreateEditForm() {
+
+export default function ComponentCreateEditForm(props: TProps) {
     const {
         watch,
         register,
@@ -14,7 +15,7 @@ export default function ComponentCreateEditForm() {
         handleSubmit,
         formState: { errors },
     } = useForm({
-        defaultValues,
+        defaultValues: props.item,
         resolver: yupResolver(schema),
     })
 
@@ -153,10 +154,8 @@ export default function ComponentCreateEditForm() {
             <h3 className="text-lg mb-2">Links</h3>
 
             <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                    Icon
-                </label>
                 <ImageInput
+                    label='Icon'
                     path={`customer-site-components/icons`}
                     onSuccess={(e) => {
                         setValue('links.icon', e[0])
@@ -170,11 +169,8 @@ export default function ComponentCreateEditForm() {
             </div>
 
             <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                    Background
-                </label>
-
                 <ImageInput
+                    label='Background'
                     path={`customer-site-components/backgrounds`}
                     onSuccess={(e) => {
                         setValue('links.bg', e[0])
@@ -189,18 +185,11 @@ export default function ComponentCreateEditForm() {
             </div>
 
             <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                    Illustration
-                </label>
-                {/* <input
-                    type="text"
-                    {...register('links.illustration')}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                /> */}
                 <ImageInput
+                    label='Illustration'
                     path={`customer-site-components/illustrations`}
                     onSuccess={(e) => {
-                        setValue('links.illustration', e[0])
+                        setValue('links.illustration', e[0] || '')
                     }}
                 />
                 {errors.links?.illustration && (
@@ -279,3 +268,5 @@ const schema = Yup.object().shape({
     gallery: Yup.array().of(sectionImageItemSchema),
     iconLists: Yup.array().of(sectionImageItemSchema),
 })
+
+type TProps = { item: TComponentItem }

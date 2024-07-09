@@ -180,26 +180,28 @@ export default function Form(props: TProps) {
                 />
             </div>
             <div>
-                <label
+                {/* <label
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     htmlFor="hero"
                 >
                     Upload Hero Image
-                </label>
+                </label> */}
                 <ImageInput
+                    label='Upload Hero Image'
                     path={`kitchens/cabinet/${defaultValues.id}`}
                     values={defaultValues.images.hero?.length ? [defaultValues.images.hero] : []}
                     onSuccess={(links) => { setValue(`images.cabinet`, links) }}
                 />
             </div>
             <div>
-                <label
+                {/* <label
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     htmlFor="file_input"
                 >
                     Upload Cabinet Media
-                </label>
+                </label> */}
                 <ImageInput
+                    label='Upload Cabinet Media'
                     path={`kitchens/cabinet/${defaultValues.id}`}
                     values={defaultValues.images.cabinet}
                     isMulti
