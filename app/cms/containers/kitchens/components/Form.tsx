@@ -186,13 +186,10 @@ export default function Form(props: TProps) {
                 >
                     Upload Hero Image
                 </label>
-                <input
-                    className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    multiple
-                    // onChange={(e) => onChangeFile(e, 'hero')}
-                    defaultValue={[]}
-                    type="file"
-                    accept="image/*"
+                <ImageInput
+                    path={`kitchens/cabinet/${defaultValues.id}`}
+                    values={defaultValues.images.hero?.length ? [defaultValues.images.hero] : []}
+                    onSuccess={(links) => { setValue(`images.cabinet`, links) }}
                 />
             </div>
             <div>
@@ -204,6 +201,8 @@ export default function Form(props: TProps) {
                 </label>
                 <ImageInput
                     path={`kitchens/cabinet/${defaultValues.id}`}
+                    values={defaultValues.images.cabinet}
+                    isMulti
                     onSuccess={(links) => { setValue(`images.cabinet`, links) }}
                 />
             </div>

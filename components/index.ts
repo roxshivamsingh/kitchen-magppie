@@ -4,12 +4,14 @@ import ImageInput from "./ImageInput";
 import CircularProgress from "./CircularProgress";
 import PageProgress from "./PageProgress";
 import SimpleDropdown from "./SimpleDropdown";
+import CustomToggle from "./CustomToggle";
 export {
     CustomBreadcrumb,
     CustomSimpleModal,
     ImageInput,
     CircularProgress,
     PageProgress,
-    SimpleDropdown
+    SimpleDropdown,
+    CustomToggle
 
 }

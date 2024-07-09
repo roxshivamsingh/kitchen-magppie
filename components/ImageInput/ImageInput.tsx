@@ -6,7 +6,10 @@ import { CircularProgress } from ".."
 
 export default function ImageInput(props: TImageActionProps) {
 
-    const [corpus, setCorpus] = useState<TCorpus>(INIT_CORPUS)
+    const [corpus, setCorpus] = useState<TCorpus>({
+        ...INIT_CORPUS,
+        values: props.values || []
+    })
 
     const StorageActions = useFirebaseStorageActions()
 
@@ -24,15 +27,16 @@ export default function ImageInput(props: TImageActionProps) {
             StorageActions.batch.upload({
                 files,
                 path: props.path,
-                onSuccess: (e) => {
+                onSuccess: (values) => {
                     setCorpus((prev) => ({
                         ...prev,
                         loading: false,
-                        values: [...prev.values, ...e]?.filter((row) => row?.length)
+                        values: props.isMulti ? [...prev.values, ...values]?.filter((row) => row?.length) : values
                     }))
+                    props.onSuccess(props.isMulti ? [
+                        ...corpus.values,
+                        ...values]?.filter((row) => row?.length) : values)
 
-                    props.onSuccess([...corpus.values,
-                    ...e]?.filter((row) => row?.length))
                 },
             })
         }
@@ -41,7 +45,7 @@ export default function ImageInput(props: TImageActionProps) {
     return (<>
         <input
             className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-            multiple
+            multiple={props.isMulti}
             onChange={onChangeInput}
             value={[]}
             type="file"
@@ -83,6 +87,8 @@ type TImageCardProps = {
 type TImageActionProps = {
     onSuccess: (e: string[]) => void,
     path: string,
+    isMulti?: boolean,
+    values?: string[]
 }
 type TCorpus = { loading: boolean, values: string[] }
 const INIT_CORPUS: TCorpus = { loading: false, values: [] }

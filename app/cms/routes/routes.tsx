@@ -15,7 +15,9 @@ import { useFirebaseCmsAuthListener } from '../utils/firebase'
 import { ProtectedRoute } from '../components'
 
 export default function CmsRoutes() {
+
     useFirebaseCmsAuthListener()
+
     return {
         path: 'cms',
         element: <ProtectedRoute />,

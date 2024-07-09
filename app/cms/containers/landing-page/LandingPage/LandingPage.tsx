@@ -6,9 +6,8 @@ import { FaPlus } from 'react-icons/fa'
 import Search from '../../../components/Search'
 import { useAppSelector } from '../../../../../redux'
 import { CmsLandingPageComponentCard, ComponentCreateEditForm } from "../components"
-import PageProgress from '../../../../../components/PageProgress'
 import { useFirebaseCustomerListener } from '../../../utils/firebase/customer'
-import { CustomSimpleModal } from '../../../../../components'
+import { CustomSimpleModal, PageProgress } from '../../../../../components'
 
 export default function LandingPage() {
     const [modalId, setIsModalId] = useState('')
@@ -34,7 +33,12 @@ export default function LandingPage() {
                     {components?.length ? (
                         <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl mx-auto place-items-start">
                             {components?.map((item, i) => {
-                                return <CmsLandingPageComponentCard key={i} item={item} />
+                                return <CmsLandingPageComponentCard key={i} item={item}
+
+                                    onRemove={(e) => {
+                                        console.log(e)
+                                    }}
+                                />
                             })}
                         </div>
                     ) : (

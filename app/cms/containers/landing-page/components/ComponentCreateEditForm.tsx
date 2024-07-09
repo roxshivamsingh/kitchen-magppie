@@ -4,16 +4,23 @@ import { yupResolver } from '@hookform/resolvers/yup'
 //====================================================================
 
 import { INIT_CUSTOMER_SITE_COMPONENT as defaultValues } from '../../../../../types/component'
+import { CustomToggle, ImageInput } from '../../../../../components'
 
 export default function ComponentCreateEditForm() {
     const {
+        watch,
         register,
+        setValue,
         handleSubmit,
         formState: { errors },
     } = useForm({
         defaultValues,
         resolver: yupResolver(schema),
     })
+
+    const values = watch()
+    console.log(values)
+
     const onSubmit = handleSubmit((data) => {
         console.log(data)
     })
@@ -149,10 +156,11 @@ export default function ComponentCreateEditForm() {
                 <label className="block text-sm font-medium text-gray-700">
                     Icon
                 </label>
-                <input
-                    type="text"
-                    {...register('links.icon')}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                <ImageInput
+                    path={`customer-site-components/icons`}
+                    onSuccess={(e) => {
+                        setValue('links.icon', e[0])
+                    }}
                 />
                 {errors.links?.icon && (
                     <p className="text-red-500 text-xs mt-1">
@@ -165,11 +173,14 @@ export default function ComponentCreateEditForm() {
                 <label className="block text-sm font-medium text-gray-700">
                     Background
                 </label>
-                <input
-                    type="text"
-                    {...register('links.bg')}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+
+                <ImageInput
+                    path={`customer-site-components/backgrounds`}
+                    onSuccess={(e) => {
+                        setValue('links.bg', e[0])
+                    }}
                 />
+
                 {errors.links?.bg && (
                     <p className="text-red-500 text-xs mt-1">
                         {errors.links.bg.message}
@@ -181,30 +192,45 @@ export default function ComponentCreateEditForm() {
                 <label className="block text-sm font-medium text-gray-700">
                     Illustration
                 </label>
-                <input
+                {/* <input
                     type="text"
                     {...register('links.illustration')}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                /> */}
+                <ImageInput
+                    path={`customer-site-components/illustrations`}
+                    onSuccess={(e) => {
+                        setValue('links.illustration', e[0])
+                    }}
                 />
                 {errors.links?.illustration && (
                     <p className="text-red-500 text-xs mt-1">
                         {errors.links.illustration.message}
                     </p>
                 )}
+
             </div>
 
             {/* Name */}
 
             {/* Is Gallery */}
             <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
+
+
+                <div className="flex gap-3">
                     Is Gallery
-                </label>
-                <input
-                    type="checkbox"
-                    {...register('isGallery')}
-                    className="mt-1 block w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
-                />
+
+                    <CustomToggle
+                        onChange={(e) => {
+
+                            console.log(e)
+                        }} />
+                    <input
+                        type="checkbox"
+                        {...register('isGallery')}
+                        className="mt-1 block w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                </div>
                 {errors.isGallery && (
                     <p className="text-red-500 text-xs mt-1">
                         {errors.isGallery.message}
