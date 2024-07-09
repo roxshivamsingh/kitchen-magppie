@@ -1,19 +1,19 @@
+import { useMemo } from 'react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { useFirebaseCmsKitchenAction } from '../../../utils/firebase/use-firebase-cms-actions'
 import _ from 'lodash'
+import { toast } from 'react-toastify'
+import { collection, doc } from 'firebase/firestore'
+// ==========================================================================================
+import { useFirebaseCmsKitchenAction } from '../../../utils/firebase'
 import {
     CMS_KITCHEN_YUP_SCHEMA,
     INIT_YUP_KITCHEN,
     KITCHEN_TIER_OPTIONS,
     TKitchen
 } from '../../../types/Kitchen'
-import SimpleDropdown from "../../../../../components/SimpleDropdown"
 import { db } from '../../../../../config/firebase.config'
-import { collection, doc } from 'firebase/firestore'
-import { toast } from 'react-toastify'
-import ImageActions from '../../../../../components/ImageInput/ImageInput'
-import { useMemo } from 'react'
+import { ImageInput, SimpleDropdown } from '../../../../../components'
 
 export default function Form(props: TProps) {
 
@@ -86,7 +86,6 @@ export default function Form(props: TProps) {
                 </label>
                 <input
                     defaultValue={_.get(values, 'specification.name', '')}
-
                     {...register('name')}
                     name="name"
                     type="text"
@@ -181,31 +180,33 @@ export default function Form(props: TProps) {
                 />
             </div>
             <div>
-                <label
+                {/* <label
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     htmlFor="hero"
                 >
                     Upload Hero Image
-                </label>
-                <input
-                    className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    multiple
-                    // onChange={(e) => onChangeFile(e, 'hero')}
-                    defaultValue={[]}
-                    type="file"
-                    accept="image/*"
+                </label> */}
+                <ImageInput
+                    label='Upload Hero Image'
+                    path={`kitchens/cabinet/${defaultValues.id}`}
+                    values={defaultValues.images.hero?.length ? [defaultValues.images.hero] : []}
+                    onSuccess={(links) => { setValue(`images.cabinet`, links) }}
                 />
             </div>
             <div>
-                <label
+                {/* <label
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     htmlFor="file_input"
                 >
                     Upload Cabinet Media
-                </label>
-                <ImageActions path={`kitchens/cabinet/${defaultValues.id}`} onSuccess={(links) => {
-                    setValue(`images.cabinet`, links)
-                }} />
+                </label> */}
+                <ImageInput
+                    label='Upload Cabinet Media'
+                    path={`kitchens/cabinet/${defaultValues.id}`}
+                    values={defaultValues.images.cabinet}
+                    isMulti
+                    onSuccess={(links) => { setValue(`images.cabinet`, links) }}
+                />
             </div>
 
             <button

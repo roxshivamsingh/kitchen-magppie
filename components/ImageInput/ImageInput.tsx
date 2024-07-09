@@ -1,11 +1,15 @@
 import { ChangeEvent, useCallback, useState } from "react"
-import { useFirebaseStorageActions } from "../../appHooks/firebase"
 import { IoMdClose } from "react-icons/io"
-import CustomCircularProgress from "../CircularProgress/CircularProgress"
+import { useFirebaseStorageActions } from "../../appHooks/firebase"
 
-export default function ImageActions(props: TImageActionProps) {
+import { CircularProgress } from ".."
 
-    const [corpus, setCorpus] = useState<TCorpus>(INIT_CORPUS)
+export default function ImageInput(props: TImageActionProps) {
+
+    const [corpus, setCorpus] = useState<TCorpus>({
+        ...INIT_CORPUS,
+        values: props.values || []
+    })
 
     const StorageActions = useFirebaseStorageActions()
 
@@ -16,38 +20,42 @@ export default function ImageActions(props: TImageActionProps) {
     }, [StorageActions, corpus.values, props])
 
     const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-        const arr = Array.from(e.target.files)
-        if (arr?.length) {
+        const files = Array.from(e.target.files)
+        if (files?.length) {
             setCorpus((prev) => ({ ...prev, loading: true }))
+
             StorageActions.batch.upload({
-                files: arr,
+                files,
                 path: props.path,
-                onSuccess: (e) => {
+                onSuccess: (values) => {
                     setCorpus((prev) => ({
                         ...prev,
                         loading: false,
-                        values: [...prev.values, ...e]?.filter((row) => row?.length)
+                        values: props.isMulti ? [...prev.values, ...values]?.filter((row) => row?.length) : values
                     }))
+                    props.onSuccess(props.isMulti ? [
+                        ...corpus.values,
+                        ...values]?.filter((row) => row?.length) : values)
 
-                    props.onSuccess([...corpus.values,
-                    ...e]?.filter((row) => row?.length))
                 },
             })
         }
 
     }
     return (<>
+        {props.label?.length ? (<label className="block text-sm font-medium text-gray-700">
+            {props.label}
+        </label>) : ''}
         <input
             className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-            multiple
+            multiple={props.isMulti}
             onChange={onChangeInput}
-            defaultValue={[]}
             value={[]}
             type="file"
             accept="image/*"
         />
         <div className="flex flex-wrap">
-            {corpus.loading ? <CustomCircularProgress /> : corpus?.values?.map((link, i) => {
+            {corpus.loading ? <CircularProgress /> : corpus?.values?.map((link, i) => {
                 return <div key={i} className="relative my-2 ">
                     <ImageCard link={link} onRemove={onRemove} />
                 </div>
@@ -82,6 +90,9 @@ type TImageCardProps = {
 type TImageActionProps = {
     onSuccess: (e: string[]) => void,
     path: string,
+    isMulti?: boolean,
+    values?: string[],
+    label?: string
 }
 type TCorpus = { loading: boolean, values: string[] }
 const INIT_CORPUS: TCorpus = { loading: false, values: [] }
