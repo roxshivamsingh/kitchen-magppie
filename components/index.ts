@@ -5,7 +5,9 @@ import CircularProgress from "./CircularProgress";
 import PageProgress from "./PageProgress";
 import SimpleDropdown from "./SimpleDropdown";
 import CustomToggle from "./CustomToggle";
+import CustomConfirmationDialog from "./CustomConfirmationDialog"
 export {
+    CustomConfirmationDialog,
     CustomBreadcrumb,
     CustomSimpleModal,
     ImageInput,

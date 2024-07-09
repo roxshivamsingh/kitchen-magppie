@@ -1,13 +1,14 @@
 import { useCallback, useMemo, useState } from 'react'
 import _ from 'lodash'
 import { FaPlus } from 'react-icons/fa'
+
 //====================================================================
 
 import Search from '../../../components/Search'
 import { useAppSelector } from '../../../../../redux'
 import { CmsLandingPageComponentCard, ComponentCreateEditForm } from "../components"
 import { useFirebaseCustomerListener } from '../../../utils/firebase/customer'
-import { CustomSimpleModal, PageProgress } from '../../../../../components'
+import { CustomConfirmationDialog, CustomSimpleModal, PageProgress } from '../../../../../components'
 import { INIT_CUSTOMER_SITE_COMPONENT, TComponentItem } from '../../../../../types/component'
 
 export default function LandingPage() {
@@ -30,6 +31,44 @@ export default function LandingPage() {
         ), 'orderId')
     }, [corpus.search, value]);
 
+    const renderDeleteConfirmationDialog = useMemo(() => {
+        return (<CustomConfirmationDialog show={corpus.confirmation.open}
+            variant='danger'
+
+            text={{
+                header: corpus.confirmation.text.header,
+                remark: corpus.confirmation.text.remark,
+            }}
+            onHide={() => {
+                setCorpus((prev) => ({ ...prev, confirmation: INIT_CONFIRMATION }))
+            }} onConfirm={() => {
+                console.log(corpus.confirmation)
+                setCorpus((prev) => ({ ...prev, confirmation: INIT_CONFIRMATION }))
+
+            }} />)
+    }, [corpus.confirmation])
+
+    const onClickRemove = useCallback((item: TComponentItem) => {
+        setCorpus((prev) => ({
+            ...prev, confirmation: {
+                ...prev.confirmation,
+                open: true,
+                id: item.id,
+                text: {
+                    header: 'Delete Confirmation',
+                    remark: `Are you sure you want to delete ${item.name} component?`
+                }
+
+            }
+        }))
+    }, [])
+    const onClickEdit = useCallback((value: TComponentItem) => {
+        onChangeModal({
+            action: 'edit',
+            open: true,
+            value
+        })
+    }, [onChangeModal])
     return (
         <div>
             <Search placeholder="Search Components.." onChange={(search) => {
@@ -41,16 +80,8 @@ export default function LandingPage() {
                         <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl mx-auto place-items-start">
                             {components?.map((item, i) => {
                                 return <CmsLandingPageComponentCard key={i} item={item}
-                                    onEdit={(id) => {
-                                        onChangeModal({
-                                            action: 'edit',
-                                            open: true,
-                                            value: components?.find((row) => row.id === id)
-                                        })
-                                    }}
-                                    onRemove={(e) => {
-                                        console.log(e)
-                                    }}
+                                    onEdit={() => { onClickEdit(item) }}
+                                    onRemove={() => { onClickRemove(item) }}
                                 />
                             })}
                         </div>
@@ -72,6 +103,8 @@ export default function LandingPage() {
                 Add Component
             </div>
 
+
+            {renderDeleteConfirmationDialog}
             <CustomSimpleModal
                 show={corpus.modal.open}
                 onHide={() => {
@@ -85,6 +118,13 @@ export default function LandingPage() {
     )
 }
 type TCorpusModal = { action: 'create' | 'edit' | '', value: TComponentItem, open: boolean }
-type TCorpus = { modal: TCorpusModal, search: string }
+
+type TCorpusConfirmation = { open: boolean, text: { remark: string, header: string }, id: string }
+type TCorpus = { modal: TCorpusModal, search: string, confirmation: TCorpusConfirmation }
+const INIT_CONFIRMATION: TCorpusConfirmation = { open: false, text: { remark: '', header: '' }, id: '' }
 const INIT_CORPUS_MODAL: TCorpusModal = { action: '', value: INIT_CUSTOMER_SITE_COMPONENT, open: false }
-const INIT_CORPUS: TCorpus = { modal: INIT_CORPUS_MODAL, search: '' }
+const INIT_CORPUS: TCorpus = {
+    modal: INIT_CORPUS_MODAL,
+    search: '',
+    confirmation: INIT_CONFIRMATION
+}

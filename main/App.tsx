@@ -1,4 +1,3 @@
-import { FC } from 'react'
 // import { useFirebaseAuth } from '../appHooks/firebase/use-firebase-listeners'
 import Routes from '../routes'
 // import { useLocation, useNavigate } from 'react-router-dom';
@@ -10,7 +9,7 @@ import Routes from '../routes'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
 
-const App: FC = () => {
+export default function App() {
     // useFirebaseAuth()
     // const user = useFirebaseDataUser()
     // const navigate = useNavigate()
@@ -48,4 +47,3 @@ const App: FC = () => {
     )
 }
 
-export default App
