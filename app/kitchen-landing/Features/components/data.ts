@@ -1,6 +1,6 @@
-import one from '../../assets/carouselOne/One.png'
-import two from '../../assets/carouselOne/Two.jpeg'
-import three from '../../assets/carouselOne/Three.jpeg'
+import one from '../../assets/features/One.png'
+import two from '../../assets/features/Two.jpeg'
+import three from '../../assets/features/Three.jpeg'
 
 interface Feature {
     id: number
