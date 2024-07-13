@@ -3,7 +3,7 @@ import { useAppDispatch } from "../../../../../redux";
 import { collection, onSnapshot } from "firebase/firestore";
 import { TComponentItem } from "../../../../../types/component";
 import { db } from "../../../../../config/firebase.config";
-import { setCustomerComponent } from "../../../redux/slices/CustomerComponent.slice";
+import { setCustomerSiteComponent } from "../../../redux/slices";
 
 export function useFirebaseCustomerListener() {
 
@@ -21,7 +21,7 @@ export function useFirebaseCustomerListener() {
                     at: { created: row.at.created?.toDate() }
                 } as TComponentItem);
             });
-            dispatch(setCustomerComponent(data))
+            dispatch(setCustomerSiteComponent(data))
         });
     }, [dispatch])
 }

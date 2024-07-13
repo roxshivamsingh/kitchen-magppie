@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TComponentItem } from '../../../../types/component';
 
 
-interface ICustomerComponentSlice {
+interface ILandingSlice {
     value: TComponentItem[];
     status: 'loading' | 'success' | 'failed';
     loading: boolean,
     error: null | string | undefined;
 }
 
-const initialState: ICustomerComponentSlice = {
+const initialState: ILandingSlice = {
     loading: true,
     value: [],
     status: 'loading',
@@ -17,21 +17,19 @@ const initialState: ICustomerComponentSlice = {
 };
 
 type TAction = PayloadAction<TComponentItem[]>
-const CustomerComponentSlice = createSlice({
-    name: 'Auth',
+const LandingSlice = createSlice({
+    name: 'Landing',
     initialState,
     reducers: {
 
-        setCustomerComponent: (state, action: TAction) => {
+        setLanding: (state, action: TAction) => {
             state.status = 'success';
             state.loading = false;
             state.value = action.payload;
         },
-
     },
 });
 
-export const { setCustomerComponent } = CustomerComponentSlice.actions;
+export const { setLanding } = LandingSlice.actions;
 
-const AuthReducer = CustomerComponentSlice.reducer
-export default AuthReducer
+export const LandingReducer = LandingSlice.reducer
