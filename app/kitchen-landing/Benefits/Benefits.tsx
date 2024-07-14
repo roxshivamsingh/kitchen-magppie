@@ -6,7 +6,7 @@ import 'swiper/css'
 import 'swiper/css/scrollbar'
 import one from '../assets/benefits/AntiBacteriaimage.png'
 
-const Features = () => {
+export function Benefits() {
     return (
         <div className="flex flex-col items-start bg-[#343b34] text-white py-16 px-4">
             <h1 className="text-7xl mb-10 text-start">
@@ -57,11 +57,3 @@ const Features = () => {
     )
 }
 
-export default Features
-
-{
-    /* <div className="flex w-full">
-
-
-</div> */
-}
