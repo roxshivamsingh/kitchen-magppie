@@ -9,7 +9,7 @@ import { useAppSelector } from '../../../../../redux'
 import { CmsLandingPageComponentCard, ComponentCreateEditForm } from "../components"
 import { useFirebaseCustomerListener } from '../../../utils/firebase/customer'
 import { CustomConfirmationDialog, CustomSimpleModal, PageProgress } from '../../../../../components'
-import { INIT_CUSTOMER_SITE_COMPONENT, TComponentItem } from '../../../../../types/component'
+import { INIT_CUSTOMER_SITE_COMPONENT, TComponentItem } from '../../../../../types'
 
 export default function LandingPage() {
     useFirebaseCustomerListener()

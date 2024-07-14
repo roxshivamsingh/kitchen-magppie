@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useAppDispatch } from "../../../../../redux";
 import { collection, onSnapshot } from "firebase/firestore";
-import { TComponentItem } from "../../../../../types/component";
-import { db } from "../../../../../config/firebase.config";
+import { TComponentItem } from "../../../../../types";
+import { db } from "../../../../../config";
 import { setCustomerSiteComponent } from "../../../redux/slices";
 
 export function useFirebaseCustomerListener() {
