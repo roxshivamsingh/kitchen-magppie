@@ -1,3 +1,6 @@
 export * from "./Footer"
 export * from "./FAQs"
 export * from "./BuyingStep"
+export * from "./Hero"
+export * from "./Features"
+export * from "./Benefits"
