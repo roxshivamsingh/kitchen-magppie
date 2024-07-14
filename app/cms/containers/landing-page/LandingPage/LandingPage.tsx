@@ -4,7 +4,7 @@ import { FaPlus } from 'react-icons/fa'
 
 //====================================================================
 
-import Search from '../../../components/Search'
+import { Search } from '../../../components'
 import { useAppSelector } from '../../../../../redux'
 import { CmsLandingPageComponentCard, ComponentCreateEditForm } from "../components"
 import { useFirebaseCustomerListener } from '../../../utils/firebase/customer'
@@ -19,7 +19,7 @@ export default function LandingPage() {
     const onChangeModal = useCallback((newValue: Partial<TCorpusModal>) => {
         setCorpus((prev) => ({
             ...prev,
-            modal: { ...prev.modal, ...newValue, },
+            modal: { ...prev.modal, ...newValue },
         }))
     }, [])
 
