@@ -3,7 +3,7 @@ import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 interface IProps {
     title: string;
-    isExpanded: true,
+    isExpanded?: true,
     children: ReactNode;
 }
 
