@@ -17,7 +17,7 @@ const Gallery = () => {
                     hide: true,
                 }}
                 modules={[Scrollbar]}
-                className="w-full h-full" // Adjusted width and height
+                className="w-full h-100" // Adjusted width and height
                 style={{ overflow: 'hidden' }} // Added overflow handling
             >
                 {galleries.map((feature, i) => (
