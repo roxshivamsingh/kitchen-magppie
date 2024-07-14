@@ -1,3 +1,4 @@
+
 import { TComponentItem } from "../../../types"
 import { MinimalAccordion } from "../../cms/components"
 
@@ -9,6 +10,7 @@ export function FAQs(props: TProps) {
                 {item.description} #{i + 1}
             </MinimalAccordion>)
         })}
+        <div className=" uppercase">{props.item.typography.action}</div>
     </div>
 }
 type TProps = { item: TComponentItem }
