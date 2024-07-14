@@ -4,11 +4,11 @@ import { FaPlus } from 'react-icons/fa'
 //====================================================================
 
 import Card from '../components/Card'
-import Search from '../../../components/Search'
+import { Search } from '../../../components'
 import { useFirebaseCmsKitchensListener } from '../../../utils/firebase/use-firebase-cms-listeners'
 import { useAppSelector } from '../../../../../redux'
 import CustomModal from '../components/CustomModal'
-import PageProgress from '../../../../../components/PageProgress'
+import { PageProgress } from '../../../../../components'
 
 export default function Kitchen() {
     const [modalId, setIsModalId] = useState('')

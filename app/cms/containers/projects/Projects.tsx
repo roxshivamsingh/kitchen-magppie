@@ -1,12 +1,14 @@
 import { FaPlus } from 'react-icons/fa'
-import Card from './components/Card'
-import Search from './../../components/Search'
-import { useFirebaseCmsProjectsListener } from '../../utils/firebase/use-firebase-cms-listeners'
-import { useAppSelector } from '../../../../redux'
 import { useMemo, useState } from 'react'
 import _ from 'lodash'
+//====================================================================
+
+import Card from './components/Card'
+import { Search } from './../../components'
+import { useFirebaseCmsProjectsListener } from '../../utils/firebase/use-firebase-cms-listeners'
+import { useAppSelector } from '../../../../redux'
 import Modal from './components/Modal'
-import PageProgress from '../../../../components/PageProgress'
+import { PageProgress } from '../../../../components'
 
 export default function Projects() {
     const [modalId, setIsModalId] = useState('')

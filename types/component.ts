@@ -384,7 +384,7 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
 
 ]
 
-console.log(_LANDING_COMPONENTS)
+// console.log(_LANDING_COMPONENTS)
 
 // NOTE: Lagacy Cms/Landing Page;
 export const _CUSTOMER_SITE_COMPONENTS: TComponentItem[] = [

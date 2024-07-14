@@ -1,16 +1,14 @@
 import { useCallback, useMemo, useState } from 'react'
-import _ from 'lodash'
 import { FaPlus } from 'react-icons/fa'
-
+import _ from 'lodash'
 //====================================================================
 
-import Search from '../../../components/Search'
+import { Search } from '../../../components'
 import { useAppSelector } from '../../../../../redux'
 import { CmsLandingPageComponentCard, ComponentCreateEditForm } from "../components"
 import { CustomConfirmationDialog, CustomSimpleModal, PageProgress } from '../../../../../components'
 import { INIT_CUSTOMER_SITE_COMPONENT, TComponentItem } from '../../../../../types'
-import { useFirebaseLandingListener } from '../../../utils/firebase/landing/use-firebase-landing-listener'
-// import CustomDumpButton from '../../../components/Dump/CustomDumpButton'
+import { useFirebaseLandingListener } from '../../../utils/firebase'
 
 export function LandingHome() {
     useFirebaseLandingListener()
@@ -64,12 +62,14 @@ export function LandingHome() {
         }))
     }, [])
     const onClickEdit = useCallback((value: TComponentItem) => {
+
         onChangeModal({
             action: 'edit',
             open: true,
             value
         })
     }, [onChangeModal])
+
     return (
         <div>
             <Search placeholder="Search Components.." onChange={(search) => {
@@ -106,6 +106,9 @@ export function LandingHome() {
                 Add Component
             </div>
 
+            {/* <MinimalAccordion title='xsxs'>
+                xsxsxs
+            </MinimalAccordion> */}
 
             {renderDeleteConfirmationDialog}
             <CustomSimpleModal
