@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { TComponentItem } from '../../../types'
+import { FaArrowUp } from 'react-icons/fa'
 
 export function Footer(props: TProps) {
     return (
@@ -11,7 +12,7 @@ export function Footer(props: TProps) {
                         <Link
                             to={`landing/${item.secondary}`}
                             key={i}
-                            className="p-1"
+                            className="p-1 cursor-pointer text-2xl"
                         >
                             {item.main}
                         </Link>
@@ -19,11 +20,14 @@ export function Footer(props: TProps) {
                 })}
             </div>
             <hr className="" />
-            <div className="grid grid-cols-2 mt-2 mb-5">
+            <div className="grid grid-cols-2 mt-2 text-xl cursor-pointer mb-5">
                 <div>{props.item.typography.main}</div>
-                <div>{props.item.typography.action}</div>
+                <div className="flex items-center">
+                    {props.item.typography.action}{' '}
+                    <FaArrowUp className="h-6 w-6 pl-2" />
+                </div>
             </div>
-            <div className="text-center">
+            <div className="text-center mt-6 pb-6">
                 {props.item.typography.description}
             </div>
         </div>
