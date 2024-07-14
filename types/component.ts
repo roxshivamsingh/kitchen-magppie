@@ -69,6 +69,7 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
         typography: {
             ..._prev.typography,
             main: 'MAGPPIE',
+            description: 'Welcome to the <b>SPIRITUAL</b> heart of your Home.',
         },
         links: {
             ..._prev.links,
@@ -77,18 +78,13 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
     },
     {
         ..._prev,
-        orderId: 1,
-        name: 'difference-component',
-        typography: {
-            ..._prev.typography,
-            main: 'What makes MAGPPIE different?',
-        },
-    },
-    {
-        ..._prev,
         orderId: 2,
         name: 'carousel-component',
         isGallery: true,
+        typography: {
+            ..._prev.typography,
+            main: 'What makes <b>MAGPPIE</b> different?',
+        },
         gallery: [
             {
                 link: `${STORAGE_BASE_URL}/landing%2F1720890827657.png?alt=media&token=5753a5fe-ceae-4f35-812a-dc03cf110d0c`,
