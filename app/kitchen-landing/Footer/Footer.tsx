@@ -4,8 +4,8 @@ import { FaArrowUp } from 'react-icons/fa'
 
 export function Footer(props: TProps) {
     return (
-        <div className="px-5 py-5 bg-[#202620] text-white w-full">
-            <div className="text-4xl container mb-5">MAGPPIE</div>
+        <div className="px-10 py-16 bg-[#202620] text-white w-full">
+            <div className="text-4xl container mb-5 font-bold">MAGPPIE</div>
             <div className="grid grid-cols-2 mb-6">
                 {props.item.items?.map((item, i) => {
                     return (
@@ -21,8 +21,8 @@ export function Footer(props: TProps) {
             </div>
             <hr className="" />
             <div className="grid grid-cols-2 mt-2 text-xl cursor-pointer mb-5">
-                <div>{props.item.typography.main}</div>
-                <div className="flex items-center">
+                <div className='p-1'>{props.item.typography.main}</div>
+                <div className="flex p-1 items-center">
                     {props.item.typography.action}{' '}
                     <FaArrowUp className="h-6 w-6 pl-2" />
                 </div>
