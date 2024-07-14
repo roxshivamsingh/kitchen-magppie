@@ -16,8 +16,7 @@ export function LandingHome() {
     useFirebaseLandingListener()
     const { loading, value } = useAppSelector((state) => state.Cms.Landing)
     const [corpus, setCorpus] = useState(INIT_CORPUS)
-
-    console.log(value)
+    // console.log(value)
     const onChangeModal = useCallback((newValue: Partial<TCorpusModal>) => {
         setCorpus((prev) => ({
             ...prev,
