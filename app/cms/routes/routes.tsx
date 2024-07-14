@@ -9,7 +9,8 @@ import {
     KitchenCreateEdit,
     Home,
     User,
-    LandingPage,
+    LandingHome,
+    LandingPage
 } from '../containers'
 import { useFirebaseCmsAuthListener } from '../utils/firebase'
 import { ProtectedRoute } from '../components'
@@ -52,7 +53,11 @@ export default function CmsRoutes() {
             },
             {
                 path: '/cms/landing-page',
-                element: <LandingPage />,
+                element: <LandingPage />, // FIXME: To remove this route in future and also container from `cms/landing-page`;
+            },
+            {
+                path: '/cms/landing',
+                element: <LandingHome />,
             },
         ],
     } as RouteObject
