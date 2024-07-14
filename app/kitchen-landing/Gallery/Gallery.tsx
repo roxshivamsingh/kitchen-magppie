@@ -5,8 +5,8 @@ import { Carousel } from 'react-responsive-carousel'
 const Gallery = () => {
     return (
         <div className="px-8 py-10 flex flex-col items-start bg-[#f9f5ef]">
-            <h1 className="mb-10 text-4xl">
-                Explore our <span>Gallery</span>
+            <h1 className="mb-10 text-7xl">
+                Explore our <span className="italic">Gallery</span>
             </h1>
             <Carousel
                 // showArrows={true}

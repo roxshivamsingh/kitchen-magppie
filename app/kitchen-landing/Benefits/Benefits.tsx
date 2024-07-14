@@ -6,7 +6,7 @@ import one from '../assets/benefits/AntiBacteriaimage.png'
 const Features = () => {
     return (
         <div className="flex flex-col items-start bg-[#343b34] text-white py-16 px-4">
-            <h1 className="text-4xl mb-6 text-start">
+            <h1 className="text-7xl mb-10 text-start">
                 What makes <span className="font-bold">MAGPPIE</span> different?
             </h1>
             <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 w-full">

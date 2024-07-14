@@ -28,10 +28,10 @@ const Clients = () => {
     ]
 
     return (
-        <div className="bg-gray-100 py-8 px-4">
-            <h2 className="text-start text-4xl mb-6">
+        <div className="bg-[#f9f5ef] py-8 px-4">
+            <h2 className="text-start text-7xl mb-10">
                 The ones who already{' '}
-                <span className="italic font-bold">SWITCHED</span>
+                <span className="italic font-medium">SWITCHED</span>
             </h2>
             <div className="grid grid-cols-2 gap-4">
                 {people.map((person, index) => (
@@ -41,10 +41,10 @@ const Clients = () => {
                             alt={person.name}
                             className="w-full h-auto rounded-lg"
                         />
-                        <h3 className="text-center mt-2 text-sm sm:text-base font-semibold">
+                        <h3 className="text-center mt-2 text-md font-semibold">
                             {person.name}
                         </h3>
-                        <p className="text-center text-xs sm:text-sm text-gray-600">
+                        <p className="text-center text-md text-gray-600">
                             {person.title}
                         </p>
                     </div>

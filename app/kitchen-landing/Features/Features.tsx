@@ -5,7 +5,7 @@ import { Carousel } from 'react-responsive-carousel'
 const Features = () => {
     return (
         <div className="px-8 py-20 flex flex-col items-center justify-center bg-[#f9f5ef]">
-            <h1 className="mb-10 text-4xl">
+            <h1 className="mb-10 text-7xl">
                 What makes <span className="font-bold">MAGPPIE</span> different?
             </h1>
             <Carousel
