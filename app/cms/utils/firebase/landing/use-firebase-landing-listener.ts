@@ -1,15 +1,15 @@
 import { useEffect } from "react";
-import { useAppDispatch } from "../../../../../redux";
 import { collection, onSnapshot } from "firebase/firestore";
-import { TComponentItem } from "../../../../../types/component";
+import { useAppDispatch } from "../../../../../redux";
+import { TComponentItem } from "../../../../../types";
 import { db } from "../../../../../config/firebase.config";
-import { setCustomerSiteComponent } from "../../../redux/slices";
+import { setLanding } from "../../../redux/slices";
 
-export function useFirebaseCustomerListener() {
+export function useFirebaseLandingListener() {
 
     const dispatch = useAppDispatch()
     useEffect(() => {
-        const collectionRef = collection(db, `customer-site-components`);
+        const collectionRef = collection(db, `landing`);
 
         onSnapshot(collectionRef, ({ docs }) => {
             const data: TComponentItem[] = [];
@@ -21,7 +21,7 @@ export function useFirebaseCustomerListener() {
                     at: { created: row.at.created?.toDate() }
                 } as TComponentItem);
             });
-            dispatch(setCustomerSiteComponent(data))
+            dispatch(setLanding(data))
         });
     }, [dispatch])
 }

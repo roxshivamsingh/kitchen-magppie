@@ -31,5 +31,4 @@ const ProjectsSlice = createSlice({
 
 export const { setProjects } = ProjectsSlice.actions;
 
-const ProjectsReducer = ProjectsSlice.reducer
-export default ProjectsReducer
+export const ProjectReducer = ProjectsSlice.reducer

@@ -32,5 +32,4 @@ const SuperUserSlice = createSlice({
 
 export const { setSuperUsers } = SuperUserSlice.actions;
 
-const SuperUserReducer = SuperUserSlice.reducer
-export default SuperUserReducer
+export const SuperUserReducer = SuperUserSlice.reducer

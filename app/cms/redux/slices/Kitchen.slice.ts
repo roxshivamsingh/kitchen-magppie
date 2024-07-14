@@ -32,5 +32,4 @@ const KitchensSlice = createSlice({
 
 export const { setKitchens } = KitchensSlice.actions;
 
-const KitchenReducer = KitchensSlice.reducer
-export default KitchenReducer
+export const KitchenReducer = KitchensSlice.reducer

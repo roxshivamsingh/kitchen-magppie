@@ -22,7 +22,7 @@ const UserSlice = createSlice({
     name: 'Users',
     initialState,
     reducers: {
-        setSuperUsers: (state, action: TAction) => {
+        setUsers: (state, action: TAction) => {
             state.status = 'success';
             state.loading = false;
             state.value = action.payload;
@@ -30,7 +30,6 @@ const UserSlice = createSlice({
     },
 });
 
-export const { setSuperUsers } = UserSlice.actions;
+export const { setUsers } = UserSlice.actions;
 
-const UserReducer = UserSlice.reducer
-export default UserReducer
+export const UserReducer = UserSlice.reducer
