@@ -5,8 +5,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { TComponentItem } from '../../types'
 
 export function Hero(props: TProps) {
-
-    console.log(props.item)
+    // console.log(props.item)
     return (<div
         className="relative w-full h-screen bg-cover"
         style={{ backgroundImage: `url(${props.item.links.bg})` }}
