@@ -30,7 +30,6 @@ export function Benefits(props: TProps) {
                             </div>)
                         })}
                     </div>
-
                 </SwiperSlide>
                 {/* <SwiperSlide className="flex justify-center items-center">
                     <div className="flex items-center mb-5 gap-10">
