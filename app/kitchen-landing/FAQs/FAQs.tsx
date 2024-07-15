@@ -4,7 +4,7 @@ import { FaArrowRight } from 'react-icons/fa'
 
 export function FAQs(props: TProps) {
     return (
-        <div className="bg-[#343b34] text-white py-20 px-10">
+        <div className="bg-[#343b34] text-white py-40 px-10">
             <div className=" text-6xl container px-5">FAQS</div>
             {props.item.items?.map((item, i) => {
                 return (
