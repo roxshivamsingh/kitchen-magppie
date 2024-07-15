@@ -4,11 +4,15 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { TComponentItem } from '../../types'
 import { useState } from 'react'
 import Contact from './Modals/Contact'
+import Consult from './Modals/Consult'
 
 export function Hero(props: TProps) {
-    const [modal, setIsModal] = useState<boolean>(false)
-    const openModal = () => setIsModal(true)
-    const onCloseModal = () => setIsModal(false)
+    const [contactmodal, setContactModal] = useState<boolean>(false)
+    const [consultModal, setConsultModal] = useState<boolean>(false)
+    const openContactModal = () => setContactModal(true)
+    const onCloseContactModal = () => setContactModal(false)
+    const openConsultModal = () => setConsultModal(true)
+    const onCloseConsultModal = () => setConsultModal(false)
 
     return (
         <div
@@ -32,16 +36,26 @@ export function Hero(props: TProps) {
             </div>
             <div className="absolute bottom-10 right-5 flex flex-col space-y-4 z-10">
                 <button
-                    className="p-6 bg-[#202620] rounded-full text-white shadow-lg"
-                    onClick={() => openModal()}
+                    className="p-8 bg-[#202620] rounded-full text-white shadow-lg"
+                    onClick={() => openContactModal()}
                 >
-                    <FaPhoneAlt className="h-16 w-16" />
+                    <FaPhoneAlt className="h-14 w-14" />
                 </button>
-                <button className="p-6 bg-[#202620] rounded-full text-white shadow-lg">
-                    <RiUserSettingsFill className="h-16 w-16" />
+                <button
+                    className="p-8 bg-[#202620] rounded-full text-white shadow-lg"
+                    onClick={() => openConsultModal()}
+                >
+                    <RiUserSettingsFill className="h-14 w-14" />
                 </button>
             </div>
-            <Contact onCloseModal={onCloseModal}isVisible={modal} />
+            <Contact
+                onCloseModal={onCloseContactModal}
+                isVisible={contactmodal}
+            />
+            <Consult
+                onCloseModal={onCloseConsultModal}
+                isVisible={consultModal}
+            />
         </div>
     )
 }
