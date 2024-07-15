@@ -13,7 +13,7 @@ export function FAQs(props: TProps) {
                     </MinimalAccordion>
                 )
             })}
-            <div className="flex items-center text-2xl cursor-pointer mt-6">
+            <div className="flex items-center text-2xl cursor-pointer mt-6 uppercase">
                 {props.item.typography.action}{' '}
                 <FaArrowRight className="h-6 w-6 pl-2" />
             </div>

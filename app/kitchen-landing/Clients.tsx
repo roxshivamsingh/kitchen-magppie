@@ -1,51 +1,22 @@
-import ranbir from './assets/clients/ranbir.png' // Replace with your actual image paths
-import harbhajan from './assets/clients/harbajan.png'
-import dhoni from './assets/clients/dhoni.png'
-import arshad from './assets/clients/wrshad.png'
+import { TComponentItem } from '../../types'
 
-const Clients = () => {
-    const people = [
-        {
-            name: 'Ranbir Kapoor',
-            title: 'Actor',
-            image: ranbir,
-        },
-        {
-            name: 'Harbhajan Singh',
-            title: 'Cricketer, Indian Team',
-            image: harbhajan,
-        },
-        {
-            name: 'MS Dhoni',
-            title: 'Captain, Indian Cricket Team',
-            image: dhoni,
-        },
-        {
-            name: 'Arshad Warsi',
-            title: 'Actor',
-            image: arshad,
-        },
-    ]
-
+export function Clients(props: TProps) {
     return (
         <div className="bg-[#f9f5ef] py-8 px-4">
-            <h2 className="text-start text-7xl mb-10">
-                The ones who already{' '}
-                <span className="italic font-medium">SWITCHED</span>
-            </h2>
+            <h2 className="text-start text-7xl mb-10" dangerouslySetInnerHTML={{ __html: props.item.typography.main }} />
             <div className="grid grid-cols-2 gap-4">
-                {people.map((person, index) => (
+                {props.item.gallery.map((person, index) => (
                     <div key={index} className="flex flex-col items-center">
                         <img
-                            src={person.image}
-                            alt={person.name}
+                            src={person.link}
+                            alt={person.typography.main}
                             className="w-full h-auto rounded-lg"
                         />
                         <h3 className="text-center mt-2 text-md font-semibold">
-                            {person.name}
+                            {person.typography.main}
                         </h3>
                         <p className="text-center text-md text-gray-600">
-                            {person.title}
+                            {person.typography.subtitle}
                         </p>
                     </div>
                 ))}
@@ -54,4 +25,5 @@ const Clients = () => {
     )
 }
 
-export default Clients
+
+type TProps = { item: TComponentItem }
