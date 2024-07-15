@@ -1,24 +1,24 @@
-import { IoMdClose } from 'react-icons/io';
+import { IoMdClose } from 'react-icons/io'
 
 interface IProps {
-    onCloseModal: () => void;
-    isVisible: boolean;
+    onCloseModal: () => void
+    isVisible: boolean
 }
 
 const Contact = ({ onCloseModal, isVisible }: IProps) => {
     return (
         <>
             <div
-                id="authentication-modal"
-                tabIndex={-1}
                 aria-hidden={!isVisible}
-                className={`fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden ${isVisible ? 'flex' : 'hidden'}`}
+                className={`fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden ${
+                    isVisible ? 'flex' : 'hidden'
+                }`}
             >
-                <div className="relative p-4 w-full max-w-lg max-h-screen">
+                <div className="relative py-20 w-full max-w-2xl max-h-full">
                     <div className="relative bg-[#202620] rounded-lg shadow">
-                        <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                            <h3 className="text-2xl font-semibold text-white">
-                                Request a Call Back
+                        <div className="flex items-center justify-between px-8 py-10 rounded-t">
+                            <h3 className="text-4xl font-semibold text-white mb-1">
+                                Book Your Consultation
                             </h3>
                             <button
                                 type="button"
@@ -28,71 +28,43 @@ const Contact = ({ onCloseModal, isVisible }: IProps) => {
                                 <IoMdClose className="h-12 w-12" />
                             </button>
                         </div>
-                        <div className="p-4 md:p-5">
-                            <form className="space-y-4" action="#">
-                                <div>
-                                    <label
-                                        htmlFor="name"
-                                        className="block mb-2 text-xl font-medium text-white"
-                                    >
-                                        Your Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        id="name"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        htmlFor="email"
-                                        className="block mb-2 text-xl font-medium text-white"
-                                    >
-                                        Your email
-                                    </label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        id="email"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        htmlFor="phoneNumber"
-                                        className="block mb-2 text-xl font-medium text-white"
-                                    >
-                                        Your Number
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        name="phoneNumber"
-                                        id="phoneNumber"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        htmlFor="slot"
-                                        className="block mb-2 text-xl font-medium text-white"
-                                    >
-                                        Preferred Slot to Connect
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="slot"
-                                        id="slot"
-                                        className="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                        required
-                                    />
-                                </div>
+                        <div className="px-10 py-10">
+                            <form className="space-y-12" action="#">
+                                <input
+                                    placeholder="Your Name"
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    className="text-white mb-8 text-2xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-4"
+                                    required
+                                />
+                                <input
+                                    placeholder="Your Number"
+                                    type="tel"
+                                    name="phoneNumber"
+                                    id="phoneNumber"
+                                    className="text-white mb-8 text-2xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-4"
+                                    required
+                                />
+                                <input
+                                    placeholder="Your City"
+                                    type="text"
+                                    name="city"
+                                    id="city"
+                                    className="text-white mb-8 text-2xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-4"
+                                    required
+                                />
+                                <input
+                                    placeholder="Your Tentative Budget"
+                                    type="text"
+                                    name="budget"
+                                    id="budget"
+                                    className="text-white mb-8 text-2xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-4"
+                                    required
+                                />
                                 <button
                                     type="submit"
-                                    className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                    className=" text-black bg-white cursor-pointer font-medium text-2xl w-full px-5 py-5 rounded-full text-center"
                                 >
                                     Submit
                                 </button>
@@ -102,7 +74,7 @@ const Contact = ({ onCloseModal, isVisible }: IProps) => {
                 </div>
             </div>
         </>
-    );
-};
+    )
+}
 
-export default Contact;
+export default Contact
