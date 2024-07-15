@@ -18,7 +18,7 @@ const Contact = ({ onCloseModal, isVisible }: IProps) => {
                     <div className="relative bg-[#202620] rounded-lg shadow">
                         <div className="flex items-center justify-between px-8 py-10 rounded-t">
                             <h3 className="text-4xl font-semibold text-white mb-1">
-                                Book Your Consultation
+                                Request a Call Back
                             </h3>
                             <button
                                 type="button"
@@ -39,6 +39,14 @@ const Contact = ({ onCloseModal, isVisible }: IProps) => {
                                     required
                                 />
                                 <input
+                                    placeholder="Your Email"
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    className="text-white mb-8 text-2xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-4"
+                                    required
+                                />
+                                <input
                                     placeholder="Your Number"
                                     type="tel"
                                     name="phoneNumber"
@@ -47,15 +55,7 @@ const Contact = ({ onCloseModal, isVisible }: IProps) => {
                                     required
                                 />
                                 <input
-                                    placeholder="Your City"
-                                    type="text"
-                                    name="city"
-                                    id="city"
-                                    className="text-white mb-8 text-2xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-4"
-                                    required
-                                />
-                                <input
-                                    placeholder="Your Tentative Budget"
+                                    placeholder="Preferred sSlot to Connect"
                                     type="text"
                                     name="budget"
                                     id="budget"
