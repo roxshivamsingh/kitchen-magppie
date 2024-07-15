@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { _LANDING_COMPONENTS, TComponentItem } from '../../../../types';
+import { TComponentItem } from '../../../../types';
 
 interface ILandingSlice {
     value: TComponentItem[];
@@ -10,8 +10,9 @@ interface ILandingSlice {
 
 const initialState: ILandingSlice = {
     loading: true,
-    value: _LANDING_COMPONENTS,
-    status: 'success',
+    value: [],
+    // value: _LANDING_COMPONENTS,
+    status: 'loading',
     error: null,
 };
 
@@ -20,7 +21,6 @@ const LandingSlice = createSlice({
     name: 'Landing',
     initialState,
     reducers: {
-
         setLanding: (state, action: TAction) => {
             state.status = 'success';
             state.loading = false;

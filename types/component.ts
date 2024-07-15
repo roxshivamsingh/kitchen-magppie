@@ -176,68 +176,37 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
         isGallery: true,
         gallery: [
             {
-                link: '',
                 typography: {
                     ..._prev.typography,
                     main: 'Ranbir Kapoor',
-                    secondary: 'Actor'
-                }
+                    subtitle: 'Actor',
+                },
+                link: `${STORAGE_BASE_URL}/landing%2Franbir.png?alt=media&token=08d63e95-7d2e-4d73-bf50-56aa64798556`,
             },
             {
-                link: '',
                 typography: {
                     ..._prev.typography,
                     main: 'Harbhajan Singh',
-                    secondary: 'Cricketer, Indian Team'
-                }
+                    subtitle: 'Cricketer, Indian Team',
+                },
+                link: `${STORAGE_BASE_URL}/landing%2Fharbajan.png?alt=media&token=74829590-e717-4eba-8083-0f2f310be870`,
             },
             {
-                link: '',
                 typography: {
                     ..._prev.typography,
                     main: 'MS Dhoni',
-                    secondary: 'Captian, Indian Cricket Team'
-                }
+                    subtitle: 'Captain, Indian Cricket Team',
+
+                },
+                link: `${STORAGE_BASE_URL}/landing%2Fdhoni.png?alt=media&token=d37f9726-a18e-48d3-9877-e08afd77d4a3`,
             },
             {
-                link: '',
                 typography: {
                     ..._prev.typography,
                     main: 'Arshad Warsi',
-                    secondary: 'Actor'
-                }
-            },
-            {
-                link: '',
-                typography: {
-                    ..._prev.typography,
-                    main: 'Kamal Nath',
-                    secondary: 'Member of Parliament, India'
-                }
-            },
-            {
-                link: '',
-                typography: {
-                    ..._prev.typography,
-                    main: 'Sunil Bharti Mittal',
-                    secondary: 'Owner, Airtel'
-                }
-            },
-            {
-                link: '',
-                typography: {
-                    ..._prev.typography,
-                    main: 'Natasha Poonawala',
-                    secondary: 'Philanthropist'
-                }
-            },
-            {
-                link: '',
-                typography: {
-                    ..._prev.typography,
-                    main: 'Vandana Munjal',
-                    secondary: 'Owner, Hero'
-                }
+                    subtitle: 'Actor',
+                },
+                link: `${STORAGE_BASE_URL}/landing%2Fwrshad.png?alt=media&token=cc70d597-a871-4490-874f-be4435e826b4`,
             },
         ]
     },
@@ -246,6 +215,10 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
         orderId: 6,
         name: 'explore-gallery-component',
         isGallery: true,
+        typography: {
+            ..._prev.typography,
+            main: 'Explore our <i>Gallery</i>'
+        },
         gallery: [
             {
                 link: `${STORAGE_BASE_URL}/customer%2Fintro.png?alt=media&token=5dedc173-9df0-4b34-be40-11162784f284`,
