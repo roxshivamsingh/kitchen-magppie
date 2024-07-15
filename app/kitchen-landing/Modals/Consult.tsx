@@ -16,10 +16,10 @@ const Consult = ({ onCloseModal, isVisible }: IProps) => {
                     isVisible ? 'flex' : 'hidden'
                 }`}
             >
-                <div className="relative p-4 w-full max-w-md max-h-full">
-                    <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <div className="relative p-4 w-full max-w-lg max-h-full">
+                    <div className="relative bg-[#202620] rounded-lg shadow">
+                        <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                            <h3 className="text-2xl font-semibold text-white">
                                 Book Your Consultation
                             </h3>
                             <button
@@ -27,7 +27,7 @@ const Consult = ({ onCloseModal, isVisible }: IProps) => {
                                 className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                 onClick={onCloseModal}
                             >
-                                <IoMdClose className="h-8 w-8" />
+                                <IoMdClose className="h-12 w-12" />
                             </button>
                         </div>
                         <div className="p-4 md:p-5">
@@ -35,7 +35,7 @@ const Consult = ({ onCloseModal, isVisible }: IProps) => {
                                 <div>
                                     <label
                                         htmlFor="name"
-                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                        className="block mb-2 text-xl font-medium text-white dark:text-white"
                                     >
                                         Your Name
                                     </label>
@@ -50,7 +50,7 @@ const Consult = ({ onCloseModal, isVisible }: IProps) => {
                                 <div>
                                     <label
                                         htmlFor="phoneNumber"
-                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                        className="block mb-2 text-xl font-medium text-white"
                                     >
                                         Your Number
                                     </label>
@@ -65,7 +65,7 @@ const Consult = ({ onCloseModal, isVisible }: IProps) => {
                                 <div>
                                     <label
                                         htmlFor="city"
-                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                        className="block mb-2 text-xl font-medium text-white"
                                     >
                                         Your City
                                     </label>
@@ -80,7 +80,7 @@ const Consult = ({ onCloseModal, isVisible }: IProps) => {
                                 <div>
                                     <label
                                         htmlFor="budget"
-                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                        className="block mb-2 text-xl font-medium text-white"
                                     >
                                         Your Tentative Budget
                                     </label>
@@ -88,13 +88,13 @@ const Consult = ({ onCloseModal, isVisible }: IProps) => {
                                         type="text"
                                         name="budget"
                                         id="budget"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                        className="bg-gray-50 border border-gray-300 mb-4 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                         required
                                     />
                                 </div>
                                 <button
                                     type="submit"
-                                    className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                    className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                 >
                                     Submit
                                 </button>
