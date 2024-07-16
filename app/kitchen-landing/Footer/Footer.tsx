@@ -6,13 +6,13 @@ export function Footer(props: TProps) {
     return (
         <div className="px-10 py-32 bg-[#202620] text-white w-full flex flex-col justify-start">
             <div className="text-6xl container mb-10 font-bold">MAGPPIE</div>
-            <div className="grid grid-cols-2 mb-6">
+            <div className="grid grid-cols-2 mb-6 gap-2">
                 {props.item.items?.map((item, i) => {
                     return (
                         <Link
                             to={`landing/${item.secondary}`}
                             key={i}
-                            className="p-2 cursor-pointer text-4xl"
+                            className="p-2 cursor-pointer text-3xl"
                         >
                             {item.main}
                         </Link>

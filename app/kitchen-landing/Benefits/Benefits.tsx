@@ -5,6 +5,7 @@ import { Scrollbar } from 'swiper/modules'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/scrollbar'
+import './swiper-custom.css';
 
 import { TComponentItem } from '../../../types'
 
@@ -33,7 +34,7 @@ export function Benefits(props: TProps) {
                     {props.item.gallery?.map((row, i) => {
                         return (
                             <SwiperSlide key={i}>
-                                <div className='flex flex-col items-center'>
+                                <div className='flex mb-10 flex-col items-center'>
                                     <img
                                         src={row.link}
                                         alt=""

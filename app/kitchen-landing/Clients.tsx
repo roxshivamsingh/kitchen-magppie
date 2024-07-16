@@ -1,4 +1,4 @@
-import { TComponentItem } from '../../types'
+import { TComponentItem } from '../../types/component'
 
 export function Clients(props: TProps) {
     return (
