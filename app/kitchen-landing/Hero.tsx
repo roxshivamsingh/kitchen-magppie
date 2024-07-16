@@ -28,7 +28,7 @@ export function Hero(props: TProps) {
 
             style={{ backgroundImage: `url(${props.item.links.bg})` }}
         >
-            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
+            {!toggle.isReelComponentClicked && (<div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />)}
             <div className="relative z-10 flex flex-col items-start justify-between h-full text-white">
                 {renderNavigationBar}
                 <div
