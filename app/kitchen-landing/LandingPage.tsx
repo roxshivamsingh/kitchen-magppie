@@ -9,7 +9,6 @@ export default function LandingPage() {
     useFirebaseLandingListener()
     const { status, value } = useAppSelector((state) => state.Cms.Landing)
 
-    // return <CustomDumpButton />
     if (status === 'loading') {
         return <PageProgress />
     } else if (value?.length) {
