@@ -4,7 +4,7 @@ import { FaArrowUp } from 'react-icons/fa'
 
 export function Footer(props: TProps) {
     return (
-        <div className="px-10 py-32 bg-[#202620] text-white w-full flex flex-col justify-start">
+        <div className="px-10 py-32 bg-[#202620] text-white w-full flex flex-col justify-start font-custom">
             <div className="text-6xl container mb-10 font-bold">MAGPPIE</div>
             <div className="grid grid-cols-2 mb-6 gap-2">
                 {props.item.items?.map((item, i) => {

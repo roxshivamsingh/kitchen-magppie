@@ -12,7 +12,7 @@ export function Hero(props: TProps) {
 
     const renderNavigationBar = useMemo(() => {
         return (
-            <div className="flex items-center justify-between w-full px-6 py-4 mt-6 fixed">
+            <div className="flex items-center justify-between w-full px-6 py-4 mt-6 fixed font-custom">
                 <h1 className="text-white z-10 font-bold text-6xl cursor-pointer mix-blend-difference">
                     {props.item.typography.main}
                 </h1>
@@ -33,7 +33,7 @@ export function Hero(props: TProps) {
             {!toggle.isReelComponentClicked && (
                 <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
             )}
-            <div className="relative z-10 flex flex-col items-start justify-between h-full text-white">
+            <div className="relative z-10 flex flex-col items-start justify-between h-full text-white font-custom">
                 {renderNavigationBar}
                 <div
                     className="text-7xl flex flex-col justify-center h-screen pl-6 p-4 mt-80"
