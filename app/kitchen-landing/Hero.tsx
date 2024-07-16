@@ -5,6 +5,7 @@ import { TComponentItem } from '../../types'
 import { useMemo, useState } from 'react'
 import Contact from './Modals/Contact'
 import Consult from './Modals/Consult'
+// import KitchenReelVideo from '../../assets/videos/kitchen-home.mp4'
 
 export function Hero(props: TProps) {
     const [toggle, setToggle] = useState(INIT_TOGGLE)
@@ -28,6 +29,7 @@ export function Hero(props: TProps) {
             className="relative w-full h-screen bg-cover"
             style={{ backgroundImage: `url(${props.item.links.bg})` }}
         >
+
             {!toggle.isReelComponentClicked && (
                 <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
             )}
