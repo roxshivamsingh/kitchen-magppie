@@ -12,7 +12,7 @@ export function Benefits(props: TProps) {
     return (
         <div className="flex flex-col items-start bg-[#343b34] text-white py-32 px-4 font-custom">
             <h1
-                className="text-8xl mb-16 text-start font-sm"
+                className="text-7xl mb-16 text-start font-sm"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
             />
             <Swiper
