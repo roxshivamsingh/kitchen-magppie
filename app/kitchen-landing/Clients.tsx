@@ -10,7 +10,7 @@ export function Clients(props: TProps) {
     return (
         <div className="bg-[#f9f5ef] py-8 px-4">
             <h2
-                className="text-start text-7xl mb-10"
+                className="text-start text-7xl mb-10 mt-10 px-5"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
             />
             <Swiper
@@ -20,7 +20,7 @@ export function Clients(props: TProps) {
                     fill: 'row',
                 }}
                 spaceBetween={30}
-                slidesPerView={3}
+                slidesPerView={2}
             >
                 {props.item.gallery.map((person, index) => {
                     return (
