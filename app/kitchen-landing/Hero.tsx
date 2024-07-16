@@ -8,6 +8,7 @@ import Consult from './Modals/Consult'
 
 export function Hero(props: TProps) {
     const [toggle, setToggle] = useState(INIT_TOGGLE)
+
     const renderNavigationBar = useMemo(() => {
         return (
             <div className="flex items-center justify-between w-full px-6 py-4 mt-6 fixed">
@@ -18,6 +19,7 @@ export function Hero(props: TProps) {
             </div>
         )
     }, [props.item.typography.main])
+
     return (
         <div
             onClick={() => {
@@ -38,7 +40,7 @@ export function Hero(props: TProps) {
                     }}
                 />
             </div>
-            <div className="absolute bottom-10 right-5 flex flex-col space-y-4 z-10">
+            <div className="fixed bottom-10 right-5 flex flex-col space-y-4 z-10 ">
                 <button
                     className="p-6 bg-[#202620] rounded-full text-white shadow-lg"
                     onClick={() => {
@@ -64,10 +66,7 @@ export function Hero(props: TProps) {
             </div>
             <Contact
                 onCloseModal={() => {
-                    setToggle((prev) => ({
-                        ...prev,
-                        isOpenConsultModal: false,
-                    }))
+                    setToggle((prev) => ({ ...prev, isOpenContactModal: false }))
                 }}
                 isVisible={toggle.isOpenContactModal}
             />
