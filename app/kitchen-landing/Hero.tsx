@@ -29,7 +29,6 @@ export function Hero(props: TProps) {
             className="relative w-full h-screen bg-cover"
             style={{ backgroundImage: `url(${props.item.links.bg})` }}
         >
-
             {!toggle.isReelComponentClicked && (
                 <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
             )}

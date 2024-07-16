@@ -8,7 +8,7 @@ import { TComponentItem } from '../../../types'
 
 export function Features(props: TProps) {
     return (
-        <div className="px-4 py-20 flex flex-col items-center justify-center bg-[#f9f5ef] font-custom">
+        <div className="px-4 flex flex-col items-center justify-center bg-[#f9f5ef] font-custom">
             <h1
                 className="mb-10 text-8xl"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
