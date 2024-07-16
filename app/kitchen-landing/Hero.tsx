@@ -58,8 +58,7 @@ export function Hero(props: TProps) {
             </div>
             <Contact
                 onCloseModal={() => {
-                    setToggle((prev) => ({ ...prev, isOpenConsultModal: false }))
-
+                    setToggle((prev) => ({ ...prev, isOpenContactModal: false }))
                 }}
                 isVisible={toggle.isOpenContactModal}
             />
