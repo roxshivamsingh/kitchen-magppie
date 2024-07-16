@@ -8,18 +8,19 @@ import Consult from './Modals/Consult'
 // import KitchenReelVideo from '../../assets/videos/kitchen-home.mp4'
 
 export function Hero(props: TProps) {
+    const { item } = props;
     const [toggle, setToggle] = useState(INIT_TOGGLE)
 
     const renderNavigationBar = useMemo(() => {
         return (
             <div className="flex items-center justify-between w-full px-6 py-4 mt-6 fixed">
                 <h1 className="text-white z-10 font-bold text-6xl cursor-pointer mix-blend-difference">
-                    {props.item.typography.main}
+                    {item.typography.main}
                 </h1>
                 <TbMenu className="h-16 w-16 cursor-pointer" />
             </div>
         )
-    }, [props.item.typography.main])
+    }, [item.typography.main])
 
     return (
         <div
@@ -27,20 +28,19 @@ export function Hero(props: TProps) {
                 setToggle((prev) => ({ ...prev, isReelComponentClicked: true }))
             }}
             className="relative w-full h-screen bg-cover"
-            style={{ backgroundImage: `url(${props.item.links.bg})` }}
+            style={{ backgroundImage: `url(${item.links.bg})` }}
         >
-
-            {!toggle.isReelComponentClicked && (
-                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
-            )}
             <div className="relative z-10 flex flex-col items-start justify-between h-full text-white">
+                {!toggle.isReelComponentClicked && (<>
+                    <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
+                    <div
+                        className="text-7xl absolute bottom z-10 flex flex-col justify-center h-screen pl-6 p-4 mt-80"
+                        dangerouslySetInnerHTML={{ __html: item.typography.description }}
+                    />
+                </>)}
                 {renderNavigationBar}
-                <div
-                    className="text-7xl flex flex-col justify-center h-screen pl-6 p-4 mt-80"
-                    dangerouslySetInnerHTML={{
-                        __html: props.item.typography.description,
-                    }}
-                />
+
+
             </div>
             <div className="fixed bottom-10 right-5 flex flex-col space-y-8 z-10">
                 <button
