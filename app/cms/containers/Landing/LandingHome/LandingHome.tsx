@@ -73,7 +73,6 @@ export function LandingHome() {
                 setCorpus((prev) => ({ ...prev, search }))
             }} />
 
-            {/* <CustomDumpButton /> */}
             {loading ? (<PageProgress />) : (
                 <div className="mt-10">
                     {components?.length ? (

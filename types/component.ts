@@ -135,14 +135,14 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
                 }
             },
             {
-                link: `${STORAGE_BASE_URL}/landing%2Fanti-bacteria.png?alt=media&token=e13d457a-8988-40fd-92cb-62a4e37268b6`,
+                link: `${STORAGE_BASE_URL}/landing%2Fanti-bacterial.png?alt=media&token=e13d457a-8988-40fd-92cb-62a4e37268b6`,
                 typography: {
                     ..._prev.typography,
                     main: 'Anti Bacterial'
                 }
             },
             {
-                link: `${STORAGE_BASE_URL}/landing%2Fanti-germ.png?alt=media&token=46e4172d-2a58-4aa4-8da0-d198fbbf995d`,
+                link: `${STORAGE_BASE_URL}/landing%2Fanti-germs.png?alt=media&token=46e4172d-2a58-4aa4-8da0-d198fbbf995d`,
                 typography: {
                     ..._prev.typography,
                     main: 'Anti Germs'
