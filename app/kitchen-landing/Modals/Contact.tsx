@@ -1,6 +1,5 @@
 import { IoMdClose } from 'react-icons/io'
 // import * as Yup from 'yup';
-
 interface IProps {
     onHide: VoidFunction
     open: boolean
@@ -8,6 +7,7 @@ interface IProps {
 
 export function Contact(props: IProps) {
     const { onHide, open } = props;
+
     return (<>
         <div
             aria-hidden={!open}

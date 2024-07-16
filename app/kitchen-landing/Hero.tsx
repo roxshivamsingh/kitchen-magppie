@@ -42,7 +42,7 @@ export function Hero(props: TProps) {
                     }}
                 />
             </div>
-            <div className="fixed bottom-10 right-5 flex flex-col space-y-4 z-10 ">
+            <div className="fixed bottom-10 right-5 flex flex-col space-y-8 z-10">
                 <button
                     className="p-6 bg-[#202620] rounded-full text-white shadow-lg"
                     onClick={() => {
