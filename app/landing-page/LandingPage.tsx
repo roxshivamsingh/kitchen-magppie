@@ -16,7 +16,6 @@ export default function LandingPage() {
     if (data.status === 'loading') {
         return <PageProgress />
     }
-    // return <CustomDumpButton />
 
     if (data?.value?.length)
         return (

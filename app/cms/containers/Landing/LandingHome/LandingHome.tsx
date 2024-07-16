@@ -14,7 +14,6 @@ export function LandingHome() {
     useFirebaseLandingListener()
     const { loading, value } = useAppSelector((state) => state.Cms.Landing)
     const [corpus, setCorpus] = useState(INIT_CORPUS)
-    // console.log(value)
     const onChangeModal = useCallback((newValue: Partial<TCorpusModal>) => {
         setCorpus((prev) => ({
             ...prev,
@@ -41,9 +40,7 @@ export function LandingHome() {
             onHide={() => {
                 setCorpus((prev) => ({ ...prev, confirmation: INIT_CONFIRMATION }))
             }} onConfirm={() => {
-                console.log(corpus.confirmation)
                 setCorpus((prev) => ({ ...prev, confirmation: INIT_CONFIRMATION }))
-
             }} />)
     }, [corpus.confirmation])
 
@@ -105,10 +102,6 @@ export function LandingHome() {
                 <FaPlus className="w-3 h-3 my-auto" />
                 Add Component
             </div>
-
-            {/* <MinimalAccordion title='xsxs'>
-                xsxsxs
-            </MinimalAccordion> */}
 
             {renderDeleteConfirmationDialog}
             <CustomSimpleModal
