@@ -14,7 +14,6 @@ export function Gallery(props: TProps) {
                 className="mb-10 text-7xl"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
             />
-
             <Swiper
                 // scrollbar={{ hide: true }}
                 navigation={true}
