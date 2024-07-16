@@ -208,6 +208,39 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
                 },
                 link: `${STORAGE_BASE_URL}/landing%2Fwrshad.png?alt=media&token=cc70d597-a871-4490-874f-be4435e826b4`,
             },
+            {
+                typography: {
+                    ..._prev.typography,
+                    main: 'Ranbir Kapoor',
+                    subtitle: 'Actor',
+                },
+                link: `${STORAGE_BASE_URL}/landing%2Franbir.png?alt=media&token=08d63e95-7d2e-4d73-bf50-56aa64798556`,
+            },
+            {
+                typography: {
+                    ..._prev.typography,
+                    main: 'Harbhajan Singh',
+                    subtitle: 'Cricketer, Indian Team',
+                },
+                link: `${STORAGE_BASE_URL}/landing%2Fharbajan.png?alt=media&token=74829590-e717-4eba-8083-0f2f310be870`,
+            },
+            {
+                typography: {
+                    ..._prev.typography,
+                    main: 'MS Dhoni',
+                    subtitle: 'Captain, Indian Cricket Team',
+
+                },
+                link: `${STORAGE_BASE_URL}/landing%2Fdhoni.png?alt=media&token=d37f9726-a18e-48d3-9877-e08afd77d4a3`,
+            },
+            {
+                typography: {
+                    ..._prev.typography,
+                    main: 'Arshad Warsi',
+                    subtitle: 'Actor',
+                },
+                link: `${STORAGE_BASE_URL}/landing%2Fwrshad.png?alt=media&token=cc70d597-a871-4490-874f-be4435e826b4`,
+            },
         ]
     },
     {

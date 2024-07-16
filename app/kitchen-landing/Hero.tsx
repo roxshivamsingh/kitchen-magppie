@@ -67,22 +67,22 @@ export function Hero(props: TProps) {
                 </button>
             </div>
             <Contact
-                onCloseModal={() => {
+                onHide={() => {
                     setToggle((prev) => ({
                         ...prev,
                         isOpenContactModal: false,
                     }))
                 }}
-                isVisible={toggle.isOpenContactModal}
+                open={toggle.isOpenContactModal}
             />
             <Consult
-                onCloseModal={() => {
+                onHide={() => {
                     setToggle((prev) => ({
                         ...prev,
                         isOpenConsultModal: false,
                     }))
                 }}
-                isVisible={toggle.isOpenConsultModal}
+                open={toggle.isOpenConsultModal}
             />
         </div>
     )

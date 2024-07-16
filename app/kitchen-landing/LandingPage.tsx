@@ -2,13 +2,11 @@ import { useAppSelector } from '../../redux'
 import { Gallery, Benefits, FAQs, Footer, BuyingStep, Hero, Features, Clients } from '.'
 import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
-// import CustomDumpButton from '../cms/components/Dump/CustomDumpButton'
 
 export default function LandingPage() {
     useFirebaseLandingListener()
     const { status, value } = useAppSelector((state) => state.Cms.Landing)
 
-    // return <CustomDumpButton />
     if (status === 'loading') {
         return <PageProgress />
     } else if (value?.length) {
