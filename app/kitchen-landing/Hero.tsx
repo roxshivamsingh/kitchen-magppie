@@ -1,6 +1,6 @@
 import { FaPhoneAlt } from 'react-icons/fa'
 import { RiUserSettingsFill } from 'react-icons/ri'
-import { GiHamburgerMenu } from 'react-icons/gi'
+import { TbMenu } from 'react-icons/tb'
 import { TComponentItem } from '../../types'
 import { useMemo, useState } from 'react'
 import Contact from './Modals/Contact'
@@ -16,7 +16,7 @@ export function Hero(props: TProps) {
                 <h1 className="text-white z-10 font-bold text-6xl cursor-pointer mix-blend-difference">
                     {props.item.typography.main}
                 </h1>
-                <GiHamburgerMenu className="h-16 w-16 cursor-pointer" />
+                <TbMenu className="h-16 w-16 cursor-pointer" />
             </div>
         )
     }, [props.item.typography.main])
@@ -68,7 +68,10 @@ export function Hero(props: TProps) {
             </div>
             <Contact
                 onCloseModal={() => {
-                    setToggle((prev) => ({ ...prev, isOpenContactModal: false }))
+                    setToggle((prev) => ({
+                        ...prev,
+                        isOpenContactModal: false,
+                    }))
                 }}
                 isVisible={toggle.isOpenContactModal}
             />
