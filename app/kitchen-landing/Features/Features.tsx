@@ -8,7 +8,7 @@ import { TComponentItem } from '../../../types'
 
 export function Features(props: TProps) {
     return (
-        <div className="px-8 py-20 flex flex-col items-center justify-center bg-[#f9f5ef]">
+        <div className="px-4 py-20 flex flex-col items-center justify-center bg-[#f9f5ef]">
             <h1
                 className="mb-10 text-8xl"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
@@ -18,7 +18,7 @@ export function Features(props: TProps) {
                     hide: true,
                 }}
                 modules={[Scrollbar]}
-                className="w-full h-full" // Adjusted width and height
+                className="w-full" // Adjusted width and height
                 style={{ overflow: 'hidden' }} // Added overflow handling
             >
                 {props.item.gallery.map((feature, i) => (
@@ -29,7 +29,7 @@ export function Features(props: TProps) {
                         <img
                             src={feature.link}
                             alt="logo"
-                            className="h-full object-cover h-100"
+                            className="w-screen object-contain"
                         />
                     </SwiperSlide>
                 ))}
