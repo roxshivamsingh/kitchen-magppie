@@ -8,9 +8,9 @@ import { TComponentItem } from '../../../types'
 
 export function Features(props: TProps) {
     return (
-        <div className="px-4 py-20 flex flex-col items-center justify-center bg-[#f9f5ef]">
+        <div className="flex flex-col items-center justify-center bg-[#f9f5ef] font-custom pt-20">
             <h1
-                className="mb-10 text-8xl"
+                className="mb-10 text-7xl px-6"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
             />
             <Swiper

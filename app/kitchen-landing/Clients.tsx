@@ -8,7 +8,7 @@ import 'swiper/css/scrollbar'
 
 export function Clients(props: TProps) {
     return (
-        <div className="bg-[#f9f5ef] py-8 px-4">
+        <div className="bg-[#f9f5ef] py-8 px-4 font-custom">
             <h2
                 className="text-start text-7xl mb-10 mt-10 px-5"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}

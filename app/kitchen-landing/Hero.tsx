@@ -13,7 +13,7 @@ export function Hero(props: TProps) {
 
     const renderNavigationBar = useMemo(() => {
         return (
-            <div className="flex items-center justify-between w-full px-6 py-4 mt-6 fixed">
+            <div className="flex items-center justify-between w-full px-6 py-4 mt-6 fixed font-custom">
                 <h1 className="text-white z-10 font-bold text-6xl cursor-pointer mix-blend-difference">
                     {item.typography.main}
                 </h1>
@@ -30,16 +30,19 @@ export function Hero(props: TProps) {
             className="relative w-full h-screen bg-cover"
             style={{ backgroundImage: `url(${item.links.bg})` }}
         >
-            <div className="relative z-10 flex flex-col items-start justify-between h-full text-white">
-                {!toggle.isReelComponentClicked && (<>
-                    <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
-                    <div
-                        className="text-7xl absolute bottom z-10 flex flex-col justify-center h-screen pl-6 p-4 mt-80"
-                        dangerouslySetInnerHTML={{ __html: item.typography.description }}
-                    />
-                </>)}
-                {renderNavigationBar}
 
+            <div className="relative z-10 flex flex-col items-start justify-between h-full text-white font-custom">
+                {!toggle.isReelComponentClicked && (
+                    <>
+                        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
+                        <div
+                            className="text-7xl z-10 flex flex-col justify-end h-screen pl-6 p-4 mb-80"
+                            dangerouslySetInnerHTML={{
+                                __html: props.item.typography.description,
+                            }}
+                        />
+                    </>)}
+                {renderNavigationBar}
 
             </div>
             <div className="fixed bottom-10 right-5 flex flex-col space-y-8 z-10">

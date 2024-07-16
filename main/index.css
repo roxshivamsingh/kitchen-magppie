@@ -13,3 +13,17 @@ body {
     font-weight: 400;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('/public/fonts/Switzer-Regular.otf') format('otf');
+    src: url('/public/fonts/Switzer-Bold.otf') format('otf');
+    src: url('/public/fonts/Switzer-Light.otf') format('otf');
+    src: url('/public/fonts/Switzer-ExtralightItalic.otf') format('otf');
+    src: url('/public/fonts/Switzer-Extrabold.otf') format('otf');
+    src: url('/public/fonts/Switzer-Medium.otf') format('otf');
+    src: url('/public/fonts/Switzer-Thin.otf') format('otf');
+    src: url('/public/fonts/Switzer-Extralight.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+}

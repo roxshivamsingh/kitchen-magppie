@@ -2,6 +2,8 @@ import { useAppSelector } from '../../redux'
 import { Gallery, Benefits, FAQs, Footer, BuyingStep, Hero, Features, Clients } from '.'
 import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
+import ToggleButton from './ToggleButton'
+// import CustomDumpButton from '../cms/components/Dump/CustomDumpButton'
 
 export default function LandingPage() {
     useFirebaseLandingListener()
@@ -15,6 +17,7 @@ export default function LandingPage() {
             <Features
                 item={value?.find((row) => row.name === 'carousel-component')}
             />
+            <ToggleButton />
             <Benefits
                 item={value?.find((row) => row.name === 'scope-component')}
             />
