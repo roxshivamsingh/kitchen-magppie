@@ -10,7 +10,8 @@ export function Footer(props: TProps) {
                 {props.item.items?.map((item, i) => {
                     return (
                         <Link
-                            to={`landing/${item.secondary}`}
+                            to={'/landing'}
+                            // to={`landing/${item.secondary}`}
                             key={i}
                             className="p-2 cursor-pointer text-4xl"
                         >

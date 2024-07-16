@@ -8,6 +8,7 @@ import Consult from './Modals/Consult'
 
 export function Hero(props: TProps) {
     const [toggle, setToggle] = useState(INIT_TOGGLE)
+
     const renderNavigationBar = useMemo(() => {
         return <div className="flex items-center justify-between w-full px-6 py-4 mt-6 fixed">
             <h1 className="text-white z-10 font-bold text-6xl cursor-pointer mix-blend-difference"
@@ -17,6 +18,7 @@ export function Hero(props: TProps) {
             <GiHamburgerMenu className="h-16 w-16 cursor-pointer" />
         </div>
     }, [props.item.typography.main])
+
     return (
         <div
 
@@ -38,7 +40,7 @@ export function Hero(props: TProps) {
                     }}
                 />
             </div>
-            <div className="absolute bottom-10 right-5 flex flex-col space-y-4 z-10">
+            <div className="fixed bottom-10 right-5 flex flex-col space-y-4 z-10 ">
                 <button
                     className="p-8 bg-[#202620] rounded-full text-white shadow-lg"
                     onClick={() => {
