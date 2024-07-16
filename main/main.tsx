@@ -9,7 +9,7 @@ import { store } from '../redux';
 import './index.css'
 
 // Base styles for media player and provider (~400B).
-import '@vidstack/react/player/styles/base.css';
+// import '@vidstack/react/player/styles/base.css';
 
 // React Responsive Carousel CSS
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
