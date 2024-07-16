@@ -3,9 +3,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
+import 'swiper/css/scrollbar'
+import './swiper-custom.css'
 
 import { TComponentItem } from '../../../types'
-import { Navigation } from 'swiper/modules'
+import { Navigation, Scrollbar } from 'swiper/modules'
 
 export function Gallery(props: TProps) {
     return (
@@ -16,16 +18,19 @@ export function Gallery(props: TProps) {
             />
             <Swiper
                 navigation={true}
-                modules={[Navigation]}
+                modules={[Navigation, Scrollbar]}
                 className="w-full" // Adjusted width and height
                 style={{ overflow: 'hidden' }} // Added overflow handling
+                scrollbar={{
+                    // hide: true,
+                }}
             >
                 {props.item.gallery.map((feature, i) => (
                     <SwiperSlide key={i}>
                         <img
                             src={feature.link}
                             alt="logo"
-                            className="w-screen object-contain"
+                            className="w-screen object-contain mb-10"
                         />
                     </SwiperSlide>
                 ))}
