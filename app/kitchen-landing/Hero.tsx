@@ -35,7 +35,7 @@ export function Hero(props: TProps) {
             <div className="relative z-10 flex flex-col items-start justify-between h-full text-white font-custom">
                 {renderNavigationBar}
                 <div
-                    className="text-7xl flex flex-col justify-end h-screen pl-6 p-4 mb-80"
+                    className="text-7xl flex flex-col justify-end h-screen pl-6 p-4 mb-96 font-extralight"
                     dangerouslySetInnerHTML={{
                         __html: props.item.typography.description,
                     }}
