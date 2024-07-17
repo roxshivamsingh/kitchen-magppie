@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import growth from './assets/growth.png'
+import growth from './assets/growth.svg'
 
 const ToggleButton = () => {
     const [toggled, setToggled] = useState(false)
@@ -17,23 +17,24 @@ const ToggleButton = () => {
                         ? 'bg-[#ffffff] text-black'
                         : 'bg-[#ffffff] text-black'
                 }`}
-                style={{ width: '500px', height: '180px' }}
+                style={{ width: '500px', height: '160px' }}
             >
-                <span
-                    className={`absolute flex items-center justify-center w-40 h-40 rounded-full transition-all duration-300 ${
+                <div
+                    className={`absolute flex items-center justify-center w-44 h-44 rounded-full shadow-xl transition-all duration-300 ${
                         toggled
                             ? 'left-0 transform -translate-x-8'
                             : 'right-0 transform translate-x-8'
                     }`}
                     style={{ backgroundColor: '#202620' }}
                 >
-                    <img src={growth} alt="Icon" className="w-40 h-40" />
-                </span>
+                    <img src={growth} alt="Icon" className="w-40 h-44 bg-[#202620] rounded-full" />
+                </div>
                 <span
                     className={`transition-opacity duration-300 ${
                         toggled ? 'opacity-0' : 'opacity-100'
                     }`}
                     style={{
+                        marginRight: "50px",
                         fontSize: '32px',
                         padding: '45px',
                         textAlign: 'left',
@@ -47,7 +48,7 @@ const ToggleButton = () => {
                         toggled ? 'opacity-100' : 'opacity-0'
                     }`}
                     style={{
-                        marginLeft: toggled ? '100px' : '',
+                        marginLeft: toggled ? '120px' : '',
                         fontSize: '32px',
                         padding: '40px',
                         textAlign: 'left',

@@ -26,10 +26,10 @@ const Consult = ({ onHide, open }: IProps) => {
                         onHide()
                     }}
                 />
-                <div className="relative py-20 w-full max-w-2xl max-h-full">
+                <div className="relative w-full max-w-3xl max-h-full">
                     <div className="relative bg-[#202620] rounded-lg shadow">
-                        <div className="flex items-center justify-between px-8 py-10 rounded-t">
-                            <h3 className="text-7xl font-thin text-white mb-1">
+                        <div className="flex items-center justify-between px-8 py-10 rounded-t w-screen">
+                            <h3 className="text-7xl font-thin text-white">
                                 Book Your Consultation
                             </h3>
                         </div>
