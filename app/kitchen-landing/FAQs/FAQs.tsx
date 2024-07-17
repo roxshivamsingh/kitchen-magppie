@@ -41,22 +41,22 @@ export function MinimalAccordion(props: IProps) {
         setToggle((prev) => !prev)
     }, [])
     return (
-        <div className="border-b border-gray-500 shadow">
+        <div className="border-b border-white shadow">
             <button
-                className="w-full flex justify-between items-center p-4 text-left focus:outline-none text-gray-400 mb-6"
+                className="w-full flex justify-between items-center p-4 text-left focus:outline-none text-white mb-6"
                 onClick={onToggle}
             >
                 <span className="text-4xl font-medium mt-2">{props.title}</span>
                 <span>
                     {toggle ? (
-                        <FaArrowUpLong className="text-gray-500 h-10 w-10" />
+                        <FaArrowUpLong className="text-white h-10 w-10" />
                     ) : (
-                        <FaArrowDownLong className="text-gray-500 h-10 w-10" />
+                        <FaArrowDownLong className="text-white h-10 w-10" />
                     )}
                 </span>
             </button>
             {toggle && (
-                <div className="text-gray-500 text-3xl mb-6 ml-3">
+                <div className="text-white text-3xl mb-6 ml-3">
                     {props.children}
                 </div>
             )}
