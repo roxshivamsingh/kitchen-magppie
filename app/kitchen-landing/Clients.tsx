@@ -15,7 +15,7 @@ export function Clients(props: TProps) {
             /> */}
             <h1 className="text-start text-7xl mb-10 mt-10 px-5 font-extralight">
                 The ones who already {" "}
-                <span className="font-semibold">SWITCHED</span>
+                <span className="font-semibold italic">SWITCHED</span>
             </h1>
             <Swiper
                 modules={[Grid, Scrollbar]}
