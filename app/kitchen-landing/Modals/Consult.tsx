@@ -1,4 +1,3 @@
-import { IoMdClose } from 'react-icons/io'
 import { toast } from 'react-toastify'
 
 interface IProps {
@@ -12,24 +11,17 @@ const Consult = ({ onHide, open }: IProps) => {
         <>
             <div
                 aria-hidden={!open}
-                className={`fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden ${open ? 'flex' : 'hidden'
-                    }`}
+                className={`fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden transform transition-transform duration-500 ${open ? 'flex translate-x-0' : '-translate-x-full'}`}
             >
-                <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" />
-
+                <div className={`fixed inset-0 transition-all duration-300 ${open ? 'bg-opacity-50' : 'bg-opacity-0'} backdrop-blur-sm`}
+                    onClick={() => { onHide() }}
+                />
                 <div className="relative py-20 w-full max-w-2xl max-h-full">
                     <div className="relative bg-[#202620] rounded-lg shadow">
                         <div className="flex items-center justify-between px-8 py-10 rounded-t">
                             <h3 className="text-5xl font-thin text-white mb-1">
                                 Book Your Consultation
                             </h3>
-                            <button
-                                type="button"
-                                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                onClick={onHide}
-                            >
-                                <IoMdClose className="h-12 w-12" />
-                            </button>
                         </div>
                         <div className="px-10 py-10">
                             <form>
