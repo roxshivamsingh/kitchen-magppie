@@ -6,6 +6,10 @@ interface IProps {
 }
 
 const Consult = ({ onHide, open }: IProps) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        onHide()
+    }
     return (
         <>
             <div
@@ -30,7 +34,7 @@ const Consult = ({ onHide, open }: IProps) => {
                             </h3>
                         </div>
                         <div className="px-10 py-5">
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <div className="space-y-8">
                                     <input
                                         placeholder="Your Name"
