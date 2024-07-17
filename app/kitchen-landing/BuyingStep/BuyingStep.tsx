@@ -1,7 +1,11 @@
 import { TComponentItem } from '../../../types'
 import { FaArrowRight } from 'react-icons/fa'
+import Contact from '../Modals/Contact'
+import { useState } from 'react'
 
 export function BuyingStep(props: TProps) {
+    const [toggle, setToggle] = useState(INIT_TOGGLE)
+
     return (
         <div className="bg-[#5d4e3e] text-white pt-20 pb-28 px-10 flex flex-col justify-start w-full font-custom">
             <div
@@ -26,13 +30,36 @@ export function BuyingStep(props: TProps) {
                 })}
             </div>
             <div className="flex justify-start items-start cursor-pointer">
-                <div className="text-3xl cursor-pointer mt-6 bg-brown-600 text-white font-light uppercase py-6 px-6 border border-white rounded-full flex items-center justify-center hover:bg-brown-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-500">
+                <button
+                    onClick={() => {
+                        setToggle((prev) => ({
+                            ...prev,
+                            isOpenContactModal: true,
+                        }))
+                    }}
+                    className="text-3xl cursor-pointer mt-6 bg-brown-600 text-white font-light uppercase py-6 px-6 border border-white rounded-full flex items-center justify-center hover:bg-brown-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-500"
+                >
                     {props.item.typography.action}{' '}
                     <FaArrowRight className="h-8 w-8 pl-3" />
-                </div>
+                </button>
             </div>
+            <Contact
+                onHide={() => {
+                    setToggle((prev) => ({
+                        ...prev,
+                        isOpenContactModal: false,
+                    }))
+                }}
+                open={toggle.isOpenContactModal}
+            />
         </div>
     )
 }
 
-type TProps = { item: TComponentItem }
+type TProps = {
+    item: TComponentItem
+}
+
+const INIT_TOGGLE = {
+    isOpenContactModal: false,
+}
