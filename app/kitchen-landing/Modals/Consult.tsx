@@ -1,4 +1,5 @@
 import { IoMdClose } from 'react-icons/io'
+import { toast } from 'react-toastify'
 
 interface IProps {
     onHide: VoidFunction
@@ -68,6 +69,9 @@ const Consult = ({ onHide, open }: IProps) => {
                                 <div className="flex flex-row-reverse mt-10">
                                     <button
                                         type="submit"
+                                        onClick={() => {
+                                            toast('Your request has been submitted')
+                                        }}
                                         className=" text-black bg-white cursor-pointer font-medium text-2xl w-52 py-4 text-center rounded-full uppercase"
                                     >
                                         Submit
