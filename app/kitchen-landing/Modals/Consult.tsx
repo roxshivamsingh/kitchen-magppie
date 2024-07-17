@@ -15,6 +15,8 @@ const Consult = ({ onHide, open }: IProps) => {
                 className={`fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden ${open ? 'flex' : 'hidden'
                     }`}
             >
+                <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" />
+
                 <div className="relative py-20 w-full max-w-2xl max-h-full">
                     <div className="relative bg-[#202620] rounded-lg shadow">
                         <div className="flex items-center justify-between px-8 py-10 rounded-t">
