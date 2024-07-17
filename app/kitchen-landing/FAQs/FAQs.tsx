@@ -16,7 +16,7 @@ export function FAQs(props: TProps) {
                 )
             })}
             <div className="flex justify-start items-start cursor-pointer mt-10">
-                <div className="text-2xl cursor-pointer mt-6 bg-brown-600 text-white font-light uppercase py-4 px-4 border border-white rounded-full flex items-center justify-center hover:bg-brown-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-500">
+                <div className="text-3xl cursor-pointer mt-6 bg-brown-600 text-white font-light uppercase py-6 px-6 border border-white rounded-full flex items-center justify-center hover:bg-brown-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-500">
                     {props.item.typography.action}
                     <FaArrowRight className="h-8 w-8 pl-3" />
                 </div>

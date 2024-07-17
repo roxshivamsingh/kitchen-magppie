@@ -22,7 +22,7 @@ export function Footer(props: TProps) {
             </div>
             <hr className="" />
             <div className="flex justify-between mt-6 text-xl cursor-pointer mb-5 font-custom">
-                <div className='p-2 text-3xl'>{props.item.typography.main}</div>
+                <div className="p-2 text-3xl">{props.item.typography.main}</div>
                 <div className="flex p-2 items-center text-3xl">
                     {props.item.typography.action}{' '}
                     <FaArrowUp className="h-8 w-8 ml-2" />

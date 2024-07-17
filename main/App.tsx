@@ -32,7 +32,8 @@ export default function App() {
         <>
             <Routes />
             <ToastContainer
-                position="bottom-right"
+                position="top-center"
+                className="h-32 text-5xl p-10 w-full"
                 autoClose={3000}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -46,4 +47,3 @@ export default function App() {
         </>
     )
 }
-

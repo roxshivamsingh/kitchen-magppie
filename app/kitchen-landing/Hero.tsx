@@ -5,7 +5,7 @@ import { TComponentItem } from '../../types'
 import { useMemo, useState } from 'react'
 import Contact from './Modals/Contact'
 import Consult from './Modals/Consult'
-import KitchenReelVideo from '../../assets/videos/kitchen-home.mp4'
+import KitchenReelVideo from '../../assets/videos/kitchen-final.mp4'
 
 export function Hero(props: TProps) {
     const { item } = props
@@ -57,7 +57,7 @@ export function Hero(props: TProps) {
             </div>
             <div className="fixed bottom-10 right-5 flex flex-col space-y-8 z-10">
                 <button
-                    className="p-6 bg-[#202620] rounded-full text-white shadow-lg"
+                    className="p-6 bg-[#202620] rounded-full text-white shadow-xl"
                     onClick={() => {
                         setToggle((prev) => ({
                             ...prev,
@@ -65,10 +65,10 @@ export function Hero(props: TProps) {
                         }))
                     }}
                 >
-                    <FaPhoneAlt className="h-12 w-12" />
+                    <FaPhoneAlt className="h-10 w-10" />
                 </button>
                 <button
-                    className="p-6 bg-[#202620] rounded-full text-white shadow-lg"
+                    className="p-6 bg-[#202620] rounded-full text-white shadow-xl"
                     onClick={() => {
                         setToggle((prev) => ({
                             ...prev,
@@ -76,7 +76,7 @@ export function Hero(props: TProps) {
                         }))
                     }}
                 >
-                    <RiUserSettingsFill className="h-12 w-12" />
+                    <RiUserSettingsFill className="h-10 w-10" />
                 </button>
             </div>
             <Contact
