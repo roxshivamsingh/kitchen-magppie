@@ -9,10 +9,10 @@ const ToggleButton = () => {
     }
 
     return (
-        <div className="flex items-center justify-center bg-[#f9f5ef] py-32 w-screen font-custom shadow-2xl">
+        <div className="flex items-center justify-center bg-[#f9f5ef] py-32 w-screen font-custom">
             <button
                 onClick={handleToggle}
-                className={`relative flex items-center justify-between px-4 py-2 rounded-full transition-all duration-400 ${
+                className={`relative flex items-center justify-between px-4 py-2 rounded-full transition-all shadow-xl duration-400 ${
                     toggled
                         ? 'bg-[#ffffff] text-black'
                         : 'bg-[#ffffff] text-black'
@@ -51,6 +51,7 @@ const ToggleButton = () => {
                         fontSize: '32px',
                         padding: '40px',
                         textAlign: 'left',
+                        fontWeight: "lighter"
                     }}
                 >
                     Tired of unhealthy Kitchen?
