@@ -8,7 +8,7 @@ import Consult from './Modals/Consult'
 // import KitchenReelVideo from '../../assets/videos/kitchen-home.mp4'
 
 export function Hero(props: TProps) {
-    const { item } = props;
+    const { item } = props
     const [toggle, setToggle] = useState(INIT_TOGGLE)
 
     const renderNavigationBar = useMemo(() => {
@@ -30,7 +30,6 @@ export function Hero(props: TProps) {
             className="relative w-full h-screen bg-cover"
             style={{ backgroundImage: `url(${item.links.bg})` }}
         >
-
             <div className="relative z-10 flex flex-col items-start justify-between h-full text-white font-custom">
                 {!toggle.isReelComponentClicked && (
                     <>
@@ -41,9 +40,9 @@ export function Hero(props: TProps) {
                                 __html: props.item.typography.description,
                             }}
                         />
-                    </>)}
+                    </>
+                )}
                 {renderNavigationBar}
-
             </div>
             <div className="fixed bottom-10 right-5 flex flex-col space-y-8 z-10">
                 <button

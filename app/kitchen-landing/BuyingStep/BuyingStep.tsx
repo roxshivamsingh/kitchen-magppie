@@ -18,7 +18,7 @@ export function BuyingStep(props: TProps) {
                             <div className="text-8xl font-extralight italic">
                                 {i + 1}
                             </div>
-                            <div className="my-auto mt-10 max-w-sm text-4xl pl-2 font-[200]">
+                            <div className="my-auto mt-10 max-w-sm text-4xl pl-1 font-[200]">
                                 {item.main}
                             </div>
                         </div>
