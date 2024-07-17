@@ -5,7 +5,7 @@ import { TComponentItem } from '../../types'
 import { useMemo, useState } from 'react'
 import Contact from './Modals/Contact'
 import Consult from './Modals/Consult'
-import KitchenReelVideo from '../../assets/videos/kitchen-home.mp4'
+import KitchenReelVideo from '../../assets/videos/kitchen-final.mp4'
 
 export function Hero(props: TProps) {
     const { item } = props
