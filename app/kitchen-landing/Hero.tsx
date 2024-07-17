@@ -5,7 +5,7 @@ import { TComponentItem } from '../../types'
 import { useMemo, useState } from 'react'
 import Contact from './Modals/Contact'
 import Consult from './Modals/Consult'
-// import KitchenReelVideo from '../../assets/videos/kitchen-home.mp4'
+import KitchenReelVideo from '../../assets/videos/kitchen-home.mp4'
 
 export function Hero(props: TProps) {
     const { item } = props
@@ -30,8 +30,19 @@ export function Hero(props: TProps) {
             className="relative w-full h-screen bg-cover"
             style={{ backgroundImage: `url(${item.links.bg})` }}
         >
+
             <div className="relative z-10 flex flex-col items-start justify-between h-full text-white font-custom">
-                {!toggle.isReelComponentClicked && (
+
+                {toggle.isReelComponentClicked ? <video
+                    className="object-cover w-full min-h-screen"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                >
+                    <source src={KitchenReelVideo} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video> : (
                     <>
                         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
                         <div
