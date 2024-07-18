@@ -13,7 +13,7 @@ export function Hero(props: TProps) {
 
     const renderNavigationBar = useMemo(() => {
         return (
-            <div className="flex items-center justify-between w-full px-6 py-4 mt-6 fixed font-custom">
+            <div className="flex items-center justify-between w-full px-6 py-4 mt-6 fixed">
                 <h1 className="text-white z-10 font-bold text-6xl cursor-pointer mix-blend-difference">
                     {item.typography.main}
                 </h1>
@@ -30,27 +30,37 @@ export function Hero(props: TProps) {
             className="relative w-full h-screen bg-cover"
             style={{ backgroundImage: `url(${item.links.bg})` }}
         >
-
-            <div className="relative z-10 flex flex-col items-start justify-between h-full text-white font-custom">
-
-                {toggle.isReelComponentClicked ? <video
-                    className="object-cover w-full min-h-screen"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                >
-                    <source src={KitchenReelVideo} type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video> : (
+            <div className="relative z-10 flex flex-col items-start justify-between h-full text-white">
+                {toggle.isReelComponentClicked ? (
+                    <video
+                        className="object-cover w-full min-h-screen"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                    >
+                        <source src={KitchenReelVideo} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                ) : (
                     <>
                         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
-                        <div
+                        {/* <div
                             className="text-7xl z-10 flex flex-col justify-end h-screen pl-6 p-4 mb-80"
                             dangerouslySetInnerHTML={{
                                 __html: props.item.typography.description,
                             }}
-                        />
+                        /> */}
+                        <h1 className="text-7xl z-10 flex flex-col justify-end h-screen pl-6 p-4 mb-80 font-extralight">
+                            Welcome to the <br />
+                            <span>
+                                <span className="italic font-normal">
+                                    SPIRITUAL
+                                </span>{' '}
+                                heart
+                            </span>{' '}
+                            of your Home.
+                        </h1>
                     </>
                 )}
                 {renderNavigationBar}

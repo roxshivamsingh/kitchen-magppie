@@ -7,11 +7,16 @@ export function BuyingStep(props: TProps) {
     const [toggle, setToggle] = useState(INIT_TOGGLE)
 
     return (
-        <div className="bg-[#5d4e3e] text-white pt-20 pb-28 px-10 flex flex-col justify-start w-full font-custom">
-            <div
+        <div className="bg-[#5d4e3e] text-white pt-20 pb-28 px-10 flex flex-col justify-start w-full">
+            {/* <div
                 className="text-7xl w-full"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
-            />
+            /> */}
+            <h1 className="text-7xl w-full font-thin">
+                How to buy a <span className="font-bold">MAGPPIE</span>
+                <br /> Wellness Kitchen in <br />
+                <span className="italic font-thin">4 easy steps?</span>
+            </h1>
             <div className="grid grid-cols-2 mt-6">
                 {props.item.items?.map((item, i) => {
                     return (

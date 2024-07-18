@@ -10,11 +10,14 @@ import { TComponentItem } from '../../../types'
 
 export function Benefits(props: TProps) {
     return (
-        <div className="flex flex-col items-start bg-[#343b34] text-white py-32 px-4 font-custom">
-            <h1
+        <div className="flex flex-col items-start bg-[#343b34] text-white py-32 px-4">
+            {/* <h1
                 className="text-7xl mb-16 text-start font-sm"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
-            />
+            /> */}
+            <h1 className='text-7xl mb-16 text-start font-sm'>
+                What makes <br /><span className='font-bold'>MAGPPIE</span> different?
+            </h1>
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
@@ -24,6 +27,7 @@ export function Benefits(props: TProps) {
                 scrollbar={{
                     hide: true,
                 }}
+                speed={800}
                 style={{ overflow: 'hidden' }} // Added overflow handling
             >
                 <div className="mb-10">
