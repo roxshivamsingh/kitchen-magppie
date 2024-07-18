@@ -1,27 +1,36 @@
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
+import { INIT_LANDING_CONSULT, LANDING_CONSULT_SCHEMA, TLandingConsult } from '../types/consultation'
+import { useFirebaseConsultActions } from '../../../appHooks/firebase/use-firebase-actions'
 
 interface IProps {
     onHide: VoidFunction
     open: boolean
 }
 
-const Consult = ({ onHide, open }: IProps) => {
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+export default function Consult({ onHide, open }: IProps) {
+    const { register, handleSubmit } = useForm({
+        defaultValues: INIT_LANDING_CONSULT,
+        resolver: yupResolver(LANDING_CONSULT_SCHEMA),
+    })
+    const action = useFirebaseConsultActions()
+
+    const onSubmit = handleSubmit((data: TLandingConsult) => {
+        action.add(data)
         onHide()
-    }
+        toast('Your consultation request has been submitted')
+    })
     return (
         <>
             <div
                 aria-hidden={!open}
-                className={`fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden transform transition-transform duration-500 flex font-custom ${
-                    open ? 'translate-x-0' : '-translate-x-full'
-                }`}
+                className={`fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden transform transition-transform duration-500 flex font-custom ${open ? 'translate-x-0' : '-translate-x-full'
+                    }`}
             >
                 <div
-                    className={`fixed inset-0 transition-all duration-300 ${
-                        open ? 'bg-opacity-50' : 'bg-opacity-0'
-                    } backdrop-blur-sm`}
+                    className={`fixed inset-0 transition-all duration-300 ${open ? 'bg-opacity-50' : 'bg-opacity-0'
+                        } backdrop-blur-sm`}
                     onClick={() => {
                         onHide()
                     }}
@@ -34,29 +43,29 @@ const Consult = ({ onHide, open }: IProps) => {
                             </h3>
                         </div>
                         <div className="px-10 py-5">
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={onSubmit}>
                                 <div className="space-y-8">
                                     <input
                                         placeholder="Your Name"
                                         type="text"
-                                        name="name"
-                                        id="name"
+                                        name="fullName"
+                                        {...register('fullName')}
                                         className="text-white text-3xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
                                         required
                                     />
                                     <input
-                                        placeholder="Your Number"
+                                        placeholder="Mobile Number"
                                         type="tel"
-                                        name="phoneNumber"
-                                        id="phoneNumber"
+                                        name="mobile"
+                                        {...register('mobile')}
                                         className="text-white text-3xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
                                         required
                                     />
                                     <input
-                                        placeholder="Your select your city"
+                                        placeholder="Please select your city"
                                         type="text"
                                         name="city"
-                                        id="city"
+                                        {...register('city')}
                                         className="text-white text-3xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
                                         required
                                     />
@@ -64,7 +73,7 @@ const Consult = ({ onHide, open }: IProps) => {
                                         placeholder="Your Tentative Budget"
                                         type="text"
                                         name="budget"
-                                        id="budget"
+                                        {...register('budget')}
                                         className="text-white text-3xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
                                         required
                                     />
@@ -73,11 +82,6 @@ const Consult = ({ onHide, open }: IProps) => {
                                 <div className="flex flex-row-reverse mt-10">
                                     <button
                                         type="submit"
-                                        onClick={() => {
-                                            toast(
-                                                'Your request has been submitted'
-                                            )
-                                        }}
                                         className=" text-black bg-white cursor-pointer font-medium text-3xl w-52 py-6 text-center rounded-full uppercase mb-10"
                                     >
                                         Submit
@@ -91,20 +95,3 @@ const Consult = ({ onHide, open }: IProps) => {
         </>
     )
 }
-
-export default Consult
-
-// const validationSchema = Yup.object().shape({
-//     fullName: Yup.string()
-//         .required('Full Name is required')
-//         .max(50, 'Full Name must be at most 50 characters'),
-//     mobile: Yup.string()
-//         .matches(/^[0-9]+$/, 'Mobile number must contain only digits')
-//         .min(10, 'Mobile number must be at least 10 digits')
-//         .max(15, 'Mobile number must be at most 15 digits')
-//         .required('Mobile number is required'),
-//     city: Yup.string()
-//         .max(200, 'Remark must be at most 200 characters'),
-//     budget: Yup.string()
-//         .max(200, 'Remark must be at most 200 characters'),
-// });
