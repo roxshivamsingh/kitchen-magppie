@@ -4,7 +4,7 @@ import { FaArrowDownLong, FaArrowUpLong } from 'react-icons/fa6'
 
 export function FAQs(props: TProps) {
     return (
-        <div className="bg-[#343b34] pt-16 pb-32 text-white px-10 flex flex-col justify-start font-custom">
+        <div className="bg-[#343b34] pt-16 pb-32 text-white px-10 flex flex-col justify-start mx-1">
             <div className=" text-8xl container px-5 py-10">FAQS</div>
             {props.item.items?.map((item, i) => {
                 return (

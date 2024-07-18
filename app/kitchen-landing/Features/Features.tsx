@@ -8,7 +8,7 @@ import { TComponentItem } from '../../../types'
 
 export function Features(props: TProps) {
     return (
-        <div className="flex flex-col items-center justify-center bg-[#f9f5ef] pt-10 w-screen">
+        <div className="flex flex-col items-center justify-center bg-[#f9f5ef] pt-10 w-screen px-2">
             <Swiper
                 scrollbar={{
                     hide: true,

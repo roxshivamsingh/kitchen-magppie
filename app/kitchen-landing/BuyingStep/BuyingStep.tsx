@@ -7,7 +7,7 @@ export function BuyingStep(props: TProps) {
     const [toggle, setToggle] = useState(INIT_TOGGLE)
 
     return (
-        <div className="bg-[#5d4e3e] text-white pt-20 pb-28 px-10 flex flex-col justify-start w-full">
+        <div className="bg-[#5D4E3E] pt-16 pb-32 text-white px-10 flex flex-col justify-start mx-1">
             {/* <div
                 className="text-7xl w-full"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
