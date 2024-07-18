@@ -1,5 +1,8 @@
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify'
-// import * as Yup from 'yup';
+import { INIT_LANDING_REQUEST, LANDING_REQUEST_SCHEMA, TLandingRequest } from '../types/request';
+import { useFirebaseRequestActions } from '../../../appHooks/firebase/use-firebase-actions';
 interface IProps {
     onHide: VoidFunction
     open: boolean
@@ -7,23 +10,27 @@ interface IProps {
 
 export function Contact(props: IProps) {
     const { onHide, open } = props
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+    const { register, handleSubmit } = useForm({
+        defaultValues: INIT_LANDING_REQUEST,
+        resolver: yupResolver(LANDING_REQUEST_SCHEMA),
+    })
+    const action = useFirebaseRequestActions()
+
+    const onSubmit = handleSubmit((data: TLandingRequest) => {
+        action.add(data)
         onHide()
         toast('Your request has been submitted')
-    }
+    })
     return (
         <>
             <div
                 aria-hidden={!open}
-                className={`fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden transform transition-transform duration-500 flex font-custom ${
-                    open ? 'translate-x-0' : '-translate-x-full'
-                }`}
+                className={`fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden transform transition-transform duration-500 flex font-custom ${open ? 'translate-x-0' : '-translate-x-full'
+                    }`}
             >
                 <div
-                    className={`fixed inset-0 transition-all duration-300 ${
-                        open ? 'bg-opacity-50' : 'bg-opacity-0'
-                    } backdrop-blur-sm`}
+                    className={`fixed inset-0 transition-all duration-300 ${open ? 'bg-opacity-50' : 'bg-opacity-0'
+                        } backdrop-blur-sm`}
                     onClick={() => {
                         onHide()
                     }}
@@ -36,13 +43,13 @@ export function Contact(props: IProps) {
                             </h3>
                         </div>
                         <div className="px-10 py-5">
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={onSubmit}>
                                 <div className="space-y-8">
                                     <input
                                         placeholder="Your Name"
                                         type="text"
-                                        name="name"
-                                        id="name"
+                                        name="fullName"
+                                        {...register('fullName')}
                                         className="text-white text-3xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
                                         required
                                     />
@@ -50,23 +57,24 @@ export function Contact(props: IProps) {
                                         placeholder="Email ID"
                                         type="email"
                                         name="email"
-                                        id="email"
+                                        {...register('email')}
                                         className="text-white text-3xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
                                         required
                                     />
                                     <input
                                         placeholder="Mobile Number"
                                         type="tel"
-                                        name="phoneNumber"
-                                        id="phoneNumber"
+                                        name="mobile"
+                                        id="mobile"
+                                        {...register('mobile')}
                                         className="text-white text-3xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
                                         required
                                     />
                                     <input
                                         placeholder="Preferred Slot to Connect"
                                         type="text"
-                                        name="budget"
-                                        id="budget"
+                                        name="remark"
+                                        {...register('remark')}
                                         className="text-white text-3xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
                                         required
                                     />
@@ -74,11 +82,6 @@ export function Contact(props: IProps) {
                                 <div className="flex flex-row-reverse mt-10">
                                     <button
                                         type="submit"
-                                        // onClick={() => {
-                                        //     toast(
-                                        //         'Your request has been submitted'
-                                        //     )
-                                        // }}
                                         className=" text-black bg-white cursor-pointer font-medium text-3xl w-52 py-6 mb-10 text-center rounded-full uppercase"
                                     >
                                         Submit
@@ -94,19 +97,3 @@ export function Contact(props: IProps) {
 }
 
 export default Contact
-
-// const validationSchema = Yup.object().shape({
-//     fullName: Yup.string()
-//         .required('Full Name is required')
-//         .max(50, 'Full Name must be at most 50 characters'),
-//     email: Yup.string()
-//         .email('Invalid email address')
-//         .required('Email is required'),
-//     mobile: Yup.string()
-//         .matches(/^[0-9]+$/, 'Mobile number must contain only digits')
-//         .min(10, 'Mobile number must be at least 10 digits')
-//         .max(15, 'Mobile number must be at most 15 digits')
-//         .required('Mobile number is required'),
-//     remark: Yup.string()
-//         .max(200, 'Remark must be at most 200 characters')
-// });
