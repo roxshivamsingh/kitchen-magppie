@@ -2,8 +2,8 @@ import { useMemo } from "react"
 import { auth, db } from "../../config/firebase.config";
 import _ from "../../types/lodash";
 import { addDoc, collection } from "firebase/firestore";
-import { TLandingRequest } from "../../app/kitchen-landing/types/request";
-import { TLandingConsult } from "../../app/kitchen-landing/types/consultation";
+import { TLandingRequest } from "../../app/kitchen-mweb/types/request";
+import { TLandingConsult } from "../../app/kitchen-mweb/types/consultation";
 
 export function useFirebaseActionAuth() {
     const q = auth.getAuth()
