@@ -6,7 +6,7 @@ export function Features(props: TProps) {
             <h1 className="text-5xl font-light pb-10">
                 What makes{' '}
                 <span className="font-bold text-[#343b34]">MAGPPIE</span>{' '}
-                different
+                different?
             </h1>
             <div className="flex container w-full mx-auto max-w-7xl gap-10">
                 {props.item.gallery.map((feature, i) => (

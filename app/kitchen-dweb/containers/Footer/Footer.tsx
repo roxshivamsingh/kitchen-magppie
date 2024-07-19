@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom'
 import { TComponentItem } from '../../../../types'
 import { FaArrowUp } from 'react-icons/fa'
+import { FaFacebook } from 'react-icons/fa'
+import { FaTwitter } from 'react-icons/fa'
+import { FaInstagram } from 'react-icons/fa'
+import { FaYoutube } from 'react-icons/fa'
+import { FaLinkedinIn } from 'react-icons/fa'
 
 export function Footer(props: TProps) {
     const scrollToTop = () => {
@@ -27,6 +32,14 @@ export function Footer(props: TProps) {
                         )
                     })}
                 </div>
+            </div>
+
+            <div className="flex flex-row items-center gap-3 mb-5 justify-end">
+                <FaFacebook className="h-6 w-6 cursor-pointer" />
+                <FaTwitter className="h-6 w-6 cursor-pointer" />
+                <FaInstagram className="h-6 w-6 cursor-pointer" />
+                <FaYoutube className="h-6 w-6 cursor-pointer" />
+                <FaLinkedinIn className="h-6 w-6 cursor-pointer" />
             </div>
 
             <hr className="" />

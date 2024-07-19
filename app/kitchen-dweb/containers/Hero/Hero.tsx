@@ -1,11 +1,9 @@
-// import { TComponentItem } from '../../../../types'
 import { useState } from 'react'
 import KitchenReelVideo from '../../assets/Landscape.mp4'
-import KitchebBg from '../../assets/hero-bg.png'
-import Consult from '../../components/Modals/Consult'
+import KitchenBg from '../../assets/hero-bg.png'
+import Consult from './Form'
 
 export function Hero() {
-    // const { item } = props
     const [toggle, setToggle] = useState(INIT_TOGGLE)
 
     return (
@@ -13,8 +11,8 @@ export function Hero() {
             onClick={() => {
                 setToggle((prev) => ({ ...prev, isReelComponentClicked: true }))
             }}
-            className="relative w-full bg-contain"
-            style={{ backgroundImage: KitchebBg }}
+            className="relative w-full bg-cover"
+            style={{ backgroundImage: `url(${KitchenBg})` }}
         >
             <div className="relative z-10 flex flex-col items-start justify-between h-full w-full">
                 {toggle.isReelComponentClicked ? (
@@ -30,25 +28,26 @@ export function Hero() {
                     </video>
                 ) : (
                     <>
-                        {/* <div className="absolute w-full h-full bg-black opacity-40" /> */}
-                        {/* <div
-                            className="text-7xl z-10 flex flex-col justify-end h-screen pl-6 p-4 mb-80"
-                            dangerouslySetInnerHTML={{
-                                __html: props.item.typography.description,
-                            }}
-                        /> */}
+                        <div className="absolute w-full h-full bg-black opacity-40" />
                         <div className="flex items-center justify-between w-full h-screen container mx-auto max-w-7xl">
-                            <h1 className="text-4xl flex justify-between font-extralight text-white">
-                                Welcome to the <br />
-                                <span>
-                                    <span className="italic font-normal">
-                                        SPIRITUAL
+                            <div className="flex">
+                                <h1 className="text-5xl font-extralight text-white z-20">
+                                    Welcome to the <br />
+                                    <span>
+                                        <span className="italic font-semibold">
+                                            {' '}
+                                            SPIRITUAL {' '}
+                                        </span>
+                                         heart
                                     </span>{' '}
-                                    heart
-                                </span>{' '}
-                                of your Home.
-                            </h1>
-                            <Consult onHide={() => {}} open={false} />
+                                    <br />
+                                    of your Home.
+                                </h1>
+                            </div>
+
+                            <div className="z-20">
+                                <Consult />
+                            </div>
                         </div>
                     </>
                 )}
@@ -56,8 +55,6 @@ export function Hero() {
         </div>
     )
 }
-
-// type TProps = { item: TComponentItem }
 
 const INIT_TOGGLE = {
     isOpenContactModal: false,

@@ -4,7 +4,7 @@ import { TbMenu } from 'react-icons/tb'
 
 const Navbar = () => {
     return (
-        <div className="w-full flex items-center justify-between h-16 px-10 bg-[#202620] text-white shadow-xl">
+        <div className="w-full flex items-center justify-between h-20 px-10 bg-[#202620] text-white shadow-xl">
             <TbMenu className="h-10 w-10" />
             <h1 className="text-2xl font-bold">MAGPPIE</h1>
             <div>
