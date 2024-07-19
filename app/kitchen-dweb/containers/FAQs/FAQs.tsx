@@ -8,7 +8,7 @@ export function FAQs(props: TProps) {
             <div className="flex flex-col container max-w-6xl w-full justify-center">
                 {props.item.items?.map((item, i) => {
                     return (
-                        <div key={i} className="font-custom">
+                        <div key={i} className="font-custom mb-2">
                             <MinimalAccordion key={i} title={item.main}>
                                 {item.description} #{i + 1}
                             </MinimalAccordion>

@@ -15,9 +15,9 @@ export function Footer(props: TProps) {
         })
     }
     return (
-        <div className="bg-[#202620] py-20 text-white px-10 flex flex-col justify-start">
+        <div className="bg-[#202620] pt-10 pb-20 text-white px-10 flex flex-col justify-start">
             <div className="flex w-full container mx-auto max-w-8xl justify-start">
-                <div className="text-4xl mb-10 font-bold">MAGPPIE</div>
+                <div className="text-6xl mb-10 font-bold">MAGPPIE</div>
                 <div className="grid grid-cols-3 mb-10 gap-3">
                     {props.item.items?.map((item, i) => {
                         return (
