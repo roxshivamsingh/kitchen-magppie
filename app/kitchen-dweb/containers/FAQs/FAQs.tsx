@@ -4,7 +4,7 @@ import { FaArrowDownLong, FaArrowUpLong } from 'react-icons/fa6'
 export function FAQs(props: TProps) {
     return (
         <div className="bg-[#343b34] text-white py-20 flex flex-col justify-center items-center w-full">
-            <h1 className="text-5xl text-center mb-10">FAQs</h1>
+            <h1 className="text-5xl text-center font-light mb-10">FAQs</h1>
             <div className="flex flex-col container max-w-6xl w-full justify-center">
                 {props.item.items?.map((item, i) => {
                     return (
@@ -17,7 +17,7 @@ export function FAQs(props: TProps) {
                 })}
             </div>
             <div className="flex justify-center items-center cursor-pointer mt-10">
-                <button className="text-md font-semibold cursor-pointer mt-6 bg-brown-600 text-[#343b34] bg-white uppercase py-2 px-10 border border-white rounded-full">
+                <button className="text-lg font-lighter cursor-pointer mt-6 bg-brown-600 text-[#343b34] bg-white uppercase py-2 px-10 border border-white rounded-full">
                     {props.item.typography.action}
                 </button>
             </div>
@@ -43,7 +43,7 @@ export function MinimalAccordion(props: IProps) {
     return (
         <div className="border-b border-white shadow">
             <button
-                className="w-full flex justify-between items-center p-2 text-left focus:outline-none text-white mb-3"
+                className="w-full flex justify-between items-center p-2 text-left focus:outline-none text-white"
                 onClick={onToggle}
             >
                 <span className="text-2xl font-medium mt-2">{props.title}</span>
