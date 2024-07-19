@@ -1,9 +1,9 @@
 import { useAppSelector } from '../../redux'
 import {
-    // Gallery,
+    Gallery,
     Benefits,
-    // FAQs,
-    // Footer,
+    FAQs,
+    Footer,
     BuyingStep,
     Hero,
     Features,
@@ -46,7 +46,7 @@ export default function Page() {
                 <BuyingStep
                     item={value?.find((row) => row.name === 'step-component')}
                 />
-                {/* <Gallery
+                <Gallery
                     item={value?.find(
                         (row) => row.name === 'explore-gallery-component'
                     )}
@@ -56,7 +56,7 @@ export default function Page() {
                 />
                 <Footer
                     item={value?.find((row) => row.name === 'footer-component')}
-                /> */}
+                />
             </div>
         )
     }

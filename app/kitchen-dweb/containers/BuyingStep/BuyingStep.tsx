@@ -12,7 +12,7 @@ export function BuyingStep(props: TProps) {
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
             /> */}
             <h1 className="text-4xl w-full font-thin text-center">
-                How to buy a <span className="font-bold">MAGPPIE</span>
+                How to buy a <span className="font-bold">MAGPPIE </span>
                 Wellness Kitchen in <br />
                 <span className="italic font-thin">4 easy steps?</span>
             </h1>
@@ -26,7 +26,7 @@ export function BuyingStep(props: TProps) {
                             <div className="text-6xl font-thin italic">
                                 {i + 1}
                             </div>
-                            <div className="my-auto mt-10 max-w-sm text-xl pl-1 font-[200]">
+                            <div className="my-auto mt-8 max-w-sm text-xl pl-1 font-[200]">
                                 {item.main}
                             </div>
                         </div>
@@ -41,7 +41,7 @@ export function BuyingStep(props: TProps) {
                             isOpenContactModal: true,
                         }))
                     }}
-                    className="text-md font-semibold cursor-pointer mt-6 bg-brown-600 text-[#343b34] bg-white uppercase py-2 px-10 border border-white rounded-full flex items-center justify-center"
+                    className="text-md font-semibold cursor-pointer mt-6 bg-brown-600 text-[#343b34] bg-white uppercase py-2 px-10 border border-white rounded-full"
                 >
                     {props.item.typography.action}
                 </button>

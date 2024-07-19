@@ -1,25 +1,25 @@
 import { TComponentItem } from '../../../../types'
-import { FaArrowRight } from 'react-icons/fa'
 import { FaArrowDownLong, FaArrowUpLong } from 'react-icons/fa6'
 
 export function FAQs(props: TProps) {
     return (
-        <div className="bg-[#343b34] pt-16 pb-32 text-white px-10 flex flex-col justify-start mx-1">
-            <div className=" text-8xl container px-5 py-10">FAQS</div>
-            {props.item.items?.map((item, i) => {
-                return (
-                    <div key={i} className="font-custom">
-                        <MinimalAccordion key={i} title={item.main}>
-                            {item.description} #{i + 1}
-                        </MinimalAccordion>
-                    </div>
-                )
-            })}
-            <div className="flex justify-start items-start cursor-pointer mt-10">
-                <div className="text-3xl cursor-pointer mt-6 bg-brown-600 text-white font-light uppercase py-6 px-6 border border-white rounded-full flex items-center justify-center hover:bg-brown-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-500">
+        <div className="bg-[#343b34] text-white py-20 flex flex-col justify-center items-center w-full">
+            <h1 className="text-5xl text-center mb-10">FAQs</h1>
+            <div className="flex flex-col container max-w-6xl w-full justify-center">
+                {props.item.items?.map((item, i) => {
+                    return (
+                        <div key={i} className="font-custom">
+                            <MinimalAccordion key={i} title={item.main}>
+                                {item.description} #{i + 1}
+                            </MinimalAccordion>
+                        </div>
+                    )
+                })}
+            </div>
+            <div className="flex justify-center items-center cursor-pointer mt-10">
+                <button className="text-md font-semibold cursor-pointer mt-6 bg-brown-600 text-[#343b34] bg-white uppercase py-2 px-10 border border-white rounded-full">
                     {props.item.typography.action}
-                    <FaArrowRight className="h-8 w-8 pl-3" />
-                </div>
+                </button>
             </div>
         </div>
     )
@@ -43,20 +43,20 @@ export function MinimalAccordion(props: IProps) {
     return (
         <div className="border-b border-white shadow">
             <button
-                className="w-full flex justify-between items-center p-4 text-left focus:outline-none text-white mb-6"
+                className="w-full flex justify-between items-center p-2 text-left focus:outline-none text-white mb-3"
                 onClick={onToggle}
             >
-                <span className="text-4xl font-medium mt-2">{props.title}</span>
+                <span className="text-2xl font-medium mt-2">{props.title}</span>
                 <span>
                     {toggle ? (
-                        <FaArrowUpLong className="text-white h-10 w-10" />
+                        <FaArrowUpLong className="text-white h-5 w-5" />
                     ) : (
-                        <FaArrowDownLong className="text-white h-10 w-10" />
+                        <FaArrowDownLong className="text-white h-5 w-5" />
                     )}
                 </span>
             </button>
             {toggle && (
-                <div className="text-white text-3xl mb-6 ml-3">
+                <div className="text-white text-xl mb-3 ml-3">
                     {props.children}
                 </div>
             )}

@@ -10,34 +10,37 @@ export function Footer(props: TProps) {
         })
     }
     return (
-        <div className="bg-[#202620] pt-16 pb-32 text-white px-10 flex flex-col justify-start mx-1">
-            <div className="text-6xl container mb-10 font-bold">MAGPPIE</div>
-            <div className="grid grid-cols-2 mb-10 gap-3">
-                {props.item.items?.map((item, i) => {
-                    return (
-                        <Link
-                            to={'/landing'}
-                            // to={`landing/${item.secondary}`}
-                            key={i}
-                            className="p-2 cursor-pointer text-4xl"
-                        >
-                            {item.main}
-                        </Link>
-                    )
-                })}
+        <div className="bg-[#202620] py-20 text-white px-10 flex flex-col justify-start">
+            <div className="flex w-full container mx-auto max-w-8xl justify-start">
+                <div className="text-4xl mb-10 font-bold">MAGPPIE</div>
+                <div className="grid grid-cols-3 mb-10 gap-3">
+                    {props.item.items?.map((item, i) => {
+                        return (
+                            <Link
+                                to={'/landing'}
+                                // to={`landing/${item.secondary}`}
+                                key={i}
+                                className="p-2 cursor-pointer text-xl ml-32"
+                            >
+                                {item.main}
+                            </Link>
+                        )
+                    })}
+                </div>
             </div>
+
             <hr className="" />
-            <div className="flex justify-between mt-6 text-xl cursor-pointer mb-5">
-                <div className="p-2 text-3xl">{props.item.typography.main}</div>
+            <div className="flex justify-between text-xl cursor-pointer">
+                <div className="p-2 text-lg">{props.item.typography.main}</div>
                 <div
-                    className="flex p-2 items-center text-3xl"
+                    className="flex p-2 items-center text-lg"
                     onClick={scrollToTop}
                 >
                     {props.item.typography.action}{' '}
-                    <FaArrowUp className="h-8 w-8 ml-2" />
+                    <FaArrowUp className="h-4 w-4 ml-2" />
                 </div>
             </div>
-            <div className="text-center mt-6 pb-6 text-3xl font-light mr-10">
+            <div className="text-center text-lg font-light">
                 {props.item.typography.description}
             </div>
         </div>
