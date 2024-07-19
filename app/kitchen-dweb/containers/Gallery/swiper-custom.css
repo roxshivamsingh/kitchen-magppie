@@ -1,0 +1,15 @@
+.swiper-button-prev {
+    padding: 40px;
+    margin-right: 50px;
+    color: white;
+    background-color: #202620;
+    border-radius: 50px;
+}
+
+.swiper-button-next {
+    color: white;
+    padding: 40px;
+    margin-left: 50px;
+    background-color: #202620;
+    border-radius: 50px;
+}

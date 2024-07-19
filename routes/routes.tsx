@@ -1,7 +1,8 @@
 import { Navigate, useRoutes } from 'react-router-dom'
 import KitchenRoutes from '../app/kitchen/routes'
 import CmsRoutes from '../app/cms/routes/routes'
-import LandingPage from '../app/kitchen-landing/LandingPage'
+import MPage from '../app/kitchen-mweb/Page'
+import DPage from '../app/kitchen-dweb/Page'
 
 export default function Routes() {
     return useRoutes([
@@ -13,8 +14,12 @@ export default function Routes() {
             element: <Navigate to="/not-found" replace />,
         },
         {
-            path: '/landing',
-            element: <LandingPage />,
+            path: '/mweb',
+            element: <MPage />,
+        },
+        {
+            path: '/dweb',
+            element: <DPage />,
         },
     ])
 }
