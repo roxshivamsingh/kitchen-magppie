@@ -7,11 +7,12 @@ import 'swiper/css/grid'
 import 'swiper/css/navigation'
 import './swiper-custom.css'
 
-
-
 export function Clients(props: TProps) {
     return (
-        <div id='Meet our Clients' className="bg-[#f9f5ef] w-full py-10 relative  ">
+        <div
+            id="Meet our Clients"
+            className="bg-[#f9f5ef] w-full py-10 relative  "
+        >
             {/* <h2
                 className="text-start text-7xl mb-10 mt-10 px-5"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
@@ -26,10 +27,13 @@ export function Clients(props: TProps) {
                     rows: 1,
                     fill: 'row',
                 }}
-                navigation={true}
+                navigation={{
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                }}
                 spaceBetween={30}
                 slidesPerView={6}
-                className="my-swiper flex container w-full mx-auto max-w-6xl gap-10 mySwiper"
+                className="flex container w-full mx-auto max-w-6xl gap-10 relative"
             >
                 {props.item.gallery.map((person, index) => {
                     return (
@@ -54,6 +58,8 @@ export function Clients(props: TProps) {
                     )
                 })}
             </Swiper>
+            <div className="swiper-button-prev swiper-button-custom bg-[#343b34] text-white p-7 rounded-full shadow-full ml-20 mt-5"></div>
+            <div className="swiper-button-next swiper-button-custom bg-[#343b34] text-white p-7 rounded-full shadow-full mr-20 mt-5"></div>
         </div>
     )
 }
