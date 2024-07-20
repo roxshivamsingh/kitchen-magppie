@@ -12,6 +12,7 @@ import {
 import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
 import ToggleButton from './components/ToggleButton'
+import { ToastContainer } from 'react-toastify'
 // import CustomDumpButton from '../cms/components/Dump/CustomDumpButton'
 
 export default function Page() {
@@ -53,6 +54,19 @@ export default function Page() {
                 />
                 <Footer
                     item={value?.find((row) => row.name === 'footer-component')}
+                />
+                <ToastContainer
+                    position="top-center"
+                    className="h-32 text-5xl p-10 w-full"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
                 />
             </div>
         )

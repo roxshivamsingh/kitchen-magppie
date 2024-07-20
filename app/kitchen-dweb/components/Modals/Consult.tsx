@@ -23,7 +23,7 @@ export default function Consult({ onHide, open }: IProps) {
     const onSubmit = handleSubmit((data: TLandingConsult) => {
         action.add(data)
         onHide()
-        toast('Your consultation request has been submitted')
+        toast('Your Consultation Request Has Been Submitted')
     })
     return (
         <>
