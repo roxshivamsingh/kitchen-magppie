@@ -1,6 +1,6 @@
 import { FaPhoneAlt } from 'react-icons/fa'
 import KitchenBg from '../../assets/hero-bg.png'
-import Consult from './Form'
+import Form from './Form'
 import { RiUserSettingsFill } from 'react-icons/ri'
 
 type TProps = {
@@ -33,7 +33,7 @@ export function Hero(props: TProps) {
                     </div>
 
                     <div className="z-20">
-                        <Consult />
+                        <Form />
                     </div>
                 </div>
             </div>

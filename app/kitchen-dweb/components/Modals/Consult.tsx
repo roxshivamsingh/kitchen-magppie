@@ -40,9 +40,9 @@ export default function Consult({ onHide, open }: IProps) {
                         onHide()
                     }}
                 />
-                <div className="relative w-full max-w-2xl max-h-full">
+                <div className="relative w-full max-w-xl max-h-full">
                     <div className="relative bg-[#202620] rounded-lg shadow">
-                        <div className="flex items-center justify-between px-8 py-10 rounded-t w-screen">
+                        <div className="flex items-center justify-between px-6 py-5 rounded-t w-screen">
                             <h3 className="text-4xl font-thin text-white">
                                 Book Your Consultation
                             </h3>
@@ -55,7 +55,7 @@ export default function Consult({ onHide, open }: IProps) {
                                         type="text"
                                         name="fullName"
                                         {...register('fullName')}
-                                        className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-3 placeholder-gray-300 px-5"
+                                        className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
                                         required
                                     />
                                     <input
@@ -63,7 +63,7 @@ export default function Consult({ onHide, open }: IProps) {
                                         type="tel"
                                         name="mobile"
                                         {...register('mobile')}
-                                        className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-3 placeholder-gray-300 px-5"
+                                        className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
                                         required
                                     />
                                     <input
@@ -71,7 +71,7 @@ export default function Consult({ onHide, open }: IProps) {
                                         type="text"
                                         name="city"
                                         {...register('city')}
-                                        className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-3 placeholder-gray-300 px-5"
+                                        className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
                                         required
                                     />
                                     <input
@@ -79,7 +79,7 @@ export default function Consult({ onHide, open }: IProps) {
                                         type="text"
                                         name="budget"
                                         {...register('budget')}
-                                        className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-3 placeholder-gray-300 px-5"
+                                        className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
                                         required
                                     />
                                 </div>
@@ -87,7 +87,7 @@ export default function Consult({ onHide, open }: IProps) {
                                 <div className="flex flex-row-reverse mt-5">
                                     <button
                                         type="submit"
-                                        className=" text-black bg-white cursor-pointer font-medium text-xl w-52 py-3 text-center rounded-full uppercase mb-5"
+                                        className=" text-black bg-white cursor-pointer font-medium text-xl w-52 py-1 text-center rounded-full uppercase mb-5"
                                     >
                                         Submit
                                     </button>

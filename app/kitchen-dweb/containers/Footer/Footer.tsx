@@ -23,8 +23,10 @@ export function Footer(props: TProps) {
 
     const handleLinkClick = (linkId: string) => {
         if (linkId === 'Request a Call Back') {
-            setToggle({ ...toggle, isOpenConsultModal: true })
+            setToggle({ ...toggle, isOpenContactModal: true })
         } else if (linkId === 'Get in Touch') {
+            setToggle({ ...toggle, isOpenConsultModal: true })
+        } else if (linkId === 'Request a Call') {
             setToggle({ ...toggle, isOpenContactModal: true })
         } else {
             // Scroll to the section with the ID corresponding to the linkId
