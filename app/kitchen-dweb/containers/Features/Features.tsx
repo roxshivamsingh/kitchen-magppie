@@ -10,13 +10,10 @@ export function Features(props: TProps) {
             </h1>
             <div className="flex container w-full mx-auto max-w-7xl gap-10">
                 {props.item.gallery.map((feature, i) => (
-                    <div className={"flex w-full relative cursor-pointer group"} key={i}
-                        onMouseEnter={() => {
-                            setOpacity(i)
-                        }}
-                        onMouseLeave={() => {
-                            setOpacity(-1)
-                        }}
+                    <div className={"flex w-full relative cursor-pointer group"}
+                        key={i}
+                        onMouseEnter={() => { setOpacity(i) }}
+                        onMouseLeave={() => { setOpacity(-1) }}
                     >
                         <img
                             src={feature.link}
