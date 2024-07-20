@@ -1,14 +1,17 @@
 import { TComponentItem } from '../../../../types/component'
-import { Grid, Scrollbar } from 'swiper/modules'
+import { Grid, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css'
 import 'swiper/css/grid'
-import 'swiper/css/scrollbar'
+import 'swiper/css/navigation'
+import './swiper-custom.css'
+
+
 
 export function Clients(props: TProps) {
     return (
-        <div className="bg-[#f9f5ef] w-full py-10">
+        <div className="bg-[#f9f5ef] w-full py-10 relative  ">
             {/* <h2
                 className="text-start text-7xl mb-10 mt-10 px-5"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
@@ -18,14 +21,15 @@ export function Clients(props: TProps) {
                 <span className="font-semibold italic"> SWITCHED</span>
             </h1>
             <Swiper
-                modules={[Grid, Scrollbar]}
+                modules={[Navigation, Grid]}
                 grid={{
                     rows: 1,
                     fill: 'row',
                 }}
+                navigation={true}
                 spaceBetween={30}
                 slidesPerView={6}
-                className="flex container w-full mx-auto max-w-6xl gap-10"
+                className="my-swiper flex container w-full mx-auto max-w-6xl gap-10 mySwiper"
             >
                 {props.item.gallery.map((person, index) => {
                     return (

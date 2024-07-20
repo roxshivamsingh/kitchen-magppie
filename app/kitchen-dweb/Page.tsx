@@ -47,9 +47,9 @@ export default function Page() {
                     item={value?.find((row) => row.name === 'step-component')}
                 />
                 <Gallery
-                    item={value?.find(
-                        (row) => row.name === 'explore-gallery-component'
-                    )}
+                // item={value?.find(
+                //     (row) => row.name === 'explore-gallery-component'
+                // )}
                 />
                 <FAQs
                     item={value?.find((row) => row.name === 'faq-component')}
