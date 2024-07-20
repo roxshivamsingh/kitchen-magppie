@@ -1,12 +1,19 @@
 import { useCallback, useState } from 'react'
 import growth from '../assets/growth.svg'
 
-function ToggleButton() {
+type TProps = { onConsultOpen?: VoidFunction }
+function ToggleButton(props: TProps) {
 
     const [isLeft, setIsLeft] = useState(true)
     const onClickToggle = useCallback(() => {
-        setIsLeft((prev) => !prev)
-    }, [])
+        setIsLeft((prev) => {
+            const value = !prev
+            if (props?.onConsultOpen && prev) {
+                props.onConsultOpen()
+            }
+            return value
+        })
+    }, [props])
 
     return (<div className=" bg-[#f9f5ef]">
         <div className='flex items-center justify-center'>

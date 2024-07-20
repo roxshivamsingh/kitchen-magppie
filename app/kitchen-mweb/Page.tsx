@@ -13,11 +13,14 @@ import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
 import ToggleButton from './components/ToggleButton'
 import { ToastContainer } from 'react-toastify'
+import Consult from './components/Modals/Consult'
+import { useState } from 'react'
 // import CustomDumpButton from '../cms/components/Dump/CustomDumpButton'
 
 export default function Page() {
     useFirebaseLandingListener()
     const { status, value } = useAppSelector((state) => state.Cms.Landing)
+    const [toggle, setToggle] = useState({ consult: false, contact: false })
 
     if (status === 'loading') {
         return <PageProgress />
@@ -32,7 +35,7 @@ export default function Page() {
                         (row) => row.name === 'carousel-component'
                     )}
                 />
-                <ToggleButton />
+                <ToggleButton onConsultOpen={() => { setToggle((prev) => ({ ...prev, consult: true })) }} />
                 <Benefits
                     item={value?.find((row) => row.name === 'scope-component')}
                 />
@@ -55,6 +58,8 @@ export default function Page() {
                 <Footer
                     item={value?.find((row) => row.name === 'footer-component')}
                 />
+                <Consult open={toggle.consult} onHide={() => { setToggle((prev) => ({ ...prev, consult: false })) }} />
+
                 <ToastContainer
                     position="top-center"
                     className="h-32 text-5xl p-10 w-full"
