@@ -10,9 +10,8 @@ export function Features(props: TProps) {
             </h1>
             <div className="flex container w-full mx-auto max-w-7xl gap-10">
                 {props.item.gallery.map((feature, i) => (
-                    <div className="flex w-full">
+                    <div className="flex w-full" key={i}>
                         <img
-                            key={i}
                             src={feature.link}
                             alt="logo"
                             className="w-full h-full"
