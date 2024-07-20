@@ -1,18 +1,13 @@
 import { FaPhoneAlt } from 'react-icons/fa'
 import KitchenBg from '../../assets/hero-bg.png'
-import Consult from './Form'
+import Form from './Form'
 import { RiUserSettingsFill } from 'react-icons/ri'
 import { useState } from 'react'
 import Contact from '../../components/Modals/Contact'
+import Consult from '../../components/Modals/Consult'
 
 export function Hero() {
     const [toggle, setToggle] = useState(INIT_TOGGLE)
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        })
-    }
     return (
         <div
             className="relative w-full bg-cover"
@@ -37,7 +32,7 @@ export function Hero() {
                     </div>
 
                     <div className="z-20">
-                        <Consult />
+                        <Form />
                     </div>
                 </div>
             </div>
@@ -55,7 +50,12 @@ export function Hero() {
                 </button>
                 <button
                     className="p-3 bg-[#202620] rounded-full text-white shadow-xl"
-                    onClick={scrollToTop}
+                    onClick={() => {
+                        setToggle((prev) => ({
+                            ...prev,
+                            isOpenConsultModal: true,
+                        }))
+                    }}
                 >
                     <RiUserSettingsFill className="h-5 w-5" />
                 </button>
@@ -69,10 +69,20 @@ export function Hero() {
                 }}
                 open={toggle.isOpenContactModal}
             />
+            <Consult
+                onHide={() => {
+                    setToggle((prev) => ({
+                        ...prev,
+                        isOpenConsultModal: false,
+                    }))
+                }}
+                open={toggle.isOpenConsultModal}
+            />
         </div>
     )
 }
 
 const INIT_TOGGLE = {
     isOpenContactModal: false,
+    isOpenConsultModal: false,
 }

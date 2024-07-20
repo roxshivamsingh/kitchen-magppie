@@ -5,7 +5,7 @@ export function Gallery() {
     return (
         <div
             id="Gallery"
-            className="flex flex-col items-cente justify-center bg-[#f9f5ef] py-10"
+            className="flex flex-col items-center justify-center bg-[#f9f5ef] py-10"
         >
             {/* <h1
                 className="mb-10 px-5 text-5xl font-extralight text-center"
@@ -18,30 +18,34 @@ export function Gallery() {
             {/* {props.item.gallery.map((feature, i) => ( */}
             {/* <> */}
             <div className="grid grid-cols-2 gap-5 mx-10">
-                <img
-                    // key={i}
-                    src={gallerImg}
-                    alt="logo"
-                    className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
-                />
-                <img
-                    // key={i}
-                    src={gallerImg}
-                    alt="logo"
-                    className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
-                />
-                <img
-                    // key={i}
-                    src={gallerImg}
-                    alt="logo"
-                    className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
-                />
-                <img
-                    // key={i}
-                    src={gallerImg}
-                    alt="logo"
-                    className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
-                />
+                <div className="relative w-full h-full overflow-hidden">
+                    <img
+                        src={gallerImg}
+                        alt="Description"
+                        className="w-50 h-50 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
+                    />
+                </div>
+                <div className="relative w-full h-full overflow-hidden">
+                    <img
+                        src={gallerImg}
+                        alt="Description"
+                        className="w-50 h-50 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
+                    />
+                </div>
+                <div className="relative w-full h-full overflow-hidden">
+                    <img
+                        src={gallerImg}
+                        alt="Description"
+                        className="w-50 h-50 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
+                    />
+                </div>
+                <div className="relative w-full h-full overflow-hidden">
+                    <img
+                        src={gallerImg}
+                        alt="Description"
+                        className="w-50 h-50 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
+                    />
+                </div>
             </div>
             {/* </> */}
             {/* ))} */}

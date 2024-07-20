@@ -8,7 +8,7 @@ import {
 } from '../../types/consultation'
 import { useFirebaseConsultActions } from '../../../../appHooks/firebase/use-firebase-actions'
 
-export default function Consult() {
+export default function Form() {
     const { register, handleSubmit } = useForm({
         defaultValues: INIT_LANDING_CONSULT,
         resolver: yupResolver(LANDING_CONSULT_SCHEMA),
