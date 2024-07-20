@@ -11,7 +11,7 @@ import './swiper-custom.css'
 
 export function Clients(props: TProps) {
     return (
-        <div className="bg-[#f9f5ef] w-full py-10 relative  ">
+        <div id='Meet our Clients' className="bg-[#f9f5ef] w-full py-10 relative  ">
             {/* <h2
                 className="text-start text-7xl mb-10 mt-10 px-5"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}

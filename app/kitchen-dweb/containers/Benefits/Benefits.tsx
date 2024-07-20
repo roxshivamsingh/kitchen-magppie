@@ -7,7 +7,7 @@ export function Benefits(props: TProps) {
           className="text-7xl mb-16 text-start font-sm"
           dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
       /> */}
-            <h1 className="text-5xl mb-16 text-start font-sm">
+            <h1 className="text-6xl mb-16 text-start font-sm">
                 What makes
                 <span className="font-bold"> MAGPPIE</span> unique?
             </h1>
@@ -25,7 +25,7 @@ export function Benefits(props: TProps) {
                             </span>
                         </div>
                         {i < props.item.gallery.length - 1 && (
-                            <div className="h-20 border-r border-gray-400 px-6"></div>
+                            <div className="h-20 border-r border-gray-400 px-5"></div>
                         )}
                     </div>
                 ))}

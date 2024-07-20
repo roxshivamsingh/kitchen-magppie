@@ -3,7 +3,10 @@ import gallerImg from '../../assets/Rectangle 71.png'
 
 export function Gallery() {
     return (
-        <div className="flex flex-col items-cente justify-center bg-[#f9f5ef] py-10">
+        <div
+            id="Gallery"
+            className="flex flex-col items-cente justify-center bg-[#f9f5ef] py-10"
+        >
             {/* <h1
                 className="mb-10 px-5 text-5xl font-extralight text-center"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
@@ -19,25 +22,25 @@ export function Gallery() {
                     // key={i}
                     src={gallerImg}
                     alt="logo"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
                 />
                 <img
                     // key={i}
                     src={gallerImg}
                     alt="logo"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
                 />
                 <img
                     // key={i}
                     src={gallerImg}
                     alt="logo"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
                 />
                 <img
                     // key={i}
                     src={gallerImg}
                     alt="logo"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
                 />
             </div>
             {/* </> */}

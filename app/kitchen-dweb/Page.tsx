@@ -8,12 +8,13 @@ import {
     Hero,
     Features,
     Clients,
-    Video
+    Video,
 } from '.'
 import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
 import ToggleButton from '../kitchen-mweb/components/ToggleButton'
 import Navbar from './components/Navbar'
+import { ToastContainer } from 'react-toastify'
 
 export default function Page() {
     useFirebaseLandingListener()
@@ -55,6 +56,18 @@ export default function Page() {
                 />
                 <Footer
                     item={value?.find((row) => row.name === 'footer-component')}
+                />
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
                 />
             </div>
         )
