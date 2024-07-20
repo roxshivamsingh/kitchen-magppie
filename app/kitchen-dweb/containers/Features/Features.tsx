@@ -3,7 +3,7 @@ import { TComponentItem } from '../../../../types'
 export function Features(props: TProps) {
     const [opacity, setOpacity] = useState(-1)
     return (
-        <div className="flex flex-col items-center justify-center bg-[#f9f5ef] pt-10 w-full px-2">
+        <div className="flex flex-col items-center justify-center bg-[#fff4ec] pt-10 w-full px-2">
             <h1 className="text-5xl font-light pb-10">
                 What makes <span className="font-bold text-[#343b34]">MAGPPIE</span>{' '}
                 different?
