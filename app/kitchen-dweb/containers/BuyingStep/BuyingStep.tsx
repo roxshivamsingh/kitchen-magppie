@@ -16,9 +16,9 @@ export function BuyingStep(props: TProps) {
                 Wellness Kitchen in <br />
                 <span className="italic font-thin">4 easy steps?</span>
             </h1>
-            <div className="flex items-center justify-center container gap-5 mx-auto max-w-7xl">
+            <div className="flex gap-5 mx-auto max-w-7xl">
                 {props.item.items?.map((item, i) => {
-                    return (<div key={i}>
+                    return (<div key={i} className='flex items-center justify-center'>
                         <div className="flex flex-row py-4 justify-start max-w-lg">
                             <div className="text-6xl font-thin italic">
                                 {i + 1}
