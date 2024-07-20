@@ -12,7 +12,7 @@ import {
 } from '.'
 import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
-import ToggleButton from './components/ToggleButton'
+import ToggleButton from '../kitchen-mweb/components/ToggleButton'
 import Navbar from './components/Navbar'
 
 export default function Page() {
