@@ -8,12 +8,6 @@ body {
     margin: 0;
 }
 
-.pacifico-regular {
-    font-family: 'Pacifico', cursive;
-    font-weight: 400;
-    font-style: normal;
-}
-
 @font-face {
     font-family: 'CustomFont';
     src: url('/public/fonts/Switzer-Regular.otf') format('otf');
@@ -27,3 +21,22 @@ body {
     font-weight: normal;
     font-style: normal;
 }
+
+.swiper-overflow-container {
+    background: red !important;
+}
+
+.swiper-overflow-container .container {
+    background: red !important;
+
+    overflow: visible; /* if your container has overflow by default */
+}
+
+.swiper-overflow-container .swiper-container {
+    background: red;
+    overflow: visible; /* remove swiper container overflow */
+}
+
+/* .swiper-wrapper {
+    padding: 10rem ;
+} */

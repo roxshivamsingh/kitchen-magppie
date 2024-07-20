@@ -19,10 +19,7 @@ export function Clients(props: TProps) {
             </h1>
             <Swiper
                 modules={[Grid, Scrollbar]}
-                grid={{
-                    rows: 1,
-                    fill: 'row',
-                }}
+                grid={{ rows: 1, fill: 'row' }}
                 spaceBetween={30}
                 slidesPerView={2}
             >
