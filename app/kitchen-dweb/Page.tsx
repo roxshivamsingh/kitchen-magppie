@@ -13,7 +13,6 @@ import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
 import ToggleButton from './components/ToggleButton'
 import Navbar from './components/Navbar'
-// import CustomDumpButton from '../cms/components/Dump/CustomDumpButton'
 
 export default function Page() {
     useFirebaseLandingListener()
@@ -25,9 +24,7 @@ export default function Page() {
         return (
             <div>
                 <Navbar />
-                <Hero
-                // item={value?.find((row) => row.name === 'reel-component')}
-                />
+                <Hero />
                 <Features
                     item={value?.find(
                         (row) => row.name === 'carousel-component'
