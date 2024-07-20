@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import KitchenReelVideo from '../../assets/Landscape.mp4'
 import KitchenBg from '../../assets/hero-bg.png'
 import Consult from './Form'
 
@@ -23,7 +22,7 @@ export function Hero() {
                         muted
                         playsInline
                     >
-                        <source src={KitchenReelVideo} type="video/mp4" />
+                        <source src={_data.bg.video} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 ) : (
@@ -38,7 +37,7 @@ export function Hero() {
                                             {' '}
                                             SPIRITUAL {' '}
                                         </span>
-                                         heart
+                                        heart
                                     </span>{' '}
                                     <br />
                                     of your Home.
@@ -60,4 +59,8 @@ const INIT_TOGGLE = {
     isOpenContactModal: false,
     isOpenConsultModal: false,
     isReelComponentClicked: false,
+}
+
+const _data = {
+    bg: { video: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fdesktop-reel.mp4?alt=media&token=a7eeb7dc-61e1-45c2-bed3-336d769ee064" }
 }
