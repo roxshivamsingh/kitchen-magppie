@@ -41,22 +41,22 @@ export default function Consult({ onHide, open }: IProps) {
                         onHide()
                     }}
                 />
-                <div className="relative w-full max-w-3xl max-h-full">
+                <div className="relative w-full max-w-2xl max-h-full">
                     <div className="relative bg-[#202620] rounded-lg shadow">
                         <div className="flex items-center justify-between px-8 py-10 rounded-t w-screen">
-                            <h3 className="text-7xl font-thin text-white">
+                            <h3 className="text-4xl font-thin text-white">
                                 Book Your Consultation
                             </h3>
                         </div>
-                        <div className="px-10 py-5">
+                        <div className="px-5 py-2">
                             <form onSubmit={onSubmit}>
-                                <div className="space-y-8">
+                                <div className="space-y-6">
                                     <input
                                         placeholder="Your Name"
                                         type="text"
                                         name="fullName"
                                         {...register('fullName')}
-                                        className="text-white text-3xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
+                                        className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-3 placeholder-gray-300 px-5"
                                         required
                                     />
                                     <input
@@ -64,7 +64,7 @@ export default function Consult({ onHide, open }: IProps) {
                                         type="tel"
                                         name="mobile"
                                         {...register('mobile')}
-                                        className="text-white text-3xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
+                                        className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-3 placeholder-gray-300 px-5"
                                         required
                                     />
                                     <input
@@ -72,7 +72,7 @@ export default function Consult({ onHide, open }: IProps) {
                                         type="text"
                                         name="city"
                                         {...register('city')}
-                                        className="text-white text-3xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
+                                        className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-3 placeholder-gray-300 px-5"
                                         required
                                     />
                                     <input
@@ -80,15 +80,15 @@ export default function Consult({ onHide, open }: IProps) {
                                         type="text"
                                         name="budget"
                                         {...register('budget')}
-                                        className="text-white text-3xl border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
+                                        className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-3 placeholder-gray-300 px-5"
                                         required
                                     />
                                 </div>
 
-                                <div className="flex flex-row-reverse mt-10">
+                                <div className="flex flex-row-reverse mt-5">
                                     <button
                                         type="submit"
-                                        className=" text-black bg-white cursor-pointer font-medium text-3xl w-52 py-6 text-center rounded-full uppercase mb-10"
+                                        className=" text-black bg-white cursor-pointer font-medium text-xl w-52 py-3 text-center rounded-full uppercase mb-5"
                                     >
                                         Submit
                                     </button>
