@@ -6,8 +6,13 @@ import { FaTwitter } from 'react-icons/fa'
 import { FaInstagram } from 'react-icons/fa'
 import { FaYoutube } from 'react-icons/fa'
 import { FaLinkedinIn } from 'react-icons/fa'
+// import Consult from '../../components/Modals/Consult'
+// import Contact from '../../components/Modals/Contact'
+// import { useState } from 'react'
 
 export function Footer(props: TProps) {
+    // const [toggle, setToggle] = useState(INIT_TOGGLE)
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -25,7 +30,7 @@ export function Footer(props: TProps) {
                                 to={'/landing'}
                                 // to={`landing/${item.secondary}`}
                                 key={i}
-                                className="p-2 cursor-pointer text-xl ml-32"
+                                className="p-1 cursor-pointer text-xl ml-32"
                             >
                                 {item.main}
                             </Link>
@@ -56,8 +61,15 @@ export function Footer(props: TProps) {
             <div className="text-center text-lg font-light">
                 {props.item.typography.description}
             </div>
+            {/* <Consult />
+            <Contact /> */}
         </div>
     )
 }
 
 type TProps = { item: TComponentItem }
+
+// const INIT_TOGGLE = {
+//     isOpenContactModal: false,
+//     isOpenConsultModal: false,
+// }
