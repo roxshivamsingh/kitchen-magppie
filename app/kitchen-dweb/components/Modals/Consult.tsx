@@ -7,6 +7,7 @@ import {
     TLandingConsult,
 } from '../../types/consultation'
 import { useFirebaseConsultActions } from '../../../../appHooks/firebase/use-firebase-actions'
+import { ToastMessage } from '../../../../types'
 
 interface IProps {
     onHide: VoidFunction
@@ -23,20 +24,18 @@ export default function Consult({ onHide, open }: IProps) {
     const onSubmit = handleSubmit((data: TLandingConsult) => {
         action.add(data)
         onHide()
-        toast('Your Consultation Request Has Been Submitted')
+        toast(ToastMessage.Consult.OK)
     })
     return (
         <>
             <div
                 aria-hidden={!open}
-                className={`fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden transform transition-transform duration-500 flex font-custom ${
-                    open ? 'translate-x-0' : '-translate-x-full'
-                }`}
+                className={`fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden transform transition-transform duration-500 flex font-custom ${open ? 'translate-x-0' : '-translate-x-full'
+                    }`}
             >
                 <div
-                    className={`fixed inset-0 transition-all duration-300 ${
-                        open ? 'bg-opacity-50' : 'bg-opacity-0'
-                    } backdrop-blur-sm`}
+                    className={`fixed inset-0 transition-all duration-300 ${open ? 'bg-opacity-50' : 'bg-opacity-0'
+                        } backdrop-blur-sm`}
                     onClick={() => {
                         onHide()
                     }}
