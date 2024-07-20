@@ -19,9 +19,7 @@ export function BuyingStep(props: TProps) {
             <div className="flex items-center justify-center container gap-5 mx-auto max-w-7xl">
                 {props.item.items?.map((item, i) => {
                     return (<div key={i}>
-                        <div
-                            className="flex flex-row py-4 justify-start max-w-lg"
-                        >
+                        <div className="flex flex-row py-4 justify-start max-w-lg">
                             <div className="text-6xl font-thin italic">
                                 {i + 1}
                             </div>
