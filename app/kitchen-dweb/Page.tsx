@@ -8,6 +8,7 @@ import {
     Hero,
     Features,
     Clients,
+    Video
 } from '.'
 import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
@@ -25,6 +26,7 @@ export default function Page() {
             <div>
                 <Navbar />
                 <Hero />
+                <Video />
                 <Features
                     item={value?.find(
                         (row) => row.name === 'carousel-component'
