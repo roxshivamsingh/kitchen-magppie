@@ -2,17 +2,13 @@ import { FaPhoneAlt } from 'react-icons/fa'
 import KitchenBg from '../../assets/hero-bg.png'
 import Consult from './Form'
 import { RiUserSettingsFill } from 'react-icons/ri'
-import { useState } from 'react'
-import Contact from '../../components/Modals/Contact'
 
-export function Hero() {
-    const [toggle, setToggle] = useState(INIT_TOGGLE)
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        })
-    }
+type TProps = {
+    onContactOpen?: VoidFunction,
+    onConsultOpen?: VoidFunction
+
+}
+export function Hero(props: TProps) {
     return (
         <div
             className="relative w-full bg-cover"
@@ -45,34 +41,23 @@ export function Hero() {
                 <button
                     className="p-3 bg-[#202620] rounded-full text-white shadow-xl"
                     onClick={() => {
-                        setToggle((prev) => ({
-                            ...prev,
-                            isOpenContactModal: true,
-                        }))
+                        if (props.onContactOpen)
+                            props.onContactOpen()
                     }}
                 >
                     <FaPhoneAlt className="h-5 w-5" />
                 </button>
                 <button
                     className="p-3 bg-[#202620] rounded-full text-white shadow-xl"
-                    onClick={scrollToTop}
+                    onClick={() => {
+                        if (props?.onConsultOpen)
+                            props?.onConsultOpen()
+                    }}
                 >
                     <RiUserSettingsFill className="h-5 w-5" />
                 </button>
             </div>
-            <Contact
-                onHide={() => {
-                    setToggle((prev) => ({
-                        ...prev,
-                        isOpenContactModal: false,
-                    }))
-                }}
-                open={toggle.isOpenContactModal}
-            />
         </div>
     )
 }
 
-const INIT_TOGGLE = {
-    isOpenContactModal: false,
-}

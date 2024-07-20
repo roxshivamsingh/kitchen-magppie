@@ -15,25 +15,44 @@ import { PageProgress } from '../../components'
 import ToggleButton from '../kitchen-mweb/components/ToggleButton'
 import Navbar from './components/Navbar'
 import { ToastContainer } from 'react-toastify'
+import Consult from './components/Modals/Consult'
+import { useState } from 'react'
+import Contact from './components/Modals/Contact'
 
 export default function Page() {
     useFirebaseLandingListener()
     const { status, value } = useAppSelector((state) => state.Cms.Landing)
 
+    const [toggle, setToggle] = useState({ consult: false, contact: false })
     if (status === 'loading') {
         return <PageProgress />
     } else if (value?.length) {
         return (
             <div>
                 <Navbar />
-                <Hero />
+                <Hero
+                    onContactOpen={() => {
+                        setToggle((prev) => ({
+                            ...prev,
+                            contact: true
+                        }))
+                    }}
+                    onConsultOpen={() => {
+                        setToggle((prev) => ({
+                            ...prev,
+                            consult: true
+                        }))
+                    }}
+                />
                 <Video />
                 <Features
                     item={value?.find(
                         (row) => row.name === 'carousel-component'
                     )}
                 />
-                <ToggleButton />
+                <ToggleButton onConsultOpen={() => {
+                    setToggle((prev) => ({ ...prev, consult: true }))
+                }} />
                 <Benefits
                     item={value?.find((row) => row.name === 'scope-component')}
                 />
@@ -68,6 +87,17 @@ export default function Page() {
                     draggable
                     pauseOnHover
                     theme="light"
+                />
+
+                <Consult open={toggle.consult} onHide={() => { setToggle((prev) => ({ ...prev, consult: false })) }} />
+                <Contact
+                    onHide={() => {
+                        setToggle((prev) => ({
+                            ...prev,
+                            contact: false,
+                        }))
+                    }}
+                    open={toggle.contact}
                 />
             </div>
         )
