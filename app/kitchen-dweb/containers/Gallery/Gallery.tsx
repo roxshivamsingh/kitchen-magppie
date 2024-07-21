@@ -1,5 +1,8 @@
 // import { TComponentItem } from '../../../../types'
-import gallerImg from '../../assets/Rectangle 71.png'
+import gallerOne from '../../assets/gallery/one.png'
+import gallerTwo from '../../assets/gallery/two.png'
+import gallerThree from '../../assets/gallery/three.png'
+import gallerFour from '../../assets/gallery/four.png'
 
 export function Gallery() {
     return (
@@ -20,28 +23,28 @@ export function Gallery() {
             <div className="grid grid-cols-2 gap-5 mx-10">
                 <div className="relative w-full h-full overflow-hidden">
                     <img
-                        src={gallerImg}
+                        src={gallerOne}
+                        alt="Description"
+                        className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
+                    />
+                </div>
+                <div className="relative w-full h-full overflow-hidden">
+                    <img
+                        src={gallerTwo}
                         alt="Description"
                         className="w-50 h-50 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
                     />
                 </div>
                 <div className="relative w-full h-full overflow-hidden">
                     <img
-                        src={gallerImg}
+                        src={gallerThree}
                         alt="Description"
                         className="w-50 h-50 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
                     />
                 </div>
                 <div className="relative w-full h-full overflow-hidden">
                     <img
-                        src={gallerImg}
-                        alt="Description"
-                        className="w-50 h-50 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
-                    />
-                </div>
-                <div className="relative w-full h-full overflow-hidden">
-                    <img
-                        src={gallerImg}
+                        src={gallerFour}
                         alt="Description"
                         className="w-50 h-50 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
                     />

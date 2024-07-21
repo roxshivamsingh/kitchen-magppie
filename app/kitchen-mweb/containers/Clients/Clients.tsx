@@ -8,13 +8,13 @@ import 'swiper/css/scrollbar'
 
 export function Clients(props: TProps) {
     return (
-        <div className="bg-[#f9f5ef] py-8 px-4">
+        <div className="bg-[#f9f5ef] py-8 px-4" id="Meet our Clients">
             {/* <h2
                 className="text-start text-7xl mb-10 mt-10 px-5"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
             /> */}
             <h1 className="text-start text-7xl mb-10 mt-10 px-5 font-extralight">
-                The ones who already {" "}
+                The ones who already{' '}
                 <span className="font-semibold italic">SWITCHED</span>
             </h1>
             <Swiper
