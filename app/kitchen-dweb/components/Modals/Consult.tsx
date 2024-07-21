@@ -8,6 +8,7 @@ import {
 } from '../../types/consultation'
 import { useFirebaseConsultActions } from '../../../../appHooks/firebase/use-firebase-actions'
 import { ToastMessage } from '../../../../types'
+import { IoMdClose } from 'react-icons/io'
 
 interface IProps {
     onHide: VoidFunction
@@ -42,11 +43,20 @@ export default function Consult({ onHide, open }: IProps) {
                 />
                 <div className="relative w-full max-w-xl max-h-full">
                     <div className="relative bg-[#202620] rounded-lg shadow">
-                        <div className="flex items-center justify-between px-6 py-5 rounded-t w-screen">
+                        <div className="flex items-center justify-between px-6 py-5 rounded-t ">
+
                             <h3 className="text-4xl font-thin text-white">
                                 Book Your Consultation
                             </h3>
+                            <button
+                                type="button"
+                                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                onClick={onHide}
+                            >
+                                <IoMdClose className="h-12 w-12" />
+                            </button>
                         </div>
+
                         <div className="px-5 py-2">
                             <form onSubmit={onSubmit}>
                                 <div className="space-y-6">
