@@ -11,7 +11,7 @@ import { Navigation, Scrollbar } from 'swiper/modules'
 
 export function Gallery(props: TProps) {
     return (
-        <div className="px-2 py-10 flex flex-col items-start justify-center bg-[#f9f5ef]">
+        <div className="px-2 py-10 flex flex-col items-start justify-center bg-[#f9f5ef]" id='Gallery'>
             <h1
                 className="mb-10 px-5 text-7xl font-extralight"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
