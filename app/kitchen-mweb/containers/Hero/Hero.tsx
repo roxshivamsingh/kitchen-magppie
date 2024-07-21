@@ -30,7 +30,7 @@ export function Hero(props: TProps) {
             className="relative w-full h-screen bg-cover"
             style={{ backgroundImage: `url(${item.links.bg})` }}
         >
-            <div className="relative z-10 flex flex-col items-start justify-between h-full text-white">
+            <div className="relative z-10 flex flex-col justify-between h-full text-white">
                 {toggle.isReelComponentClicked ? (
                     <video
                         className="object-cover w-full min-h-screen"
@@ -45,13 +45,7 @@ export function Hero(props: TProps) {
                 ) : (
                     <>
                         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
-                        {/* <div
-                            className="text-7xl z-10 flex flex-col justify-end h-screen pl-6 p-4 mb-80"
-                            dangerouslySetInnerHTML={{
-                                __html: props.item.typography.description,
-                            }}
-                        /> */}
-                        <h1 className="text-7xl z-10 flex flex-col justify-end h-screen pl-6 p-4 mb-80 font-extralight">
+                        <h1 className="absolute text-7xl z-10 flex flex-col bottom-60 left-6 p-4 font-extralight">
                             Welcome to the <br />
                             <span>
                                 <span className="italic font-normal">
