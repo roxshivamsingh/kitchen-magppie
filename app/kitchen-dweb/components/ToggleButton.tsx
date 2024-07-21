@@ -6,14 +6,14 @@ function ToggleButton(props: TProps) {
 
     const [isLeft, setIsLeft] = useState(true)
     const onClickToggle = useCallback(() => {
-        setIsLeft((prev) => {
-            const value = !prev
-            if (props?.onConsultOpen && prev) {
+        setIsLeft((prev) => !prev)
+        const timer = setTimeout(() => {
+            if (props?.onConsultOpen && isLeft) {
                 props.onConsultOpen()
             }
-            return value
-        })
-    }, [props])
+        }, 500)
+        return () => clearTimeout(timer)
+    }, [isLeft, props])
 
     return (<div className=" bg-[#f9f5ef]">
         <div className='flex items-center justify-center'>
