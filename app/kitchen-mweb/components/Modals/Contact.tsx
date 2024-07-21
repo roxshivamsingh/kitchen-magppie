@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify'
 import { INIT_LANDING_REQUEST, LANDING_REQUEST_SCHEMA, TLandingRequest } from '../../types/request';
 import { useFirebaseRequestActions } from '../../../../appHooks/firebase/use-firebase-actions';
-import { IoMdClose } from 'react-icons/io';
+// import { IoMdClose } from 'react-icons/io';
 interface IProps {
     onHide: VoidFunction
     open: boolean
@@ -42,13 +42,13 @@ export function Contact(props: IProps) {
                             <h3 className="text-7xl font-thin text-white mb-1">
                                 Request a Call Back
                             </h3>
-                            <button
+                            {/* <button
                                 type="button"
                                 className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                 onClick={onHide}
                             >
                                 <IoMdClose className="text-4xl" />
-                            </button>
+                            </button> */}
                         </div>
                         <div className="px-10 py-5">
                             <form onSubmit={onSubmit}>
