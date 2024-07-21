@@ -5,21 +5,20 @@ type TProps = { onConsultOpen?: VoidFunction }
 function ToggleButton(props: TProps) {
 
     const [isLeft, setIsLeft] = useState(true)
+
     const onClickToggle = useCallback(() => {
-        setIsLeft((prev) => {
-            const value = !prev
-            if (props?.onConsultOpen && prev) {
+        setIsLeft((prev) => !prev)
+        const timer = setTimeout(() => {
+            if (props?.onConsultOpen && isLeft) {
                 props.onConsultOpen()
             }
-            return value
-        })
-    }, [props])
+        }, 500)
+        return () => clearTimeout(timer)
+    }, [isLeft, props])
 
     return (<div className=" bg-[#f9f5ef]">
         <div className='flex items-center justify-center'>
-            <div className=" bg-[#f9f5ef] py-32  w-[70%]"
-
-            >
+            <div className=" bg-[#f9f5ef] py-32  w-[70%]">
                 <button
                     onClick={onClickToggle}
                     className={`relative w-full flex items-center px-4 py-2 rounded-full bg-[#ffffff] text-black`}
