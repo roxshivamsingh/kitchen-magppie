@@ -17,7 +17,8 @@ function ToggleButton(props: TProps) {
 
     return (<div className=" bg-[#f9f5ef]">
         <div className='flex items-center justify-center'>
-            <div className=" bg-[#f9f5ef] py-32 md:w-[40%] w-[80%]"
+            <div className=" bg-[#f9f5ef] py-32  w-[70%]"
+
             >
                 <button
                     onClick={onClickToggle}
@@ -27,7 +28,7 @@ function ToggleButton(props: TProps) {
                     }}
                 >
                     <div
-                        className={`flex items-center justify-center w-48 h-5w-48 rounded-full bg-[#202620] absolute`}
+                        className={`flex items-center justify-center w-48 h-5 rounded-full bg-[#202620] absolute`}
                         style={{
                             left: isLeft ? 0 : 'calc(100% - 11rem)',
                             transition: 'left 0.5s ease-in-out',
@@ -44,24 +45,22 @@ function ToggleButton(props: TProps) {
                         />
                     </div>
                     <div
-                        className={`p-[40px] transition-opacity duration-300 ${isLeft ? 'opacity-0' : 'opacity-100'
+                        className={`p-[40px] w-96  transition-opacity duration-300 ${isLeft ? 'opacity-0' : 'opacity-100'
                             }`}
                         style={{
                             fontSize: '32px',
                         }}
                     >
 
-                        <div className="w-96 text-left ps-16"
-
-                        >
+                        <div className="text-left ">
                             Switch to Wellness Kitchen.
                         </div>
                     </div>
                     <div
-                        className={`grid grid-cols-2 text-[32px] transition-opacity duration-300 absolute ${isLeft ? 'opacity-100' : 'opacity-0'}`}
-                    // style={{ border: "1px solid red" }}
+                        className={`flex flex-row justify-between text-[32px] transition-opacity duration-300 absolute ${isLeft ? 'opacity-100' : 'opacity-0'}`}
                     >
-                        <div />
+                        <div className='w-52' />
+
                         <div className="w-72 text-left">
                             Tired of unhealthy Kitchen?
 

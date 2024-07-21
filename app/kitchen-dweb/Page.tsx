@@ -12,7 +12,7 @@ import {
 } from '.'
 import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
-import ToggleButton from '../kitchen-mweb/components/ToggleButton'
+import ToggleButton from './components/ToggleButton'
 import Navbar from './components/Navbar'
 import { ToastContainer } from 'react-toastify'
 import Consult from './components/Modals/Consult'
