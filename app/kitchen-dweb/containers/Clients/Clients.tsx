@@ -58,11 +58,8 @@ export function Clients(props: TProps) {
                 })}
 
             </Swiper>
-            <div className="swiper-button-prev swiper-button-custom bg-[#343b34] text-white p-7 rounded-full shadow-full ml-20 mt-5">
-
-            </div>
-
-            <div className="swiper-button-next swiper-button-custom bg-[#343b34] text-white p-7 rounded-full shadow-full mr-20 mt-5">            </div>
+            <div className="swiper-button-prev swiper-button-custom bg-[#343b34] text-white p-7 rounded-full shadow-full ml-20 mt-5" />
+            <div className="swiper-button-next swiper-button-custom bg-[#343b34] text-white p-7 rounded-full shadow-full mr-20 mt-5" />
         </div>
     )
 }
