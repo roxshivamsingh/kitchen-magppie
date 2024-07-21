@@ -8,6 +8,7 @@ import {
 } from '../../types/request'
 import { useFirebaseRequestActions } from '../../../../appHooks/firebase/use-firebase-actions'
 import { ToastMessage } from '../../../../types'
+import { IoMdClose } from 'react-icons/io'
 interface IProps {
     onHide: VoidFunction
     open: boolean
@@ -47,6 +48,13 @@ export function Contact(props: IProps) {
                             <h3 className="text-4xl font-thin text-white">
                                 Request a Call Back
                             </h3>
+                            <button
+                                type="button"
+                                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                onClick={onHide}
+                            >
+                                <IoMdClose className="h-12 w-12" />
+                            </button>
                         </div>
                         <div className="px-5 py-2">
                             <form onSubmit={onSubmit}>
