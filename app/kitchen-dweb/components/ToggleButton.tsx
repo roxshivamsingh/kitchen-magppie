@@ -1,62 +1,78 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import growth from '../assets/growth.svg'
 
-const ToggleButton = () => {
-    const [toggled, setToggled] = useState(false)
+type TProps = { onConsultOpen?: VoidFunction }
+function ToggleButton(props: TProps) {
 
-    const handleToggle = () => {
-        setToggled(!toggled)
-    }
+    const [isLeft, setIsLeft] = useState(true)
+    const onClickToggle = useCallback(() => {
+        setIsLeft((prev) => {
+            const value = !prev
+            if (props?.onConsultOpen && prev) {
+                props.onConsultOpen()
+            }
+            return value
+        })
+    }, [props])
 
-    return (
-        <div className="flex items-center justify-center bg-[#f9f5ef] py-20 w-full">
-            <button
-                onClick={handleToggle}
-                className={`relative flex items-center justify-between px-4 py-2 rounded-full transition-all shadow-xl duration-400 ${toggled
-                    ? 'bg-[#ffffff] text-black'
-                    : 'bg-[#ffffff] text-black'
-                    }`}
-                style={{ width: '300px', height: '100px' }}
+    return (<div className=" bg-[#f9f5ef]">
+        <div className='flex items-center justify-center'>
+            <div className=" bg-[#f9f5ef] py-32 md:w-[40%] w-[80%]"
             >
-                <div
-                    className={`absolute flex items-center justify-center w-28 h-28 rounded-full shadow-xl transition-all duration-300 ${toggled
-                        ? 'left-0 transform -translate-x-8'
-                        : 'right-0 transform translate-x-8'
-                        }`}
-                    style={{ backgroundColor: '#202620' }}
-                >
-                    <img
-                        src={growth}
-                        alt="Icon"
-                        className="w-28 h-28 bg-[#202620] rounded-full"
-                    />
-                </div>
-                <span
-                    className={`transition-opacity duration-300 ${toggled ? 'opacity-0' : 'opacity-100'
-                        }`}
+                <button
+                    onClick={onClickToggle}
+                    className={`relative w-full flex items-center px-4 py-2 rounded-full bg-[#ffffff] text-black`}
                     style={{
-                        marginRight: '20px',
-                        fontSize: '15px',
-                        padding: '10px',
-                        textAlign: 'left',
+                        boxShadow: "inset 3px 10px 10px 2px rgba(0,0,0,0.2)"
                     }}
                 >
-                    Switch to Wellness Kitchen.
-                </span>
-                <span
-                    className={`transition-opacity duration-300 absolute ${toggled ? 'opacity-100' : 'opacity-0'
-                        }`}
-                    style={{
-                        marginLeft: toggled ? '70px' : '',
-                        fontSize: '15px',
-                        padding: '10px',
-                        textAlign: 'left',
-                    }}
-                >
-                    Tired of unhealthy Kitchen?
-                </span>
-            </button>
+                    <div
+                        className={`flex items-center justify-center w-48 h-5w-48 rounded-full bg-[#202620] absolute`}
+                        style={{
+                            left: isLeft ? 0 : 'calc(100% - 11rem)',
+                            transition: 'left 0.5s ease-in-out',
+                        }}
+                    >
+                        <img
+                            src={growth}
+                            alt="Icon"
+                            className=" bg-[#202620] rounded-full w-full"
+                            style={{
+                                zIndex: 1,
+                                boxShadow: "3px 10px 10px 2px rgba(0,0,0,0.2)",
+                            }}
+                        />
+                    </div>
+                    <div
+                        className={`p-[40px] transition-opacity duration-300 ${isLeft ? 'opacity-0' : 'opacity-100'
+                            }`}
+                        style={{
+                            fontSize: '32px',
+                        }}
+                    >
+
+                        <div className="w-96 text-left ps-16"
+
+                        >
+                            Switch to Wellness Kitchen.
+                        </div>
+                    </div>
+                    <div
+                        className={`grid grid-cols-2 text-[32px] transition-opacity duration-300 absolute ${isLeft ? 'opacity-100' : 'opacity-0'}`}
+                    // style={{ border: "1px solid red" }}
+                    >
+                        <div />
+                        <div className="w-72 text-left">
+                            Tired of unhealthy Kitchen?
+
+                        </div>
+
+                    </div>
+                </button>
+            </div>
         </div>
+
+    </div>
     )
 }
 
