@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { ToastContainer } from 'react-toastify'
 import { useAppSelector } from '../../redux'
 import {
     Gallery,
@@ -14,16 +16,14 @@ import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
 import ToggleButton from './components/ToggleButton'
 import Navbar from './components/Navbar'
-import { ToastContainer } from 'react-toastify'
 import Consult from './components/Modals/Consult'
-import { useState } from 'react'
 import Contact from './components/Modals/Contact'
 
 export default function Page() {
     useFirebaseLandingListener()
     const { status, value } = useAppSelector((state) => state.Cms.Landing)
 
-    const [toggle, setToggle] = useState({ consult: false, contact: false })
+    const [toggle, setToggle] = useState(INIT_TOGGLE)
     if (status === 'loading') {
         return <PageProgress />
     } else if (value?.length) {
@@ -32,16 +32,10 @@ export default function Page() {
                 <Navbar />
                 <Hero
                     onContactOpen={() => {
-                        setToggle((prev) => ({
-                            ...prev,
-                            contact: true
-                        }))
+                        setToggle((prev) => ({ ...prev, contact: true }))
                     }}
                     onConsultOpen={() => {
-                        setToggle((prev) => ({
-                            ...prev,
-                            consult: true
-                        }))
+                        setToggle((prev) => ({ ...prev, consult: true }))
                     }}
                 />
                 <Video />
@@ -88,7 +82,6 @@ export default function Page() {
                     pauseOnHover
                     theme="light"
                 />
-
                 <Consult open={toggle.consult} onHide={() => { setToggle((prev) => ({ ...prev, consult: false })) }} />
                 <Contact
                     onHide={() => {
@@ -103,4 +96,9 @@ export default function Page() {
         )
     }
     return <></>
+}
+
+const INIT_TOGGLE = {
+    consult: false,
+    contact: false
 }
