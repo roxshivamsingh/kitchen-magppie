@@ -46,6 +46,7 @@ export default function CustomSiteModal(props: IProps) {
         </>
     )
 }
+
 interface IProps {
     onHide: VoidFunction
     open: boolean,
