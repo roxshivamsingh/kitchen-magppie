@@ -32,15 +32,13 @@ export default function CustomSiteModal(props: IProps) {
                         <h3 className={`font-thin text-white ${isSmall ? 'text-7xl' : 'text-4xl'}`}>
                             {props.header}
                         </h3>
-                        {!isSmall && (
-                            <button
-                                type="button"
-                                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                onClick={() => { props.onHide() }}
-                            >
-                                <IoMdClose className="h-12 w-12" />
-                            </button>
-                        )}
+                        <button
+                            type="button"
+                            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            onClick={() => { props.onHide() }}
+                        >
+                            <IoMdClose className="h-12 w-12" />
+                        </button>
                     </div>
 
                     <div className={isSmall ? "px-10 py-5" : "px-5 py-2"}>
