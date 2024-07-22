@@ -65,28 +65,28 @@ export function Gallery() {
                 }}
                 spaceBetween={20}
                 slidesPerView={2}
-                className="w-full relative container mx-auto max-w-7xl gap-1"
+                className="w-full relative container mx-auto max-w-7xl"
             >
                 {galleries.map((gallery, index) => (
                     <SwiperSlide>
                         <div
-                            className="flex flex-col items-center w-full h-full overflow-hidden"
+                            className="relative w-full h-full overflow-hidden"
                             key={index}
                         >
                             <img
                                 src={gallery.image}
                                 alt="img"
-                                className="w-[602px] h-[294px] object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
+                                className="w-[630px] h-[294px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-105"
                             />
                         </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <button className="custom-prev cursor-pointer bg-[#343b34] text-white p-2 rounded-full shadow-lg absolute left-12 top-1/2 transform -translate-y-1/2 z-10">
-                <FaArrowLeft className="h-5 w-5" />
+            <button className="custom-prev cursor-pointer bg-[#343b34] text-white p-2 rounded-full shadow-lg absolute left-20 mt-10 top-1/2 transform -translate-y-1/2 z-10">
+                <FaArrowLeft className="h-4 w-4" />
             </button>
-            <button className="custom-next cursor-pointer bg-[#343b34] text-white p-2 rounded-full shadow-lg absolute right-12 top-1/2 transform -translate-y-1/2 z-10">
-                <FaArrowRight className="h-5 w-5" />
+            <button className="custom-next bg-[#343b34] text-white p-2 rounded-full shadow-lg absolute right-20 mt-10 cursor-pointer top-1/2 transform -translate-y-1/2 z-10">
+                <FaArrowRight className="h-4 w-4" />
             </button>
         </div>
     )
