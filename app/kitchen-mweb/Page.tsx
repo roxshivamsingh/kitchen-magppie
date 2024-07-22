@@ -61,8 +61,8 @@ export default function Page() {
                 <Consult open={toggle.consult} onHide={() => { setToggle((prev) => ({ ...prev, consult: false })) }} />
 
                 <ToastContainer
-                    position="top-center"
-                    className="h-32 text-5xl p-10 w-full"
+                    position="bottom-left"
+                    className="h-20 text-4xl p-10 w-full"
                     autoClose={3000}
                     hideProgressBar={false}
                     newestOnTop={false}
