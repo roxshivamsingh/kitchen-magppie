@@ -1,5 +1,5 @@
 import { FaPhoneAlt } from 'react-icons/fa'
-import KitchenBg from '../../assets/hero-bg.png'
+// import KitchenBg from '../../assets/hero-bg.png'
 import Form from './Form'
 import { RiUserSettingsFill } from 'react-icons/ri'
 
