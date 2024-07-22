@@ -63,9 +63,9 @@ export function Gallery() {
                     nextEl: '.custom-next',
                     prevEl: '.custom-prev',
                 }}
-                spaceBetween={30}
+                spaceBetween={20}
                 slidesPerView={2}
-                className="w-full relative container mx-auto max-w-7xl gap-10"
+                className="w-full relative container mx-auto max-w-7xl gap-1"
             >
                 {galleries.map((gallery, index) => (
                     <SwiperSlide>
@@ -76,16 +76,16 @@ export function Gallery() {
                             <img
                                 src={gallery.image}
                                 alt="img"
-                                className="w-100 h-screen object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
+                                className="w-[602px] h-[294px] object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
                             />
                         </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <button className="custom-prev cursor-pointer bg-[#343b34] text-white p-2 rounded-full shadow-lg absolute left-10 top-1/2 transform -translate-y-1/2 z-10">
+            <button className="custom-prev cursor-pointer bg-[#343b34] text-white p-2 rounded-full shadow-lg absolute left-12 top-1/2 transform -translate-y-1/2 z-10">
                 <FaArrowLeft className="h-5 w-5" />
             </button>
-            <button className="custom-next cursor-pointer bg-[#343b34] text-white p-2 rounded-full shadow-lg absolute right-10 top-1/2 transform -translate-y-1/2 z-10">
+            <button className="custom-next cursor-pointer bg-[#343b34] text-white p-2 rounded-full shadow-lg absolute right-12 top-1/2 transform -translate-y-1/2 z-10">
                 <FaArrowRight className="h-5 w-5" />
             </button>
         </div>
