@@ -11,8 +11,7 @@ export function Clients(props: TProps) {
     return (
         <div id="Meet our Clients" className="bg-[#f9f5ef] w-full py-10 relative">
             <h1 className="text-center text-5xl mb-10 pt-10 px-5 font-extralight">
-                The ones who already
-                <span className="font-semibold italic"> SWITCHED</span>
+                The ones who already switched to Magppie
             </h1>
             <Swiper
                 modules={[Navigation, Grid]}

@@ -1,14 +1,15 @@
 import { useState } from 'react'
-import { TComponentItem } from '../../../../types'
+import { TComponentItem } from '../../../../types';
+import galleryTwo from '../../assets/gallery/two.png';
 
 export function Features(props: TProps) {
     const [opacity, setOpacity] = useState(-1)
     return (
         <div className="flex flex-col items-center justify-center bg-[#fff4ec] pt-10 w-full px-2">
             <h1 className="text-5xl font-light pb-10">
-                What makes{' '}
-                <span className="font-bold text-[#343b34]">MAGPPIE</span>{' '}
-                different?
+                What makes our{' '}
+                Kitchens{' '}
+                safe?
             </h1>
             <div className="flex container w-full mx-auto max-w-7xl gap-10">
                 {props.item.gallery.map((feature, i) => (
@@ -23,7 +24,7 @@ export function Features(props: TProps) {
                         }}
                     >
                         <img
-                            src={feature.link}
+                            src={i === 0 ? galleryTwo : feature.link}
                             alt="logo"
                             className="w-full h-full"
                         />

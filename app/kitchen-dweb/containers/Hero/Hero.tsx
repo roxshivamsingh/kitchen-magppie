@@ -11,24 +11,23 @@ type TProps = {
 export function Hero(props: TProps) {
     return (
         <div
-            className="relative w-full bg-cover"
-            style={{ backgroundImage: `url(${KitchenBg})` }}
+            className="relative w-full bg-contain"
+            style={{ backgroundImage: `url("https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fimage00019.jpg?alt=media&token=b3982954-41ea-4d2f-99f8-ee44790bfb6b")` }}
         >
             <div className="relative z-10 flex flex-col items-start justify-between h-full w-full">
                 <div className="absolute w-full h-full bg-black opacity-40" />
                 <div className="flex items-center justify-between w-full h-screen container mx-auto max-w-7xl">
                     <div className="flex">
                         <h1 className="text-5xl font-extralight text-white z-20">
-                            Welcome to the <br />
-                            <span>
+                            Our Kitchens are safe<br />
+                            {/* <span>
                                 <span className="italic font-semibold">
                                     {' '}
-                                    SPIRITUAL{' '}
+                                    SAFE{' '}
                                 </span>
-                                heart
+                                Kitchen
                             </span>{' '}
-                            <br />
-                            of your Home.
+                            <br /> */}
                         </h1>
                     </div>
 

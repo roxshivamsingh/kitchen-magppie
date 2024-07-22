@@ -6,7 +6,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import 'swiper/css'
 import 'swiper/css/grid'
 import 'swiper/css/navigation'
-import { galleries } from './data'
+import { galleries } from './data';
 
 export function Gallery() {
     return (
@@ -46,9 +46,9 @@ export function Gallery() {
                 </div>
                 <div className="relative w-full h-full overflow-hidden">
                     <img
-                        src={gallerFour}
+                        src={item}
                         alt="Description"
-                        className="w-50 h-50 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
+                        className="w-[30rem] h-[20rem] max-h-[20rem] max-w-[30rem] min-h-[20rem] object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
                     />
                 </div>
             </div> */}
@@ -65,7 +65,7 @@ export function Gallery() {
                 }}
                 spaceBetween={20}
                 slidesPerView={2}
-                className="w-full relative container mx-auto max-w-7xl gap-1"
+                className="w-full relative container mx-auto max-w-7xl gap-0"
             >
                 {galleries.map((gallery, index) => (
                     <SwiperSlide>
@@ -76,7 +76,7 @@ export function Gallery() {
                             <img
                                 src={gallery.image}
                                 alt="img"
-                                className="w-[602px] h-[294px] object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
+                                className="w-[602px] h-[354px] object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
                             />
                         </div>
                     </SwiperSlide>
