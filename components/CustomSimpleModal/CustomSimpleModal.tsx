@@ -1,8 +1,16 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 import { MdClose } from 'react-icons/md'
 //====================================================================
 
 export default function CustomSimpleModal(props: TProps) {
+
+    useEffect(() => {
+        document.body.style.overflow = props.show ? 'hidden' : '';
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [props.show]);
+
     if (props.show) {
         return (
             <div className="fixed inset-0 z-50 flex justify-center items-center w-full overflow-y-scroll">
