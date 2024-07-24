@@ -3,12 +3,30 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 //====================================================================
 
-import { TComponentItem } from '../../../../../types'
+import { TComponentItem, TComponentMeta } from '../../../../../types'
 import { CustomToggle, ImageInput } from '../../../../../components'
 import { MinimalAccordion } from '../../../components'
 
 
 export default function ComponentCreateEditForm(props: TProps) {
+
+    const schema = Yup.object().shape({
+        orderId: Yup.number()
+            .min(0, 'The number must be non-negative')
+            .required('Order ID is required')
+            .integer('Order ID must be an integer')
+            .test('checkValidOrderId',
+                'The given Order ID is invalid.',
+                (currentId) => {
+                    return !props.meta.order.used?.filter((previousId) => previousId !== props.item.orderId)?.includes(currentId)
+                }),
+        typography: typographySchema,
+        links: linkSchema,
+        name: Yup.string().required('Name is required'),
+        isGallery: Yup.boolean(),
+        gallery: Yup.array().of(sectionImageItemSchema),
+        iconLists: Yup.array().of(sectionImageItemSchema),
+    })
     const {
         watch,
         register,
@@ -21,8 +39,8 @@ export default function ComponentCreateEditForm(props: TProps) {
     })
 
     const values = watch()
-    console.log(values)
 
+    console.log(props.meta)
     const onSubmit = handleSubmit((data) => {
         console.log(data)
     })
@@ -43,6 +61,18 @@ export default function ComponentCreateEditForm(props: TProps) {
                 isExpanded
                 title='Name'
             >
+                <div>
+                    <input
+                        type="text"
+                        {...register('orderId')}
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                    {errors.orderId && (
+                        <p className="text-red-500 text-xs mt-1">
+                            {errors.orderId.message}
+                        </p>
+                    )}
+                </div>
                 <div>
                     <input
                         type="text"
@@ -379,16 +409,6 @@ const sectionImageItemSchema = Yup.object().shape({
     typography: typographySchema,
 })
 
-const schema = Yup.object().shape({
-    orderId: Yup.number()
-        .required('Order ID is required')
-        .integer('Order ID must be an integer'),
-    typography: typographySchema,
-    links: linkSchema,
-    name: Yup.string().required('Name is required'),
-    isGallery: Yup.boolean(),
-    gallery: Yup.array().of(sectionImageItemSchema),
-    iconLists: Yup.array().of(sectionImageItemSchema),
-})
 
-type TProps = { item: TComponentItem }
+
+type TProps = { item: TComponentItem, meta: TComponentMeta }

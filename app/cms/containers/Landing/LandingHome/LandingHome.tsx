@@ -7,12 +7,17 @@ import { Search } from '../../../components'
 import { useAppSelector } from '../../../../../redux'
 import { CmsLandingPageComponentCard, ComponentCreateEditForm } from "../components"
 import { CustomConfirmationDialog, CustomSimpleModal, PageProgress } from '../../../../../components'
-import { INIT_CUSTOMER_SITE_COMPONENT, TComponentItem } from '../../../../../types'
+import {
+    COMPONENT_META,
+    INIT_CUSTOMER_SITE_COMPONENT,
+    TComponentItem
+} from '../../../../../types'
 import { useFirebaseLandingListener } from '../../../utils/firebase'
 
 export function LandingHome() {
     useFirebaseLandingListener()
     const { loading, value } = useAppSelector((state) => state.Cms.Landing)
+    const meta = useMemo(() => COMPONENT_META(value), [value])
     const [corpus, setCorpus] = useState(INIT_CORPUS)
     const onChangeModal = useCallback((newValue: Partial<TCorpusModal>) => {
         setCorpus((prev) => ({
@@ -28,6 +33,7 @@ export function LandingHome() {
                 : true
         ), 'orderId')
     }, [corpus.search, value]);
+
 
     const renderDeleteConfirmationDialog = useMemo(() => {
         return (<CustomConfirmationDialog show={corpus.confirmation.open}
@@ -54,7 +60,6 @@ export function LandingHome() {
                     header: 'Delete Confirmation',
                     remark: `Are you sure you want to delete ${item.name} component?`
                 }
-
             }
         }))
     }, [])
@@ -110,7 +115,10 @@ export function LandingHome() {
                 }}
                 label={`${_.upperFirst(corpus.modal.action)} Component`}
             >
-                <ComponentCreateEditForm item={corpus.modal.value} />
+                <ComponentCreateEditForm item={corpus.modal.value}
+
+                    meta={meta}
+                />
             </CustomSimpleModal>
         </div>
     )

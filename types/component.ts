@@ -1,4 +1,7 @@
+import _ from "./lodash"
 import { STORAGE_BASE_URL } from "./storage"
+export type TComponentMeta = { order: { used: number[], next: number } }
+
 export type TComponentTypography = {
     main: string,
     secondary: string,
@@ -25,6 +28,12 @@ export type TComponentItem = {
     at: { created: Date, updated: Date }
 }
 
+
+export const COMPONENT_META = (ar: TComponentItem[]) => {
+    const used = _(ar).map('orderId').value().sort()
+    const next = _(used).max() + 1
+    return ({ order: { used, next } }) as TComponentMeta
+}
 
 const INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY: TComponentTypography = {
     main: '',
@@ -481,3 +490,4 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
         },
     }
 ]
+

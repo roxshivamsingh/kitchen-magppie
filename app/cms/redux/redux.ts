@@ -7,7 +7,7 @@ import {
     ProjectReducer,
     KitchenReducer,
     UserReducer,
-    LandingReducer
+    LandingReducer,
 } from "./slices"
 
 
