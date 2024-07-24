@@ -48,150 +48,142 @@ export default function ComponentCreateEditForm(props: TProps) {
     const onSubmit = handleSubmit((data) => {
         console.log(data)
     })
+    const renderTypography = (
+        <div className="ms-1">
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                    Main
+                </label>
+                <input
+                    type="text"
+                    {...register('typography.main')}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.typography?.main && (
+                    <p className="text-red-500 text-xs mt-1">
+                        {errors.typography.main.message}
+                    </p>
+                )}
+            </div>
+
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                    Secondary
+                </label>
+                <input
+                    type="text"
+                    {...register('typography.secondary')}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.typography?.secondary && (
+                    <p className="text-red-500 text-xs mt-1">
+                        {errors.typography.secondary.message}
+                    </p>
+                )}
+            </div>
+
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                    Subtitle
+                </label>
+                <input
+                    type="text"
+                    {...register('typography.subtitle')}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.typography?.subtitle && (
+                    <p className="text-red-500 text-xs mt-1">
+                        {errors.typography.subtitle.message}
+                    </p>
+                )}
+            </div>
+
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                    Action
+                </label>
+                <input
+                    type="text"
+                    {...register('typography.action')}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.typography?.action && (
+                    <p className="text-red-500 text-xs mt-1">
+                        {errors.typography.action.message}
+                    </p>
+                )}
+            </div>
+
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                    Description
+                </label>
+                <input
+                    type="text"
+                    {...register('typography.description')}
+                    className="mt-1 block w-full p d-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.typography?.description && (
+                    <p className="text-red-500 text-xs mt-1">
+                        {errors.typography.description.message}
+                    </p>
+                )}
+            </div>
+
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                    Secondary Description
+                </label>
+                <input
+                    type="text"
+                    {...register('typography.secondaryDescription')}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.typography?.secondaryDescription && (
+                    <p className="text-red-500 text-xs mt-1">
+                        {errors.typography.secondaryDescription.message}
+                    </p>
+                )}
+            </div>
+        </div>
+    )
     return (
         <form onSubmit={onSubmit} className="bg-white p-6 rounded shadow-md overflow-y-scroll h-[80vh]">
-
-            {/* <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Order ID</label>
-            <input
-                type="number"
-                {...register('orderId')}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            />
-            {errors.orderId && <p className="text-red-500 text-xs mt-1">{errors.orderId.message}</p>}
-        </div> */}
-
-            <MinimalAccordion
-                isExpanded
-                title='Name'
-            >
-                <div>
-                    <input
-                        type="text"
-                        {...register('orderId')}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                    {errors.orderId && (
-                        <p className="text-red-500 text-xs mt-1">
-                            {errors.orderId.message}
-                        </p>
-                    )}
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        {...register('name')}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                    {errors.name && (
-                        <p className="text-red-500 text-xs mt-1">
-                            {errors.name.message}
-                        </p>
-                    )}
-                </div>
-            </MinimalAccordion>
+            <div>
+                <label className="block text-sm font-medium text-gray-700">
+                    Order ID
+                </label>
+                <input
+                    type="text"
+                    {...register('orderId')}
+                    className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.orderId && (
+                    <p className="text-red-500 text-xs mt-1">
+                        {errors.orderId.message}
+                    </p>
+                )}
+            </div>
+            <div>
+                <label className="block text-sm font-medium text-gray-700">
+                    Name
+                </label>
+                <input
+                    type="text"
+                    {...register('name')}
+                    className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.name && (
+                    <p className="text-red-500 text-xs mt-1">
+                        {errors.name.message}
+                    </p>
+                )}
+            </div>
             <MinimalAccordion
                 isExpanded
                 title='Typography'
             >
-                <div className="ms-5">
-                    <div >
-                        <label className="block text-sm font-medium text-gray-700">
-                            Main
-                        </label>
-                        <input
-                            type="text"
-                            {...register('typography.main')}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                        {errors.typography?.main && (
-                            <p className="text-red-500 text-xs mt-1">
-                                {errors.typography.main.message}
-                            </p>
-                        )}
-                    </div>
-
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Secondary
-                        </label>
-                        <input
-                            type="text"
-                            {...register('typography.secondary')}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                        {errors.typography?.secondary && (
-                            <p className="text-red-500 text-xs mt-1">
-                                {errors.typography.secondary.message}
-                            </p>
-                        )}
-                    </div>
-
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Subtitle
-                        </label>
-                        <input
-                            type="text"
-                            {...register('typography.subtitle')}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                        {errors.typography?.subtitle && (
-                            <p className="text-red-500 text-xs mt-1">
-                                {errors.typography.subtitle.message}
-                            </p>
-                        )}
-                    </div>
-
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Action
-                        </label>
-                        <input
-                            type="text"
-                            {...register('typography.action')}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                        {errors.typography?.action && (
-                            <p className="text-red-500 text-xs mt-1">
-                                {errors.typography.action.message}
-                            </p>
-                        )}
-                    </div>
-
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Description
-                        </label>
-                        <input
-                            type="text"
-                            {...register('typography.description')}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                        {errors.typography?.description && (
-                            <p className="text-red-500 text-xs mt-1">
-                                {errors.typography.description.message}
-                            </p>
-                        )}
-                    </div>
-
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Secondary Description
-                        </label>
-                        <input
-                            type="text"
-                            {...register('typography.secondaryDescription')}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                        {errors.typography?.secondaryDescription && (
-                            <p className="text-red-500 text-xs mt-1">
-                                {errors.typography.secondaryDescription.message}
-                            </p>
-                        )}
-                    </div>
-                </div>
-
+                {renderTypography}
             </MinimalAccordion>
             <MinimalAccordion
                 isExpanded
@@ -385,7 +377,7 @@ export default function ComponentCreateEditForm(props: TProps) {
 
             <button
                 type="submit"
-                className="w-full py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="w-full p-3 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
                 Create Component
             </button>
