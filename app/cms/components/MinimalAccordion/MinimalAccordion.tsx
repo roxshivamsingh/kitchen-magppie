@@ -11,9 +11,9 @@ export function MinimalAccordion(props: IProps) {
 
     const [toggle, setToggle] = useState(props?.isExpanded || false);
     const onToggle = useCallback(() => { setToggle((prev) => !prev); }, []);
-    return (<div className="border-b border-gray-300 shadow">
+    return (<div className="block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm my-2">
         <button
-            className="w-full flex justify-between items-center p-4 text-left focus:outline-none"
+            className="w-full flex justify-between items-center p-2 text-left focus:outline-none"
             onClick={onToggle}
         >
             <span className="text-lg font-medium">{props.title}</span>
