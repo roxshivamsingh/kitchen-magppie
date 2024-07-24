@@ -8,10 +8,10 @@ import { useAppSelector } from '../../../../../redux'
 import { CmsLandingPageComponentCard, ComponentCreateEditForm } from "../components"
 import { CustomConfirmationDialog, CustomSimpleModal, PageProgress } from '../../../../../components'
 import { INIT_CUSTOMER_SITE_COMPONENT, TComponentItem } from '../../../../../types'
-import { useFirebaseLandingListener } from '../../../utils/firebase'
+import { useFirebaseLandingDumpListener } from '../../../utils/firebase'
 
 export function LandingHome() {
-    useFirebaseLandingListener()
+    useFirebaseLandingDumpListener()
     const { loading, value } = useAppSelector((state) => state.Cms.Landing)
     const [corpus, setCorpus] = useState(INIT_CORPUS)
     const onChangeModal = useCallback((newValue: Partial<TCorpusModal>) => {
@@ -54,7 +54,6 @@ export function LandingHome() {
                     header: 'Delete Confirmation',
                     remark: `Are you sure you want to delete ${item.name} component?`
                 }
-
             }
         }))
     }, [])

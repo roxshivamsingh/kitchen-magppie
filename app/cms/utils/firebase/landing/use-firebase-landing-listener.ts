@@ -9,8 +9,27 @@ export function useFirebaseLandingListener() {
 
     const dispatch = useAppDispatch()
     useEffect(() => {
-        const collectionRef = collection(db, `landing`);
+        const collectionRef = collection(db, 'landing');
+        onSnapshot(collectionRef, ({ docs }) => {
+            const data: TComponentItem[] = [];
+            docs?.forEach((doc) => {
+                const row = doc.data();
+                data.push({
+                    ...row,
+                    id: doc.id,
+                    at: { created: row.at.created?.toDate() }
+                } as TComponentItem);
+            });
+            dispatch(setLanding(data))
+        });
+    }, [dispatch])
+}
 
+export function useFirebaseLandingDumpListener() {
+
+    const dispatch = useAppDispatch()
+    useEffect(() => {
+        const collectionRef = collection(db, 'landing-dump');
         onSnapshot(collectionRef, ({ docs }) => {
             const data: TComponentItem[] = [];
             docs?.forEach((doc) => {
