@@ -6,10 +6,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { TComponentItem, TComponentMeta } from '../../../../../types'
 import { CustomToggle, ImageInput } from '../../../../../components'
 import { MinimalAccordion } from '../../../components'
+import { useMemo } from 'react'
 
 
 export default function ComponentCreateEditForm(props: TProps) {
-
+    const { meta, item } = props;
     const schema = Yup.object().shape({
         orderId: Yup.number()
             .min(0, 'The number must be non-negative')
@@ -18,7 +19,7 @@ export default function ComponentCreateEditForm(props: TProps) {
             .test('checkValidOrderId',
                 'The given Order ID is invalid.',
                 (currentId) => {
-                    return !props.meta.order.used?.filter((previousId) => previousId !== props.item.orderId)?.includes(currentId)
+                    return !meta.order.used?.filter((previousId) => previousId !== item.orderId)?.includes(currentId)
                 }),
         typography: typographySchema,
         links: linkSchema,
@@ -27,6 +28,10 @@ export default function ComponentCreateEditForm(props: TProps) {
         gallery: Yup.array().of(sectionImageItemSchema),
         iconLists: Yup.array().of(sectionImageItemSchema),
     })
+    const defaultValues = useMemo(() => ({
+        ...item,
+        orderId: item.orderId < 0 ? meta.order.next : item.orderId,
+    }), [item, meta.order.next])
     const {
         watch,
         register,
@@ -34,13 +39,12 @@ export default function ComponentCreateEditForm(props: TProps) {
         handleSubmit,
         formState: { errors },
     } = useForm({
-        defaultValues: props.item,
+        defaultValues,
         resolver: yupResolver(schema),
     })
 
     const values = watch()
 
-    console.log(props.meta)
     const onSubmit = handleSubmit((data) => {
         console.log(data)
     })
