@@ -3,14 +3,14 @@ import { TComponentItem } from '../../../../types'
 export function Benefits(props: TProps) {
     return (
         <div className="flex flex-col items-center justify-center bg-[#343b34] text-white py-10 w-full">
-            {/* <h1
-          className="text-7xl mb-16 text-start font-sm"
-          dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
-      /> */}
-            <h1 className="text-6xl mb-16 text-start font-sm">
+            <h1
+                className="text-6xl mb-16 text-start font-sm"
+                dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
+            />
+            {/* <h1 className="text-6xl mb-16 text-start font-sm">
                 What makes
                 <span className="font-bold"> MAGPPIE</span> unique?
-            </h1>
+            </h1> */}
             <div className="mb-10 flex items-center gap-12 justify-center">
                 {props.item.gallery?.map((row, i) => (
                     <div key={i} className="flex items-center">

@@ -31,6 +31,7 @@ export default function Page() {
             <div>
                 <Navbar />
                 <Hero
+                    item={value?.find((row) => row.name === 'reel-component')}
                     onContactOpen={() => {
                         setToggle((prev) => ({ ...prev, contact: true }))
                     }}
@@ -44,9 +45,11 @@ export default function Page() {
                         (row) => row.name === 'carousel-component'
                     )}
                 />
-                <ToggleButton onConsultOpen={() => {
-                    setToggle((prev) => ({ ...prev, consult: true }))
-                }} />
+                <ToggleButton
+                    onConsultOpen={() => {
+                        setToggle((prev) => ({ ...prev, consult: true }))
+                    }}
+                />
                 <Benefits
                     item={value?.find((row) => row.name === 'scope-component')}
                 />
@@ -82,7 +85,12 @@ export default function Page() {
                     pauseOnHover
                     theme="light"
                 />
-                <Consult open={toggle.consult} onHide={() => { setToggle((prev) => ({ ...prev, consult: false })) }} />
+                <Consult
+                    open={toggle.consult}
+                    onHide={() => {
+                        setToggle((prev) => ({ ...prev, consult: false }))
+                    }}
+                />
                 <Contact
                     onHide={() => {
                         setToggle((prev) => ({
@@ -100,5 +108,5 @@ export default function Page() {
 
 const INIT_TOGGLE = {
     consult: false,
-    contact: false
+    contact: false,
 }

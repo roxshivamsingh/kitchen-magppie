@@ -45,7 +45,7 @@ export function Hero(props: TProps) {
                 ) : (
                     <>
                         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
-                        <h1 className="absolute text-7xl z-10 flex flex-col bottom-60 left-6 p-4 font-extralight">
+                        {/* <h1 className="absolute text-7xl z-10 flex flex-col bottom-60 left-6 p-4 font-extralight">
                             Welcome to the <br />
                             <span>
                                 <span className="italic font-normal">
@@ -54,7 +54,13 @@ export function Hero(props: TProps) {
                                 heart
                             </span>{' '}
                             of your Home.
-                        </h1>
+                        </h1> */}
+                        <h1
+                            className="absolute text-7xl z-10 flex flex-col bottom-60 left-6 p-4 font-extralight"
+                            dangerouslySetInnerHTML={{
+                                __html: props.item.typography.description,
+                            }}
+                        />
                     </>
                 )}
                 {renderNavigationBar}
