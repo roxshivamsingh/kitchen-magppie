@@ -38,15 +38,15 @@ export function Footer(props: TProps) {
     }
 
     return (
-        <div className="bg-[#202620] pt-10 pb-20 text-white px-10 flex flex-col justify-start">
-            <div className="flex w-full container mx-auto max-w-8xl justify-start">
-                <div className="text-6xl mb-10 font-bold">MAGPPIE</div>
-                <div className="grid grid-cols-3 mb-10 gap-3">
+        <div className="bg-[#1E1E1E] pt-6 pb-16 text-white px-10 flex flex-col justify-start">
+            <div className="flex w-full container mx-auto max-w-8xl justify-center flex-col items-center">
+                <div className="text-5xl mb-10 font-bold">MAGPPIE</div>
+                <div className="grid grid-cols-3 mb-6 gap-3 text-center space-x-10">
                     {props.item.items?.map((item, i) => (
                         <button
                             key={i}
                             onClick={() => handleLinkClick(item.main)}
-                            className="p-1 cursor-pointer text-xl text-start ml-32 bg-transparent border-none text-white"
+                            className="p-1 cursor-pointer text-xl text-center bg-transparent border-none text-white"
                         >
                             {item.main}
                         </button>

@@ -8,36 +8,15 @@ import gallerySeven from '../../assets/gallery/three.png'
 import galleryEight from '../../assets/gallery/four.png'
 
 export const galleries = [
-    {
-        id: 1,
-        image: galleryOne,
-    },
-    {
-        id: 2,
-        image: galleryTwo,
-    },
-    {
-        id: 3,
-        image: galleryThree,
-    },
-    {
-        id: 4,
-        image: galleryFour,
-    },
-    {
-        id: 5,
-        image: galleryFive,
-    },
-    {
-        id: 6,
-        image: gallerySix,
-    },
-    {
-        id: 7,
-        image: gallerySeven,
-    },
-    {
-        id: 8,
-        image: galleryEight,
-    },
+    { id: 1, src: galleryOne, colSpan: 1, rowSpan: 1 },
+    { id: 2, src: galleryTwo, colSpan: 1, rowSpan: 1 },
+    { id: 3, src: galleryThree, colSpan: 1, rowSpan: 2 },
+    { id: 4, src: galleryFour, colSpan: 2, rowSpan: 0 },
+    { id: 5, src: galleryFive, colSpan: 1, rowSpan: 1 }, //common
+    { id: 6, src: gallerySix, colSpan: 1, rowSpan: 1 }, //common
+    { id: 7, src: gallerySeven, colSpan: 1, rowSpan: 1 }, //common
+    { id: 8, src: galleryEight, colSpan: 1, rowSpan: 2 },
+    { id: 9, src: galleryOne, colSpan: 2, rowSpan: 1 },
+    { id: 10, src: galleryTwo, colSpan: 1, rowSpan: 1 },
+    { id: 11, src: galleryThree, colSpan: 1, rowSpan: 1 },
 ]
