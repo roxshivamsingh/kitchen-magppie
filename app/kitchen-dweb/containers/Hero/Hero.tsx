@@ -47,7 +47,7 @@ export function Hero(props: TProps) {
             </div>
             <div className="fixed right-2 top-20 bottom-20 flex flex-col items-center justify-center space-y-4 z-20">
                 <button
-                    className="p-3 bg-[#202620] rounded-full text-white shadow-xl"
+                    className="p-3 bg-[#1E1E1E] rounded-full text-white shadow-xl"
                     onClick={() => {
                         if (props.onContactOpen) props.onContactOpen()
                     }}
