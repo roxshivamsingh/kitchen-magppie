@@ -35,7 +35,7 @@ export const COMPONENT_META = (ar: TComponentItem[]) => {
     return ({ order: { used, next } }) as TComponentMeta
 }
 
-const INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY: TComponentTypography = {
+export const INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY: TComponentTypography = {
     main: '',
     secondary: '',
     subtitle: '',
@@ -69,6 +69,7 @@ export const INIT_CUSTOMER_SITE_COMPONENT: TComponentItem = {
 }
 
 const _prev = INIT_CUSTOMER_SITE_COMPONENT
+
 // console.log(_LANDING_COMPONENTS)
 
 // NOTE: Lagacy Cms/Landing Page;
