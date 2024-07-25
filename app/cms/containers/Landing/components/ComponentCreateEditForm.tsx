@@ -66,8 +66,6 @@ export default function ComponentCreateEditForm(props: TProps) {
         return ''
     }, [errors])
 
-
-
     return (
         <FormProvider {...methods}>
 
@@ -111,10 +109,7 @@ export default function ComponentCreateEditForm(props: TProps) {
                 </MinimalAccordion>
 
                 {/* Links */}
-                <MinimalAccordion
-                    isExpanded
-                    title='Links'
-                >
+                <MinimalAccordion title='Desktop'>
                     <div className=''>
                         <ImageInput
                             label='Icon'
@@ -154,15 +149,48 @@ export default function ComponentCreateEditForm(props: TProps) {
                     </div>
 
                 </MinimalAccordion>
-                {/* <h3 className="text-lg mb-2">Links</h3> */}
+                <MinimalAccordion title='Mobile'>
+                    <div className=''>
+                        <ImageInput
+                            label='Icon'
+                            values={values.links.icon?.length ? [values.links.icon] : []}
+                            path={`customer-site-components/icons`}
+                            onSuccess={(e) => {
+                                setValue('links.icon', e[0])
+                            }}
+                        />
+                        {renderErrorMessage('links.icon.message')}
 
+                    </div>
 
-                {/* Name */}
+                    <div className="mb-4">
+                        <ImageInput
+                            values={values.links.bg?.length ? [values.links.bg] : []}
+                            label='Background'
+                            path={`customer-site-components/backgrounds`}
+                            onSuccess={(e) => {
+                                setValue('links.bg', e[0])
+                            }}
+                        />
+                        {renderErrorMessage('errors.links.bg')}
+                    </div>
 
-                {/* Is Gallery */}
+                    <div className="mb-4">
+                        <ImageInput
+                            label='Illustration'
+                            values={values.links.illustration?.length ? [values.links.illustration] : []}
+
+                            path={`customer-site-components/illustrations`}
+                            onSuccess={(e) => {
+                                setValue('links.illustration', e[0] || '')
+                            }}
+                        />
+                        {renderErrorMessage('links.illustration')}
+                    </div>
+
+                </MinimalAccordion>
+
                 <div className="mb-4">
-
-
                     <div className="flex gap-3">
                         Is Gallery
 
