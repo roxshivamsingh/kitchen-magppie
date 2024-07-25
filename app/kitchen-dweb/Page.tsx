@@ -8,16 +8,17 @@ import {
     Footer,
     BuyingStep,
     Hero,
-    Features,
+    // Features,
     Clients,
     Video,
 } from '.'
 import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
-import ToggleButton from './components/ToggleButton'
+// import ToggleButton from './components/ToggleButton'
 import Navbar from './components/Navbar'
 import Consult from './components/Modals/Consult'
 import Contact from './components/Modals/Contact'
+import About from './containers/About/About'
 
 export default function Page() {
     useFirebaseLandingListener()
@@ -40,7 +41,7 @@ export default function Page() {
                     }}
                 />
                 <Video />
-                <Features
+                {/* <Features
                     item={value?.find(
                         (row) => row.name === 'carousel-component'
                     )}
@@ -49,6 +50,12 @@ export default function Page() {
                     onConsultOpen={() => {
                         setToggle((prev) => ({ ...prev, consult: true }))
                     }}
+                /> */}
+                <About />
+                <Gallery
+                // item={value?.find(
+                //     (row) => row.name === 'explore-gallery-component'
+                // )}
                 />
                 <Benefits
                     item={value?.find((row) => row.name === 'scope-component')}
@@ -61,11 +68,6 @@ export default function Page() {
 
                 <BuyingStep
                     item={value?.find((row) => row.name === 'step-component')}
-                />
-                <Gallery
-                // item={value?.find(
-                //     (row) => row.name === 'explore-gallery-component'
-                // )}
                 />
                 <FAQs
                     item={value?.find((row) => row.name === 'faq-component')}
