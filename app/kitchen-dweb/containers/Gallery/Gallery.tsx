@@ -11,7 +11,7 @@ import { galleries } from './data'
 
 export function Gallery() {
     return (
-        <div className="grid grid-cols-3 grid-rows-3 gap-3 container mx-auto max-w-7xl py-20">
+        <div className="grid grid-cols-3 grid-rows-3 gap-3 container mx-auto max-w-7xl pb-14">
             {galleries.map((gallery) => (
                 <div
                     key={gallery.id}
