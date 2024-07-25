@@ -173,7 +173,6 @@ export default function ComponentCreateEditForm(props: TProps) {
             <div className="mb-4">
                 <ImageInput
                     values={values.links.bg?.length ? [values.links.bg] : []}
-
                     label='Background'
                     path={`customer-site-components/backgrounds`}
                     onSuccess={(e) => {
