@@ -11,18 +11,18 @@ import { galleries } from './data'
 
 export function Gallery() {
     return (
-        <div className="grid grid-cols-3 gap-3 p-4 container mx-auto max-w-7xl py-10">
+        <div className="grid grid-cols-3 grid-rows-3 gap-3 container mx-auto max-w-7xl py-20">
             {galleries.map((gallery) => (
                 <div
                     key={gallery.id}
-                    className={`relative w-full h-48 ${
+                    className={`relative w-full h-full overflow-hidden ${
                         gallery.colSpan === 2 ? 'col-span-2' : 'col-span-1'
                     } ${gallery.rowSpan === 2 ? 'row-span-2' : 'row-span-1'}`}
                 >
                     <img
                         src={gallery.src}
                         alt={`Image ${gallery.id}`}
-                        className="w-full h-full object-cover rounded-lg"
+                        className="w-full h-[350px] object-cover rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-105 hover:rounded-lg"
                     />
                 </div>
             ))}

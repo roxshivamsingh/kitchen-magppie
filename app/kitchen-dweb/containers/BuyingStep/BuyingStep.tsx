@@ -6,15 +6,14 @@ export function BuyingStep(props: TProps) {
     const [toggle, setToggle] = useState(INIT_TOGGLE)
 
     return (
-        <div className="bg-[#343b34] text-white flex flex-col justify-center items-center py-20">
+        <div className="bg-[#1E1E1E] text-white flex flex-col justify-center items-center py-20">
             {/* <div
                 className="text-7xl w-full"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
             /> */}
             <h1 className="text-4xl w-full font-thin text-center">
                 How to buy a <span className="font-bold">MAGPPIE </span>
-                Wellness Kitchen in <br />
-                <span className="italic font-thin">4 easy steps?</span>
+                Wellness Kitchen in 4 easy steps?
             </h1>
             <div className="flex gap-5 mx-auto max-w-7xl">
                 {props.item.items?.map((item, i) => {
@@ -23,17 +22,17 @@ export function BuyingStep(props: TProps) {
                             key={i}
                             className="flex items-center justify-center"
                         >
-                            <div className="flex flex-row py-4 justify-start max-w-lg">
+                            <div className="flex flex-col py-4 justify-start max-w-xs">
                                 <div className="text-6xl font-thin italic">
-                                    {i + 1}
+                                    {i + 1}.
                                 </div>
-                                <div className="my-auto mt-8 max-w-sm text-xl pl-1 font-[200]">
+                                <div className="my-auto max-w-sm text-xl pl-1 font-[200]">
                                     {item.main}
                                 </div>
                             </div>
-                            {i < props.item.items.length - 1 && (
+                            {/* {i < props.item.items.length - 1 && (
                                 <div className="h-20 border-r border-gray-400 mx-6"></div>
-                            )}
+                            )} */}
                         </div>
                     )
                 })}

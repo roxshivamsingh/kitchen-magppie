@@ -1,7 +1,7 @@
 import { FaPhoneAlt } from 'react-icons/fa'
 // import KitchenBg from '../../assets/hero-bg.png'
 import Form from './Form'
-import { RiUserSettingsFill } from 'react-icons/ri'
+// import { RiUserSettingsFill } from 'react-icons/ri'
 import { TComponentItem } from '../../../../types'
 
 type TProps = {
@@ -45,7 +45,7 @@ export function Hero(props: TProps) {
                     </div>
                 </div>
             </div>
-            <div className="fixed right-5 top-20 bottom-20 flex flex-col items-center justify-center space-y-4 z-20">
+            <div className="fixed right-2 top-20 bottom-20 flex flex-col items-center justify-center space-y-4 z-20">
                 <button
                     className="p-3 bg-[#202620] rounded-full text-white shadow-xl"
                     onClick={() => {
@@ -54,14 +54,14 @@ export function Hero(props: TProps) {
                 >
                     <FaPhoneAlt className="h-5 w-5" />
                 </button>
-                <button
+                {/* <button
                     className="p-3 bg-[#202620] rounded-full text-white shadow-xl"
                     onClick={() => {
                         if (props?.onConsultOpen) props?.onConsultOpen()
                     }}
                 >
                     <RiUserSettingsFill className="h-5 w-5" />
-                </button>
+                </button> */}
             </div>
         </div>
     )

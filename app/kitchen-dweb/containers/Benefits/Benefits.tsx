@@ -2,9 +2,9 @@ import { TComponentItem } from '../../../../types'
 
 export function Benefits(props: TProps) {
     return (
-        <div className="flex flex-col items-center justify-center bg-[#343b34] text-white py-10 w-full">
+        <div className="flex flex-col items-center justify-center bg-[#1E1E1E] text-white py-10 w-full">
             <h1
-                className="text-6xl mb-16 text-start font-sm"
+                className="text-5xl mb-16 text-start font-sm"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
             />
             {/* <h1 className="text-6xl mb-16 text-start font-sm">
