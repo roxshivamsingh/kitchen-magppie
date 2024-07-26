@@ -19,7 +19,7 @@ const Qualities = () => {
                             onMouseEnter={() => setHoveredCard(card.id)}
                             onMouseLeave={() => setHoveredCard(null)}
                         >
-                            <p className="flex items-center justify-center w-[200px] z-20">{card.heading}</p>
+                            <p className="flex items-center justify-center w-[200px] z-20 font-extralight">{card.heading}</p>
                             <img
                                 src={card.img}
                                 alt="Sample"

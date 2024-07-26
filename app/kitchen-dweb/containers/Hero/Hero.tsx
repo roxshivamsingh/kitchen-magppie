@@ -11,6 +11,12 @@ type TProps = {
 }
 
 export function Hero(props: TProps) {
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        })
+    }
     return (
         <div
             className="relative w-full bg-contain"
@@ -20,24 +26,16 @@ export function Hero(props: TProps) {
                 <div className="absolute w-full h-full bg-black opacity-40" />
                 <div className="flex items-center justify-between w-full h-screen container mx-auto max-w-7xl">
                     <div className="flex">
-                        {/* <h1 className="text-5xl font-extralight text-white z-20">
-                            Our Kitchens are safe
-                            <br />
-                            <span>
-                                <span className="italic font-semibold">
-                                    {' '}
-                                    SAFE{' '}
-                                </span>
-                                Kitchen
-                            </span>{' '}
-                            <br />
-                        </h1> */}
-                        <h1
+                        <h1 className="text-5xl font-extralight text-white z-20">
+                            World’s first Modular Kitchen, <br />
+                            <span className='font-bold'>fully built in Stone</span>
+                        </h1>
+                        {/* <h1
                             className="text-5xl font-extralight text-white z-20"
                             dangerouslySetInnerHTML={{
                                 __html: props.item.typography.description,
                             }}
-                        />
+                        /> */}
                     </div>
 
                     <div className="z-20">
@@ -48,9 +46,10 @@ export function Hero(props: TProps) {
             <div className="fixed right-2 top-20 bottom-20 flex flex-col items-center justify-center space-y-4 z-20">
                 <button
                     className="p-3 bg-[#1E1E1E] rounded-full text-white shadow-xl"
-                    onClick={() => {
-                        if (props.onContactOpen) props.onContactOpen()
-                    }}
+                    // onClick={() => {
+                    //     if (props.onContactOpen) props.onContactOpen()
+                    // }}
+                    onClick={scrollToTop}
                 >
                     <FaPhoneAlt className="h-5 w-5" />
                 </button>

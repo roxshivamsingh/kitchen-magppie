@@ -23,7 +23,7 @@ export function BuyingStep(props: TProps) {
                                 <div className="text-7xl font-bold">
                                     {i + 1}.
                                 </div>
-                                <div className="my-auto max-w-40 text-xl pl-1 font-[200]">
+                                <div className="my-auto max-w-40 text-xl font-[200]">
                                     {item.main}
                                 </div>
                             </div>
