@@ -23,7 +23,7 @@ export default function Form() {
         <>
             <div className="justify-center items-center w-full max-h-full overflow-y-auto overflow-x-hidden">
                 <div className="relative w-full max-w-lg max-h-full">
-                    <div className="relative bg-[#202620] rounded-lg shadow">
+                    <div className="relative bg-[#1E1E1E] rounded-lg shadow">
                         <div className="flex items-center justify-between px-8 py-5 rounded-t w-screen">
                             <h3 className="text-4xl font-thin text-white">
                                 Book Your Consultation
@@ -37,7 +37,7 @@ export default function Form() {
                                         type="text"
                                         name="fullName"
                                         {...register('fullName')}
-                                        className="text-white text-md border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-10"
+                                        className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-10"
                                         required
                                     />
                                     <input
@@ -45,7 +45,7 @@ export default function Form() {
                                         type="tel"
                                         name="mobile"
                                         {...register('mobile')}
-                                        className="text-white text-md border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-10"
+                                        className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-10"
                                         required
                                     />
                                     <input
@@ -53,7 +53,7 @@ export default function Form() {
                                         type="text"
                                         name="city"
                                         {...register('city')}
-                                        className="text-white text-md border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-10"
+                                        className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-10"
                                         required
                                     />
                                     <input
@@ -61,7 +61,7 @@ export default function Form() {
                                         type="text"
                                         name="budget"
                                         {...register('budget')}
-                                        className="text-white text-md border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-10"
+                                        className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-10"
                                         required
                                     />
                                 </div>

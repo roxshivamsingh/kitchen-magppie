@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify'
 import { useAppSelector } from '../../redux'
 import {
     Gallery,
-    Benefits,
+    // Benefits,
     FAQs,
     Footer,
     BuyingStep,
@@ -19,6 +19,8 @@ import Navbar from './components/Navbar'
 import Consult from './components/Modals/Consult'
 import Contact from './components/Modals/Contact'
 import About from './containers/About/About'
+import ContactSection from './containers/Contact/ContactSection'
+import Qualities from './containers/Qualities/Qualities'
 
 export default function Page() {
     useFirebaseLandingListener()
@@ -52,14 +54,15 @@ export default function Page() {
                     }}
                 /> */}
                 <About />
-                <Gallery
-                // item={value?.find(
-                //     (row) => row.name === 'explore-gallery-component'
-                // )}
-                />
-                <Benefits
+                <Gallery />
+                {/* // item={value?.find( */}
+                {/* //     (row) => row.name === 'explore-gallery-component' */}
+                {/* // )} */}
+                
+                <Qualities />
+                {/* <Benefits
                     item={value?.find((row) => row.name === 'scope-component')}
-                />
+                /> */}
                 <Clients
                     item={value?.find(
                         (row) => row.name === 'feedback-component'
@@ -72,6 +75,7 @@ export default function Page() {
                 <FAQs
                     item={value?.find((row) => row.name === 'faq-component')}
                 />
+                <ContactSection />
                 <Footer
                     item={value?.find((row) => row.name === 'footer-component')}
                 />
