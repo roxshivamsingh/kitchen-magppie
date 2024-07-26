@@ -12,7 +12,7 @@ export type TComponentTypography = {
 }
 export type TComponentLink = { icon: string, bg: string, illustration: string }
 
-export type TComponentSectionImageItem = { link: string, typography: TComponentTypography }
+export type TComponentMediaItem = { link: string, typography: TComponentTypography }
 
 
 export type TComponentItem = {
@@ -23,8 +23,8 @@ export type TComponentItem = {
     links: TComponentLink,
     name: string,
     isGallery: boolean,
-    gallery: TComponentSectionImageItem[],
-    iconLists: TComponentSectionImageItem[],
+    gallery: TComponentMediaItem[],
+    icons: TComponentMediaItem[],
     at: { created: Date, updated: Date }
 }
 
@@ -61,7 +61,7 @@ export const INIT_CUSTOMER_SITE_COMPONENT: TComponentItem = {
     id: '',
     name: '',
     isGallery: false,
-    iconLists: [],
+    icons: [],
     gallery: [],
     items: [],
     // sections: INIT_CUSTOMER_SITE_COMPONENT_SECTIONS,

@@ -11,10 +11,10 @@ import {
     TComponentItem,
     TComponentMeta
 } from '../../../../../types'
-import { CustomToggle, ImageInput } from '../../../../../components'
+import { ImageInput } from '../../../../../components'
 import { MinimalAccordion } from '../../../components'
 import _ from '../../../../../types/lodash'
-import { FormTypography, FormItemTypography } from '.'
+import { FormTypography, FormItemTypography, FormViewPortMedia } from '.'
 
 export default function ComponentCreateEditForm(props: TProps) {
     const { meta, item } = props;
@@ -34,7 +34,7 @@ export default function ComponentCreateEditForm(props: TProps) {
         name: Yup.string().required('Name is required'),
         isGallery: Yup.boolean(),
         gallery: Yup.array().of(sectionImageItemSchema),
-        iconLists: Yup.array().of(sectionImageItemSchema),
+        icons: Yup.array().of(sectionImageItemSchema),
     })
     const defaultValues = useMemo(() => ({
         ...item,
@@ -108,47 +108,10 @@ export default function ComponentCreateEditForm(props: TProps) {
                     <FormItemTypography />
                 </MinimalAccordion>
 
-                {/* Links */}
                 <MinimalAccordion title='Desktop'>
-                    <div className=''>
-                        <ImageInput
-                            label='Icon'
-                            values={values.links.icon?.length ? [values.links.icon] : []}
-                            path={`customer-site-components/icons`}
-                            onSuccess={(e) => {
-                                setValue('links.icon', e[0])
-                            }}
-                        />
-                        {renderErrorMessage('links.icon.message')}
-
-                    </div>
-
-                    <div className="mb-4">
-                        <ImageInput
-                            values={values.links.bg?.length ? [values.links.bg] : []}
-                            label='Background'
-                            path={`customer-site-components/backgrounds`}
-                            onSuccess={(e) => {
-                                setValue('links.bg', e[0])
-                            }}
-                        />
-                        {renderErrorMessage('errors.links.bg')}
-                    </div>
-
-                    <div className="mb-4">
-                        <ImageInput
-                            label='Illustration'
-                            values={values.links.illustration?.length ? [values.links.illustration] : []}
-
-                            path={`customer-site-components/illustrations`}
-                            onSuccess={(e) => {
-                                setValue('links.illustration', e[0] || '')
-                            }}
-                        />
-                        {renderErrorMessage('links.illustration')}
-                    </div>
-
+                    <FormViewPortMedia variant='desktop' />
                 </MinimalAccordion>
+
                 <MinimalAccordion title='Mobile'>
                     <div className=''>
                         <ImageInput
@@ -160,9 +123,7 @@ export default function ComponentCreateEditForm(props: TProps) {
                             }}
                         />
                         {renderErrorMessage('links.icon.message')}
-
                     </div>
-
                     <div className="mb-4">
                         <ImageInput
                             values={values.links.bg?.length ? [values.links.bg] : []}
@@ -179,7 +140,6 @@ export default function ComponentCreateEditForm(props: TProps) {
                         <ImageInput
                             label='Illustration'
                             values={values.links.illustration?.length ? [values.links.illustration] : []}
-
                             path={`customer-site-components/illustrations`}
                             onSuccess={(e) => {
                                 setValue('links.illustration', e[0] || '')
@@ -190,23 +150,6 @@ export default function ComponentCreateEditForm(props: TProps) {
 
                 </MinimalAccordion>
 
-                <div className="mb-4">
-                    <div className="flex gap-3">
-                        Is Gallery
-
-                        <CustomToggle
-                            onChange={(e) => {
-
-                                console.log(e)
-                            }} />
-                        <input
-                            type="checkbox"
-                            {...register('isGallery')}
-                            className="mt-1 block w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
-                        />
-                    </div>
-                    {renderErrorMessage('isGallery')}
-                </div>
 
                 <button
                     type="submit"
