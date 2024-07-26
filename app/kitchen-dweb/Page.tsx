@@ -19,6 +19,7 @@ import Navbar from './components/Navbar'
 import Consult from './components/Modals/Consult'
 import Contact from './components/Modals/Contact'
 import About from './containers/About/About'
+import ContactSection from './containers/Contact/ContactSection'
 
 export default function Page() {
     useFirebaseLandingListener()
@@ -72,6 +73,7 @@ export default function Page() {
                 <FAQs
                     item={value?.find((row) => row.name === 'faq-component')}
                 />
+                <ContactSection />
                 <Footer
                     item={value?.find((row) => row.name === 'footer-component')}
                 />

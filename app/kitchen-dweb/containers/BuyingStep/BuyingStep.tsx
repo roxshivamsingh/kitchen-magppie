@@ -15,18 +15,15 @@ export function BuyingStep(props: TProps) {
                 How to buy a <span className="font-bold">MAGPPIE </span>
                 Wellness Kitchen in 4 easy steps?
             </h1>
-            <div className="flex gap-5 mx-auto max-w-7xl">
+            <div className="flex gap-5 mx-auto max-w-7xl justify-evenly w-full">
                 {props.item.items?.map((item, i) => {
                     return (
-                        <div
-                            key={i}
-                            className="flex items-center justify-center"
-                        >
-                            <div className="flex flex-col py-4 justify-start max-w-xs">
-                                <div className="text-6xl font-thin italic">
+                        <div key={i} className="flex flex-col mt-6">
+                            <div className="flex flex-col py-4 justify-center max-w-xs">
+                                <div className="text-7xl font-bold">
                                     {i + 1}.
                                 </div>
-                                <div className="my-auto max-w-sm text-xl pl-1 font-[200]">
+                                <div className="my-auto max-w-40 text-xl pl-1 font-[200]">
                                     {item.main}
                                 </div>
                             </div>
