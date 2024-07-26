@@ -22,7 +22,9 @@ export function Gallery() {
                     <img
                         src={gallery.src}
                         alt={`Image ${gallery.id}`}
-                        className="w-full h-[350px] object-cover rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-105 hover:rounded-lg"
+                        className={`w-full h-[350px] object-cover rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-105 hover:rounded-lg ${
+                            gallery.height === 1 ? 'h-full object-contain' : ''
+                        }`}
                     />
                 </div>
             ))}
