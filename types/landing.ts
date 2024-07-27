@@ -1,1 +1,1 @@
-export type TLandingAccordion = { label: string, description: string, header: string }
+export type TLandingAccordion = { label: string, description: string }
