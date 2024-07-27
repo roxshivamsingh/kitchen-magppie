@@ -64,9 +64,9 @@ export default function Page() {
                     item={value?.find((row) => row.name === 'scope-component')}
                 /> */}
                 <Clients
-                    item={value?.find(
-                        (row) => row.name === 'feedback-component'
-                    )}
+                    // item={value?.find(
+                    //     (row) => row.name === 'feedback-component'
+                    // )}
                 />
 
                 <BuyingStep
