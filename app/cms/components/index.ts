@@ -4,4 +4,5 @@ import FormToggle from "./FormToggle";
 // FIXME: To remove default import;
 export * from "./MinimalAccordion"
 export * from "./Search"
-export { Header, ProtectedRoute, FormToggle }
+import ExampleSass from "./ExampleSass";
+export { ExampleSass, Header, ProtectedRoute, FormToggle }
