@@ -5,8 +5,8 @@ const Qualities = () => {
     const [hoveredCard, setHoveredCard] = useState(null)
 
     return (
-<div className="bg-[#1E1E1E] w-full text-white py-10">
-            <h1 className="text-5xl mb-10 text-center font-sm">
+        <div className="bg-[#1E1E1E] w-full text-white py-10">
+            <h1 className="text-5xl mb-10 text-center font-sm font-thin">
                 What makes
                 <span className="font-bold"> MAGPPIE</span> kitchens the safest?
             </h1>
@@ -23,9 +23,8 @@ const Qualities = () => {
                             <img
                                 src={card.img}
                                 alt="Sample"
-                                className={`absolute top-0 left-0 w-full h-full object-cover rounded-xl transition-opacity duration-1000 ${
-                                    hoveredCard === card.id ? 'opacity-80' : 'opacity-0'
-                                }`}
+                                className={`absolute top-0 left-0 w-full h-full object-cover rounded-xl transition-opacity duration-1000 ${hoveredCard === card.id ? 'opacity-80' : 'opacity-0'
+                                    }`}
                             />
                         </div>
                     );

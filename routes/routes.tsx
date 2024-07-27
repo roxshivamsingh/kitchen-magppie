@@ -9,7 +9,6 @@ export default function Routes() {
     return useRoutes([
         KitchenRoutes,
         CmsRoutes(),
-
         {
             path: '*',
             element: <Navigate to="/not-found" replace />,

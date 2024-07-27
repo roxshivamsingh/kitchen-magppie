@@ -10,6 +10,7 @@ export default function FormItemTypography() {
     const methods = useFormContext<{ items: TComponentTypography[] }>()
     const { register, formState: { errors }, watch, setValue } = methods
     const values = watch()
+
     const renderErrorMessage = useCallback((field: string) => {
         if (_.get(errors, field)) {
             return <p className="text-red-500 text-xs mt-1">

@@ -271,7 +271,7 @@ const schema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
     isGallery: Yup.boolean(),
     gallery: Yup.array().of(sectionImageItemSchema),
-    iconLists: Yup.array().of(sectionImageItemSchema),
+    icons: Yup.array().of(sectionImageItemSchema),
 })
 
 type TProps = { item: TComponentItem }
