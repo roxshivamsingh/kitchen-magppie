@@ -2,16 +2,21 @@ import { useCallback, useEffect, useState } from 'react'
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import _ from 'lodash';
 
-import { TComponentItem, TLandingAccordion } from '../../../../types'
-import { LANDING_ACCORDION } from '../../../../mocks';
+//====================================================================
+
+import {
+    TComponentItem,
+    TComponentTypography
+} from '../../../../types'
 
 export function FAQs(props: TProps) {
+    const { item } = props;
     const [toggle, setToggle] = useState({ isViewMore: false })
     return (
         <div className="bg-white text-black py-20 flex flex-col justify-center items-center w-full">
             <h1 className="text-5xl text-center font-light mb-10">FAQs</h1>
             <div className="grid grid-cols-3 container max-w-7xl w-full justify-center gap-10 transition-all duration-500 max-h-full">
-                {[...(toggle.isViewMore ? LANDING_ACCORDION : LANDING_ACCORDION.slice(0, 9))].map((item, i) => {
+                {[...(toggle.isViewMore ? props.item.items : props.item.items.slice(0, 9))].map((item, i) => {
                     return (<div key={i} className="font-custom mb-5">
                         <FAQAccodion item={item} />
                     </div>
@@ -31,21 +36,14 @@ export function FAQs(props: TProps) {
                         }))
                     }}
                 >
-                    {toggle.isViewMore ? 'view less' : props.item.typography.action}
+                    {_.get(item, `typography.${toggle.isViewMore ? 'secondary' : 'main'}`, 'view more')}
                 </button>
             </div>
         </div >
     )
 }
-type TProps = { item: TComponentItem }
 
-
-interface IProps {
-    item: TLandingAccordion,
-    isExpanded?: true
-}
-
-function FAQAccodion(props: IProps) {
+function FAQAccodion(props: IFAQAccodionProps) {
     const { item } = props
     const [toggle, setToggle] = useState(props?.isExpanded || false)
 
@@ -70,7 +68,7 @@ function FAQAccodion(props: IProps) {
                 onClick={onToggle}
             >
                 <span className="text-4xl font-thin text-left">
-                    {item.label}
+                    {item.main}
                 </span>
                 <span>
                     {toggle ? (
@@ -91,3 +89,11 @@ function FAQAccodion(props: IProps) {
 }
 
 
+
+type TProps = { item: TComponentItem }
+
+
+interface IFAQAccodionProps {
+    item: TComponentTypography,
+    isExpanded?: true
+}

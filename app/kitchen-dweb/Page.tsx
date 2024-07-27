@@ -58,22 +58,22 @@ export default function Page() {
                 {/* // item={value?.find( */}
                 {/* //     (row) => row.name === 'explore-gallery-component' */}
                 {/* // )} */}
-                
+
                 <Qualities />
                 {/* <Benefits
                     item={value?.find((row) => row.name === 'scope-component')}
                 /> */}
                 <Clients
-                    // item={value?.find(
-                    //     (row) => row.name === 'feedback-component'
-                    // )}
+                // item={value?.find(
+                //     (row) => row.name === 'feedback-component'
+                // )}
                 />
 
                 <BuyingStep
                     item={value?.find((row) => row.name === 'step-component')}
                 />
                 <FAQs
-                    item={value?.find((row) => row.name === 'faq-component')}
+                    item={value?.find((row) => row.name === 'faqs-component')}
                 />
                 <ContactSection />
                 <Footer

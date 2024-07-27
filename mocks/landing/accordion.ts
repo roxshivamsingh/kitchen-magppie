@@ -1,4 +1,4 @@
-// import { TComponentTypography } from "../../types";
+import { INIT_CUSTOMER_SITE_COMPONENT, TComponentItem, TComponentTypography } from "../../types";
 import { TLandingAccordion } from "./../../types/landing"
 
 export const LANDING_ACCORDION: TLandingAccordion[] = [
@@ -61,6 +61,14 @@ export const LANDING_ACCORDION: TLandingAccordion[] = [
 ];
 
 
-// export const FAQ_COMPONENT_ITEMS=(ar:TComponentTypography[])=>{
-
-// }
+export const FAQ_COMPONENT_ITEM = ({
+    ...INIT_CUSTOMER_SITE_COMPONENT,
+    name: 'faqs-component',
+    items: LANDING_ACCORDION?.map((item) => {
+        return ({
+            ...INIT_CUSTOMER_SITE_COMPONENT.typography,
+            main: item.label,
+            description: item.description,
+        }) as TComponentTypography
+    })
+}) as TComponentItem
