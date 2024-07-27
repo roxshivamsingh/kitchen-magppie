@@ -30,7 +30,8 @@
     "app/**/*",
     "main/App.tsx",
     "main/main.tsx",
-    "components"
+    "components",
+    "mocks",
   ],
   "references": [
     {
