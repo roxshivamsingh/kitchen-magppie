@@ -5,8 +5,15 @@ import _ from 'lodash'
 
 import { Search } from '../../../components'
 import { useAppSelector } from '../../../../../redux'
-import { CmsLandingPageComponentCard, ComponentCreateEditForm } from "../components"
-import { CustomConfirmationDialog, CustomSimpleModal, PageProgress } from '../../../../../components'
+import {
+    CmsLandingPageComponentCard,
+    ComponentCreateEditForm
+} from "../components"
+import {
+    CustomConfirmationDialog,
+    CustomSimpleModal,
+    PageProgress
+} from '../../../../../components'
 import {
     COMPONENT_META,
     INIT_CUSTOMER_SITE_COMPONENT,
