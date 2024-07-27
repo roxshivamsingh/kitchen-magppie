@@ -20,6 +20,7 @@ import {
     TComponentItem
 } from '../../../../../types'
 import { useFirebaseLandingListener } from '../../../utils/firebase'
+// import CustomDumpButton from '../../../components/Dump/CustomDumpButton'
 
 export function LandingHome() {
     useFirebaseLandingListener()
@@ -84,6 +85,7 @@ export function LandingHome() {
             <Search placeholder="Search Components.." onChange={(search) => {
                 setCorpus((prev) => ({ ...prev, search }))
             }} />
+            {/* <CustomDumpButton /> */}
 
             {loading ? (<PageProgress />) : (
                 <div className="mt-10">
