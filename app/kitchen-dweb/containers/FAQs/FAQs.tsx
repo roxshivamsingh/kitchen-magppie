@@ -34,6 +34,7 @@ interface IProps {
 }
 
 function FAQAccodion(props: IProps) {
+    const { item } = props
     const [toggle, setToggle] = useState(props?.isExpanded || false)
 
     const onToggle = useCallback(() => {
@@ -56,9 +57,9 @@ function FAQAccodion(props: IProps) {
                 className="w-full flex items-center p-2 focus:outline-none text-black"
                 onClick={onToggle}
             >
-                <span className="text-4xl font-thin text-left"
-
-                >{props.item.label}</span>
+                <span className="text-4xl font-thin text-left">
+                    {item.header}
+                </span>
                 <span>
                     {toggle ? (
                         <MdKeyboardArrowUp className="text-black text-3xl ml-2 mt-1" />
@@ -67,8 +68,14 @@ function FAQAccodion(props: IProps) {
                     )}
                 </span>
             </button>
-            <div className={`transition-all duration-500 text-xl mb-3 font-[320]  ${toggle ? 'max-h-screen' : 'text-ellipsis line-clamp-2 max-h-20'}`}>{props.item.description}</div>
+            <div className={`text-xl mb-3 font-[320]`}>{item.label}</div>
+            <div className={`transition-all duration-500 text-black text-xl mb-3 font-[200] overflow-hidden ${toggle ? 'max-h-screen' : 'max-h-0'}`}>
+                {item.description}
+            </div>
             <div className="border-b-2 border-black w-72" />
+
         </div >
     )
 }
+
+
