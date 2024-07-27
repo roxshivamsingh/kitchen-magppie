@@ -39,9 +39,9 @@ export function Footer(props: TProps) {
 
     return (
         <div className="bg-[#1E1E1E] pt-6 pb-16 text-white px-10 flex flex-col justify-start">
-            <div className="flex w-full container mx-auto max-w-8xl justify-center flex-col items-center">
+            <div className="flex w-full container mx-auto max-w-8xl justify-center flex-col items-center text-center">
                 <div className="text-5xl mb-10 font-bold">MAGPPIE</div>
-                <div className="grid grid-cols-3 mb-6 gap-3 text-center space-x-10">
+                <div className="flex justify-evenly mb-6 gap-3 text-center w-full conatiner mx-auto max-w-7xl">
                     {props.item.items?.map((item, i) => (
                         <button
                             key={i}
@@ -54,7 +54,7 @@ export function Footer(props: TProps) {
                 </div>
             </div>
 
-            <div className="flex flex-row items-center gap-3 mb-5 justify-end">
+            <div className="flex flex-row items-center gap-3 mb-5 mt-5 justify-center">
                 <FaFacebook className="h-6 w-6 cursor-pointer" />
                 <FaTwitter className="h-6 w-6 cursor-pointer" />
                 <FaInstagram className="h-6 w-6 cursor-pointer" />

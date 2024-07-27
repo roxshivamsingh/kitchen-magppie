@@ -15,14 +15,14 @@ export function Gallery() {
             {galleries.map((gallery) => (
                 <div
                     key={gallery.id}
-                    className={`relative w-full h-full overflow-hidden ${
+                    className={`relative w-full h-full overflow-hidden rounded-lg ${
                         gallery.colSpan === 2 ? 'col-span-2' : 'col-span-1'
                     } ${gallery.rowSpan === 2 ? 'row-span-2' : 'row-span-1'}`}
                 >
                     <img
                         src={gallery.src}
                         alt={`Image ${gallery.id}`}
-                        className={`w-full h-[350px] object-cover rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-105 hover:rounded-lg ${
+                        className={`w-full h-[350px] object-cover rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-110 hover:rounded-lg ${
                             gallery.height === 1 ? 'h-full object-contain' : ''
                         }`}
                     />
