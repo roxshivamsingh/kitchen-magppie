@@ -58,7 +58,7 @@ function FAQAccodion(props: IProps) {
                 onClick={onToggle}
             >
                 <span className="text-4xl font-thin text-left">
-                    {item.header}
+                    {item.label}
                 </span>
                 <span>
                     {toggle ? (
