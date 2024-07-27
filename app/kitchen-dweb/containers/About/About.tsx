@@ -1,5 +1,6 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
+import _ from 'lodash'
 
 const About = () => {
     return (
@@ -80,9 +81,25 @@ function FAQAccodion(props: IProps) {
     const onToggle = useCallback(() => {
         setToggle((prev) => !prev)
     }, [])
+
+    const onHeaderHover = _.debounce((value: boolean) => {
+        setToggle(value)
+    }, 300)
+
+    useEffect(() => {
+        return () => {
+            onHeaderHover.cancel()
+        }
+    }, [onHeaderHover])
     return (
         <div className="flex flex-col justify-center items-center">
             <div
+                onMouseOver={() => {
+                    onHeaderHover(true)
+                }}
+                onMouseLeave={() => {
+                    onHeaderHover(false)
+                }}
                 className="w-full flex justify-center items-center focus:outline-none my-8 bg-[#1e1e1e] py-4 max-w-3xl shadow-xl text-white text-3xl p-2 rounded-full font-thin cursor-pointer"
                 onClick={onToggle}
             >
@@ -99,9 +116,7 @@ function FAQAccodion(props: IProps) {
             </div>
             <div
                 className={`transition-all duration-500 overflow-hidden text-xl font-[320]  ${
-                    toggle
-                        ? 'max-h-screen'
-                        : 'max-h-0'
+                    toggle ? 'max-h-screen' : 'max-h-0'
                 }`}
             >
                 <div className="mb-4 text-xl" style={{ fontWeight: 350 }}>
