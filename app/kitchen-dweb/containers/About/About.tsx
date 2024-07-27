@@ -92,7 +92,7 @@ function FAQAccodion(props: IProps) {
         }
     }, [onHeaderHover])
     return (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center" id='About'>
             <div
                 onMouseOver={() => {
                     onHeaderHover(true)
