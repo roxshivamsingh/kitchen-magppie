@@ -3,7 +3,7 @@ import { FaPhoneAlt } from 'react-icons/fa'
 import Form from './Form'
 // import { RiUserSettingsFill } from 'react-icons/ri'
 import { TComponentItem } from '../../../../types'
-import { RiSingleQuotesR } from "react-icons/ri";
+// import { RiSingleQuotesR } from "react-icons/ri";
 import { BiSolidQuoteSingleRight } from "react-icons/bi";
 type TProps = {
     onContactOpen?: VoidFunction
