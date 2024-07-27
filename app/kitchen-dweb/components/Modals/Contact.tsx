@@ -35,13 +35,13 @@ export function Contact(props: IProps) {
             size="large"
         >
             <form onSubmit={onSubmit}>
-                <div className="space-y-6">
+                <div className="space-y-4">
                     <input
                         placeholder="Your Name"
                         type="text"
                         name="fullName"
                         {...register('fullName')}
-                        className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-3 placeholder-gray-300 px-5"
+                        className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
                         required
                     />
                     <input
@@ -49,7 +49,7 @@ export function Contact(props: IProps) {
                         type="email"
                         name="email"
                         {...register('email')}
-                        className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-3 placeholder-gray-300 px-5"
+                        className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
                         required
                     />
                     <input
@@ -58,7 +58,7 @@ export function Contact(props: IProps) {
                         name="mobile"
                         id="mobile"
                         {...register('mobile')}
-                        className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-3 placeholder-gray-300 px-5"
+                        className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
                         required
                     />
                     <input
@@ -66,7 +66,7 @@ export function Contact(props: IProps) {
                         type="text"
                         name="remark"
                         {...register('remark')}
-                        className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-3 placeholder-gray-300 px-5"
+                        className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
                         required
                     />
                 </div>

@@ -31,13 +31,13 @@ export default function Consult({ onHide, open }: IProps) {
 
     return (<CustomSiteModal open={open} onHide={onHide} header='Book Your Consultation' size='large'>
         <form onSubmit={onSubmit}>
-            <div className="space-y-6">
+            <div className="space-y-4">
                 <input
                     placeholder="Your Name"
                     type="text"
                     name="fullName"
                     {...register('fullName')}
-                    className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
+                    className="text-white text-lg border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
                     required
                 />
                 <input
@@ -45,7 +45,7 @@ export default function Consult({ onHide, open }: IProps) {
                     type="tel"
                     name="mobile"
                     {...register('mobile')}
-                    className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
+                    className="text-white text-lg border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
                     required
                 />
                 <input
@@ -53,7 +53,7 @@ export default function Consult({ onHide, open }: IProps) {
                     type="text"
                     name="city"
                     {...register('city')}
-                    className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
+                    className="text-white text-lg border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
                     required
                 />
                 <input
@@ -61,7 +61,7 @@ export default function Consult({ onHide, open }: IProps) {
                     type="text"
                     name="budget"
                     {...register('budget')}
-                    className="text-white text-lg border rounded-full border-gray-300 bg-[#202620] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
+                    className="text-white text-lg border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-5"
                     required
                 />
             </div>

@@ -12,12 +12,12 @@ type TProps = {
 }
 
 export function Hero(props: TProps) {
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        })
-    }
+    // const scrollToTop = () => {
+    //     window.scrollTo({
+    //         top: 0,
+    //         behavior: 'smooth',
+    //     })
+    // }
     return (
         <div
             className="relative w-full bg-contain"
@@ -47,10 +47,10 @@ export function Hero(props: TProps) {
             <div className="fixed right-2 top-20 bottom-20 flex flex-col items-center justify-center space-y-4 z-20">
                 <button
                     className="p-3 bg-[#1E1E1E] rounded-full text-white shadow-xl"
-                    // onClick={() => {
-                    //     if (props.onContactOpen) props.onContactOpen()
-                    // }}
-                    onClick={scrollToTop}
+                    onClick={() => {
+                        if (props.onContactOpen) props.onContactOpen()
+                    }}
+                    // onClick={scrollToTop}
                 >
                     <FaPhoneAlt className="h-5 w-5" />
                 </button>
