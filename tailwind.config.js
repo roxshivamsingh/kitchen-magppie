@@ -11,7 +11,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                custom: ['CustomFont', 'sans-serif'], // Add your custom font here
+                custom: ['CustomFont', 'sans-serif', 'Big Caslon FB'], // Add your custom font here
             },
         },
     },

@@ -19,11 +19,13 @@ export function BuyingStep(props: TProps) {
                 {props.item.items?.map((item, i) => {
                     return (
                         <div key={i} className="flex flex-col mt-6">
-                            <div className="flex flex-col py-4 justify-center max-w-xs">
-                                <div className="text-7xl font-bold">
+                            <div className="flex flex-col py-4 justify-center max-w-xs gap-3">
+                                <div className="text-8xl"
+                                    style={{ fontFamily: 'BigCaslon Alternatives' }}
+                                >
                                     {i + 1}.
                                 </div>
-                                <div className="my-auto max-w-40 text-xl font-[200]">
+                                <div className="my-auto max-w-40 text-2xl font-[200]">
                                     {item.main}
                                 </div>
                             </div>
@@ -42,7 +44,7 @@ export function BuyingStep(props: TProps) {
                             isOpenContactModal: true,
                         }))
                     }}
-                    className="text-md font-semibold cursor-pointer mt-6 bg-brown-600 text-[#343b34] bg-white uppercase py-2 px-10 border border-white rounded-full"
+                    className="text-md font-[400] cursor-pointer mt-6 bg-brown-600 text-[#343b34] bg-white uppercase py-2 px-10 border border-white rounded-full"
                 >
                     {props.item.typography.action}
                 </button>

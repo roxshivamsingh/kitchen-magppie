@@ -3,7 +3,8 @@ import { FaPhoneAlt } from 'react-icons/fa'
 import Form from './Form'
 // import { RiUserSettingsFill } from 'react-icons/ri'
 import { TComponentItem } from '../../../../types'
-
+import { RiSingleQuotesR } from "react-icons/ri";
+import { BiSolidQuoteSingleRight } from "react-icons/bi";
 type TProps = {
     onContactOpen?: VoidFunction
     onConsultOpen?: VoidFunction
@@ -27,7 +28,7 @@ export function Hero(props: TProps) {
                 <div className="flex items-center justify-between w-full h-screen container mx-auto max-w-7xl">
                     <div className="flex">
                         <h1 className="text-5xl font-extralight text-white z-20">
-                            World’s first Modular Kitchen, <br />
+                            World <sup><BiSolidQuoteSingleRight className='inline text-sm' /></sup>s first Modular Kitchen, <br />
                             <span className='font-bold'>fully built in Stone</span>
                         </h1>
                         {/* <h1
