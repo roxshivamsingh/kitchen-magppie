@@ -6,11 +6,12 @@ import { TComponentItem, TLandingAccordion } from '../../../../types'
 import { LANDING_ACCORDION } from '../../../../mocks';
 
 export function FAQs(props: TProps) {
+    const [toggle, setToggle] = useState({ isViewMore: false })
     return (
         <div className="bg-white text-black py-20 flex flex-col justify-center items-center w-full">
             <h1 className="text-5xl text-center font-light mb-10">FAQs</h1>
-            <div className="grid grid-cols-3 container max-w-7xl w-full justify-center gap-10">
-                {LANDING_ACCORDION.map((item, i) => {
+            <div className="grid grid-cols-3 container max-w-7xl w-full justify-center gap-10 transition-all duration-500 max-h-full">
+                {[...(toggle.isViewMore ? LANDING_ACCORDION : LANDING_ACCORDION.slice(0, 9))].map((item, i) => {
                     return (<div key={i} className="font-custom mb-5">
                         <FAQAccodion item={item} />
                     </div>
@@ -18,11 +19,22 @@ export function FAQs(props: TProps) {
                 })}
             </div>
             <div className="flex justify-center items-center cursor-pointer mt-10">
-                <button className="text-lg font-[250] cursor-pointer mt-6 bg-brown-600 text-white bg-black uppercase py-2 px-10 border border-white rounded-full">
-                    {props.item.typography.action}
+                <button
+
+                    type='button'
+                    className="text-lg font-[250] cursor-pointer mt-6 bg-brown-600 text-white bg-black uppercase py-2 px-10 border border-white rounded-full"
+
+                    onClick={() => {
+                        setToggle((prev) => ({
+                            ...prev,
+                            isViewMore: !prev.isViewMore
+                        }))
+                    }}
+                >
+                    {toggle.isViewMore ? 'view less' : props.item.typography.action}
                 </button>
             </div>
-        </div>
+        </div >
     )
 }
 type TProps = { item: TComponentItem }
