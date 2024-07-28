@@ -46,12 +46,16 @@ export function Clients() {
                         <img
                             src={client.src}
                             alt=""
-                            className="w-full h-auto object-cover rounded-lg hover:rounded-lg"
+                            className={`w-full h-auto object-cover rounded-lg hover:rounded-lg ${
+                                client.height === 1
+                                    ? 'h-[350px] object-cover'
+                                    : ''
+                            }`}
                         />
                         <h3 className="text-start mt-2 text-2xl font-normal">
                             {client.title}
                         </h3>
-                        <p className="text-start text-xl italic text-gray-600">
+                        <p className="text-start text-base italic text-gray-600">
                             {client.subTitle}
                         </p>
                     </div>

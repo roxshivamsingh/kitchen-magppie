@@ -50,6 +50,7 @@ export const clients = [
         rowSpan: 2,
         title: 'Chiranjeevi',
         subTitle: 'Actor',
+        height: 1,
     },
     {
         id: 6,
@@ -74,6 +75,7 @@ export const clients = [
         rowSpan: 1,
         title: 'Subhash Chandra',
         subTitle: 'Chairman, ZeeTv',
+        height: 1,
     },
     {
         id: 9,
@@ -90,6 +92,7 @@ export const clients = [
         rowSpan: 1,
         title: 'Kamal Nath',
         subTitle: 'Member of Parliament, India',
+        height: 1,
     },
     {
         id: 11,
