@@ -1,65 +1,99 @@
-import { TComponentItem } from '../../../../types'
-import { FaArrowRight } from 'react-icons/fa'
-import { FaArrowDownLong, FaArrowUpLong } from 'react-icons/fa6'
+import { useCallback, useEffect, useState } from 'react'
+import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
+import _ from 'lodash';
+
+//====================================================================
+
+import {
+    TComponentItem,
+    TComponentTypography
+} from '../../../../types'
 
 export function FAQs(props: TProps) {
+    const { item } = props;
+    const [toggle, setToggle] = useState({ isViewMore: false })
     return (
-        <div className="bg-[#343b34] pt-16 pb-32 text-white px-10 flex flex-col justify-start mx-1">
-            <div className=" text-8xl container px-5 py-10">FAQS</div>
-            {props.item.items?.map((item, i) => {
-                return (
-                    <div key={i} className="font-custom">
-                        <MinimalAccordion key={i} title={item.main}>
-                            {item.description} #{i + 1}
-                        </MinimalAccordion>
+        <div className="bg-white text-black py-20 flex flex-col justify-center items-center">
+            <h1 className="text-5xl text-center font-light mb-10">FAQs</h1>
+            <div className="grid grid-cols-2 mx-10 gap-5 transition-all duration-500 max-h-full">
+                {[...(toggle.isViewMore ? props.item.items : props.item.items.slice(0, 9))].map((item, i) => {
+                    return (<div key={i} className="font-custom mb-5">
+                        <FAQAccodion item={item} />
                     </div>
-                )
-            })}
-            <div className="flex justify-start items-start cursor-pointer mt-10">
-                <div className="text-3xl cursor-pointer mt-6 bg-brown-600 text-white font-light uppercase py-6 px-6 border border-white rounded-full flex items-center justify-center hover:bg-brown-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-500">
-                    {props.item.typography.action}
-                    <FaArrowRight className="h-8 w-8 pl-3" />
-                </div>
+                    )
+                })}
             </div>
-        </div>
+            <div className="flex justify-center items-center cursor-pointer mt-10">
+                <button
+
+                    type='button'
+                    className="text-lg font-[250] cursor-pointer mt-6 bg-brown-600 text-white bg-black uppercase py-2 px-10 border border-white rounded-full"
+
+                    onClick={() => {
+                        setToggle((prev) => ({
+                            ...prev,
+                            isViewMore: !prev.isViewMore
+                        }))
+                    }}
+                >
+                    {_.get(item, `typography.${toggle.isViewMore ? 'secondary' : 'main'}`, 'view more')}
+                </button>
+            </div>
+        </div >
     )
 }
-type TProps = { item: TComponentItem }
 
-import { ReactNode, useCallback, useState } from 'react'
-
-interface IProps {
-    title: string
-    isExpanded?: true
-    children: ReactNode
-}
-
-export function MinimalAccordion(props: IProps) {
+function FAQAccodion(props: IFAQAccodionProps) {
+    const { item } = props
     const [toggle, setToggle] = useState(props?.isExpanded || false)
 
     const onToggle = useCallback(() => {
         setToggle((prev) => !prev)
     }, [])
+    const onHeaderHover = _.debounce((value: boolean) => {
+        setToggle(value)
+    }, 300)
+    useEffect(() => {
+        return () => {
+            onHeaderHover.cancel()
+        }
+    }, [onHeaderHover])
     return (
-        <div className="border-b border-white shadow">
+        <div
+            onMouseOver={() => { onHeaderHover(true) }}
+            onMouseLeave={() => { onHeaderHover(false) }}
+        >
             <button
-                className="w-full flex justify-between items-center p-4 text-left focus:outline-none text-white mb-6"
+                className="w-full flex items-center p-2 focus:outline-none text-black"
                 onClick={onToggle}
             >
-                <span className="text-4xl font-medium mt-2">{props.title}</span>
+                <span className="text-2xl font-thin text-left">
+                    {item.main}
+                </span>
                 <span>
                     {toggle ? (
-                        <FaArrowUpLong className="text-white h-10 w-10" />
+                        <MdKeyboardArrowUp className="text-black text-3xl ml-2 mt-1" />
                     ) : (
-                        <FaArrowDownLong className="text-white h-10 w-10" />
+                        <MdKeyboardArrowDown className="text-black text-3xl ml-2 mt-1" />
                     )}
                 </span>
             </button>
-            {toggle && (
-                <div className="text-white text-3xl mb-6 ml-3">
-                    {props.children}
-                </div>
-            )}
-        </div>
+            {/* <div className={`text-xl mb-3 font-[320]`}>{item.label}</div> */}
+            <div className={`transition-all duration-500 text-black text-xl mb-3 font-[320] overflow-y-hidden  ${toggle ? 'max-h-screen' : 'max-h-20 line-clamp-2'}`}>
+                {item.description}
+            </div>
+            <div className="border-b-2 border-black w-72" />
+
+        </div >
     )
+}
+
+
+
+type TProps = { item: TComponentItem }
+
+
+interface IFAQAccodionProps {
+    item: TComponentTypography,
+    isExpanded?: true
 }

@@ -1,6 +1,6 @@
 .swiper-button-prev {
     padding: 40px;
-    margin-right: 10px;
+    margin-right: 50px;
     color: white;
     background-color: #202620;
     border-radius: 50px;
@@ -9,16 +9,7 @@
 .swiper-button-next {
     color: white;
     padding: 40px;
-    margin-left: 10px;
+    margin-left: 50px;
     background-color: #202620;
     border-radius: 50px;
 }
-
-.swiper-scrollbar {
-    height: 15px !important; /* Adjust the height of the scrollbar */
-    background-color: white !important; /* Adjust the background color */
-}
-
-.swiper-scrollbar-drag {
-    background-color: gray !important; /* Customize the color of the draggable scrollbar */
-  }

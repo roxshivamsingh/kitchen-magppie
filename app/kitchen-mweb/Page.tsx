@@ -1,20 +1,25 @@
 import { useAppSelector } from '../../redux'
 import {
-    Gallery,
-    Benefits,
+    // Gallery,
+    // Benefits,
     FAQs,
     Footer,
     BuyingStep,
     Hero,
-    Features,
-    Clients,
+    // Features,
+    // Clients,
 } from '.'
 import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
-import ToggleButton from './components/ToggleButton'
+// import ToggleButton from './components/ToggleButton'
 import { ToastContainer } from 'react-toastify'
 import Consult from './components/Modals/Consult'
 import { useState } from 'react'
+import { Video } from './containers/VideoSection'
+import About from './containers/About/About'
+import { Gallery } from './containers/Gallery'
+import Qualities from './containers/Qualities/Qualities'
+import { Clients } from './containers/Clients'
 // import CustomDumpButton from '../cms/components/Dump/CustomDumpButton'
 
 export default function Page() {
@@ -30,35 +35,44 @@ export default function Page() {
                 <Hero
                     item={value?.find((row) => row.name === 'reel-component')}
                 />
-                <Features
+                <Video />
+                {/* <Features
                     item={value?.find(
                         (row) => row.name === 'carousel-component'
                     )}
-                />
-                <ToggleButton onConsultOpen={() => { setToggle((prev) => ({ ...prev, consult: true })) }} />
-                <Benefits
+                /> */}
+                {/* <ToggleButton
+                    onConsultOpen={() => {
+                        setToggle((prev) => ({ ...prev, consult: true }))
+                    }}
+                /> */}
+                <About />
+                <Gallery />
+                <Qualities />
+                {/* <Benefits
                     item={value?.find((row) => row.name === 'scope-component')}
-                />
-                <Clients
-                    item={value?.find(
-                        (row) => row.name === 'feedback-component'
-                    )}
-                />
-                <Gallery
+                /> */}
+                <Clients />
+                {/* <Gallery
                     item={value?.find(
                         (row) => row.name === 'explore-gallery-component'
                     )}
-                />
+                /> */}
                 <BuyingStep
                     item={value?.find((row) => row.name === 'step-component')}
                 />
                 <FAQs
-                    item={value?.find((row) => row.name === 'faq-component')}
+                    item={value?.find((row) => row.name === 'faqs-component')}
                 />
                 <Footer
                     item={value?.find((row) => row.name === 'footer-component')}
                 />
-                <Consult open={toggle.consult} onHide={() => { setToggle((prev) => ({ ...prev, consult: false })) }} />
+                <Consult
+                    open={toggle.consult}
+                    onHide={() => {
+                        setToggle((prev) => ({ ...prev, consult: false }))
+                    }}
+                />
 
                 <ToastContainer
                     position="bottom-left"
