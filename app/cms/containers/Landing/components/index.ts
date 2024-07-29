@@ -1,11 +1,11 @@
-import ComponentCreateEditForm from "./ComponentCreateEditForm";
+import ComponentActionForm from "./ComponentActionForm";
 import CmsLandingPageComponentCard from "./CmsLandingPageComponentCard"
 import FormItemTypography from "./FormItemTypography";
 import FormTypography from "./FormTypography";
 import FormViewPortMedia from "./FormViewPortMedia";
 export {
     FormViewPortMedia,
-    ComponentCreateEditForm,
+    ComponentActionForm,
     CmsLandingPageComponentCard,
     FormItemTypography,
     FormTypography

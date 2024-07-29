@@ -14,9 +14,13 @@ import {
 import { ImageInput } from '../../../../../components'
 import { MinimalAccordion } from '../../../components'
 import _ from '../../../../../types/lodash'
-import { FormTypography, FormItemTypography, FormViewPortMedia } from '.'
+import {
+    FormTypography,
+    FormItemTypography,
+    FormViewPortMedia
+} from '.'
 
-export default function ComponentCreateEditForm(props: TProps) {
+export default function ComponentActionForm(props: TProps) {
     const { meta, item } = props;
     const schema = Yup.object().shape({
         orderId: Yup.number()
@@ -68,7 +72,6 @@ export default function ComponentCreateEditForm(props: TProps) {
 
     return (
         <FormProvider {...methods}>
-
             <form onSubmit={onSubmit} className="bg-white p-6 rounded shadow-md overflow-y-scroll h-[80vh]">
                 <div>
                     <label className="block text-sm font-medium text-gray-700">
@@ -99,9 +102,10 @@ export default function ComponentCreateEditForm(props: TProps) {
                     <div className="flex flex-row-reverse">
                         <MdPostAdd className='text-xl text-blue-500 cursor-pointer'
                             onClick={() => {
-                                setValue('items', [...values.items,
-                                    INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY
-                                ])
+                                setValue('items',
+                                    [...values.items,
+                                        INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY
+                                    ])
                             }}
                         />
                     </div>
@@ -185,4 +189,8 @@ const sectionImageItemSchema = Yup.object().shape({
 
 
 
-type TProps = { item: TComponentItem, meta: TComponentMeta }
+type TProps = {
+    item: TComponentItem,
+    meta: TComponentMeta,
+    mode: 'create' | 'edit' | ''
+}

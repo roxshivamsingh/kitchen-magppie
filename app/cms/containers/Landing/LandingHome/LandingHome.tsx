@@ -7,8 +7,9 @@ import { Search } from '../../../components'
 import { useAppSelector } from '../../../../../redux'
 import {
     CmsLandingPageComponentCard,
-    ComponentCreateEditForm
+    ComponentActionForm
 } from "../components"
+
 import {
     CustomConfirmationDialog,
     CustomSimpleModal,
@@ -53,9 +54,11 @@ export function LandingHome() {
             }}
             onHide={() => {
                 setCorpus((prev) => ({ ...prev, confirmation: INIT_CONFIRMATION }))
-            }} onConfirm={() => {
+            }}
+            onConfirm={() => {
                 setCorpus((prev) => ({ ...prev, confirmation: INIT_CONFIRMATION }))
-            }} />)
+            }}
+        />)
     }, [corpus.confirmation])
 
     const onClickRemove = useCallback((item: TComponentItem) => {
@@ -79,12 +82,36 @@ export function LandingHome() {
             value
         })
     }, [onChangeModal])
+    const renderActionModal = useMemo(() => {
+        return <CustomSimpleModal
+            show={corpus.modal.open}
+            onHide={() => {
+                onChangeModal(INIT_CORPUS_MODAL)
+            }}
+            label={`${_.upperFirst(corpus.modal.action)} Component`}
+        >
+            <ComponentActionForm
+                mode={corpus.modal.action}
+                item={corpus.modal.value}
+                meta={meta}
+            />
+        </CustomSimpleModal>
+    }, [
+        corpus.modal.action,
+        corpus.modal.open,
+        corpus.modal.value,
+        meta,
+        onChangeModal
+    ])
 
     return (
         <div>
-            <Search placeholder="Search Components.." onChange={(search) => {
-                setCorpus((prev) => ({ ...prev, search }))
-            }} />
+            <Search
+                placeholder="Search Components.."
+                onChange={(search) => {
+                    setCorpus((prev) => ({ ...prev, search }))
+                }}
+            />
             {/* <CustomDumpButton /> */}
 
             {loading ? (<PageProgress />) : (
@@ -98,10 +125,9 @@ export function LandingHome() {
                                 />
                             })}
                         </div>
-                    ) : (
-                        <div className="flex flex-row justify-center h-20 align-middle">
-                            Not found
-                        </div>
+                    ) : (<div className="flex flex-row justify-center h-20 align-middle">
+                        Not found
+                    </div>
                     )}
                 </div>
             )}
@@ -117,22 +143,12 @@ export function LandingHome() {
             </div>
 
             {renderDeleteConfirmationDialog}
-            <CustomSimpleModal
-                show={corpus.modal.open}
-                onHide={() => {
-                    onChangeModal(INIT_CORPUS_MODAL)
-                }}
-                label={`${_.upperFirst(corpus.modal.action)} Component`}
-            >
-                <ComponentCreateEditForm item={corpus.modal.value}
-
-                    meta={meta}
-                />
-            </CustomSimpleModal>
+            {renderActionModal}
         </div>
     )
 }
-type TCorpusModal = { action: 'create' | 'edit' | '', value: TComponentItem, open: boolean }
+type TMode = 'create' | 'edit' | ''
+type TCorpusModal = { action: TMode, value: TComponentItem, open: boolean }
 
 type TCorpusConfirmation = { open: boolean, text: { remark: string, header: string }, id: string }
 type TCorpus = { modal: TCorpusModal, search: string, confirmation: TCorpusConfirmation }
@@ -143,3 +159,4 @@ const INIT_CORPUS: TCorpus = {
     search: '',
     confirmation: INIT_CONFIRMATION
 }
+

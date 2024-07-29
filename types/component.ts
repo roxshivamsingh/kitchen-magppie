@@ -70,8 +70,11 @@ export const INIT_CUSTOMER_SITE_COMPONENT: TComponentItem = {
 
 const _prev = INIT_CUSTOMER_SITE_COMPONENT
 
-// console.log(_LANDING_COMPONENTS)
 
+export const COMPONENT_MEDIA_ITEM: TComponentMediaItem = {
+    typography: INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY,
+    link: ""
+}
 // NOTE: Lagacy Cms/Landing Page;
 export const _CUSTOMER_SITE_COMPONENTS: TComponentItem[] = [
     {
