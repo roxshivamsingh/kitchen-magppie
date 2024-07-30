@@ -14,7 +14,7 @@ export function Clients() {
             id="Meet our Clients"
             className="bg-[#f9f5ef] w-full py-10 relative"
         >
-            <h1 className="text-center text-5xl mb-10 pt-10 px-5 font-extralight">
+            <h1 className="text-center text-6xl mb-10 pt-10 px-5 font-extralight">
                 The ones who chose <span className="font-bold">MAGPPIE</span>{' '}
                 safe kitchens
             </h1>
@@ -52,10 +52,10 @@ export function Clients() {
                                     : ''
                             }`}
                         />
-                        <h3 className="text-start mt-2 text-2xl font-normal">
+                        <h3 className="text-start mt-2 text-3xl font-normal">
                             {client.title}
                         </h3>
-                        <p className="text-start text-base italic text-gray-600">
+                        <p className="text-start text-xl italic text-gray-600">
                             {client.subTitle}
                         </p>
                     </div>

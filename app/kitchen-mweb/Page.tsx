@@ -15,7 +15,7 @@ import { PageProgress } from '../../components'
 import { ToastContainer } from 'react-toastify'
 import Consult from './components/Modals/Consult'
 import { useState } from 'react'
-import { Video } from './containers/VideoSection'
+// import { Video } from './containers/VideoSection'
 import About from './containers/About/About'
 import { Gallery } from './containers/Gallery'
 import Qualities from './containers/Qualities/Qualities'
@@ -35,7 +35,7 @@ export default function Page() {
                 <Hero
                     item={value?.find((row) => row.name === 'reel-component')}
                 />
-                <Video />
+                {/* <Video /> */}
                 {/* <Features
                     item={value?.find(
                         (row) => row.name === 'carousel-component'
