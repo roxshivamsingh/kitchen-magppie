@@ -19,15 +19,18 @@ export default function CustomSiteModal(props: IProps) {
             {props.open && (<div
                 className={`fixed inset-0 z-40 transition-all duration-300 backdrop-blur-sm ${props.open ? 'bg-opacity-50' : 'bg-opacity-0'
                     }`}
-                onClick={() => {
-                    props.onHide()
-                }}
             />)}
             <div
                 aria-hidden={!props.open}
                 className={`fixed inset-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden transform transition-transform duration-500 flex font-custom ${props.open ? 'translate-x-0' : '-translate-x-full'
                     }`}
             >
+                <div
+                    className={`fixed inset-0 z-40 `}
+                    onClick={() => {
+                        props.onHide()
+                    }}
+                />
 
 
                 <div
