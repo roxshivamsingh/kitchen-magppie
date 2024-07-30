@@ -1,25 +1,25 @@
 import { TComponentItem } from '../../../../types'
 import {
-    FaArrowUp,
-    FaFacebook,
     FaInstagram,
     FaLinkedinIn,
     FaTwitter,
     FaYoutube,
+    FaFacebookF
 } from 'react-icons/fa'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
+import { BsArrowUp } from "react-icons/bs";
 import Consult from '../../components/Modals/Consult'
 import Contact from '../../components/Modals/Contact'
 
 export function Footer(props: TProps) {
     const [toggle, setToggle] = useState(INIT_TOGGLE)
 
-    const scrollToTop = () => {
+    const scrollToTop = useCallback(() => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
         })
-    }
+    }, [])
 
     // const handleLinkClick = (linkId: string) => {
     //     if (linkId === 'Request a Call Back') {
@@ -71,11 +71,22 @@ export function Footer(props: TProps) {
                 </button>
             </div>
             <div className="flex flex-row items-center gap-3 mb-5 mt-5 justify-center">
-                <FaFacebook className="h-10 w-10 cursor-pointer" />
-                <FaTwitter className="h-10 w-10 cursor-pointer" />
-                <FaInstagram className="h-10 w-10 cursor-pointer" />
-                <FaYoutube className="h-10 w-10 cursor-pointer" />
-                <FaLinkedinIn className="h-10 w-10 cursor-pointer" />
+                <div className="bg-[#A5A5A5] rounded-full p-2">
+                    <FaFacebookF className="text-3xl cursor-pointer text-black" />
+                </div>
+                <div className="bg-[#A5A5A5] rounded-full p-2">
+                    <FaTwitter className="text-3xl cursor-pointer text-black" />
+                </div>
+                <div className="bg-[#A5A5A5] rounded-full p-2">
+                    <FaInstagram className="text-3xl cursor-pointer text-black" />
+                </div>
+                <div className="bg-[#A5A5A5] rounded-full p-2">
+                    <FaYoutube className="text-3xl cursor-pointer text-black" />
+                </div>
+                <div className="bg-[#A5A5A5] rounded-full p-2">
+                    <FaLinkedinIn className="text-3xl cursor-pointer text-black" />
+
+                </div>
             </div>
             <hr className="" />
             <div className="flex justify-between mt-6 text-xl cursor-pointer mb-5">
@@ -85,10 +96,11 @@ export function Footer(props: TProps) {
                     onClick={scrollToTop}
                 >
                     {props.item.typography.action}{' '}
-                    <FaArrowUp className="h-8 w-8 ml-2" />
+                    <BsArrowUp className="text-3xl ml-2" />
                 </div>
             </div>
-            <div className="text-center mt-6 pb-6 text-xl font-light mr-10">
+            <div className="text-center mt-6 pb-6 text-xl mr-10 text-[#A5A5A5]">
+
                 {props.item.typography.description}
             </div>
             <Consult
