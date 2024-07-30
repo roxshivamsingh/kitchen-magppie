@@ -301,7 +301,7 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
             ..._prev.typography,
             action: "Back to top",
             main: "Privacy Policy",
-            description: "©Copyright 2016 All Rights Reserved by Magppie"
+            description: "© Copyright 2016 All Rights Reserved by Magppie"
         },
         orderId: 9,
     },
