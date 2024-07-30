@@ -11,7 +11,7 @@ export function BuyingStep(props: TProps) {
                 className="text-7xl w-full"
                 dangerouslySetInnerHTML={{ __html: props.item.typography.main }}
             /> */}
-            <h1 className="text-5xl w-full font-thin text-center mb-6">
+            <h1 className="text-6xl w-full font-thin text-center mb-6">
                 How to buy a <span className="font-bold">MAGPPIE </span>
                 Wellness Kitchen in 4 easy steps?
             </h1>
@@ -21,14 +21,14 @@ export function BuyingStep(props: TProps) {
                         <div key={i} className="flex justify-evenly w-full">
                             <div className="flex flex-col justify-start mb-4">
                                 <div
-                                    className="text-8xl"
+                                    className="text-9xl"
                                     style={{
                                         fontFamily: 'BigCaslon Alternatives',
                                     }}
                                 >
                                     {i + 1}.
                                 </div>
-                                <div className="my-auto max-w-40 text-2xl font-[200]">
+                                <div className="my-auto max-w-44 text-2xl font-[200]">
                                     {item.main}
                                 </div>
                             </div>
@@ -47,7 +47,7 @@ export function BuyingStep(props: TProps) {
                             isOpenContactModal: true,
                         }))
                     }}
-                    className="text-md font-[400] cursor-pointer mt-6 bg-brown-600 text-[#343b34] bg-white uppercase py-2 px-10 border border-white rounded-full"
+                    className="text-2xl font-[400] cursor-pointer mt-6 bg-brown-600 text-[#343b34] bg-white uppercase py-4 px-10 border border-white rounded-full"
                 >
                     {props.item.typography.action}
                 </button>

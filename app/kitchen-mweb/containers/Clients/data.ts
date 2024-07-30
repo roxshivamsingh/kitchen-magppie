@@ -1,6 +1,6 @@
 import ranbir from '../../../kitchen-dweb/assets/clients/ranbir.png'
 import arshad from '../../../kitchen-dweb/assets/clients/arshad.png'
-import chiranjeevi from '../../../kitchen-dweb/assets/clients/chiranjeevi.png'
+import chiranjeevi from '../../assets/chiranjeev.png'
 import dhoni from '../../../kitchen-dweb/assets/clients/dhoni.png'
 import harbajan from '../../../kitchen-dweb/assets/clients/harbajan.png'
 import kamal from '../../../kitchen-dweb/assets/clients/kamal.png'

@@ -15,11 +15,11 @@ import { PageProgress } from '../../components'
 import { ToastContainer } from 'react-toastify'
 import Consult from './components/Modals/Consult'
 import { useState } from 'react'
-import { Video } from './containers/VideoSection'
 import About from './containers/About/About'
 import { Gallery } from './containers/Gallery'
 import Qualities from './containers/Qualities/Qualities'
 import { Clients } from './containers/Clients'
+import ContactSection from './containers/Contact/ContactSection'
 // import CustomDumpButton from '../cms/components/Dump/CustomDumpButton'
 
 export default function Page() {
@@ -35,7 +35,6 @@ export default function Page() {
                 <Hero
                     item={value?.find((row) => row.name === 'reel-component')}
                 />
-                <Video />
                 {/* <Features
                     item={value?.find(
                         (row) => row.name === 'carousel-component'
@@ -64,6 +63,7 @@ export default function Page() {
                 <FAQs
                     item={value?.find((row) => row.name === 'faqs-component')}
                 />
+                <ContactSection />
                 <Footer
                     item={value?.find((row) => row.name === 'footer-component')}
                 />

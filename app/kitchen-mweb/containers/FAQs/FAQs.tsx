@@ -27,7 +27,7 @@ export function FAQs(props: TProps) {
                 <button
 
                     type='button'
-                    className="text-lg font-[250] cursor-pointer mt-6 bg-brown-600 text-white bg-black uppercase py-2 px-10 border border-white rounded-full"
+                    className="text-2xl font-[250] cursor-pointer mt-6 bg-brown-600 text-white bg-black uppercase py-4 px-10 border border-white rounded-full"
 
                     onClick={() => {
                         setToggle((prev) => ({
