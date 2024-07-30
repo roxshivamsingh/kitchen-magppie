@@ -82,7 +82,7 @@ function FAQAccodion(props: IFAQAccodionProps) {
             <div className={`transition-all duration-500 text-black text-xl mb-3 font-[320] overflow-y-hidden  ${toggle ? 'max-h-screen' : 'max-h-20 line-clamp-2'}`}>
                 {item.description}
             </div>
-            <div className="border-b-2 border-black w-72" />
+            <div className="border-b-[3.2px] border-black w-64" />
 
         </div >
     )
