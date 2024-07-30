@@ -10,7 +10,7 @@ const Qualities = () => {
                 What makes
                 <span className="font-bold"> MAGPPIE</span> kitchens the safest?
             </h1>
-            <div className="grid grid-cols-2 gap-1 mx-16">
+            <div className="grid grid-cols-2 gap-1 max-w-2xl mx-auto">
                 {data.map((card) => {
                     return (
                         <div
