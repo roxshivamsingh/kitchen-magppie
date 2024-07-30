@@ -1,4 +1,4 @@
-import { TComponentItem } from '../../../../types'
+import { useCallback, useState } from 'react'
 import {
     FaInstagram,
     FaLinkedinIn,
@@ -6,10 +6,13 @@ import {
     FaYoutube,
     FaFacebookF
 } from 'react-icons/fa'
-import { useCallback, useState } from 'react'
 import { BsArrowUp } from "react-icons/bs";
-import Consult from '../../components/Modals/Consult'
-import Contact from '../../components/Modals/Contact'
+// ======================================================================
+
+import { TComponentItem } from '../../../../types'
+
+import ConsultModal from '../../components/Modals/Consult'
+import ContactModal from '../../components/Modals/Contact'
 
 export function Footer(props: TProps) {
     const [toggle, setToggle] = useState(INIT_TOGGLE)
@@ -103,7 +106,7 @@ export function Footer(props: TProps) {
 
                 {props.item.typography.description}
             </div>
-            <Consult
+            <ConsultModal
                 onHide={() => {
                     setToggle((prev) => ({
                         ...prev,
@@ -112,7 +115,7 @@ export function Footer(props: TProps) {
                 }}
                 open={toggle.isOpenConsultModal}
             />
-            <Contact
+            <ContactModal
                 onHide={() => {
                     setToggle((prev) => ({
                         ...prev,
