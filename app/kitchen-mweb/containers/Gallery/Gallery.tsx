@@ -4,34 +4,81 @@
 // import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 // import G4 from '../../../../assets/photos/kitchen/g4.png'
 
+import { MdClose } from 'react-icons/md'
 import 'swiper/css'
 import 'swiper/css/grid'
 import 'swiper/css/navigation'
 import { galleries } from './data'
+import { useState } from 'react'
+
+function Modal({ isOpen, onClose, imageSrc }) {
+    if (!isOpen) return null
+
+    return (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 px-10">
+            <div className="relative">
+                <MdClose
+                    className="absolute top-4 right-4 text-white h-12 w-12"
+                    onClick={onClose}
+                />
+                <img
+                    src={imageSrc}
+                    alt="Selected"
+                    className="max-w-full max-h-full object-contain rounded-lg"
+                />
+            </div>
+        </div>
+    )
+}
 
 export function Gallery() {
+    const [selectedImage, setSelectedImage] = useState(null)
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const openModal = (src) => {
+        setSelectedImage(src)
+        setIsModalOpen(true)
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false)
+        setSelectedImage(null)
+    }
     return (
-        <div
-            className="grid grid-cols-2 grid-rows-7 gap-2 pb-14 mx-5"
-            id="Gallery"
-        >
-            {galleries.map((gallery) => (
-                <div
-                    key={gallery.id}
-                    className={`relative w-full h-full overflow-hidden rounded-lg ${
-                        gallery.colSpan === 2 ? 'col-span-2' : 'col-span-1'
-                    } ${gallery.rowSpan === 2 ? 'row-span-2' : 'row-span-1'}`}
-                >
-                    <img
-                        src={gallery.src}
-                        alt={`Image ${gallery.id}`}
-                        className={`w-full h-full object-cover rounded-lg transition-transform duration-300 mb-1 ease-in-out transform hover:scale-110 hover:rounded-lg ${
-                            gallery.height === 1 ? 'h-full object-contain' : ''
+        <>
+            <div
+                className="grid grid-cols-2 grid-rows-7 gap-2 pb-14 mx-5"
+                id="Gallery"
+            >
+                {galleries.map((gallery) => (
+                    <div
+                        key={gallery.id}
+                        className={`relative w-full h-full overflow-hidden rounded-lg ${
+                            gallery.colSpan === 2 ? 'col-span-2' : 'col-span-1'
+                        } ${
+                            gallery.rowSpan === 2 ? 'row-span-2' : 'row-span-1'
                         }`}
-                    />
-                </div>
-            ))}
-        </div>
+                    >
+                        <img
+                            src={gallery.src}
+                            alt={`Image ${gallery.id}`}
+                            className={`w-full h-full object-cover rounded-lg transition-transform duration-300 mb-1 ease-in-out transform hover:scale-110 hover:rounded-lg ${
+                                gallery.height === 1
+                                    ? 'h-full object-contain'
+                                    : ''
+                            }`}
+                            onClick={() => openModal(gallery.src)}
+                        />
+                    </div>
+                ))}
+            </div>
+
+            <Modal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                imageSrc={selectedImage}
+            />
+        </>
         // <div
         //     id="Gallery"
         //     className="flex flex-col items-center justify-center bg-[#f9f5ef] py-10 relative"
