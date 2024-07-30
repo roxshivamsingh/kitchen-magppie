@@ -4,8 +4,8 @@ import _ from 'lodash'
 
 const About = () => {
     return (
-        <div className="flex flex-col items-center container mx-auto max-w-4xl py-24 font-light">
-            <h1 className="text-6xl font-normal">Our kitchens are Safe</h1>
+        <div className="flex flex-col items-center py-24 font-light">
+            <h1 className="text-7xl text-center font-normal mx-10 mb-6">Our Stone Kitchens are strong and safe</h1>
             <FAQAccodion
                 title="Discover why your kitchen might be unsafe"
                 para1="Most modular kitchens in the world are made from wooden
@@ -70,7 +70,7 @@ function FAQAccodion(props: IProps) {
                 onMouseLeave={() => {
                     onHeaderHover(false)
                 }}
-                className="w-full flex justify-center items-center focus:outline-none my-8 bg-[#1e1e1e] py-8 max-w-xl shadow-xl text-white text-3xl p-2 rounded-full font-thin cursor-pointer"
+                className="w-full flex justify-center items-center focus:outline-none my-8 bg-[#1e1e1e] py-6 max-w-6xl shadow-xl text-white text-3xl p-2 rounded-full font-thin cursor-pointer"
                 onClick={onToggle}
             >
                 <span className="text-4xl font-thin text-center flex items-center justify-center w-[400px]">
