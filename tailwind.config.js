@@ -8,5 +8,12 @@ export default {
         // './stories/**/*.{js,jsx,ts,tsx}',
         './node_modules/flowbite/**/*.js',
     ],
+    theme: {
+        extend: {
+            fontFamily: {
+                custom: ['CustomFont', 'sans-serif', 'Big Caslon FB'], // Add your custom font here
+            },
+        },
+    },
     plugins: [require('flowbite/plugin')],
 }

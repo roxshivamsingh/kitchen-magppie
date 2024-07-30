@@ -1,29 +1,64 @@
-import { RouteObject } from "react-router-dom";
-import CmsHome from "../containers/Home/Home";
-import KitchenCreateEdit from "../kitchens/KitchenCreateEdit";
-import CmsSignIn from "../auth/SignIn";
-import CmsKitchen from "../kitchens/Kitchen"
-const CmsRoutes = {
-    path: 'cms',
-    // element: (<BaseLayout />),
-    children: [
-        {
-            element: <CmsHome />,
-            index: true
-        },
-        {
-            path: 'kitchen',
-            element: <CmsKitchen />,
-        },
-        {
-            path: 'kitchen/create',
-            element: <KitchenCreateEdit />,
-        },
-        {
-            path: 'sign-in',
-            element: <CmsSignIn />,
-        },
-    ]
-} as RouteObject
+import { RouteObject } from 'react-router-dom'
 
-export default CmsRoutes;
+//====================================================================
+
+import {
+    Projects,
+    Kitchen,
+    SignIn,
+    KitchenCreateEdit,
+    Home,
+    User,
+    LandingHome,
+    LandingPage
+} from '../containers'
+import { useFirebaseCmsAuthListener } from '../utils/firebase'
+import { ProtectedRoute } from '../components'
+
+export default function CmsRoutes() {
+
+    useFirebaseCmsAuthListener()
+
+    return {
+        path: 'cms',
+        element: <ProtectedRoute />,
+        children: [
+            {
+                element: <Home />,
+                index: true,
+            },
+            {
+                path: 'kitchens',
+                element: <Kitchen />,
+            },
+            {
+                path: 'kitchen/create',
+                element: <KitchenCreateEdit />,
+            },
+            // {
+            //     path: 'kitchen/:id/edit',
+            //     element: (<KitchenCreateEdit />),
+            // },
+            {
+                path: 'sign-in',
+                element: <SignIn />,
+            },
+            {
+                path: '/cms/projects',
+                element: <Projects />,
+            },
+            {
+                path: '/cms/users',
+                element: <User />,
+            },
+            {
+                path: '/cms/landing-page',
+                element: <LandingPage />, // FIXME: To remove this route in future and also container from `cms/landing-page`;
+            },
+            {
+                path: '/cms/landing',
+                element: <LandingHome />,
+            },
+        ],
+    } as RouteObject
+}

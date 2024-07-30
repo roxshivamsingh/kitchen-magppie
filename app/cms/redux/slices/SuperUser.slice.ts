@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ISuperUser } from '../../types/SuperUser';
 
-type TSuperUser = { id: string, name: string }
 
 interface ISuperUserSlice {
-    value: TSuperUser[];
+    value: ISuperUser[];
     status: 'loading' | 'success' | 'failed';
     loading: boolean,
     error: null | string | undefined;
@@ -16,7 +16,7 @@ const initialState: ISuperUserSlice = {
     value: []
 };
 
-type TAction = PayloadAction<TSuperUser[]>
+type TAction = PayloadAction<ISuperUser[]>
 
 const SuperUserSlice = createSlice({
     name: 'SuperUsers',
@@ -32,5 +32,4 @@ const SuperUserSlice = createSlice({
 
 export const { setSuperUsers } = SuperUserSlice.actions;
 
-const SuperUserReducer = SuperUserSlice.reducer
-export default SuperUserReducer
+export const SuperUserReducer = SuperUserSlice.reducer

@@ -1,10 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TKitchen } from '../../types/Kitchen';
 
-type TKitchen = {
-    id: string,
-    name: string,
-    images: string[]
-}
+
 
 interface IKitchenSlice {
     value: TKitchen[];
@@ -35,5 +32,4 @@ const KitchensSlice = createSlice({
 
 export const { setKitchens } = KitchensSlice.actions;
 
-const KitchenReducer = KitchensSlice.reducer
-export default KitchenReducer
+export const KitchenReducer = KitchensSlice.reducer
