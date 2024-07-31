@@ -11,7 +11,7 @@ import { clients } from './data'
 export function Clients() {
     return (
         <div
-            id="Meet our Clients"
+            id="Clients"
             className="bg-[#f9f5ef] w-full py-10 relative"
         >
             <h1 className="text-center text-6xl mb-10 pt-10 px-5 font-extralight">

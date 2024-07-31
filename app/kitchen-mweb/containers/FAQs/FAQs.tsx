@@ -10,7 +10,10 @@ export function FAQs(props: TProps) {
     const { item } = props
     const [toggle, setToggle] = useState({ isViewMore: false })
     return (
-        <div className="bg-white text-black py-20 flex flex-col justify-center items-center">
+        <div
+            className="bg-white text-black py-20 flex flex-col justify-center items-center"
+            id="FAQs"
+        >
             <h1 className="text-5xl text-center font-light mb-10">FAQs</h1>
             <div className="grid grid-cols-2 mx-10 gap-5 transition-all duration-500 max-h-full">
                 {[
