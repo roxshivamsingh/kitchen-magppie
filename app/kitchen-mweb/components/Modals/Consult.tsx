@@ -8,20 +8,8 @@ import {
 } from '../../types/consultation'
 import { useFirebaseConsultActions } from '../../../../appHooks/firebase/use-firebase-actions'
 import { CustomSiteModal } from '../../../../components'
-
-// const cities = [
-//     "Mumbai",
-//     "Delhi",
-//     "Bangalore",
-//     "Hyderabad",
-//     "Ahmedabad",
-//     "Chennai",
-//     "Kolkata",
-//     "Surat",
-//     "Pune",
-//     "Jaipur"
-//     // Add more cities as needed
-//   ];
+import DarkDropdown from '../DarkDropdown'
+import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks/landing/consult'
 
 interface IProps {
     onHide: VoidFunction
@@ -29,7 +17,7 @@ interface IProps {
 }
 
 export default function Consult({ onHide, open }: IProps) {
-    const { register, handleSubmit } = useForm({
+    const { register, handleSubmit, setValue } = useForm({
         defaultValues: INIT_LANDING_CONSULT,
         resolver: yupResolver(LANDING_CONSULT_SCHEMA),
     })
@@ -64,43 +52,17 @@ export default function Consult({ onHide, open }: IProps) {
                         className="text-white text-3xl border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
                         required
                     />
-                    <input
-                        placeholder="Your city"
-                        type="text"
-                        name="city"
-                        {...register('city')}
-                        className="text-white text-3xl border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
-                        required
+
+                    <DarkDropdown isAutocomplete
+                        onChange={(e) => { setValue('city', e) }}
+                        options={CONSULT_CITIES?.map((value) => ({ value, label: value }))}
+                        label="Please select your city"
                     />
-                    {/* <input
-                        placeholder="Your Tentative Budget"
-                        type="text"
-                        name="budget"
-                        {...register('budget')}
-                        className="text-white text-3xl border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
-                        required
-                    /> */}
-                    {/* <select
-                        name="budget"
-                        // className="w-full p-2 border border-gray-300 rounded mt-1"
-                        className="text-white text-3xl border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
-                    >
-                        <option className="text-xs flex w-[200px]" selected value="">
-                            Your Tentative Budget
-                        </option>
-                        <option className="text-xs" value="under_500">
-                            0 - 5 Lakhs
-                        </option>
-                        <option className="text-xs" value="500_1000">
-                            5 - 10 Lakhs
-                        </option>
-                        <option className="text-xs" value="1000_5000">
-                            10 - 15 Lakhs
-                        </option>
-                        <option className="text-xs" value="over_5000">
-                            15 - 20 Lakhs
-                        </option>
-                    </select> */}
+                    <DarkDropdown
+                        onChange={(e) => { setValue('budget', e) }}
+                        options={CONSULT_TENTATIVE_BUDGETS?.map((value) => ({ value, label: value }))}
+                        label="Your Tentative Budget"
+                    />
                 </div>
 
                 <div className="flex flex-row-reverse mt-10">
