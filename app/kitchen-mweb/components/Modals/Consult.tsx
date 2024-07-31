@@ -9,6 +9,20 @@ import {
 import { useFirebaseConsultActions } from '../../../../appHooks/firebase/use-firebase-actions'
 import { CustomSiteModal } from '../../../../components'
 
+// const cities = [
+//     "Mumbai",
+//     "Delhi",
+//     "Bangalore",
+//     "Hyderabad",
+//     "Ahmedabad",
+//     "Chennai",
+//     "Kolkata",
+//     "Surat",
+//     "Pune",
+//     "Jaipur"
+//     // Add more cities as needed
+//   ];
+
 interface IProps {
     onHide: VoidFunction
     open: boolean
@@ -66,7 +80,7 @@ export default function Consult({ onHide, open }: IProps) {
                         className="text-white text-3xl border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
                         required
                     /> */}
-                    <select
+                    {/* <select
                         name="budget"
                         // className="w-full p-2 border border-gray-300 rounded mt-1"
                         className="text-white text-3xl border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
@@ -86,7 +100,7 @@ export default function Consult({ onHide, open }: IProps) {
                         <option className="text-xs" value="over_5000">
                             15 - 20 Lakhs
                         </option>
-                    </select>
+                    </select> */}
                 </div>
 
                 <div className="flex flex-row-reverse mt-10">
