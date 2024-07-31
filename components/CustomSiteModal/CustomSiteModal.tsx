@@ -16,28 +16,43 @@ export default function CustomSiteModal(props: IProps) {
 
     return (
         <div>
-            {props.open && (<div
-                className={`fixed inset-0 z-40 transition-all duration-300 backdrop-blur-sm ${props.open ? 'bg-opacity-50' : 'bg-opacity-0'
+            {props.open && (
+                <div
+                    className={`fixed inset-0 z-40 transition-all duration-300 backdrop-blur-sm ${
+                        props.open ? 'bg-opacity-50' : 'bg-opacity-0'
                     }`}
-            />)}
+                    onClick={() => {
+                        props.onHide()
+                    }}
+                />
+            )}
             <div
                 aria-hidden={!props.open}
-                className={`fixed inset-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden transform transition-transform duration-500 flex font-custom ${props.open ? 'translate-x-0' : '-translate-x-full'
-                    }`}
+                className={`fixed inset-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden transform transition-transform duration-500 flex font-custom ${
+                    props.open ? 'translate-x-0' : '-translate-x-full'
+                }`}
             >
-                <div className={`fixed inset-0 z-40 `} onClick={() => { props.onHide() }} />
+                {/* <div
+                    className={`fixed inset-0 z-40 `}
+                    onClick={() => {
+                        props.onHide()
+                    }}
+                /> */}
                 <div
-                    className={`relative w-full ${isSmall ? 'max-w-3xl' : ' max-w-xl'
-                        } max-h-full`}
+                    className={`relative w-full ${
+                        isSmall ? 'max-w-3xl' : ' max-w-xl'
+                    } max-h-full`}
                 >
                     <div className="relative bg-[#1E1E1E] rounded-lg shadow">
                         <div
-                            className={`flex items-center justify-between rounded-t ${isSmall ? 'px-8 py-10' : 'px-6 py-5'
-                                }`}
+                            className={`flex items-center justify-between rounded-t ${
+                                isSmall ? 'px-8 py-10' : 'px-6 py-5'
+                            }`}
                         >
                             <h3
-                                className={`font-thin text-white ${isSmall ? 'text-7xl' : 'text-4xl'
-                                    }`}
+                                className={`font-thin text-white ${
+                                    isSmall ? 'text-7xl' : 'text-4xl'
+                                }`}
                             >
                                 {props.header}
                             </h3>
@@ -52,7 +67,7 @@ export default function CustomSiteModal(props: IProps) {
                                     style={{
                                         fontSize: isSmall ? '4rem' : '2rem',
                                     }}
-                                // className={isSmall ? 'text-4xl' : "h-12 w-12"}
+                                    // className={isSmall ? 'text-4xl' : "h-12 w-12"}
                                 />
                             </button>
                         </div>
