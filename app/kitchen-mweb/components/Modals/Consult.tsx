@@ -51,7 +51,7 @@ export default function Consult({ onHide, open }: IProps) {
                         required
                     />
                     <input
-                        placeholder="Please select your city"
+                        placeholder="Your city"
                         type="text"
                         name="city"
                         {...register('city')}

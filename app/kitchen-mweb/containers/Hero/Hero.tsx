@@ -2,7 +2,7 @@ import { FaPhoneAlt } from 'react-icons/fa'
 // import { RiUserSettingsFill } from 'react-icons/ri'
 import { TComponentItem } from '../../../../types'
 import { useMemo, useState } from 'react'
-import Contact from '../../components/Modals/Contact'
+// import Contact from '../../components/Modals/Contact'
 import Consult from '../../components/Modals/Consult'
 // import { BiSolidQuoteSingleRight } from 'react-icons/bi'
 // import KitchenReelVideo from '../../../../assets/videos/kitchen-final.mp4'
@@ -96,7 +96,7 @@ export function Hero(props: TProps) {
                     onClick={() => {
                         setToggle((prev) => ({
                             ...prev,
-                            isOpenContactModal: true,
+                            isOpenConsultModal: true,
                         }))
                     }}
                 >
@@ -114,7 +114,7 @@ export function Hero(props: TProps) {
                     <RiUserSettingsFill className="h-10 w-10" />
                 </button> */}
             </div>
-            <Contact
+            {/* <Contact
                 onHide={() => {
                     setToggle((prev) => ({
                         ...prev,
@@ -122,7 +122,7 @@ export function Hero(props: TProps) {
                     }))
                 }}
                 open={toggle.isOpenContactModal}
-            />
+            /> */}
             <Consult
                 onHide={() => {
                     setToggle((prev) => ({
@@ -139,7 +139,7 @@ export function Hero(props: TProps) {
 type TProps = { item: TComponentItem }
 
 const INIT_TOGGLE = {
-    isOpenContactModal: false,
+    // isOpenContactModal: false,
     isOpenConsultModal: false,
     isReelComponentClicked: false,
 }
