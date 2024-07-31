@@ -1,13 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
-import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
-import _ from 'lodash';
+import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md'
+import _ from 'lodash'
 
 //====================================================================
 
-import {
-    TComponentItem,
-    TComponentTypography
-} from '../../../../types'
+import { TComponentItem, TComponentTypography } from '../../../../types'
 
 export function FAQs(props: TProps) {
     const { item } = props;
@@ -61,8 +58,12 @@ function FAQAccodion(props: IFAQAccodionProps) {
     }, [onHeaderHover])
     return (
         <div
-            onMouseOver={() => { onHeaderHover(true) }}
-            onMouseLeave={() => { onHeaderHover(false) }}
+            onMouseOver={() => {
+                onHeaderHover(true)
+            }}
+            onMouseLeave={() => {
+                onHeaderHover(false)
+            }}
         >
             <button
                 className="w-full flex items-center p-2 focus:outline-none text-black"
@@ -80,22 +81,21 @@ function FAQAccodion(props: IFAQAccodionProps) {
                 </span>
             </button>
             {/* <div className={`text-xl mb-3 font-[320]`}>{item.label}</div> */}
-            <div className={`transition-all duration-500 text-black text-xl mb-3 font-[320] overflow-y-hidden  ${toggle ? 'max-h-screen' : 'max-h-20 line-clamp-2'}`}>
+            <div
+                className={`transition-all duration-500 text-black text-2xl mb-3 font-[320] overflow-y-hidden  ${toggle ? 'max-h-screen' : 'max-h-20 line-clamp-2'
+                    }`}
+            >
                 {item.description}
             </div>
             <div className="border-b-[3.2px] border-black w-64" />
-
-        </div >
+        </div>
     )
 }
 
-
-
 type TProps = { item: TComponentItem }
 
-
 interface IFAQAccodionProps {
-    item: TComponentTypography,
+    item: TComponentTypography
     isExpanded?: true
 }
 

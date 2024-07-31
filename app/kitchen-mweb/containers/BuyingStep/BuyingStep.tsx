@@ -1,5 +1,5 @@
 import { TComponentItem } from '../../../../types'
-import Contact from '../../components/Modals/Contact'
+import Consult from '../../components/Modals/Consult'
 import { useState } from 'react'
 
 export function BuyingStep(props: TProps) {
@@ -15,27 +15,27 @@ export function BuyingStep(props: TProps) {
                 How to buy a <span className="font-bold">MAGPPIE </span>
                 Wellness Kitchen in 4 easy steps?
             </h1>
-            <div className="grid grid-cols-2 max-w-8xl mx-auto container">
+            <div className="grid grid-cols-2 max-w-xl mx-auto container place-items-center">
                 {props.item.items?.map((item, i) => {
                     return (
-                        <div key={i} className="flex justify-evenly w-full">
-                            <div className="flex flex-col justify-start mb-4">
-                                <div
-                                    className="text-9xl"
-                                    style={{
-                                        fontFamily: 'BigCaslon Alternatives',
-                                    }}
-                                >
-                                    {i + 1}.
-                                </div>
-                                <div className="my-auto max-w-44 text-2xl font-[200]">
-                                    {item.main}
-                                </div>
+                        // <div key={i} className=" w-full">
+                        <div key={i} className="mb-6 mt-6">
+                            <div
+                                className="text-9xl"
+                                style={{
+                                    fontFamily: 'BigCaslon Alternatives',
+                                }}
+                            >
+                                {i + 1}.
                             </div>
-                            {/* {i < props.item.items.length - 1 && (
-                                <div className="h-20 border-r border-gray-400 mx-6"></div>
-                            )} */}
+                            <div className="my-auto max-w-44 text-2xl font-[200]">
+                                {item.main}
+                            </div>
                         </div>
+                        //     {/* {i < props.item.items.length - 1 && (
+                        //         <div className="h-20 border-r border-gray-400 mx-6"></div>
+                        //     )} */}
+                        // {/* </div> */}
                     )
                 })}
             </div>
@@ -44,7 +44,7 @@ export function BuyingStep(props: TProps) {
                     onClick={() => {
                         setToggle((prev) => ({
                             ...prev,
-                            isOpenContactModal: true,
+                            isOpenConsultModal: true,
                         }))
                     }}
                     className="text-2xl font-[400] cursor-pointer mt-6 bg-brown-600 text-[#343b34] bg-white uppercase py-4 px-10 border border-white rounded-full"
@@ -52,14 +52,14 @@ export function BuyingStep(props: TProps) {
                     {props.item.typography.action}
                 </button>
             </div>
-            <Contact
+            <Consult
                 onHide={() => {
                     setToggle((prev) => ({
                         ...prev,
-                        isOpenContactModal: false,
+                        isOpenConsultModal: false,
                     }))
                 }}
-                open={toggle.isOpenContactModal}
+                open={toggle.isOpenConsultModal}
             />
         </div>
     )
@@ -70,5 +70,5 @@ type TProps = {
 }
 
 const INIT_TOGGLE = {
-    isOpenContactModal: false,
+    isOpenConsultModal: false,
 }
