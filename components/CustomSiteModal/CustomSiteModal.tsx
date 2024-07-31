@@ -21,9 +21,6 @@ export default function CustomSiteModal(props: IProps) {
                     className={`fixed inset-0 z-40 transition-all duration-300 backdrop-blur-sm ${
                         props.open ? 'bg-opacity-50' : 'bg-opacity-0'
                     }`}
-                    onClick={() => {
-                        props.onHide()
-                    }}
                 />
             )}
             <div
@@ -32,12 +29,12 @@ export default function CustomSiteModal(props: IProps) {
                     props.open ? 'translate-x-0' : '-translate-x-full'
                 }`}
             >
-                {/* <div
-                    className={`fixed inset-0 z-40 `}
+                <div
+                    className={`fixed inset-0 -z-40 `}
                     onClick={() => {
                         props.onHide()
                     }}
-                /> */}
+                />
                 <div
                     className={`relative w-full ${
                         isSmall ? 'max-w-3xl' : ' max-w-xl'
