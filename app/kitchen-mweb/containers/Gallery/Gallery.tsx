@@ -1,9 +1,3 @@
-// import { TComponentItem } from '../../../../types'
-// import { Grid, Navigation } from 'swiper/modules'
-// import { Swiper, SwiperSlide } from 'swiper/react'
-// import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
-// import G4 from '../../../../assets/photos/kitchen/g4.png'
-
 import { MdClose } from 'react-icons/md'
 import 'swiper/css'
 import 'swiper/css/grid'
@@ -53,20 +47,17 @@ export function Gallery() {
                 {galleries.map((gallery) => (
                     <div
                         key={gallery.id}
-                        className={`relative w-full h-full overflow-hidden rounded-3xl ${
-                            gallery.colSpan === 2 ? 'col-span-2' : 'col-span-1'
-                        } ${
-                            gallery.rowSpan === 2 ? 'row-span-2' : 'row-span-1'
-                        }`}
+                        className={`relative w-full h-full overflow-hidden rounded-3xl ${gallery.colSpan === 2 ? 'col-span-2' : 'col-span-1'
+                            } ${gallery.rowSpan === 2 ? 'row-span-2' : 'row-span-1'
+                            }`}
                     >
                         <img
                             src={gallery.src}
                             alt={`Image ${gallery.id}`}
-                            className={`w-full h-[350px] object-cover bg-center rounded-3xl ${
-                                gallery.height === 1
+                            className={`w-full h-[350px] object-cover bg-center rounded-3xl ${gallery.height === 1
                                     ? 'h-full object-contain'
                                     : ''
-                            }`}
+                                }`}
                             onClick={() => openModal(gallery.src)}
                         />
                     </div>

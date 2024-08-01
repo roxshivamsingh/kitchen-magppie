@@ -5,11 +5,13 @@ import {
     INIT_LANDING_CONSULT,
     LANDING_CONSULT_SCHEMA,
     TLandingConsult,
-} from '../../types/consultation'
+} from '../../types'
 import { useFirebaseConsultActions } from '../../../../appHooks/firebase/use-firebase-actions'
+import DarkDropdown from '../../../kitchen-mweb/components/DarkDropdown'
+import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
 
 export default function Form() {
-    const { register, handleSubmit } = useForm({
+    const { register, handleSubmit, setValue } = useForm({
         defaultValues: INIT_LANDING_CONSULT,
         resolver: yupResolver(LANDING_CONSULT_SCHEMA),
     })
@@ -34,6 +36,7 @@ export default function Form() {
                                 <div className="space-y-4">
                                     <input
                                         placeholder="Your Name"
+
                                         type="text"
                                         name="fullName"
                                         {...register('fullName')}
@@ -48,7 +51,20 @@ export default function Form() {
                                         className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-10"
                                         required
                                     />
-                                    <input
+                                    <DarkDropdown
+                                        isAutocomplete
+                                        viewport='desktop'
+                                        onChange={(e) => { setValue('city', e) }}
+                                        options={CONSULT_CITIES?.map((value) => ({ value, label: value }))}
+                                        label="Please select your city"
+                                    />
+                                    <DarkDropdown
+                                        viewport='desktop'
+                                        onChange={(e) => { setValue('budget', e) }}
+                                        options={CONSULT_TENTATIVE_BUDGETS?.map((value) => ({ value, label: value }))}
+                                        label="Your Tentative Budget"
+                                    />
+                                    {/* <input
                                         placeholder="Please select your city"
                                         type="text"
                                         name="city"
@@ -63,7 +79,7 @@ export default function Form() {
                                         {...register('budget')}
                                         className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-10"
                                         required
-                                    />
+                                    /> */}
                                 </div>
 
                                 <div className="flex flex-row-reverse mt-5">
