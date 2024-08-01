@@ -53,11 +53,14 @@ export default function Consult(props: IProps) {
                         onChange={(e) => { setValue('city', e) }}
                         options={CONSULT_CITIES?.map((value) => ({ value, label: value }))}
                         label="Please select your city"
+                        viewport='mobile'
                     />
                     <DarkDropdown
                         onChange={(e) => { setValue('budget', e) }}
                         options={CONSULT_TENTATIVE_BUDGETS?.map((value) => ({ value, label: value }))}
                         label="Your Tentative Budget"
+                        viewport='mobile'
+
                     />
                 </div>
 

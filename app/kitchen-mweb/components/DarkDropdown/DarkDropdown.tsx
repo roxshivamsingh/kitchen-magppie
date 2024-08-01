@@ -50,7 +50,7 @@ export default function DarkDropdown(props: TProps) {
             </div>
         </div>
         {corpus.open && filteredValues?.length ? (
-            <div className="absolute  left-0 right-0 mx-10 z-50  mt-2 origin-top-right bg-[#1E1E1E] bg-opacity-95  divide-y  rounded-xl   border-gray-300 border max-h-96 overflow-y-scroll">
+            <div className="absolute  left-0 right-0 mx-10 z-  mt-2 origin-top-right bg-[#1E1E1E] bg-opacity-95  divide-y  rounded-xl   border-gray-300 border max-h-96 overflow-y-scroll">
                 <div className="py-1 z-50">
                     {filteredValues?.map((value, i) => {
                         const onClickMenuItem = () => {
