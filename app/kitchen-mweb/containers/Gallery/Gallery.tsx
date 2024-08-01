@@ -47,13 +47,13 @@ export function Gallery() {
     return (
         <>
             <div
-                className="grid grid-cols-2 grid-rows-7 gap-2 pb-14 mx-5"
+                className="grid grid-cols-2 grid-rows-7 gap-3 pb-14 mx-5"
                 id="Gallery"
             >
                 {galleries.map((gallery) => (
                     <div
                         key={gallery.id}
-                        className={`relative w-full h-full overflow-hidden rounded-lg ${
+                        className={`relative w-full h-full overflow-hidden rounded-3xl ${
                             gallery.colSpan === 2 ? 'col-span-2' : 'col-span-1'
                         } ${
                             gallery.rowSpan === 2 ? 'row-span-2' : 'row-span-1'
@@ -62,7 +62,7 @@ export function Gallery() {
                         <img
                             src={gallery.src}
                             alt={`Image ${gallery.id}`}
-                            className={`w-full h-full object-cover rounded-lg transition-transform duration-300 mb-1 ease-in-out transform hover:scale-110 hover:rounded-lg ${
+                            className={`w-full h-[350px] object-cover bg-center rounded-3xl ${
                                 gallery.height === 1
                                     ? 'h-full object-contain'
                                     : ''

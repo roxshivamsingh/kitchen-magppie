@@ -11,7 +11,7 @@ import { clients } from './data'
 export function Clients() {
     return (
         <div
-            id="Meet our Clients"
+            id="Clients"
             className="bg-[#f9f5ef] w-full py-10 relative"
         >
             <h1 className="text-center text-6xl mb-10 pt-10 px-5 font-extralight">
@@ -36,21 +36,18 @@ export function Clients() {
                 {clients.map((client) => (
                     // <SwiperSlide key={index}>
                     <div
-                        className={`relative w-full h-full overflow-hidden ${
-                            client.colSpan === 2 ? 'col-span-2' : 'col-span-1'
-                        } ${
-                            client.rowSpan === 2 ? 'row-span-2' : 'row-span-1'
-                        }`}
+                        className={`relative w-full h-full overflow-hidden ${client.colSpan === 2 ? 'col-span-2' : 'col-span-1'
+                            } ${client.rowSpan === 2 ? 'row-span-2' : 'row-span-1'
+                            }`}
                         key={client.id}
                     >
                         <img
                             src={client.src}
                             alt=""
-                            className={`w-full h-auto object-cover rounded-lg hover:rounded-lg ${
-                                client.height === 1
-                                    ? 'h-[350px] object-cover'
-                                    : ''
-                            }`}
+                            className={`w-full h-auto object-cover rounded-lg hover:rounded-lg ${client.height === 1
+                                ? 'h-[350px] object-cover'
+                                : ''
+                                }`}
                         />
                         <h3 className="text-start mt-2 text-3xl font-normal">
                             {client.title}
