@@ -6,14 +6,14 @@ export default function DarkDropdown(props: TProps) {
     const [corpus, setCorpus] = useState({ open: false, value: '' })
 
     const filteredValues = useMemo(() => {
-        if (props.isAutocomplete)
+        if (props?.isAutocomplete)
             return props.options?.filter((item) => {
                 return corpus.value?.length ? item.label.toLowerCase()?.includes(corpus.value?.toLowerCase()) : true
             })
-        return CITY_OPTIONS;
+        return props.options;
     }, [corpus.value, props.isAutocomplete, props.options])
     useEffect(() => {
-        setCorpus((prev) => ({ ...prev, open: !!filteredValues?.length }))
+        setCorpus((prev) => ({ ...prev, open: !!(filteredValues?.length && corpus.value?.length) }))
     }, [corpus.value.length, filteredValues?.length])
 
     return <div className=" text-left">
@@ -26,7 +26,7 @@ export default function DarkDropdown(props: TProps) {
 
                 className="text-3xl border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white w-full text-gray-300 px-9 flex justify-between items-center"
             >
-                {props.isAutocomplete ? (<input
+                {props?.isAutocomplete ? (<input
                     placeholder={label}
 
                     value={corpus.value}
@@ -53,7 +53,7 @@ export default function DarkDropdown(props: TProps) {
         {corpus.open && filteredValues?.length ? (
             <div className="absolute left-0 right-0 mx-10 z-10  mt-2 origin-top-right bg-[#1E1E1E] bg-opacity-95  divide-y  rounded-xl   border-gray-300 border max-h-96 overflow-y-scroll">
                 <div className="py-1 ">
-                    {props.options?.map((value, i) => (
+                    {filteredValues?.map((value, i) => (
                         <div
                             key={i}
                             onClick={() => {
@@ -77,18 +77,6 @@ export default function DarkDropdown(props: TProps) {
 
 }
 
-const CITY_OPTIONS = [
-    "Mumbai",
-    "Delhi",
-    "Bangalore",
-    "Hyderabad",
-    "Ahmedabad",
-    "Chennai",
-    "Kolkata",
-    "Surat",
-    "Pune",
-    "Jaipur"
-];
 type TProps = {
     isAutocomplete?: boolean,
     label?: string,
