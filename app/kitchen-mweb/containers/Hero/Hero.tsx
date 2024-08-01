@@ -1,11 +1,7 @@
-import { FaPhoneAlt } from 'react-icons/fa'
-// import { RiUserSettingsFill } from 'react-icons/ri'
-import { TComponentItem } from '../../../../types'
 import { useMemo, useState } from 'react'
-// import Contact from '../../components/Modals/Contact'
+import { FaPhoneAlt } from 'react-icons/fa'
+import { TComponentItem } from '../../../../types'
 import Consult from '../../components/Modals/Consult'
-// import { BiSolidQuoteSingleRight } from 'react-icons/bi'
-// import KitchenReelVideo from '../../../../assets/videos/kitchen-final.mp4'
 
 const _data = {
     bg: {

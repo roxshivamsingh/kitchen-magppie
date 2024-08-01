@@ -9,14 +9,10 @@ import {
 import { useFirebaseConsultActions } from '../../../../appHooks/firebase/use-firebase-actions'
 import { CustomSiteModal } from '../../../../components'
 import DarkDropdown from '../DarkDropdown'
-import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks/landing/consult'
+import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
 
-interface IProps {
-    onHide: VoidFunction
-    open: boolean
-}
-
-export default function Consult({ onHide, open }: IProps) {
+export default function Consult(props: IProps) {
+    const { onHide, open } = props
     const { register, handleSubmit, setValue } = useForm({
         defaultValues: INIT_LANDING_CONSULT,
         resolver: yupResolver(LANDING_CONSULT_SCHEMA),
@@ -77,3 +73,9 @@ export default function Consult({ onHide, open }: IProps) {
         </CustomSiteModal>
     )
 }
+
+interface IProps {
+    onHide: VoidFunction
+    open: boolean
+}
+
