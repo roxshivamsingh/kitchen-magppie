@@ -5,7 +5,7 @@ import Consult from '../../components/Modals/Consult'
 
 const _data = {
     bg: {
-        video: 'https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fdesktop-reel.mp4?alt=media&token=a7eeb7dc-61e1-45c2-bed3-336d769ee064',
+        video: 'https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fmobile%2Ffront-reel.mp4?alt=media&token=d6f138c5-c281-4046-88e2-20f0a7f715aa',
     },
 }
 
