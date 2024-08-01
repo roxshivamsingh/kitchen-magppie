@@ -32,7 +32,6 @@ export default function DarkDropdown(props: TProps) {
                     value={corpus.value}
                     onChange={(e) => {
                         setCorpus((prev) => ({ ...prev, value: e.target.value }))
-
                         props.onChange(e.target.value)
                     }}
                     className="text-3xl border-0 bg-transparent focus:ring-transparent  w-full py-6 placeholder-gray-300 "

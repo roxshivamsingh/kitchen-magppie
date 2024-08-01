@@ -50,7 +50,7 @@ export function Hero(props: TProps) {
                     onClick={() => {
                         if (props.onContactOpen) props.onContactOpen()
                     }}
-                    // onClick={scrollToTop}
+                // onClick={scrollToTop}
                 >
                     <FaPhoneAlt className="h-5 w-5" />
                 </button>
