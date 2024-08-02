@@ -19,11 +19,11 @@ export default function Routes() {
             element: isPortrait ? <MPage /> : <DPage />,
         },
         {
-            path: '/mweb',
+            path: '/landing/mobile',
             element: <MPage />,
         },
         {
-            path: '/dweb',
+            path: '/landing/desktop',
             element: <DPage />,
         },
     ])
