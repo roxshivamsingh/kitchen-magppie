@@ -23,7 +23,7 @@ const Qualities = () => {
                             <img
                                 src={card.img}
                                 alt="Sample"
-                                className={`absolute top-0 left-0 w-full h-full object-cover rounded-xl transition-opacity duration-1000 ${hoveredCard === card.id ? 'opacity-80' : 'opacity-0'
+                                className={`absolute top-0 left-0 w-full h-full object-cover rounded-xl transition-opacity duration-1000 ${hoveredCard === card.id ? 'opacity-90' : 'opacity-0'
                                     }`}
                             />
                         </div>
