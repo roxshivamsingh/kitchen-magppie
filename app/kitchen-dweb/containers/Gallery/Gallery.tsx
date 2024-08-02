@@ -10,23 +10,28 @@ import 'swiper/css/navigation'
 import { galleries } from './data'
 
 export function Gallery() {
-
-    return (<div className="grid grid-cols-3 grid-rows-3 gap-3 container mx-auto max-w-7xl pb-14" id='Gallery'>
-        {galleries.map((gallery) => (
-            <div
-                key={gallery.id}
-                className={`relative w-full h-full overflow-hidden rounded-lg ${gallery.colSpan === 2 ? 'col-span-2' : 'col-span-1'
+    return (
+        <div
+            className="grid grid-cols-3 grid-rows-3 gap-3 container mx-auto max-w-7xl pb-14"
+            id="Gallery"
+        >
+            {galleries.map((gallery) => (
+                <div
+                    key={gallery.id}
+                    className={`relative w-full h-full overflow-hidden rounded-lg ${
+                        gallery.colSpan === 2 ? 'col-span-2' : 'col-span-1'
                     } ${gallery.rowSpan === 2 ? 'row-span-2' : 'row-span-1'}`}
-            >
-                <img
-                    src={gallery.src}
-                    alt={`Image ${gallery.id}`}
-                    className={`w-full h-[350px] object-cover rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-110 hover:rounded-lg ${gallery.height === 1 ? 'h-full object-contain' : ''
+                >
+                    <img
+                        src={gallery.src}
+                        alt={`Image ${gallery.id}`}
+                        className={`w-full h-[350px] object-cover rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-110 hover:rounded-lg ${
+                            gallery.height === 1 ? 'h-full object-contain' : ''
                         }`}
-                />
-            </div>
-        ))}
-    </div>
+                    />
+                </div>
+            ))}
+        </div>
         // <div
         //     id="Gallery"
         //     className="flex flex-col items-center justify-center bg-[#f9f5ef] py-10 relative"

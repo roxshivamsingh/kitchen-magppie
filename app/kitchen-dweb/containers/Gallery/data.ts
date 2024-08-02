@@ -13,12 +13,12 @@ import galleryEleven from '../../assets/gallery/eleven.png'
 export const galleries = [
     { id: 1, src: galleryOne, colSpan: 1, rowSpan: 1 },
     { id: 2, src: galleryTwo, colSpan: 1, rowSpan: 1 },
-    { id: 3, src: galleryThree, colSpan: 1, rowSpan: 2, height: 1 },
+    { id: 3, src: galleryThree, colSpan: 1, rowSpan: 2, height: 1, center: 1 },
     { id: 4, src: galleryFour, colSpan: 2, rowSpan: 0 },
     { id: 5, src: galleryFive, colSpan: 1, rowSpan: 1 }, //common
     { id: 6, src: gallerySix, colSpan: 1, rowSpan: 1 }, //common
     { id: 7, src: gallerySeven, colSpan: 1, rowSpan: 1 }, //common
-    { id: 8, src: galleryEight, colSpan: 1, rowSpan: 2, height: 1 },
+    { id: 8, src: galleryEight, colSpan: 1, rowSpan: 2, height: 1, center: 1 },
     { id: 9, src: galleryNine, colSpan: 2, rowSpan: 1 },
     { id: 10, src: galleryTen, colSpan: 1, rowSpan: 1 },
     { id: 11, src: galleryEleven, colSpan: 1, rowSpan: 1 },
