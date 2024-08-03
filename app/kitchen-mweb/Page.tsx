@@ -20,6 +20,7 @@ import { Gallery } from './containers/Gallery'
 import Qualities from './containers/Qualities/Qualities'
 import { Clients } from './containers/Clients'
 import ContactSection from './containers/Contact/ContactSection'
+
 export default function Page() {
     useFirebaseLandingListener()
     const { status, value } = useAppSelector((state) => state.Cms.Landing)
@@ -36,8 +37,7 @@ export default function Page() {
         return <PageProgress />
     } else if (value?.length) {
         return (
-            <div
-            >
+            <div>
                 <Hero
                     item={value?.find((row) => row.name === 'reel-component')}
                 />
@@ -81,8 +81,8 @@ export default function Page() {
                 />
 
                 <ToastContainer
-                    position="bottom-left"
-                    className="h-20 text-4xl p-10 w-full"
+                    position="top-center"
+                    className="h-20 text-4xl w-full p-6"
                     autoClose={3000}
                     hideProgressBar={false}
                     newestOnTop={false}
