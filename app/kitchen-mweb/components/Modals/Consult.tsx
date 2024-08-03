@@ -16,7 +16,7 @@ import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
 
 export default function Consult(props: IProps) {
     const { onHide, open } = props
-    const { register, handleSubmit, setValue } = useForm({
+    const { register, handleSubmit, setValue, reset } = useForm({
         defaultValues: INIT_LANDING_CONSULT,
         resolver: yupResolver(LANDING_CONSULT_SCHEMA),
     })
@@ -26,6 +26,7 @@ export default function Consult(props: IProps) {
         action.add(data)
         onHide()
         toast('Your consultation request has been submitted')
+        reset()
     })
     return (
         <CustomSiteModal
@@ -51,7 +52,6 @@ export default function Consult(props: IProps) {
                         className="text-white text-3xl border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-6 placeholder-gray-300 px-10"
                         required
                     />
-
                     <DarkDropdown isAutocomplete
                         onChange={(e) => { setValue('city', e) }}
                         options={CONSULT_CITIES?.map((value) => ({ value, label: value }))}
@@ -66,10 +66,8 @@ export default function Consult(props: IProps) {
 
                     />
 
-
                     {/* <Select
                         placeholder="Your Tentative Budget"
-
                         styles={REACT_SELECT_MOBILE_STYLES}
                         onChange={(e: { label: string, value: string }) => {
                             setValue('budget', `${e.value || ''}`)

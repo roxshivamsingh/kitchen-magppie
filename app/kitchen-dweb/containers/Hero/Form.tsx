@@ -11,7 +11,7 @@ import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
 import Select from "react-select"
 import { REACT_SELECT_DESKTOP_STYLES } from '../../../../types/react-select'
 export default function Form() {
-    const { register, handleSubmit, setValue } = useForm({
+    const { register, handleSubmit, setValue, watch, reset } = useForm({
         defaultValues: INIT_LANDING_CONSULT,
         resolver: yupResolver(LANDING_CONSULT_SCHEMA),
     })
@@ -20,7 +20,10 @@ export default function Form() {
     const onSubmit = handleSubmit((data: TLandingConsult) => {
         action.add(data)
         toast('Your consultation request has been submitted')
+        reset()
     })
+    const values = watch()
+    console.log(values)
     return (
         <>
             <div className="justify-center items-center w-full max-h-full overflow-y-auto overflow-x-hidden">
@@ -53,6 +56,8 @@ export default function Form() {
                                     />
 
                                     <Select
+                                        isClearable
+                                        value={values.city.length ? { value: values.city, label: values.city } : null}
                                         placeholder="Please select your city"
                                         styles={REACT_SELECT_DESKTOP_STYLES}
                                         onChange={(e: { label: string, value: string }) => {
@@ -64,6 +69,7 @@ export default function Form() {
                                     <Select
                                         placeholder="Your Tentative Budget"
 
+                                        value={values.budget?.length ? { value: values.budget, label: values.budget } : null}
                                         styles={REACT_SELECT_DESKTOP_STYLES}
                                         onChange={(e: { label: string, value: string }) => {
                                             setValue('budget', `${e.value || ''}`)
