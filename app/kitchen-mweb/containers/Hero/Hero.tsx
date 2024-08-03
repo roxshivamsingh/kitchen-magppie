@@ -1,7 +1,8 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { FaPhoneAlt } from 'react-icons/fa'
 import { TComponentItem } from '../../../../types'
 import Consult from '../../components/Modals/Consult'
+import { useScroll } from '../../../../appHooks'
 
 const _data = {
     bg: {
@@ -13,10 +14,10 @@ export function Hero(props: TProps) {
     const { item } = props
     const [toggle, setToggle] = useState(INIT_TOGGLE)
 
-
     const renderNavigationBar = useMemo(() => {
         return (
-            <div className="flex items-start flex-col w-full px-6 py-4 mt-6 fixed">
+            <div className="flex items-start flex-col w-full px-6 py-4 mt-6 fixed"
+            >
                 <h1 className="text-white z-10 font-bold text-6xl cursor-pointer mix-blend-difference">
                     {item.typography.main}
                 </h1>
@@ -27,8 +28,17 @@ export function Hero(props: TProps) {
         )
     }, [item.typography.main, item.typography.secondary])
 
+    const scrollAmount = useScroll()
+
+    useEffect(() => {
+        if (scrollAmount && !toggle.isReelComponentClicked) {
+            setToggle((prev) => ({ ...prev, isReelComponentClicked: true }))
+        }
+    }, [scrollAmount, toggle.isReelComponentClicked])
     return (
+
         <div
+
             onClick={() => {
                 setToggle((prev) => ({ ...prev, isReelComponentClicked: true }))
             }}

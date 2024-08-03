@@ -1,9 +1,6 @@
 import { FaPhoneAlt } from 'react-icons/fa'
-// import KitchenBg from '../../assets/hero-bg.png'
 import Form from './Form'
-// import { RiUserSettingsFill } from 'react-icons/ri'
 import { TComponentItem } from '../../../../types'
-// import { RiSingleQuotesR } from "react-icons/ri";
 import { BiSolidQuoteSingleRight } from "react-icons/bi";
 type TProps = {
     onContactOpen?: VoidFunction
