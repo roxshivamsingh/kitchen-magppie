@@ -79,10 +79,10 @@ function FAQAccodion(props: IFAQAccodionProps) {
                 </span>
             </button>
             {/* <div className={`text-xl mb-3 font-[320]`}>{item.label}</div> */}
-            <div className={`transition-all duration-500 text-black text-xl mb-3 font-[320] overflow-y-hidden  ${toggle ? 'max-h-screen' : 'max-h-20 line-clamp-2'}`}>
+            <div className={`transition-all duration-500 text-black text-xl mb-3 font-[320] overflow-y-hidden  ${toggle ? 'max-h-screen' : 'max-h-0'}`}>
                 {item.description}
             </div>
-            <div className="border-b-2 border-black w-72" />
+            <div className="border-b-2 border-black w-full" />
 
         </div >
     )
