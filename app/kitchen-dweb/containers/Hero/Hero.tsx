@@ -25,11 +25,8 @@ export function Hero(props: TProps) {
         >
             <div className="relative z-10 flex flex-col items-start justify-between h-full w-full">
                 <div className="absolute w-full h-full bg-black opacity-40" />
-                <div className="flex items-center justify-between w-full h-screen container mx-auto max-w-7xl"
-                >
-                    <div className="flex"
-
-                    >
+                <div className="flex items-center justify-between w-full h-screen container mx-auto max-w-7xl">
+                    <div className="flex">
                         <h1 className="text-5xl font-extralight text-white z-20">
                             World <sup><BiSolidQuoteSingleRight className='inline text-sm' /></sup>s first Modular Kitchen, <br />
                             <span className='font-bold'>fully built in Stone</span>
@@ -42,7 +39,7 @@ export function Hero(props: TProps) {
                         /> */}
                     </div>
 
-                    <div className="z-40">
+                    <div >
                         <Form />
                     </div>
                 </div>

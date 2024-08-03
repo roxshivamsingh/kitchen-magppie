@@ -1,6 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
+// import Select from "react-select"
+
 import {
     INIT_LANDING_CONSULT,
     LANDING_CONSULT_SCHEMA,
@@ -10,6 +12,7 @@ import { useFirebaseConsultActions } from '../../../../appHooks/firebase/use-fir
 import { CustomSiteModal } from '../../../../components'
 import DarkDropdown from '../DarkDropdown'
 import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
+// import { REACT_SELECT_DESKTOP_STYLES, REACT_SELECT_MOBILE_STYLES } from '../../../../types/react-select'
 
 export default function Consult(props: IProps) {
     const { onHide, open } = props
@@ -62,6 +65,17 @@ export default function Consult(props: IProps) {
                         viewport='mobile'
 
                     />
+
+
+                    {/* <Select
+                        placeholder="Your Tentative Budget"
+
+                        styles={REACT_SELECT_MOBILE_STYLES}
+                        onChange={(e: { label: string, value: string }) => {
+                            setValue('budget', `${e.value || ''}`)
+                        }}
+                        options={CONSULT_TENTATIVE_BUDGETS?.map((value) => ({ value, label: value }))}
+                    /> */}
                 </div>
 
                 <div className="flex flex-row-reverse mt-10">
