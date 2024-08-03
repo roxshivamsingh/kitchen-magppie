@@ -20,18 +20,24 @@ import { Gallery } from './containers/Gallery'
 import Qualities from './containers/Qualities/Qualities'
 import { Clients } from './containers/Clients'
 import ContactSection from './containers/Contact/ContactSection'
-// import CustomDumpButton from '../cms/components/Dump/CustomDumpButton'
-
 export default function Page() {
     useFirebaseLandingListener()
     const { status, value } = useAppSelector((state) => state.Cms.Landing)
     const [toggle, setToggle] = useState({ consult: false, contact: false })
 
+    // const handleScroll = useCallback(() => {
+    //     if (scrollContainerRef.current) {
+    //         const scrollTop = scrollContainerRef.current.scrollTop;
+    //         console.log('Vertical scroll position:', scrollTop);
+    //     }
+    // }, []);
+
     if (status === 'loading') {
         return <PageProgress />
     } else if (value?.length) {
         return (
-            <div>
+            <div
+            >
                 <Hero
                     item={value?.find((row) => row.name === 'reel-component')}
                 />
