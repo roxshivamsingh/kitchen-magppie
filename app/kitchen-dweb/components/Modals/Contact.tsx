@@ -16,7 +16,7 @@ interface IProps {
 
 export function Contact(props: IProps) {
     const { onHide, open } = props
-    const { register, handleSubmit } = useForm({
+    const { register, handleSubmit, reset } = useForm({
         defaultValues: INIT_LANDING_REQUEST,
         resolver: yupResolver(LANDING_REQUEST_SCHEMA),
     })
@@ -26,6 +26,7 @@ export function Contact(props: IProps) {
         action.add(data)
         onHide()
         toast(ToastMessage.Request.OK)
+        reset()
     })
     return (
         <CustomSiteModal

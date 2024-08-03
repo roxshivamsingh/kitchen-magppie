@@ -24,7 +24,7 @@ export default function DarkDropdown(props: TProps) {
     }, [corpus.open])
 
     return <>
-        <div className="text-left h-auto"        >
+        <div className="text-left h-auto">
             <div>
                 <div
                     onClick={() => {
@@ -42,13 +42,11 @@ export default function DarkDropdown(props: TProps) {
                             setCorpus((prev) => ({ ...prev, value: e.target.value }))
                             props.onChange(e.target.value)
                         }}
-
                         className={`${props.viewport === ViewportEnum.Lg ? 'text-md' : 'text-3xl'} border-0 bg-transparent focus:ring-transparent w-full ${ViewportEnum.Lg === props.viewport ? '' : 'py-6'} px-0 placeholder-gray-300`}
                         type="text"
                         onClick={() => { setCorpus((prev) => ({ ...prev, open: !prev.open })) }}
                     />) : <div
                         className={`${props.viewport === ViewportEnum.Lg ? 'text-md' : 'text-3xl'} border-0 bg-transparent focus:ring-transparent  w-full ${props.viewport === ViewportEnum.Lg ? 'py-2' : 'py-6'} placeholder-gray-300`}
-
                     >
                         {corpus.value || label}
                     </div>}
@@ -60,12 +58,7 @@ export default function DarkDropdown(props: TProps) {
             </div>
 
             {corpus.open && filteredValues?.length ? (
-                <div className="absolute  left-0 right-0 mx-10  mt-2 origin-top-right bg-[#1E1E1E] bg-opacity-95  divide-y  rounded-xl   border-gray-300 border max-h-96 overflow-y-scroll"
-
-                    style={{
-                        zIndex: 1000000
-                    }}
-                >
+                <div className="absolute  left-0 right-0 mx-10  mt-2 origin-top-right bg-[#1E1E1E] bg-opacity-95  divide-y  rounded-xl   border-gray-300 border max-h-96 overflow-y-scroll">
 
 
                     <div className="py-1 z-50">
@@ -101,7 +94,7 @@ type TProps = {
     label?: string,
     viewport: 'desktop' | 'mobile',
     options: { label: string, value: string }[],
-    onChange: (e: string) => void
+    onChange: (e: string) => void,
 }
 enum ViewportEnum {
     Lg = 'desktop',
