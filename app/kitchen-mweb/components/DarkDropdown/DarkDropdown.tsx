@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 
 export default function DarkDropdown(props: TProps) {
@@ -12,11 +12,12 @@ export default function DarkDropdown(props: TProps) {
             })
         return props.options;
     }, [corpus.value, props.isAutocomplete, props.options])
-    useEffect(() => {
-        setCorpus((prev) => ({ ...prev, open: !!(filteredValues?.length && corpus.value?.length) }))
-    }, [corpus.value.length, filteredValues?.length])
 
-    return <div className=" text-left">
+    // useEffect(() => {
+    //     setCorpus((prev) => ({ ...prev, open: !!(filteredValues?.length && corpus.value?.length) }))
+    // }, [corpus.value.length, filteredValues?.length])
+
+    return <div className="text-left">
         <div>
             <div
                 onClick={() => {
@@ -25,9 +26,10 @@ export default function DarkDropdown(props: TProps) {
                 }}
                 className={`${ViewportEnum.Lg ? 'text-md' : 'text-3xl'} border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white w-full text-gray-300 px-9 flex justify-between items-center`}
             >
+
                 {props?.isAutocomplete ? (<input
                     placeholder={label}
-
+                    autoComplete="off"
                     value={corpus.value}
                     onChange={(e) => {
                         setCorpus((prev) => ({ ...prev, value: e.target.value }))
@@ -49,15 +51,18 @@ export default function DarkDropdown(props: TProps) {
                 </div>
             </div>
         </div>
+
         {corpus.open && filteredValues?.length ? (
-            <div className="absolute  left-0 right-0 mx-10 z-  mt-2 origin-top-right bg-[#1E1E1E] bg-opacity-95  divide-y  rounded-xl   border-gray-300 border max-h-96 overflow-y-scroll">
+            <div className="absolute  left-0 right-0 mx-10 z-30  mt-2 origin-top-right bg-[#1E1E1E] bg-opacity-95  divide-y  rounded-xl   border-gray-300 border max-h-96 overflow-y-scroll">
+
+
                 <div className="py-1 z-50">
                     {filteredValues?.map((value, i) => {
                         const onClickMenuItem = () => {
-                            setCorpus((prev) => ({
+                            setCorpus({
+                                open: false,
                                 value: value.value,
-                                open: props?.isAutocomplete ? prev.open : false
-                            }))
+                            })
                             if (!props.isAutocomplete) {
                                 props.onChange(value.value)
                             }
