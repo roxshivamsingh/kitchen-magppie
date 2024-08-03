@@ -7,7 +7,8 @@ interface IProps {
     onCloseModal: () => void
 }
 
-export default function CustomModal({ id, onCloseModal }: IProps) {
+export default function CustomModal(props: IProps) {
+    const { id, onCloseModal } = props
     return (
         <Fragment key={id}>
             {/* Main modal */}

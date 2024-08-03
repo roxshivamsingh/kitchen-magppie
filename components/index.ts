@@ -8,7 +8,10 @@ import CustomToggle from "./CustomToggle";
 import CustomConfirmationDialog from "./CustomConfirmationDialog"
 import CustomSiteModal from "./CustomSiteModal";
 import SpecialCharacterDom from "./SpecialCharacterDom";
+import CustomAutocompleteExample from "./CustomAutocompleteExample";
+
 export {
+    CustomAutocompleteExample,
     SpecialCharacterDom,
     CustomSiteModal,
     CustomConfirmationDialog,

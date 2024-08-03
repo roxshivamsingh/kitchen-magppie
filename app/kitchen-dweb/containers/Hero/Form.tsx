@@ -7,9 +7,9 @@ import {
     TLandingConsult,
 } from '../../types'
 import { useFirebaseConsultActions } from '../../../../appHooks/firebase/use-firebase-actions'
-import DarkDropdown from '../../../kitchen-mweb/components/DarkDropdown'
 import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
-
+import Select from "react-select"
+import { REACT_SELECT_DESKTOP_STYLES } from '../../../../types/react-select'
 export default function Form() {
     const { register, handleSubmit, setValue } = useForm({
         defaultValues: INIT_LANDING_CONSULT,
@@ -51,19 +51,27 @@ export default function Form() {
                                         className="text-white text-md border rounded-full border-gray-300 bg-[#1E1E1E] focus:ring-white focus:border-white block w-full p-2 placeholder-gray-300 px-10"
                                         required
                                     />
-                                    <DarkDropdown
-                                        isAutocomplete
-                                        viewport='desktop'
-                                        onChange={(e) => { setValue('city', e) }}
+
+                                    <Select
+                                        placeholder="Please select your city"
+                                        styles={REACT_SELECT_DESKTOP_STYLES}
+                                        onChange={(e: { label: string, value: string }) => {
+                                            setValue('city', `${e.value || ''}`)
+                                        }}
                                         options={CONSULT_CITIES?.map((value) => ({ value, label: value }))}
-                                        label="Please select your city"
                                     />
-                                    <DarkDropdown
-                                        viewport='desktop'
-                                        onChange={(e) => { setValue('budget', e) }}
+
+                                    <Select
+                                        placeholder="Your Tentative Budget"
+
+                                        styles={REACT_SELECT_DESKTOP_STYLES}
+                                        onChange={(e: { label: string, value: string }) => {
+                                            setValue('budget', `${e.value || ''}`)
+                                        }}
                                         options={CONSULT_TENTATIVE_BUDGETS?.map((value) => ({ value, label: value }))}
-                                        label="Your Tentative Budget"
                                     />
+
+
                                     {/* <input
                                         placeholder="Please select your city"
                                         type="text"
