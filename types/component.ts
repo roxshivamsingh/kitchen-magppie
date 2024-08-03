@@ -343,6 +343,8 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
         typography: {
             ..._prev.typography,
             main: "MAGPPIE",
+            action: 'book your consultation',
+            secondary: 'stone kitchens',
             description: "Welcome to the <b><i>SPIRITUAL</i></b> heart of your Home.",
         },
         orderId: 0,
@@ -495,3 +497,19 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
     }
 ]
 
+
+export enum SpecialCharacterEnum {
+    BreakLine = '==nextline==',
+    ItalicBegin = '==italic',
+    ItalicEnd = 'italic==',
+    BoldStart = '==bold',
+    BoldEnd = 'bold==',
+}
+
+
+export const SPECIAL_CHARACTER_TO_DOM = (text: string) => {
+    return text.replace(/==nextline==\s*<br \/>/g, '\n')
+        .replace(/==italic\s*(\w+)==\s*/g, '<i>$1</i>')
+        .replace(/==bold\s*(\w+)==\s*/g, '<b>$1</b>')
+        .split('\n').map((line) => line)
+};

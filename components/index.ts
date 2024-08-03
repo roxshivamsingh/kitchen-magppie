@@ -7,7 +7,9 @@ import SimpleDropdown from "./SimpleDropdown";
 import CustomToggle from "./CustomToggle";
 import CustomConfirmationDialog from "./CustomConfirmationDialog"
 import CustomSiteModal from "./CustomSiteModal";
+import SpecialCharacterDom from "./SpecialCharacterDom";
 export {
+    SpecialCharacterDom,
     CustomSiteModal,
     CustomConfirmationDialog,
     CustomBreadcrumb,

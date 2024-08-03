@@ -27,7 +27,7 @@ export default function DarkDropdown(props: TProps) {
             >
                 {props?.isAutocomplete ? (<input
                     placeholder={label}
-
+                    autoComplete="off"
                     value={corpus.value}
                     onChange={(e) => {
                         setCorpus((prev) => ({ ...prev, value: e.target.value }))
