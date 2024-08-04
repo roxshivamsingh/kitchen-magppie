@@ -29,7 +29,7 @@ export default function Form() {
             <div className="justify-center items-center w-full max-h-full ">
                 <div className="relative w-full max-w-lg max-h-full">
                     <div className="relative bg-[#1E1E1E] rounded-lg shadow">
-                        <div className="flex items-center justify-between px-8 py-5 rounded-t w-screen">
+                        <div className="flex items-center justify-between px-8 py-5 rounded-t ">
                             <h3 className="text-4xl font-thin text-white">
                                 Book Your Consultation
                             </h3>
@@ -68,7 +68,6 @@ export default function Form() {
 
                                     <Select
                                         placeholder="Your Tentative Budget"
-
                                         value={values.budget?.length ? { value: values.budget, label: values.budget } : null}
                                         styles={REACT_SELECT_DESKTOP_STYLES}
                                         onChange={(e: { label: string, value: string }) => {
