@@ -40,8 +40,7 @@ export function FAQs(props: TProps) {
                 >
                     {_.get(
                         item,
-                        `typography.${
-                            toggle.isViewMore ? 'secondary' : 'main'
+                        `typography.${toggle.isViewMore ? 'secondary' : 'main'
                         }`,
                         'view more'
                     )}
@@ -76,7 +75,7 @@ function FAQAccodion(props: IFAQAccodionProps) {
             }}
         >
             <button
-                className="w-full flex items-center p-2 focus:outline-none text-black"
+                className="w-full flex items-center justify-between p-2 focus:outline-none text-black"
                 onClick={onToggle}
             >
                 <span className="text-2xl font-thin text-left">
@@ -92,9 +91,8 @@ function FAQAccodion(props: IFAQAccodionProps) {
             </button>
             {/* <div className={`text-xl mb-3 font-[320]`}>{item.label}</div> */}
             <div
-                className={`transition-all duration-500 text-black text-2xl mb-3 font-[320] overflow-y-hidden  ${
-                    toggle ? 'max-h-screen' : 'max-h-0'
-                }`}
+                className={`transition-all duration-500 text-black text-2xl mb-3 font-[320] overflow-y-hidden  ${toggle ? 'max-h-screen' : 'max-h-0'
+                    }`}
             >
                 {item.description}
             </div>
