@@ -1,6 +1,13 @@
 import { StylesConfig } from "react-select"
 
 export const REACT_SELECT_DESKTOP_STYLES: StylesConfig = {
+    input(base) {
+        return ({
+            ...base,
+            outline: "none",
+        })
+    },
+
     placeholder(base) {
         return ({ ...base, color: "#d1d5db" })
     },
