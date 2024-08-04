@@ -64,7 +64,7 @@ function FAQAccodion(props: IFAQAccodionProps) {
             onMouseLeave={() => { onHeaderHover(false) }}
         >
             <button
-                className="w-full flex items-center p-2 focus:outline-none text-black"
+                className="w-full flex items-center justify-between p-2 focus:outline-none text-black"
                 onClick={onToggle}
             >
                 <span className="text-4xl font-thin text-left">
