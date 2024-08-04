@@ -21,6 +21,14 @@ export const clients = [
     },
     {
         id: 2,
+        src: ranbir,
+        colSpan: 1,
+        rowSpan: 2,
+        title: 'Ranbir Kapoor',
+        subTitle: 'Actor',
+    },
+    {
+        id: 3,
         src: arshad,
         colSpan: 1,
         rowSpan: 1,
@@ -28,7 +36,7 @@ export const clients = [
         subTitle: 'Actor',
     },
     {
-        id: 3,
+        id: 4,
         src: sunil,
         colSpan: 1,
         rowSpan: 1,
@@ -36,7 +44,7 @@ export const clients = [
         subTitle: 'Owner, Airtel',
     },
     {
-        id: 4,
+        id: 5,
         src: chiranjeevi,
         colSpan: 1,
         rowSpan: 1,
@@ -44,7 +52,7 @@ export const clients = [
         subTitle: 'Actor',
     },
     {
-        id: 5,
+        id: 6,
         src: harbajan,
         colSpan: 1,
         rowSpan: 1,
@@ -52,7 +60,7 @@ export const clients = [
         subTitle: 'Cricketer',
     },
     {
-        id: 6,
+        id: 7,
         src: subhash,
         colSpan: 1,
         rowSpan: 1,
@@ -61,7 +69,7 @@ export const clients = [
         height: 1
     },
     {
-        id: 7,
+        id: 8,
         src: priya,
         colSpan: 1,
         rowSpan: 2,
@@ -69,21 +77,13 @@ export const clients = [
         subTitle: 'Chairperson, Park',
     },
     {
-        id: 8,
+        id: 9,
         src: kamal,
         colSpan: 1,
         rowSpan: 1,
         title: 'Kamal Nath',
         subTitle: 'Member of Parliament, India',
         height: 1
-    },
-    {
-        id: 9,
-        src: ranbir,
-        colSpan: 1,
-        rowSpan: 2,
-        title: 'Ranbir Kapoor',
-        subTitle: 'Actor',
     },
     {
         id: 10,
