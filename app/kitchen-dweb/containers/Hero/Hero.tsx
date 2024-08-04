@@ -17,7 +17,7 @@ export function Hero(props: TProps) {
     // }
     return (
         <div
-            className="relative w-full bg-contain"
+            className="relative w-full bg-cover"
             style={{ backgroundImage: `url(${props.item.links.bg})` }}
         >
             <div className="relative z-10 flex flex-col items-start justify-between h-full w-full">
