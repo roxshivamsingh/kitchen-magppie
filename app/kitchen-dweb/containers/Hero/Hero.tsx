@@ -36,7 +36,7 @@ export function Hero(props: TProps) {
                         /> */}
                     </div>
 
-                    <div >
+                    <div>
                         <Form />
                     </div>
                 </div>
@@ -60,6 +60,7 @@ export function Hero(props: TProps) {
                     <RiUserSettingsFill className="h-5 w-5" />
                 </button> */}
             </div>
+
         </div>
     )
 }
