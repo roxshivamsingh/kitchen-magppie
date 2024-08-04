@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
-import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md'
+// import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md'
+import { GoPlus, GoDash } from "react-icons/go";
 import _ from 'lodash'
 
 //====================================================================
@@ -83,9 +84,9 @@ function FAQAccodion(props: IFAQAccodionProps) {
                 </span>
                 <span>
                     {toggle ? (
-                        <MdKeyboardArrowUp className="text-black text-3xl ml-2 mt-1" />
+                        <GoDash className="text-black text-3xl ml-2 mt-1" />
                     ) : (
-                        <MdKeyboardArrowDown className="text-black text-3xl ml-2 mt-1" />
+                        <GoPlus className="text-black text-3xl ml-2 mt-1" />
                     )}
                 </span>
             </button>
