@@ -1,6 +1,6 @@
 import ranbir from '../../../kitchen-dweb/assets/clients/ranbir.png'
 import arshad from '../../../kitchen-dweb/assets/clients/arshad.png'
-import chiranjeevi from '../../assets/chiranjeev.png'
+import chiranjeevi from '../../../kitchen-dweb/assets/clients/chiranjeevi.png'
 import dhoni from '../../../kitchen-dweb/assets/clients/dhoni.png'
 import harbajan from '../../../kitchen-dweb/assets/clients/harbajan.png'
 import kamal from '../../../kitchen-dweb/assets/clients/kamal.png'
@@ -21,14 +21,6 @@ export const clients = [
     },
     {
         id: 2,
-        src: ranbir,
-        colSpan: 1,
-        rowSpan: 2,
-        title: 'Ranbir Kapoor',
-        subTitle: 'Actor',
-    },
-    {
-        id: 3,
         src: arshad,
         colSpan: 1,
         rowSpan: 1,
@@ -36,32 +28,7 @@ export const clients = [
         subTitle: 'Actor',
     },
     {
-        id: 4,
-        src: priya,
-        colSpan: 1,
-        rowSpan: 1,
-        title: 'Priya Paul',
-        subTitle: 'Chairperson, Park',
-    },
-    {
-        id: 5,
-        src: sunil,
-        colSpan: 1,
-        rowSpan: 2,
-        title: 'Sunil Bharti Mittal',
-        subTitle: 'Owner, Airtel',
-    },
-    {
-        id: 6,
-        src: chiranjeevi,
-        colSpan: 1,
-        rowSpan: 2,
-        title: 'Chiranjeevi',
-        subTitle: 'Actor',
-        height: 1,
-    },
-    {
-        id: 7,
+        id: 3,
         src: harbajan,
         colSpan: 1,
         rowSpan: 1,
@@ -69,21 +36,53 @@ export const clients = [
         subTitle: 'Cricketer',
     },
     {
-        id: 8,
-        src: vandana,
+        id: 4,
+        src: chiranjeevi,
+        colSpan: 1,
+        rowSpan: 1,
+        title: 'Chiranjeevi',
+        subTitle: 'Actor',
+        height: 1,
+    },
+    {
+        id: 5,
+        src: ranbir,
         colSpan: 1,
         rowSpan: 2,
+        title: 'Ranbir Kapoor',
+        subTitle: 'Actor',
+    },
+    {
+        id: 6,
+        src: vandana,
+        colSpan: 1,
+        rowSpan: 1,
         title: 'Vandana Munjal',
         subTitle: 'Owner, Hero',
     },
     {
-        id: 9,
-        src: subhash,
+        id: 7,
+        src: sunil,
+        colSpan: 1,
+        rowSpan: 2,
+        title: 'Sunil Bharti Mittal',
+        subTitle: 'Owner, Airtel',
+    },
+    {
+        id: 8,
+        src: priya,
         colSpan: 1,
         rowSpan: 1,
-        title: 'Subhash Chandra',
-        subTitle: 'Chairman, ZeeTv',
-        height: 1,
+        title: 'Priya Paul',
+        subTitle: 'Chairperson, Park',
+    },
+    {
+        id: 9,
+        src: natasha,
+        colSpan: 1,
+        rowSpan: 1,
+        title: 'Natasha Poonawala',
+        subTitle: 'Philanthropist',
     },
     {
         id: 10,
@@ -96,10 +95,11 @@ export const clients = [
     },
     {
         id: 11,
-        src: natasha,
+        src: subhash,
         colSpan: 1,
         rowSpan: 1,
-        title: 'Natasha Poonawala',
-        subTitle: 'Philanthropist',
+        title: 'Subhash Chandra',
+        subTitle: 'Chairman, ZeeTv',
+        height: 1,
     },
 ]
