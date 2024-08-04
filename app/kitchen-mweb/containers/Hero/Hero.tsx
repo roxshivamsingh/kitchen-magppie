@@ -15,16 +15,14 @@ export function Hero(props: TProps) {
     const [toggle, setToggle] = useState(INIT_TOGGLE)
 
     const renderNavigationBar = useMemo(() => {
-        return (
-            <div className="flex items-start flex-col w-full px-6 py-4 mt-6 fixed"
-            >
-                <h1 className="text-white z-10 font-bold text-6xl cursor-pointer mix-blend-difference">
-                    {item.typography.main}
-                </h1>
-                <p className='uppercase text-2xl text-center w-[250px]'>
-                    {item.typography.secondary}
-                </p>
-            </div>
+        return (<div className="flex items-start flex-col w-full px-6 py-4 mt-6 fixed">
+            <h1 className="text-white z-10 font-bold text-6xl cursor-pointer mix-blend-difference">
+                {item.typography.main}
+            </h1>
+            <p className='uppercase text-2xl text-center w-[250px]'>
+                {item.typography.secondary}
+            </p>
+        </div>
         )
     }, [item.typography.main, item.typography.secondary])
 

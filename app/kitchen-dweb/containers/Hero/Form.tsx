@@ -26,7 +26,7 @@ export default function Form() {
     console.log(values)
     return (
         <>
-            <div className="justify-center items-center w-full max-h-full overflow-y-auto overflow-x-hidden">
+            <div className="justify-center items-center w-full max-h-full ">
                 <div className="relative w-full max-w-lg max-h-full">
                     <div className="relative bg-[#1E1E1E] rounded-lg shadow">
                         <div className="flex items-center justify-between px-8 py-5 rounded-t w-screen">
