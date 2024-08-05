@@ -1,53 +1,53 @@
-import { useCallback, useEffect, useState } from 'react'
-// import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { GoPlus, GoDash } from "react-icons/go";
-import _ from 'lodash'
 
 //====================================================================
-
-import { TComponentItem, TComponentTypography } from '../../../../types'
+import {
+    TComponentItem,
+    TComponentTypography,
+    _
+} from '../../../../types'
 
 export function FAQs(props: TProps) {
     const { item } = props
 
     const [toggle, setToggle] = useState(INIT_TOGGLE)
 
-    return (
-        <div className="bg-white text-black py-20 flex flex-col justify-center items-center">
-            <h1 className="text-5xl text-center font-light mb-10">FAQs</h1>
-            <div className="grid grid-cols-2 mx-10 gap-5 transition-all duration-500 max-h-full">
-                {[
-                    ...(toggle.isViewMore
-                        ? props.item.items
-                        : props.item.items.slice(0, 9)),
-                ].map((item, i) => {
-                    return (
-                        <div key={i} className="font-custom mb-5">
-                            <FAQAccodion item={item} />
-                        </div>
-                    )
-                })}
-            </div>
-            <div className="flex justify-center items-center cursor-pointer mt-10">
-                <button
-                    type="button"
-                    className="text-2xl font-[250] cursor-pointer mt-6 bg-brown-600 text-white bg-black uppercase py-4 px-10 border border-white rounded-full"
-                    onClick={() => {
-                        setToggle((prev) => ({
-                            ...prev,
-                            isViewMore: !prev.isViewMore,
-                        }))
-                    }}
-                >
-                    {_.get(
-                        item,
-                        `typography.${toggle.isViewMore ? 'secondary' : 'main'
-                        }`,
-                        'view more'
-                    )}
-                </button>
-            </div>
+    const filteredValues = useMemo(() => [
+        ...(toggle.isViewMore
+            ? props.item.items
+            : props.item.items.slice(0, 9)),
+    ], [props.item.items, toggle.isViewMore])
+
+    return (<div className="bg-white text-black py-20 flex flex-col justify-center items-center">
+        <h1 className="text-5xl text-center font-light mb-10">FAQs</h1>
+        <div className="grid grid-cols-2 mx-10 gap-5 transition-all duration-500 max-h-full">
+            {filteredValues.map((item, i) => {
+                return (<div key={i} className="font-custom mb-5">
+                    <FAQAccodion item={item} />
+                </div>)
+            })}
         </div>
+        <div className="flex justify-center items-center cursor-pointer mt-10">
+            <button
+                type="button"
+                className="text-2xl font-[250] cursor-pointer mt-6 bg-brown-600 text-white bg-black uppercase py-4 px-10 border border-white rounded-full"
+                onClick={() => {
+                    setToggle((prev) => ({
+                        ...prev,
+                        isViewMore: !prev.isViewMore,
+                    }))
+                }}
+            >
+                {_.get(
+                    item,
+                    `typography.${toggle.isViewMore ? 'secondary' : 'main'
+                    }`,
+                    'view more'
+                )}
+            </button>
+        </div>
+    </div>
     )
 }
 
@@ -68,12 +68,8 @@ function FAQAccodion(props: IFAQAccodionProps) {
     }, [onHeaderHover])
     return (
         <div
-            onMouseOver={() => {
-                onHeaderHover(true)
-            }}
-            onMouseLeave={() => {
-                onHeaderHover(false)
-            }}
+            onMouseOver={() => { onHeaderHover(true) }}
+            onMouseLeave={() => { onHeaderHover(false) }}
         >
             <button
                 className="w-full flex items-center justify-between p-2 focus:outline-none text-black"

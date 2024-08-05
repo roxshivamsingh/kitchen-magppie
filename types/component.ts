@@ -494,6 +494,49 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
             action: "Request a call",
             main: "How to buy a <b>MAGPPIE</b> Wellness Kitchen in 4 easy steps?",
         },
+    },
+    {
+        ..._prev,
+        name: 'about-component',
+        typography: {
+            ..._prev.typography,
+            subtitle: 'Our Stone Kitchens are strong and safe',
+            secondary: 'Discover why your kitchen might be unsafe',
+            main: 'Our kitchens are Safe'
+        },
+        items: [
+            {
+                ..._prev.typography,
+                main: `Most modular kitchens in the world are made from wooden
+                    cabinets, which can be harmful and toxic, leading to various
+                    health problems in our families. Research by the World
+                    Health Organization states that wood-based materials like
+                    MDF, particle boards, and plywood contain a toxic chemical
+                    called formaldehyde, which emits cancerous fumes in our
+                    kitchens. Moreover, termites emerging from wood-based
+                    materials are extremely harmful, especially for young kids.
+                    At Magppie, we've discovered that silver is the best
+                    material for kitchen cabinets. By infusing silver into a
+                    special stone, we've created a unique, patented material
+                    called Silverstone. Our kitchens are made entirely from this
+                    material, avoiding the use of wood and other toxic
+                    substances.`
+            },
+            {
+                ..._prev.typography,
+                main: `At Magppie, we've discovered that silver is the best
+                    material for kitchen cabinets. By infusing silver into a
+                    special stone, we've created a unique, patented material
+                    called Silverstone. Our kitchens are made entirely from this
+                    material, avoiding the use of wood and other toxic
+                    substances.`
+            },
+            {
+                ..._prev.typography,
+                main: `MAGPPIE kitchens are dedicated to safeguarding your family's
+                    health and safety.`
+            },
+        ]
     }
 ]
 

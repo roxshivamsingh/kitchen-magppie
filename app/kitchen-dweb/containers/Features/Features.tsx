@@ -14,12 +14,8 @@ export function Features(props: TProps) {
                     <div
                         className={'flex w-full relative cursor-pointer group'}
                         key={i}
-                        onMouseEnter={() => {
-                            setOpacity(i)
-                        }}
-                        onMouseLeave={() => {
-                            setOpacity(-1)
-                        }}
+                        onMouseEnter={() => { setOpacity(i) }}
+                        onMouseLeave={() => { setOpacity(-1) }}
                     >
                         <img
                             src={i === 0 ? galleryTwo : feature.link}

@@ -1,23 +1,28 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { GoPlus, GoDash } from "react-icons/go";
-
-import _ from 'lodash';
 
 //====================================================================
 
 import {
     TComponentItem,
-    TComponentTypography
+    TComponentTypography,
+    _
 } from '../../../../types'
+
 
 export function FAQs(props: TProps) {
     const { item } = props;
-    const [toggle, setToggle] = useState({ isViewMore: false })
+    const [toggle, setToggle] = useState(INIT_TOGGLE)
+
+    const filteredValues = useMemo(() => {
+        return ([...(toggle.isViewMore ? item.items : item.items.slice(0, 9))])
+    }, [item.items, toggle.isViewMore])
+
     return (
         <div className="bg-white text-black py-20 flex flex-col justify-center items-center w-full">
             <h1 className="text-5xl text-center font-light mb-10">FAQs</h1>
             <div className="grid grid-cols-3 container max-w-7xl w-full justify-center gap-10 transition-all duration-500 max-h-full">
-                {[...(toggle.isViewMore ? props.item.items : props.item.items.slice(0, 9))].map((item, i) => {
+                {filteredValues.map((item, i) => {
                     return (<div key={i} className="font-custom mb-5">
                         <FAQAccodion item={item} />
                     </div>
@@ -98,3 +103,5 @@ interface IFAQAccodionProps {
     item: TComponentTypography,
     isExpanded?: true
 }
+
+const INIT_TOGGLE = { isViewMore: false }

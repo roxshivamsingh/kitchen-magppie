@@ -1,82 +1,33 @@
 import { useCallback, useEffect, useState } from 'react'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import _ from 'lodash'
+//====================================================================
 
-const About = () => {
-    return (
-        <div className="flex flex-col items-center container mx-auto max-w-6xl pb-16 py-10 font-light">
-            <h1 className="text-6xl font-extralight">Our kitchens are Safe</h1>
-            {/* <div className="flex items-center my-6 bg-[#1e1e1e] text-white text-3xl p-6 rounded-full shadow-lg font-thin cursor-pointer">
-                <p className="tracking-widest">
-                    Discover why your kitchen might be unsafe
-                </p>
-                <IoIosArrowRoundUp className="text-4xl ml-2" />
-            </div>
-            <div className="flex flex-col items-start mt-4">
-                <p className="mb-4 text-xl" style={{ fontWeight: 350 }}>
-                    Most modular kitchens in the world are made from wooden
-                    cabinets, which can be harmful and toxic, leading to various
-                    health problems in our families. Research by the World
-                    Health Organization states that wood-based materials like
-                    MDF, particle boards, and plywood contain a toxic chemical
-                    called formaldehyde, which emits cancerous fumes in our
-                    kitchens. Moreover, termites emerging from wood-based
-                    materials are extremely harmful, especially for young kids.
-                </p>
-                <p className="mb-4 text-xl" style={{ fontWeight: 350 }}>
-                    At Magppie, we've discovered that silver is the best
-                    material for kitchen cabinets. By infusing silver into a
-                    special stone, we've created a unique, patented material
-                    called Silverstone. Our kitchens are made entirely from this
-                    material, avoiding the use of wood and other toxic
-                    substances.
-                </p>
-                <p className="mb-4 text-xl " style={{ fontWeight: 350 }}>
-                    MAGPPIE kitchens are dedicated to safeguarding your family's
-                    health and safety.
-                </p>
-            </div> */}
-            <FAQAccodion
-                title="Discover why your kitchen might be unsafe"
-                para1="Most modular kitchens in the world are made from wooden
-                    cabinets, which can be harmful and toxic, leading to various
-                    health problems in our families. Research by the World
-                    Health Organization states that wood-based materials like
-                    MDF, particle boards, and plywood contain a toxic chemical
-                    called formaldehyde, which emits cancerous fumes in our
-                    kitchens. Moreover, termites emerging from wood-based
-                    materials are extremely harmful, especially for young kids.
-                    At Magppie, we've discovered that silver is the best
-                    material for kitchen cabinets. By infusing silver into a
-                    special stone, we've created a unique, patented material
-                    called Silverstone. Our kitchens are made entirely from this
-                    material, avoiding the use of wood and other toxic
-                    substances."
-                para2="At Magppie, we've discovered that silver is the best
-                    material for kitchen cabinets. By infusing silver into a
-                    special stone, we've created a unique, patented material
-                    called Silverstone. Our kitchens are made entirely from this
-                    material, avoiding the use of wood and other toxic
-                    substances."
-                para3="                    MAGPPIE kitchens are dedicated to safeguarding your family's
-                    health and safety."
-            />
-        </div>
+import { TComponentItem } from '../../../../types'
+
+type TProps = { item: TComponentItem }
+export default function About({ item }: TProps) {
+
+    return (<div className="flex flex-col items-center container mx-auto max-w-6xl pb-16 py-10 font-light">
+        <h1 className="text-6xl font-extralight">{item.typography.main}</h1>
+        <FAQAccodion
+            title={item.typography.secondary}
+            paragraphs={item.items?.map((row) => row.main)}
+
+        />
+    </div>
     )
 }
 
-export default About
-
-interface IProps {
+interface IFAQAccordionProps {
     isExpanded?: true
     title: string
-    para1: string
-    para2: string
-    para3: string
+    paragraphs: string[]
 }
 
-function FAQAccodion(props: IProps) {
-    const [toggle, setToggle] = useState(props?.isExpanded || false)
+function FAQAccodion(props: IFAQAccordionProps) {
+    const { isExpanded = false, paragraphs, title } = props;
+    const [toggle, setToggle] = useState(isExpanded)
 
     const onToggle = useCallback(() => {
         setToggle((prev) => !prev)
@@ -104,7 +55,7 @@ function FAQAccodion(props: IProps) {
                 onClick={onToggle}
             >
                 <span className="text-4xl font-thin text-center flex items-center justify-center">
-                    {props.title}
+                    {title}
                 </span>
                 <span>
                     {toggle ? (
@@ -115,19 +66,16 @@ function FAQAccodion(props: IProps) {
                 </span>
             </div>
             <div
-                className={`transition-all duration-500 overflow-hidden text-xl font-[320]  ${
-                    toggle ? 'max-h-screen' : 'max-h-0'
-                }`}
+                className={`transition-all duration-500 overflow-hidden text-xl font-[320]  ${toggle ? 'max-h-screen' : 'max-h-0'
+                    }`}
             >
-                <div className="mb-4 text-xl" style={{ fontWeight: 350 }}>
-                    {props.para1}
-                </div>
-                <div className="mb-4 text-xl" style={{ fontWeight: 350 }}>
-                    {props.para2}
-                </div>
-                <div className="mb-4 text-xl" style={{ fontWeight: 350 }}>
-                    {props.para3}
-                </div>
+                {paragraphs?.map((paragraph, i) => {
+                    return (
+                        <div className="mb-4 text-xl" style={{ fontWeight: 350 }} key={i}>
+                            {paragraph}
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )
