@@ -41,7 +41,7 @@ export function Footer(props: TProps) {
     return (
         <div className="bg-[#1E1E1E] py-32 text-white px-10 flex flex-col justify-center ">
             <div className="text-6xl container mb-10 text-center font-bold">
-                MAGPPIE
+                {props.item.typography.subtitle}
             </div>
             <div className="flex mb-10 justify-evenly">
                 {/* {props.item.items?.map((item, i) => {

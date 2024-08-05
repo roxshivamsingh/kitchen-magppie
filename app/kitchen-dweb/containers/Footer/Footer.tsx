@@ -1,3 +1,4 @@
+import { useCallback, useState } from 'react'
 import {
     FaArrowUp,
     FaFacebook,
@@ -6,22 +7,22 @@ import {
     FaYoutube,
     FaLinkedinIn,
 } from 'react-icons/fa'
-import { useState } from 'react'
 import Consult from '../../components/Modals/Consult'
 import Contact from '../../components/Modals/Contact'
 import { TComponentItem } from '../../../../types'
 
 export function Footer(props: TProps) {
+    const { item } = props
     const [toggle, setToggle] = useState(INIT_TOGGLE)
 
-    const scrollToTop = () => {
+    const onScrollToTop = useCallback(() => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
         })
-    }
+    }, [])
 
-    const handleLinkClick = (linkId: string) => {
+    const handleLinkClick = useCallback((linkId: string) => {
         if (linkId === 'Request a Call Back') {
             setToggle({ ...toggle, isOpenContactModal: true })
         } else if (linkId === 'Get in Touch') {
@@ -35,14 +36,14 @@ export function Footer(props: TProps) {
                 section.scrollIntoView({ behavior: 'smooth' })
             }
         }
-    }
+    }, [toggle])
 
     return (
         <div className="bg-[#1E1E1E] pt-6 pb-16 text-white px-10 flex flex-col justify-start">
             <div className="flex w-full container mx-auto max-w-8xl justify-center flex-col items-center text-center">
-                <div className="text-5xl mb-10 font-bold">MAGPPIE</div>
+                <div className="text-5xl mb-10 font-bold">{item.typography.subtitle}</div>
                 <div className="flex justify-evenly mb-6 gap-3 text-center w-full conatiner mx-auto max-w-7xl">
-                    {props.item.items?.map((item, i) => (
+                    {item.items?.map((item, i) => (
                         <button
                             key={i}
                             onClick={() => handleLinkClick(item.main)}
@@ -64,17 +65,17 @@ export function Footer(props: TProps) {
 
             <hr className="" />
             <div className="flex justify-between text-xl cursor-pointer">
-                <div className="p-2 text-lg">{props.item.typography.main}</div>
+                <div className="p-2 text-lg">{item.typography.main}</div>
                 <div
                     className="flex p-2 items-center text-lg"
-                    onClick={scrollToTop}
+                    onClick={onScrollToTop}
                 >
-                    {props.item.typography.action}{' '}
+                    {item.typography.action}{' '}
                     <FaArrowUp className="h-4 w-4 ml-2" />
                 </div>
             </div>
             <div className="text-center text-lg font-light">
-                {props.item.typography.description}
+                {item.typography.description}
             </div>
             <Consult
                 onHide={() => {

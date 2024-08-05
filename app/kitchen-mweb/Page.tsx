@@ -20,6 +20,7 @@ import { Gallery } from './containers/Gallery'
 import Qualities from './containers/Qualities/Qualities'
 import { Clients } from './containers/Clients'
 import ContactSection from './containers/Contact/ContactSection'
+import { _LANDING_COMPONENTS } from '../../types'
 
 export default function Page() {
     useFirebaseLandingListener()
@@ -51,7 +52,7 @@ export default function Page() {
                         setToggle((prev) => ({ ...prev, consult: true }))
                     }}
                 /> */}
-                <About />
+                <About item={_LANDING_COMPONENTS?.find((row) => row.name === 'about-component')} />
                 <Gallery />
                 <Qualities />
                 {/* <Benefits

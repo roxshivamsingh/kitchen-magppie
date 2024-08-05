@@ -23,7 +23,6 @@ export default function Form() {
         reset()
     })
     const values = watch()
-    console.log(values)
     return (
         <>
             <div className="justify-center items-center w-full max-h-full ">

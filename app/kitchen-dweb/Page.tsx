@@ -1,26 +1,26 @@
 import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
+//====================================================================
+
 import { useAppSelector } from '../../redux'
 import {
     Gallery,
-    // Benefits,
     FAQs,
     Footer,
     BuyingStep,
     Hero,
-    // Features,
     Clients,
     Video,
 } from '.'
 import { useFirebaseLandingListener } from '../cms/utils/firebase'
 import { PageProgress } from '../../components'
-// import ToggleButton from './components/ToggleButton'
 import Navbar from './components/Navbar'
 import Consult from './components/Modals/Consult'
 import Contact from './components/Modals/Contact'
 import About from './containers/About/About'
 import ContactSection from './containers/Contact/ContactSection'
 import Qualities from './containers/Qualities/Qualities'
+import { _LANDING_COMPONENTS } from '../../types'
 
 export default function Page() {
     useFirebaseLandingListener()
@@ -53,7 +53,11 @@ export default function Page() {
                         setToggle((prev) => ({ ...prev, consult: true }))
                     }}
                 /> */}
-                <About />
+                <About
+
+                    item={_LANDING_COMPONENTS?.find((row) => row.name === 'about-component')}
+
+                />
                 <Gallery />
                 {/* // item={value?.find( */}
                 {/* //     (row) => row.name === 'explore-gallery-component' */}
