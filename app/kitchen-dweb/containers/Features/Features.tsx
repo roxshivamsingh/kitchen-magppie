@@ -7,9 +7,7 @@ export function Features(props: TProps) {
     return (
         <div className="flex flex-col items-center justify-center bg-[#fff4ec] pt-10 w-full px-2">
             <h1 className="text-5xl font-light pb-10">
-                What makes our{' '}
-                Kitchens{' '}
-                safe?
+                What makes our Kitchens safe?
             </h1>
             <div className="flex container w-full mx-auto max-w-7xl gap-10">
                 {props.item.gallery.map((feature, i) => (
