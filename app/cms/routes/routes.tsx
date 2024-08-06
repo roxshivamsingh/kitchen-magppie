@@ -10,13 +10,13 @@ import {
     Home,
     User,
     LandingHome,
-    LandingPage
+    LandingPage,
 } from '../containers'
 import { useFirebaseCmsAuthListener } from '../utils/firebase'
 import { ProtectedRoute } from '../components'
+import { Enquiries } from '../containers/enquiries'
 
 export default function CmsRoutes() {
-
     useFirebaseCmsAuthListener()
 
     return {
@@ -58,6 +58,10 @@ export default function CmsRoutes() {
             {
                 path: '/cms/landing',
                 element: <LandingHome />,
+            },
+            {
+                path: '/cms/enquiries',
+                element: <Enquiries />,
             },
         ],
     } as RouteObject
