@@ -1,15 +1,5 @@
 import Select from 'react-select'
-
-const budgetOptions = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-]
-const cityOptions = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-]
+import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
 
 const Exporter = () => {
     return (
@@ -46,13 +36,25 @@ const Exporter = () => {
                     <label className="text-xl my-2" htmlFor="">
                         Export By Budget
                     </label>
-                    <Select options={budgetOptions} />
+                    <Select
+                        options={CONSULT_TENTATIVE_BUDGETS?.map((value) => ({
+                            value,
+                            label: value,
+                        }))}
+                        placeholder="Select Budget"
+                    />
                 </div>
                 <div className="flex flex-col mb-4">
                     <label className="text-xl my-2" htmlFor="">
                         Export By City
                     </label>
-                    <Select options={cityOptions} />
+                    <Select
+                    placeholder="Select City"
+                        options={CONSULT_CITIES?.map((value) => ({
+                            value,
+                            label: value,
+                        }))}
+                    />
                 </div>
                 <button className="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
                     Export

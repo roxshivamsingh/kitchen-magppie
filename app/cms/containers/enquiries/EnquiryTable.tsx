@@ -19,17 +19,7 @@ import { IoIosSearch } from 'react-icons/io'
 // import { MdCurrencyRupee } from 'react-icons/md'
 // import { FaCity } from 'react-icons/fa'
 import Select from 'react-select'
-
-const budgetOptions = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-]
-const cityOptions = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-]
+import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
 
 const columnHelper = createColumnHelper<IConsult>()
 
@@ -97,9 +87,22 @@ export default function EnquiryTable() {
                         required
                     />
                 </div>
-                <div className='flex'>
-                    <Select className='mr-4' options={budgetOptions} placeholder="Filter By Budget" />
-                    <Select options={cityOptions} placeholder="Filter By City" />
+                <div className="flex">
+                    <Select
+                        className="mr-4"
+                        options={CONSULT_TENTATIVE_BUDGETS?.map((value) => ({
+                            value,
+                            label: value,
+                        }))}
+                        placeholder="Filter By Budget"
+                    />
+                    <Select
+                        options={CONSULT_CITIES?.map((value) => ({
+                            value,
+                            label: value,
+                        }))}
+                        placeholder="Filter By City"
+                    />
                 </div>
             </div>
             <table className="mb-5 border shadow-lg">
