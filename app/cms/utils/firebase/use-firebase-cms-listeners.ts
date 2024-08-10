@@ -11,7 +11,7 @@ import { TKitchen } from '../../types/Kitchen';
 import { setKitchens } from '../../redux/slices/Kitchen.slice';
 import { TProject } from '../../types/Project';
 import { setProjects } from '../../redux/slices/Project.slice';
-
+import { FirebaseCollectionEnum } from '../../../../types';
 const { getAuth, onAuthStateChanged } = auth;
 
 export function useFirebaseCmsAuthListener() {
@@ -21,7 +21,7 @@ export function useFirebaseCmsAuthListener() {
         onAuthStateChanged(q, (user) => {
             if (user?.email?.length) {
                 const id = user.uid
-                getDoc(doc(db, 'super-users', id)).then((doc) => {
+                getDoc(doc(db, FirebaseCollectionEnum.SuperUser, id)).then((doc) => {
                     dispatch(setAuth({
                         ...INIT_SUPER_USER,
                         id,
@@ -41,7 +41,7 @@ export const useFirebaseCmsSuperUsersListener = () => {
 
     const dispatch = useAppDispatch()
     useEffect(() => {
-        const collectionRef = collection(db, `super-users`);
+        const collectionRef = collection(db, FirebaseCollectionEnum.SuperUser);
 
         onSnapshot(collectionRef, ({ docs }) => {
             const data: ISuperUser[] = [];
@@ -64,7 +64,7 @@ export const useFirebaseCmsSuperUsersListener = () => {
 export const useFirebaseCmsKitchensListener = () => {
     const dispatch = useAppDispatch()
     useEffect(() => {
-        const collectionRef = collection(db, `kitchens`);
+        const collectionRef = collection(db, FirebaseCollectionEnum.Kitchen);
 
         onSnapshot(collectionRef, ({ docs }) => {
             const data: TKitchen[] = [];
@@ -85,7 +85,7 @@ export const useFirebaseCmsKitchensListener = () => {
 export const useFirebaseCmsProjectsListener = () => {
     const dispatch = useAppDispatch()
     useEffect(() => {
-        const collectionRef = collection(db, `projects`);
+        const collectionRef = collection(db, FirebaseCollectionEnum.Project);
 
         onSnapshot(collectionRef, ({ docs }) => {
             const data: TProject[] = [];
