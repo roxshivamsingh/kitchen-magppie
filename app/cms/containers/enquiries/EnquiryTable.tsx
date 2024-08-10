@@ -11,7 +11,7 @@ import {
 // import { FaPhoneAlt } from 'react-icons/fa'
 // import { GrMapLocation } from 'react-icons/gr'
 // import { MdCurrencyRupee } from 'react-icons/md'
-import moment from "moment"
+import dayjs from "dayjs"
 import { useFirebaseConsultationListener } from '../../utils/firebase/customer'
 import { useAppSelector } from '../../../../redux'
 import { IConsult } from '../../../../types/consultation'
@@ -46,7 +46,7 @@ const columns = [
     }),
     columnHelper.accessor('at.created', {
         header: () => 'Created at',
-        cell: (info) => moment(info.renderValue()).format('hh:mm A, DD/MM/Y'),
+        cell: (info) => dayjs(info.renderValue()).format('hh:mm A, DD/MM/YYYY'),
     }),
 ]
 
