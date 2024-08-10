@@ -1,57 +1,18 @@
-import * as React from 'react'
-
-import { mockData } from './data'
-
+import { useFirebaseConsultationListener } from '../../utils/firebase/customer'
+import moment from "moment"
 import {
     createColumnHelper,
     flexRender,
     getCoreRowModel,
     useReactTable,
 } from '@tanstack/react-table'
-
-type Person = {
-    id: number
-    name: string
-    email: string
-    phone: string
-    city: string
-    budget: string
-}
-
-const columnHelper = createColumnHelper<Person>()
-
-const columns = [
-    columnHelper.accessor('id', {
-        cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor('name', {
-        cell: (info) => info.getValue(),
-    }),
-    // you can use different aproach here
-    columnHelper.accessor((row) => row.email, {
-        id: 'email',
-        cell: (info) => <i>{info.getValue()}</i>,
-        header: () => <span>Email</span>,
-    }),
-    columnHelper.accessor('phone', {
-        header: () => 'Phone',
-        cell: (info) => info.renderValue(),
-    }),
-    columnHelper.accessor('city', {
-        header: () => 'City',
-        cell: (info) => info.renderValue(),
-    }),
-    columnHelper.accessor('budget', {
-        header: () => 'Tentative Budget',
-        cell: (info) => info.renderValue(),
-    }),
-]
-
+import { IConsult } from '../../../../types/consultation'
+import { useAppSelector } from '../../../../redux'
 export default function Enquiries() {
-    const [data] = React.useState(() => [...mockData])
-
+    useFirebaseConsultationListener()
+    const data = useAppSelector((state) => state.Cms.Consultations.value)
     const table = useReactTable({
-        data,
+        data: data || [],
         columns,
         getCoreRowModel: getCoreRowModel(),
     })
@@ -73,9 +34,9 @@ export default function Enquiries() {
                                     {header.isPlaceholder
                                         ? null
                                         : flexRender(
-                                              header.column.columnDef.header,
-                                              header.getContext()
-                                          )}
+                                            header.column.columnDef.header,
+                                            header.getContext()
+                                        )}
                                 </th>
                             ))}
                         </tr>
@@ -103,3 +64,35 @@ export default function Enquiries() {
         </div>
     )
 }
+const columnHelper = createColumnHelper<IConsult>()
+
+const columns = [
+    columnHelper.accessor('id', {
+        cell: (info) => info.row.index + 1,
+    }),
+    columnHelper.accessor('fullName', {
+        cell: (info) => info.getValue(),
+    }),
+    // you can use different aproach here
+    // columnHelper.accessor((row) => row.email, {
+    //     id: 'email',
+    //     cell: (info) => <i>{info.getValue()}</i>,
+    //     header: () => <span>Email</span>,
+    // }),
+    columnHelper.accessor('mobile', {
+        header: () => 'Phone',
+        cell: (info) => info.renderValue(),
+    }),
+    columnHelper.accessor('city', {
+        header: () => 'City',
+        cell: (info) => info.renderValue(),
+    }),
+    columnHelper.accessor('budget', {
+        header: () => 'Tentative Budget',
+        cell: (info) => info.renderValue(),
+    }),
+    columnHelper.accessor('at.created', {
+        header: () => 'Created at',
+        cell: (info) => moment(info.renderValue()).format('hh:mm A, DD/MM/Y'),
+    }),
+]

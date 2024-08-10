@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch } from "../../../../../redux";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { FirebaseCollectionEnum, TComponentItem } from "../../../../../types";
 import { db } from "../../../../../config";
 import { setConsultation, setCustomerSiteComponent } from "../../../redux/slices";
@@ -32,8 +32,8 @@ export function useFirebaseConsultationListener() {
     const dispatch = useAppDispatch()
     useEffect(() => {
         const collectionRef = collection(db, FirebaseCollectionEnum.Consultation);
-
-        onSnapshot(collectionRef, ({ docs }) => {
+        const q = query(collectionRef, orderBy('at.created', 'desc'))
+        onSnapshot(q, ({ docs }) => {
             const data: IConsult[] = [];
             docs?.forEach((doc) => {
                 const row = doc.data();

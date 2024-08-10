@@ -19,6 +19,7 @@ import { Enquiries } from '../containers/enquiries'
 export default function CmsRoutes() {
     useFirebaseCmsAuthListener()
 
+
     return {
         path: 'cms',
         element: <ProtectedRoute />,
