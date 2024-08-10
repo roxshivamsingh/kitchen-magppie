@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ISuperUser } from '../../types/SuperUser';
+import { FirebaseCollectionEnum } from '../../../../types';
 
-type TUser = { id: string, name: string }
 
 interface IUserSlice {
-    value: TUser[];
+    value: ISuperUser[];
     status: 'loading' | 'success' | 'failed';
     loading: boolean,
     error: null | string | undefined;
@@ -16,13 +17,13 @@ const initialState: IUserSlice = {
     value: []
 };
 
-type TAction = PayloadAction<TUser[]>
+type TAction = PayloadAction<ISuperUser[]>
 
 const UserSlice = createSlice({
-    name: 'Users',
+    name: FirebaseCollectionEnum.User,
     initialState,
     reducers: {
-        setSuperUsers: (state, action: TAction) => {
+        setUsers: (state, action: TAction) => {
             state.status = 'success';
             state.loading = false;
             state.value = action.payload;
@@ -30,7 +31,6 @@ const UserSlice = createSlice({
     },
 });
 
-export const { setSuperUsers } = UserSlice.actions;
+export const { setUsers } = UserSlice.actions;
 
-const UserReducer = UserSlice.reducer
-export default UserReducer
+export const UserReducer = UserSlice.reducer
