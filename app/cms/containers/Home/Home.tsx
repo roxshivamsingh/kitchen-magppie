@@ -5,6 +5,7 @@ import { FaArrowRight } from 'react-icons/fa'
 
 export default function CmsHome() {
     const navigate = useNavigate()
+
     return (
         <div className="container mx-auto items-center flex flex-col mt-20">
             <h1 className="text-3xl mb-8 md:mb-0 font-bold uppercase text-center mt-16">

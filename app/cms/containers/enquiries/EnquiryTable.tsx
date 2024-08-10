@@ -77,7 +77,7 @@ export default function EnquiriesTable() {
     })
 
     const table = useReactTable({
-        data,
+        data: data || [],
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
@@ -152,3 +152,35 @@ export default function EnquiriesTable() {
         </div>
     )
 }
+// const columnHelper = createColumnHelper<IConsult>()
+
+// const columns = [
+//     columnHelper.accessor('id', {
+//         cell: (info) => info.row.index + 1,
+//     }),
+//     columnHelper.accessor('fullName', {
+//         cell: (info) => info.getValue(),
+//     }),
+//     // you can use different aproach here
+//     // columnHelper.accessor((row) => row.email, {
+//     //     id: 'email',
+//     //     cell: (info) => <i>{info.getValue()}</i>,
+//     //     header: () => <span>Email</span>,
+//     // }),
+//     columnHelper.accessor('mobile', {
+//         header: () => 'Phone',
+//         cell: (info) => info.renderValue(),
+//     }),
+//     columnHelper.accessor('city', {
+//         header: () => 'City',
+//         cell: (info) => info.renderValue(),
+//     }),
+//     columnHelper.accessor('budget', {
+//         header: () => 'Tentative Budget',
+//         cell: (info) => info.renderValue(),
+//     }),
+//     columnHelper.accessor('at.created', {
+//         header: () => 'Created at',
+//         cell: (info) => moment(info.renderValue()).format('hh:mm A, DD/MM/Y'),
+//     }),
+// ]
