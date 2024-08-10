@@ -14,7 +14,7 @@ import {
 } from '../containers'
 import { useFirebaseCmsAuthListener } from '../utils/firebase'
 import { ProtectedRoute } from '../components'
-import { Enquiries } from '../containers/enquiries'
+import EnquiryPage from '../containers/enquiries/Page'
 
 export default function CmsRoutes() {
     useFirebaseCmsAuthListener()
@@ -61,7 +61,7 @@ export default function CmsRoutes() {
             },
             {
                 path: '/cms/enquiries',
-                element: <Enquiries />,
+                element: <EnquiryPage />,
             },
         ],
     } as RouteObject
