@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import * as React from 'react'
 // import { mockData } from './data'
 import {
     createColumnHelper,
@@ -11,11 +11,25 @@ import {
 // import { FaPhoneAlt } from 'react-icons/fa'
 // import { GrMapLocation } from 'react-icons/gr'
 // import { MdCurrencyRupee } from 'react-icons/md'
-import dayjs from "dayjs"
+import dayjs from 'dayjs'
 import { useFirebaseConsultationListener } from '../../utils/firebase/customer'
 import { useAppSelector } from '../../../../redux'
 import { IConsult } from '../../../../types/consultation'
+import { IoIosSearch } from 'react-icons/io'
+// import { MdCurrencyRupee } from 'react-icons/md'
+// import { FaCity } from 'react-icons/fa'
+import Select from 'react-select'
 
+const budgetOptions = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+]
+const cityOptions = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+]
 
 const columnHelper = createColumnHelper<IConsult>()
 
@@ -50,17 +64,17 @@ const columns = [
     }),
 ]
 
-
 export default function EnquiryTable() {
     useFirebaseConsultationListener()
-    const { value } = useAppSelector((state) => state.Cms.Consultations);
-    const [pagination, setPagination] = useState({
+    // const data = useAppSelector((state) => state.Cms.Consultations.value)
+    const { value } = useAppSelector((state) => state.Cms.Consultations)
+    const [pagination, setPagination] = React.useState({
         pageIndex: 0,
         pageSize: 10,
     })
 
     const table = useReactTable({
-        data: (value || []),
+        data: value || [],
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
@@ -72,7 +86,23 @@ export default function EnquiryTable() {
 
     return (
         <div className="flex flex-col items-center w-3/4">
-            <table className="mb-5 border shadow-lg rounded-3xl">
+            <div className="flex justify-between w-3/4">
+                <div className="flex items-center">
+                    <IoIosSearch className="text-3xl mb-4 mr-1" />
+                    <input
+                        type="search"
+                        id="default-search"
+                        className="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-60"
+                        placeholder="Search"
+                        required
+                    />
+                </div>
+                <div className='flex'>
+                    <Select className='mr-4' options={budgetOptions} placeholder="Filter By Budget" />
+                    <Select options={cityOptions} placeholder="Filter By City" />
+                </div>
+            </div>
+            <table className="mb-5 border shadow-lg">
                 <thead className="text-center">
                     {table.getHeaderGroups().map((headerGroup) => (
                         <tr
@@ -87,9 +117,9 @@ export default function EnquiryTable() {
                                     {header.isPlaceholder
                                         ? null
                                         : flexRender(
-                                            header.column.columnDef.header,
-                                            header.getContext()
-                                        )}
+                                              header.column.columnDef.header,
+                                              header.getContext()
+                                          )}
                                 </th>
                             ))}
                         </tr>
@@ -136,5 +166,3 @@ export default function EnquiryTable() {
     )
 }
 // const columnHelper = createColumnHelper<IConsult>()
-
-
