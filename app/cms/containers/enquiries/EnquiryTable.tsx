@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState } from 'react'
 // import { mockData } from './data'
 import {
     createColumnHelper,
@@ -51,17 +51,16 @@ const columns = [
 ]
 
 
-export default function EnquiriesTable() {
-    // const [data] = React.useState(() => [...mockData])
+export default function EnquiryTable() {
     useFirebaseConsultationListener()
-    const data = useAppSelector((state) => state.Cms.Consultations.value);
-    const [pagination, setPagination] = React.useState({
+    const { value } = useAppSelector((state) => state.Cms.Consultations);
+    const [pagination, setPagination] = useState({
         pageIndex: 0,
         pageSize: 10,
     })
 
     const table = useReactTable({
-        data: data || [],
+        data: (value || []),
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
