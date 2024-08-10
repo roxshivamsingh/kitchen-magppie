@@ -29,7 +29,9 @@
     "routes",
     "app/**/*",
     "main/App.tsx",
-    "main/main.tsx"
+    "main/main.tsx",
+    "components",
+    "mocks",
   ],
   "references": [
     {

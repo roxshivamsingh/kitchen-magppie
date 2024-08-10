@@ -7,6 +7,7 @@ import Ratings from './Ratings/Ratings'
 import Review from './Review/Review'
 
 export default function Home() {
+    console.log('x')
     return (
         <>
             <Hero />

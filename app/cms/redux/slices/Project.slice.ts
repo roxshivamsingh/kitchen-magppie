@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TProject } from '../../types/Project';
 
-type TProject = {
-    id: string,
-    name: string,
-    flats: { serial: number }[]
-}
 
 interface IProjectsSlice {
     value: TProject[];
@@ -35,5 +31,4 @@ const ProjectsSlice = createSlice({
 
 export const { setProjects } = ProjectsSlice.actions;
 
-const ProjectsReducer = ProjectsSlice.reducer
-export default ProjectsReducer
+export const ProjectReducer = ProjectsSlice.reducer
