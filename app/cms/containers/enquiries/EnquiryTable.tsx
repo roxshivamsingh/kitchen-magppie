@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { mockData } from './data'
+// import { mockData } from './data'
 import {
     createColumnHelper,
     flexRender,
@@ -7,70 +7,54 @@ import {
     getPaginationRowModel,
     useReactTable,
 } from '@tanstack/react-table'
-import { MdMail } from 'react-icons/md'
-import { FaPhoneAlt } from 'react-icons/fa'
-import { GrMapLocation } from 'react-icons/gr'
-import { MdCurrencyRupee } from 'react-icons/md'
+// import { MdMail } from 'react-icons/md'
+// import { FaPhoneAlt } from 'react-icons/fa'
+// import { GrMapLocation } from 'react-icons/gr'
+// import { MdCurrencyRupee } from 'react-icons/md'
+import moment from "moment"
+import { useFirebaseConsultationListener } from '../../utils/firebase/customer'
+import { useAppSelector } from '../../../../redux'
+import { IConsult } from '../../../../types/consultation'
 
-type Person = {
-    id: number
-    name: string
-    email: string
-    phone: string
-    city: string
-    budget: string
-}
 
-const columnHelper = createColumnHelper<Person>()
+const columnHelper = createColumnHelper<IConsult>()
 
 const columns = [
     columnHelper.accessor('id', {
+        cell: (info) => info.row.index + 1,
+    }),
+    columnHelper.accessor('fullName', {
         cell: (info) => info.getValue(),
     }),
-    columnHelper.accessor('name', {
-        cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor((row) => row.email, {
-        id: 'email',
-        cell: (info) => <i>{info.getValue()}</i>,
-        header: () => (
-            <span className="flex items-center justify-center">
-                <MdMail className="text-xl mr-2" />
-                Email
-            </span>
-        ),
-    }),
-    columnHelper.accessor('phone', {
-        header: () => (
-            <span className="flex items-center">
-                <FaPhoneAlt className="text-xl mr-2" />
-                Phone
-            </span>
-        ),
+    // you can use different aproach here
+    // columnHelper.accessor((row) => row.email, {
+    //     id: 'email',
+    //     cell: (info) => <i>{info.getValue()}</i>,
+    //     header: () => <span>Email</span>,
+    // }),
+    columnHelper.accessor('mobile', {
+        header: () => 'Phone',
         cell: (info) => info.renderValue(),
     }),
     columnHelper.accessor('city', {
-        header: () => (
-            <span className="flex items-center">
-                <GrMapLocation className="text-xl mr-2" />
-                City
-            </span>
-        ),
+        header: () => 'City',
         cell: (info) => info.renderValue(),
     }),
     columnHelper.accessor('budget', {
-        header: () => (
-            <span className="flex items-center">
-                <MdCurrencyRupee className="text-xl mr-2" />
-                Tentative Budget
-            </span>
-        ),
+        header: () => 'Tentative Budget',
         cell: (info) => info.renderValue(),
+    }),
+    columnHelper.accessor('at.created', {
+        header: () => 'Created at',
+        cell: (info) => moment(info.renderValue()).format('hh:mm A, DD/MM/Y'),
     }),
 ]
 
+
 export default function EnquiriesTable() {
-    const [data] = React.useState(() => [...mockData])
+    // const [data] = React.useState(() => [...mockData])
+    useFirebaseConsultationListener()
+    const data = useAppSelector((state) => state.Cms.Consultations.value);
     const [pagination, setPagination] = React.useState({
         pageIndex: 0,
         pageSize: 10,
@@ -104,9 +88,9 @@ export default function EnquiriesTable() {
                                     {header.isPlaceholder
                                         ? null
                                         : flexRender(
-                                              header.column.columnDef.header,
-                                              header.getContext()
-                                          )}
+                                            header.column.columnDef.header,
+                                            header.getContext()
+                                        )}
                                 </th>
                             ))}
                         </tr>
@@ -154,33 +138,4 @@ export default function EnquiriesTable() {
 }
 // const columnHelper = createColumnHelper<IConsult>()
 
-// const columns = [
-//     columnHelper.accessor('id', {
-//         cell: (info) => info.row.index + 1,
-//     }),
-//     columnHelper.accessor('fullName', {
-//         cell: (info) => info.getValue(),
-//     }),
-//     // you can use different aproach here
-//     // columnHelper.accessor((row) => row.email, {
-//     //     id: 'email',
-//     //     cell: (info) => <i>{info.getValue()}</i>,
-//     //     header: () => <span>Email</span>,
-//     // }),
-//     columnHelper.accessor('mobile', {
-//         header: () => 'Phone',
-//         cell: (info) => info.renderValue(),
-//     }),
-//     columnHelper.accessor('city', {
-//         header: () => 'City',
-//         cell: (info) => info.renderValue(),
-//     }),
-//     columnHelper.accessor('budget', {
-//         header: () => 'Tentative Budget',
-//         cell: (info) => info.renderValue(),
-//     }),
-//     columnHelper.accessor('at.created', {
-//         header: () => 'Created at',
-//         cell: (info) => moment(info.renderValue()).format('hh:mm A, DD/MM/Y'),
-//     }),
-// ]
+
