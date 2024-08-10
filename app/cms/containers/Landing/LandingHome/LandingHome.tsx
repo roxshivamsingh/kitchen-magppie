@@ -5,22 +5,21 @@ import _ from 'lodash'
 
 import { Search } from '../../../components'
 import { useAppSelector } from '../../../../../redux'
-import {
-    CmsLandingPageComponentCard,
-    ComponentActionForm
-} from "../components"
+import { CmsLandingPageComponentCard, ComponentActionForm } from '../components'
 
 import {
     CustomConfirmationDialog,
     CustomSimpleModal,
-    PageProgress
+    PageProgress,
 } from '../../../../../components'
 import {
     COMPONENT_META,
     INIT_CUSTOMER_SITE_COMPONENT,
-    TComponentItem
+    TComponentItem,
 } from '../../../../../types'
 import { useFirebaseLandingListener } from '../../../utils/firebase'
+import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 // import CustomDumpButton from '../../../components/Dump/CustomDumpButton'
 
 export function LandingHome() {
@@ -31,103 +30,138 @@ export function LandingHome() {
     const onChangeModal = useCallback((newValue: Partial<TCorpusModal>) => {
         setCorpus((prev) => ({
             ...prev,
-            modal: { ...prev.modal, ...newValue, },
+            modal: { ...prev.modal, ...newValue },
         }))
     }, [])
 
     const components = useMemo(() => {
-        return _.sortBy(value?.filter((item) =>
-            corpus.search?.length
-                ? _.lowerCase(item.name)?.includes(_.lowerCase(corpus.search))
-                : true
-        ), 'orderId')
-    }, [corpus.search, value]);
-
+        return _.sortBy(
+            value?.filter((item) =>
+                corpus.search?.length
+                    ? _.lowerCase(item.name)?.includes(
+                          _.lowerCase(corpus.search)
+                      )
+                    : true
+            ),
+            'orderId'
+        )
+    }, [corpus.search, value])
 
     const renderDeleteConfirmationDialog = useMemo(() => {
-        return (<CustomConfirmationDialog show={corpus.confirmation.open}
-            variant='danger'
-
-            text={{
-                header: corpus.confirmation.text.header,
-                remark: corpus.confirmation.text.remark,
-            }}
-            onHide={() => {
-                setCorpus((prev) => ({ ...prev, confirmation: INIT_CONFIRMATION }))
-            }}
-            onConfirm={() => {
-                setCorpus((prev) => ({ ...prev, confirmation: INIT_CONFIRMATION }))
-            }}
-        />)
+        return (
+            <CustomConfirmationDialog
+                show={corpus.confirmation.open}
+                variant="danger"
+                text={{
+                    header: corpus.confirmation.text.header,
+                    remark: corpus.confirmation.text.remark,
+                }}
+                onHide={() => {
+                    setCorpus((prev) => ({
+                        ...prev,
+                        confirmation: INIT_CONFIRMATION,
+                    }))
+                }}
+                onConfirm={() => {
+                    setCorpus((prev) => ({
+                        ...prev,
+                        confirmation: INIT_CONFIRMATION,
+                    }))
+                }}
+            />
+        )
     }, [corpus.confirmation])
 
     const onClickRemove = useCallback((item: TComponentItem) => {
         setCorpus((prev) => ({
-            ...prev, confirmation: {
+            ...prev,
+            confirmation: {
                 ...prev.confirmation,
                 open: true,
                 id: item.id,
                 text: {
                     header: 'Delete Confirmation',
-                    remark: `Are you sure you want to delete ${item.name} component?`
-                }
-            }
+                    remark: `Are you sure you want to delete ${item.name} component?`,
+                },
+            },
         }))
     }, [])
-    const onClickEdit = useCallback((value: TComponentItem) => {
-
-        onChangeModal({
-            action: 'edit',
-            open: true,
-            value
-        })
-    }, [onChangeModal])
+    const onClickEdit = useCallback(
+        (value: TComponentItem) => {
+            onChangeModal({
+                action: 'edit',
+                open: true,
+                value,
+            })
+        },
+        [onChangeModal]
+    )
     const renderActionModal = useMemo(() => {
-        return <CustomSimpleModal
-            show={corpus.modal.open}
-            onHide={() => {
-                onChangeModal(INIT_CORPUS_MODAL)
-            }}
-            label={`${_.upperFirst(corpus.modal.action)} Component`}
-        >
-            <ComponentActionForm
-                mode={corpus.modal.action}
-                item={corpus.modal.value}
-                meta={meta}
-            />
-        </CustomSimpleModal>
+        return (
+            <CustomSimpleModal
+                show={corpus.modal.open}
+                onHide={() => {
+                    onChangeModal(INIT_CORPUS_MODAL)
+                }}
+                label={`${_.upperFirst(corpus.modal.action)} Component`}
+            >
+                <ComponentActionForm
+                    mode={corpus.modal.action}
+                    item={corpus.modal.value}
+                    meta={meta}
+                />
+            </CustomSimpleModal>
+        )
     }, [
         corpus.modal.action,
         corpus.modal.open,
         corpus.modal.value,
         meta,
-        onChangeModal
+        onChangeModal,
     ])
 
     return (
         <div>
-            <Search
-                placeholder="Search Components.."
-                onChange={(search) => {
-                    setCorpus((prev) => ({ ...prev, search }))
-                }}
-            />
+            <div className='flex justify-center items-center w-full'>
+                <Search
+                    placeholder="Search Components.."
+                    onChange={(search) => {
+                        setCorpus((prev) => ({ ...prev, search }))
+                    }}
+                />
+                <Link to="/cms/enquiries">
+                    <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-10 flex justify-center items-center w-full">
+                        View Enquiries
+                    </button>
+                </Link>
+            </div>
             {/* <CustomDumpButton /> */}
 
-            {loading ? (<PageProgress />) : (
+            {loading ? (
+                <PageProgress />
+            ) : (
                 <div className="mt-10">
                     {components?.length ? (
                         <div className="gap-6 grid grid-cols-2 md:grid-cols-3 max-w-screen-2xl mx-auto place-items-start">
                             {components?.map((item, i) => {
-                                return <CmsLandingPageComponentCard key={i} item={item}
-                                    onEdit={() => { onClickEdit(item) }}
-                                    onRemove={() => { onClickRemove(item) }}
-                                />
+                                return (
+                                    <CmsLandingPageComponentCard
+                                        key={i}
+                                        item={item}
+                                        onEdit={() => {
+                                            onClickEdit(item)
+                                        }}
+                                        onRemove={() => {
+                                            onClickRemove(item)
+                                        }}
+                                    />
+                                )
                             })}
                         </div>
-                    ) : (<div className="flex flex-row justify-center h-20 align-middle">
-                        Not found
-                    </div>
+                    ) : (
+                        <div className="flex flex-row justify-center h-20 align-middle">
+                            Not found
+                        </div>
                     )}
                 </div>
             )}
@@ -148,15 +182,30 @@ export function LandingHome() {
     )
 }
 type TMode = 'create' | 'edit' | ''
-type TCorpusModal = { action: TMode, value: TComponentItem, open: boolean }
+type TCorpusModal = { action: TMode; value: TComponentItem; open: boolean }
 
-type TCorpusConfirmation = { open: boolean, text: { remark: string, header: string }, id: string }
-type TCorpus = { modal: TCorpusModal, search: string, confirmation: TCorpusConfirmation }
-const INIT_CONFIRMATION: TCorpusConfirmation = { open: false, text: { remark: '', header: '' }, id: '' }
-const INIT_CORPUS_MODAL: TCorpusModal = { action: '', value: INIT_CUSTOMER_SITE_COMPONENT, open: false }
+type TCorpusConfirmation = {
+    open: boolean
+    text: { remark: string; header: string }
+    id: string
+}
+type TCorpus = {
+    modal: TCorpusModal
+    search: string
+    confirmation: TCorpusConfirmation
+}
+const INIT_CONFIRMATION: TCorpusConfirmation = {
+    open: false,
+    text: { remark: '', header: '' },
+    id: '',
+}
+const INIT_CORPUS_MODAL: TCorpusModal = {
+    action: '',
+    value: INIT_CUSTOMER_SITE_COMPONENT,
+    open: false,
+}
 const INIT_CORPUS: TCorpus = {
     modal: INIT_CORPUS_MODAL,
     search: '',
-    confirmation: INIT_CONFIRMATION
+    confirmation: INIT_CONFIRMATION,
 }
-

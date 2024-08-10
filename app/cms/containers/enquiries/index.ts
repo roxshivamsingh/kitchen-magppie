@@ -1,3 +1,3 @@
-import Enquiries from './Enquiries'
+import Enquiries from './EnquiryTable'
 
 export { Enquiries }

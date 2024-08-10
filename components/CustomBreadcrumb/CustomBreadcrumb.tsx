@@ -20,33 +20,37 @@ export default function CustomBreadcrumb() {
     })
 
     return (
-        <div className="flex mt-2" aria-label="Breadcrumb">
+        <div className="flex mt-20" aria-label="Breadcrumb">
             <div className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 {options?.map((option, i) => {
                     if (i) {
-                        return (<div key={i}>
-                            <div className="flex items-center">
-                                <IoIosArrowForward />
+                        return (
+                            <div key={i}>
+                                <div className="flex items-center">
+                                    <IoIosArrowForward />
+                                    <Link
+                                        to={option.path}
+                                        className="ms-1 text-sm font-medium text-blue-700 hover:text-blue-600 md:ms-2"
+                                    >
+                                        {_.labelCase(option.label)}
+                                    </Link>
+                                </div>
+                            </div>
+                        )
+                    }
+                    return (
+                        <div className="inline-flex items-center" key={i}>
+                            <div className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
+                                <FaHome />
                                 <Link
                                     to={option.path}
                                     className="ms-1 text-sm font-medium text-blue-700 hover:text-blue-600 md:ms-2"
                                 >
-                                    {_.labelCase(option.label)}
+                                    Home
                                 </Link>
                             </div>
-                        </div>)
-                    }
-                    return (<div className="inline-flex items-center" key={i}>
-                        <div className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
-                            <FaHome />
-                            <Link
-                                to={option.path}
-                                className="ms-1 text-sm font-medium text-blue-700 hover:text-blue-600 md:ms-2"
-                            >
-                                Home
-                            </Link>
                         </div>
-                    </div>)
+                    )
                 })}
             </div>
         </div>
