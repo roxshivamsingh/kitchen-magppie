@@ -26,6 +26,12 @@ const columns = [
         header: () => 'Name',
         cell: (info) => info.getValue(),
     }),
+    // you can use different aproach here
+    // columnHelper.accessor((row) => row.email, {
+    //     id: 'email',
+    //     cell: (info) => <i>{info.getValue()}</i>,
+    //     header: () => <span>Email</span>,
+    // }),
     columnHelper.accessor('mobile', {
         header: () => (
             <span className="flex items-center justify-center">
@@ -48,42 +54,28 @@ const columns = [
         header: () => (
             <span className="flex items-center justify-center">
                 <MdCurrencyRupee className="text-lg mr-1" />
-                Budget
+                Tentative Budget
             </span>
         ),
         cell: (info) => info.renderValue(),
     }),
     columnHelper.accessor('at.created', {
         header: () => 'Created at',
-        cell: (info) => dayjs(info.renderValue()).format('hh:mm A, DD/MM/YYYY'),
+        cell: (info) => dayjs(info.renderValue()).format('hh:mm A, DD/MM/YY'),
     }),
 ]
 
 export default function EnquiryTable() {
     useFirebaseConsultationListener()
+    // const data = useAppSelector((state) => state.Cms.Consultations.value)
     const { value } = useAppSelector((state) => state.Cms.Consultations)
     const [pagination, setPagination] = React.useState({
         pageIndex: 0,
         pageSize: 10,
     })
-    const [selectedBudget, setSelectedBudget] = React.useState(null)
-    const [selectedCity, setSelectedCity] = React.useState(null)
-
-    // Filter data based on selected values
-    const filteredData = React.useMemo(() => {
-        return (value || []).filter((item) => {
-            const isBudgetMatch = selectedBudget
-                ? item.budget === selectedBudget.value
-                : true
-            const isCityMatch = selectedCity
-                ? item.city === selectedCity.value
-                : true
-            return isBudgetMatch && isCityMatch
-        })
-    }, [value, selectedBudget, selectedCity])
 
     const table = useReactTable({
-        data: filteredData,
+        data: value || [],
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
@@ -97,31 +89,22 @@ export default function EnquiryTable() {
         <div className="flex flex-col items-center w-3/4">
             <div className="flex justify-end w-3/4 mb-3">
                 <Select
-                    className="mr-4 w-48"
+                    className="mr-4"
                     options={CONSULT_TENTATIVE_BUDGETS?.map((value) => ({
                         value,
                         label: value,
                     }))}
                     placeholder="Filter By Budget"
-                    onChange={(selectedOption) =>
-                        setSelectedBudget(selectedOption)
-                    }
-                    value={selectedBudget}
                 />
                 <Select
                     options={CONSULT_CITIES?.map((value) => ({
                         value,
                         label: value,
                     }))}
-                    className='w-40'
                     placeholder="Filter By City"
-                    onChange={(selectedOption) =>
-                        setSelectedCity(selectedOption)
-                    }
-                    value={selectedCity}
                 />
             </div>
-            <table className="mb-5 border shadow-lg w-3/4">
+            <table className="mb-5 border shadow-lg">
                 <thead className="text-center">
                     {table.getHeaderGroups().map((headerGroup) => (
                         <tr
@@ -131,7 +114,7 @@ export default function EnquiryTable() {
                             {headerGroup.headers.map((header) => (
                                 <th
                                     key={header.id}
-                                    className="px-4 pr-2 py-2 font-medium text-center"
+                                    className="px-4 pr-2 py-4 font-medium text-center"
                                 >
                                     {header.isPlaceholder
                                         ? null
@@ -145,32 +128,21 @@ export default function EnquiryTable() {
                     ))}
                 </thead>
                 <tbody className="text-center">
-                    {filteredData.length === 0 ? (
-                        <tr>
-                            <td
-                                colSpan={columns.length}
-                                className="py-4 text-center text-gray-500"
-                            >
-                                No Data Found
-                            </td>
+                    {table.getRowModel().rows.map((row) => (
+                        <tr key={row.id} className="border-b">
+                            {row.getVisibleCells().map((cell) => (
+                                <td
+                                    key={cell.id}
+                                    className="px-4 pt-[14px] pb-[18px]"
+                                >
+                                    {flexRender(
+                                        cell.column.columnDef.cell,
+                                        cell.getContext()
+                                    )}
+                                </td>
+                            ))}
                         </tr>
-                    ) : (
-                        table.getRowModel().rows.map((row) => (
-                            <tr key={row.id} className="border-b">
-                                {row.getVisibleCells().map((cell) => (
-                                    <td
-                                        key={cell.id}
-                                        className="px-4 pt-[14px] pb-[18px]"
-                                    >
-                                        {flexRender(
-                                            cell.column.columnDef.cell,
-                                            cell.getContext()
-                                        )}
-                                    </td>
-                                ))}
-                            </tr>
-                        ))
-                    )}
+                    ))}
                 </tbody>
             </table>
             <div className="mt-0 flex items-center">
@@ -195,3 +167,4 @@ export default function EnquiryTable() {
         </div>
     )
 }
+// const columnHelper = createColumnHelper<IConsult>()
