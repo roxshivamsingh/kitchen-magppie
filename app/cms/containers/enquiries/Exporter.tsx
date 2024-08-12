@@ -1,7 +1,33 @@
 import Select from 'react-select'
-import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
+import { utils, writeFile } from 'xlsx';
 
-const Exporter = () => {
+import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
+import { useAppSelector } from '../../../../redux'
+import { useCallback } from 'react'
+import { CONSULTATION_COLUMN_HEADER_OPTIONS } from '../../../../types/consultation';
+import { _ } from '../../../../types';
+// import { CONSULTATION_COLUMN_HEADER_OPTIONS } from '../../../../types/consultation'
+// import { _ } from '../../../../types'
+
+export default function Exporter() {
+    const { value } = useAppSelector((state) => state.Cms.Consultations)
+
+    const onClickExport = useCallback(() => {
+        const accessors = _.map(CONSULTATION_COLUMN_HEADER_OPTIONS, 'label')
+
+        const filteredValues = value?.map((row) => ({
+            id: row.id,
+            city: row.city,
+            fullName: row.fullName,
+            mobile: row.mobile
+        }))
+        const worksheet = utils.json_to_sheet(filteredValues, {
+            header: accessors,
+        });
+        const workbook = utils.book_new();
+        utils.book_append_sheet(workbook, worksheet, 'MAIN');
+        writeFile(workbook, `enquiries.xlsx`);
+    }, [value])
     return (
         <div className="w-1/4 relative">
             <h1 className="text-3xl mb-4">Export Enquiries</h1>
@@ -49,14 +75,16 @@ const Exporter = () => {
                         Export By City
                     </label>
                     <Select
-                    placeholder="Select City"
+                        placeholder="Select City"
                         options={CONSULT_CITIES?.map((value) => ({
                             value,
                             label: value,
                         }))}
                     />
                 </div>
-                <button className="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
+                <button
+                    onClick={onClickExport}
+                    className="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
                     Export
                 </button>
             </form>
@@ -67,5 +95,3 @@ const Exporter = () => {
         </div>
     )
 }
-
-export default Exporter
