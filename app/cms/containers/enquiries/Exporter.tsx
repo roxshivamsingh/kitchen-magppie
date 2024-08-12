@@ -4,6 +4,9 @@ import { utils, writeFile } from 'xlsx';
 import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
 import { useAppSelector } from '../../../../redux'
 import { CONSULTATION_COLUMN_HEADER_OPTIONS, IConsult } from '../../../../types/consultation';
+import { PiMicrosoftExcelLogoDuotone } from "react-icons/pi";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { GrPowerReset } from "react-icons/gr";
 import { _ } from '../../../../types';
 // import { CONSULTATION_COLUMN_HEADER_OPTIONS } from '../../../../types/consultation'
 // import { _ } from '../../../../types'
@@ -25,6 +28,7 @@ const INIT_FORM: TForm = {
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
 
 const validationSchema = Yup.object().shape({
     startIndex: Yup.string().nullable(),
@@ -49,49 +53,18 @@ export default function Exporter() {
         defaultValues: INIT_FORM,
         resolver: yupResolver(validationSchema),
     })
+    const [toggle, setToggle] = useState({ isLoading: false })
 
     const values = watch()
 
-    const onSubmit = handleSubmit((data) => {
-        let consultations: IConsult[] = value
-        // consultations = consultations?.filter(((_, i) => {
-        //     return Number(data.startIndex || 0) === i
-        // }))
-        // consultations = consultations?.filter(((_, i) => {
+    const onSubmit = handleSubmit((data: TForm) => {
+        setToggle((prev) => ({ ...prev, isLoading: true }))
+        setTimeout(() => {
+            APPLY_FILTER(value, data)
+            reset()
+            setToggle((prev) => ({ ...prev, isLoading: false }))
 
-        //     return Number(data.endIndex || value?.length) === i
-        // }))
-
-        consultations = consultations?.filter(((row) => {
-            if (data.budget.value?.length) {
-                return data.budget.value === row.budget
-            }
-            return true;
-        }))
-
-        consultations = consultations?.filter(((row) => {
-            if (data.city.value?.length) {
-                return data.city.value === row.city
-            }
-            return true;
-        }))
-
-        const accessors = _.map(CONSULTATION_COLUMN_HEADER_OPTIONS, 'label')
-
-        const filteredValues = consultations?.map((row) => ({
-            id: row.id,
-            city: row.city,
-            fullName: row.fullName,
-            mobile: row.mobile
-        }))
-        // console.log(filteredValues)
-        const worksheet = utils.json_to_sheet(filteredValues, {
-            header: accessors,
-        });
-        const workbook = utils.book_new();
-        utils.book_append_sheet(workbook, worksheet, 'MAIN');
-        writeFile(workbook, `enquiries.xlsx`);
-        reset()
+        }, 3000)
     })
 
     console.log(values)
@@ -162,11 +135,21 @@ export default function Exporter() {
                         }}
                     />
                 </div>
-                <button
-                    // onClick={onClickExport}
-                    className="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
-                    Export
-                </button>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+                    <button
+                        type='button'
+                        onClick={() => { reset() }}
+                        className="text-white w-full bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 flex justify-center gap-3 flex-row align-middle ">
+                        Reset <GrPowerReset className='text-xl' />
+                    </button>
+                    <button
+                        type='submit'
+                        // onClick={onClickExport}
+                        className="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 flex justify-center gap-3 flex-row align-middle ">
+                        Export {toggle.isLoading ? <AiOutlineLoading3Quarters className='text-xl animate-spin' /> : <PiMicrosoftExcelLogoDuotone className='text-xl' />}
+                    </button>
+
+                </div>
             </form>
             <p>
                 Note: Exporting more than 500 inquiries may take longer. For
@@ -186,3 +169,51 @@ export default function Exporter() {
 //     })
 //     return results
 // }
+
+const APPLY_FILTER = (consultations: IConsult[], data: TForm) => {
+    const { budget, city, startIndex, endIndex } = data
+
+    const index = {
+        start: _.isNumericString(startIndex) ? Number(startIndex) : '',
+        end: _.isNumericString(endIndex) ? Number(endIndex) : '',
+    }
+    consultations = consultations?.filter(((row) => {
+        return (budget.value?.length) ? budget.value === row.budget : true
+    }))
+
+    consultations = consultations?.filter(((row) => {
+        return (city.value?.length) ? city.value === row.city : true
+    }))
+
+    consultations = consultations?.filter(((__, i) => {
+
+        if (_.isNumber(index.start) || _.isNumber(index.end)) {
+            if (_.isNumber(index.start)) {
+                return i >= index.start
+            }
+            if (_.isNumber(index.end)) {
+                return i < index.end
+            }
+            return false
+        }
+        return true;
+    }))
+
+    if (consultations?.length) {
+        console.log(consultations)
+        const header = _.map(CONSULTATION_COLUMN_HEADER_OPTIONS, 'label')
+
+        const filteredValues = consultations?.map((row, i) => ({
+            ['ID']: i + 1,
+            ['City']: row.city,
+            ['Name']: row.fullName,
+            ['Phone']: row.mobile,
+            ['Budget']: row.budget,
+        }))
+        const worksheet = utils.json_to_sheet(filteredValues, { header });
+        const workbook = utils.book_new();
+        utils.book_append_sheet(workbook, worksheet, 'MAIN');
+        writeFile(workbook, `enquiries-${+new Date()}.xlsx`);
+        console.log(consultations)
+    }
+}
