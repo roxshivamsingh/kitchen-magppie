@@ -1,4 +1,6 @@
-import * as React from 'react'
+import { useState, useMemo } from 'react'
+import Select from 'react-select'
+
 import {
     createColumnHelper,
     flexRender,
@@ -9,14 +11,13 @@ import {
 import { FaPhoneAlt } from 'react-icons/fa'
 import { GrMapLocation } from 'react-icons/gr'
 import dayjs from 'dayjs'
-import { useFirebaseConsultationListener } from '../../utils/firebase/customer'
 import { useAppSelector } from '../../../../redux'
 import { IConsult } from '../../../../types/consultation'
 import { MdCurrencyRupee } from 'react-icons/md'
-import Select from 'react-select'
 import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
 
 const columnHelper = createColumnHelper<IConsult>()
+
 
 const columns = [
     columnHelper.accessor('id', {
@@ -60,17 +61,16 @@ const columns = [
 ]
 
 export default function EnquiryTable() {
-    useFirebaseConsultationListener()
     const { value } = useAppSelector((state) => state.Cms.Consultations)
-    const [pagination, setPagination] = React.useState({
+    const [pagination, setPagination] = useState({
         pageIndex: 0,
         pageSize: 10,
     })
-    const [selectedBudget, setSelectedBudget] = React.useState(null)
-    const [selectedCity, setSelectedCity] = React.useState(null)
+    const [selectedBudget, setSelectedBudget] = useState(null)
+    const [selectedCity, setSelectedCity] = useState(null)
 
     // Filter data based on selected values
-    const filteredData = React.useMemo(() => {
+    const filteredData = useMemo(() => {
         return (value || []).filter((item) => {
             const isBudgetMatch = selectedBudget
                 ? item.budget === selectedBudget.value

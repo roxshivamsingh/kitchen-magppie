@@ -16,6 +16,7 @@
     "@tanstack/react-query": "^5.40.0",
     "@tanstack/react-table": "^8.20.1",
     "@types/lodash": "^4.17.4",
+    "@types/xlsx": "^0.0.36",
     "axios": "^1.7.2",
     "dayjs": "^1.11.12",
     "firebase": "^10.12.2",
@@ -34,6 +35,7 @@
     "react-use": "^17.5.1",
     "sass": "^1.77.8",
     "swiper": "^11.1.4",
+    "xlsx": "^0.18.5",
     "yup": "^1.4.0"
   },
   "devDependencies": {
