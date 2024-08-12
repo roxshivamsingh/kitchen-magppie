@@ -63,14 +63,14 @@ export default function Exporter() {
         // }))
 
         consultations = consultations?.filter(((row) => {
-            if (INIT_FORM.budget.value !== data.budget.value) {
+            if (data.budget.value?.length) {
                 return data.budget.value === row.budget
             }
             return true;
         }))
 
         consultations = consultations?.filter(((row) => {
-            if (INIT_FORM.city.value !== data.city.value) {
+            if (data.city.value?.length) {
                 return data.city.value === row.city
             }
             return true;
