@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TComponentItem } from '../../../../types';
+import { FirebaseCollectionEnum, TComponentItem } from '../../../../types';
 
 interface ILandingSlice {
     value: TComponentItem[];
@@ -18,7 +18,7 @@ const initialState: ILandingSlice = {
 
 type TAction = PayloadAction<TComponentItem[]>
 const LandingSlice = createSlice({
-    name: 'Landing',
+    name: FirebaseCollectionEnum.Landing,
     initialState,
     reducers: {
         setLanding: (state, action: TAction) => {

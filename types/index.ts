@@ -6,4 +6,5 @@ export * from "./storage"
 export * from "./route"
 export * from "./toast"
 export * from "./landing"
+export * from "./firebase"
 export { _ }

@@ -14,13 +14,14 @@ import {
 } from '../../../types/Kitchen'
 import { db } from '../../../../../config/firebase.config'
 import { ImageInput, SimpleDropdown } from '../../../../../components'
+import { FirebaseCollectionEnum } from '../../../../../types'
 
 export default function Form(props: TProps) {
 
     const KitchenActions = useFirebaseCmsKitchenAction()
 
     const generateDocumentId = useMemo(() => {
-        const colRef = collection(db, 'kitchens')
+        const colRef = collection(db, FirebaseCollectionEnum.Kitchen)
         const docRef = doc(colRef)
         return docRef.id
     }, [])
