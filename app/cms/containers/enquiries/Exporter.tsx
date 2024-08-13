@@ -1,6 +1,5 @@
 import Select from 'react-select'
 import { utils, writeFile } from 'xlsx';
-
 import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
 import { useAppSelector } from '../../../../redux'
 import { CONSULTATION_COLUMN_HEADER_OPTIONS, IConsult } from '../../../../types/consultation';
@@ -8,23 +7,6 @@ import { PiMicrosoftExcelLogoDuotone } from "react-icons/pi";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { GrPowerReset } from "react-icons/gr";
 import { _ } from '../../../../types';
-// import { CONSULTATION_COLUMN_HEADER_OPTIONS } from '../../../../types/consultation'
-// import { _ } from '../../../../types'
-
-type TValue = { value: string, label: string } | null
-const INIT_TVALUE: TValue = { value: '', label: '' }
-type TForm = {
-    startIndex: string,
-    endIndex: string,
-    budget: TValue,
-    city: TValue
-}
-const INIT_FORM: TForm = {
-    startIndex: '',
-    endIndex: '',
-    budget: INIT_TVALUE,
-    city: INIT_TVALUE
-}
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -216,4 +198,18 @@ const APPLY_FILTER = (consultations: IConsult[], data: TForm) => {
         writeFile(workbook, `enquiries-${+new Date()}.xlsx`);
         console.log(consultations)
     }
+}
+type TValue = { value: string, label: string } | null
+const INIT_TVALUE: TValue = { value: '', label: '' }
+type TForm = {
+    startIndex: string,
+    endIndex: string,
+    budget: TValue,
+    city: TValue
+}
+const INIT_FORM: TForm = {
+    startIndex: '',
+    endIndex: '',
+    budget: INIT_TVALUE,
+    city: INIT_TVALUE
 }
