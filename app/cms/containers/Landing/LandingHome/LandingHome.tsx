@@ -1,6 +1,8 @@
 import { useCallback, useMemo, useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
 import _ from 'lodash'
+import { Link, useNavigate } from 'react-router-dom'
+
 //====================================================================
 
 import { Search } from '../../../components'
@@ -18,12 +20,12 @@ import {
     TComponentItem,
 } from '../../../../../types'
 import { useFirebaseLandingListener } from '../../../utils/firebase'
-import { Link } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 // import CustomDumpButton from '../../../components/Dump/CustomDumpButton'
 
 export function LandingHome() {
     useFirebaseLandingListener()
+    const navigate = useNavigate()
     const { loading, value } = useAppSelector((state) => state.Cms.Landing)
     const meta = useMemo(() => COMPONENT_META(value), [value])
     const [corpus, setCorpus] = useState(INIT_CORPUS)
@@ -35,41 +37,36 @@ export function LandingHome() {
     }, [])
 
     const components = useMemo(() => {
-        return _.sortBy(
-            value?.filter((item) =>
-                corpus.search?.length
-                    ? _.lowerCase(item.name)?.includes(
-                          _.lowerCase(corpus.search)
-                      )
-                    : true
-            ),
-            'orderId'
-        )
+        return _.sortBy(value?.filter((item) =>
+            corpus.search?.length
+                ? _.lowerCase(item.name)?.includes(
+                    _.lowerCase(corpus.search)
+                )
+                : true
+        ), 'orderId')
     }, [corpus.search, value])
 
     const renderDeleteConfirmationDialog = useMemo(() => {
-        return (
-            <CustomConfirmationDialog
-                show={corpus.confirmation.open}
-                variant="danger"
-                text={{
-                    header: corpus.confirmation.text.header,
-                    remark: corpus.confirmation.text.remark,
-                }}
-                onHide={() => {
-                    setCorpus((prev) => ({
-                        ...prev,
-                        confirmation: INIT_CONFIRMATION,
-                    }))
-                }}
-                onConfirm={() => {
-                    setCorpus((prev) => ({
-                        ...prev,
-                        confirmation: INIT_CONFIRMATION,
-                    }))
-                }}
-            />
-        )
+        return (<CustomConfirmationDialog
+            show={corpus.confirmation.open}
+            variant="danger"
+            text={{
+                header: corpus.confirmation.text.header,
+                remark: corpus.confirmation.text.remark,
+            }}
+            onHide={() => {
+                setCorpus((prev) => ({
+                    ...prev,
+                    confirmation: INIT_CONFIRMATION,
+                }))
+            }}
+            onConfirm={() => {
+                setCorpus((prev) => ({
+                    ...prev,
+                    confirmation: INIT_CONFIRMATION,
+                }))
+            }}
+        />)
     }, [corpus.confirmation])
 
     const onClickRemove = useCallback((item: TComponentItem) => {
@@ -86,32 +83,31 @@ export function LandingHome() {
             },
         }))
     }, [])
-    const onClickEdit = useCallback(
-        (value: TComponentItem) => {
-            onChangeModal({
-                action: 'edit',
-                open: true,
-                value,
-            })
-        },
-        [onChangeModal]
-    )
+
+    // const onClickEdit = useCallback(
+    //     (value: TComponentItem) => {
+    //         onChangeModal({
+    //             action: 'edit',
+    //             open: true,
+    //             value,
+    //         })
+    //     },
+    //     [onChangeModal]
+    // )
     const renderActionModal = useMemo(() => {
-        return (
-            <CustomSimpleModal
-                show={corpus.modal.open}
-                onHide={() => {
-                    onChangeModal(INIT_CORPUS_MODAL)
-                }}
-                label={`${_.upperFirst(corpus.modal.action)} Component`}
-            >
-                <ComponentActionForm
-                    mode={corpus.modal.action}
-                    item={corpus.modal.value}
-                    meta={meta}
-                />
-            </CustomSimpleModal>
-        )
+        return (<CustomSimpleModal
+            show={corpus.modal.open}
+            onHide={() => {
+                onChangeModal(INIT_CORPUS_MODAL)
+            }}
+            label={`${_.upperFirst(corpus.modal.action)} Component`}
+        >
+            <ComponentActionForm
+                mode={corpus.modal.action}
+                item={corpus.modal.value}
+                meta={meta}
+            />
+        </CustomSimpleModal>)
     }, [
         corpus.modal.action,
         corpus.modal.open,
@@ -149,7 +145,7 @@ export function LandingHome() {
                                         key={i}
                                         item={item}
                                         onEdit={() => {
-                                            onClickEdit(item)
+                                            navigate(`/cms/landing/component/${item.id}/edit`)
                                         }}
                                         onRemove={() => {
                                             onClickRemove(item)
@@ -169,7 +165,8 @@ export function LandingHome() {
                 className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 cursor-pointer focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900
                    flex gap-3"
                 onClick={() => {
-                    onChangeModal({ open: true, action: 'create' })
+                    navigate('/cms/landing/component/create')
+                    // onChangeModal({ open: true, action: 'create' })
                 }}
             >
                 <FaPlus className="w-3 h-3 my-auto" />

@@ -42,7 +42,7 @@ export default function LandingPage() {
             onHide={() => {
                 setCorpus((prev) => ({ ...prev, confirmation: INIT_CONFIRMATION }))
             }} onConfirm={() => {
-                console.log(corpus.confirmation)
+                // console.log(corpus.confirmation)
                 setCorpus((prev) => ({ ...prev, confirmation: INIT_CONFIRMATION }))
 
             }} />)
@@ -102,8 +102,6 @@ export default function LandingPage() {
                 <FaPlus className="w-3 h-3 my-auto" />
                 Add Component
             </div>
-
-
             {renderDeleteConfirmationDialog}
             <CustomSimpleModal
                 show={corpus.modal.open}

@@ -14,7 +14,6 @@ export type TComponentLink = { icon: string, bg: string, illustration: string }
 
 export type TComponentMediaItem = { link: string, typography: TComponentTypography }
 
-
 export type TComponentItem = {
     orderId: number,
     id: string,

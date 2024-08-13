@@ -67,7 +67,6 @@ export default function Exporter() {
         }, 3000)
     })
 
-    console.log(values)
     return (
         <div className="w-1/4 relative">
             <h1 className="text-3xl mb-4">Export Enquiries</h1>
@@ -200,7 +199,6 @@ const APPLY_FILTER = (consultations: IConsult[], data: TForm) => {
     }))
 
     if (consultations?.length) {
-        console.log(consultations)
         const header = _.map(CONSULTATION_COLUMN_HEADER_OPTIONS, 'label')
 
         const filteredValues = consultations?.map((row, i) => ({
@@ -214,6 +212,5 @@ const APPLY_FILTER = (consultations: IConsult[], data: TForm) => {
         const workbook = utils.book_new();
         utils.book_append_sheet(workbook, worksheet, 'MAIN');
         writeFile(workbook, `enquiries-${+new Date()}.xlsx`);
-        console.log(consultations)
     }
 }
