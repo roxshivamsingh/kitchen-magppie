@@ -20,7 +20,6 @@ export default function ComponentCreateEditForm(props: TProps) {
     })
 
     const values = watch()
-    console.log(values)
 
     const onSubmit = handleSubmit((data) => {
         console.log(data)

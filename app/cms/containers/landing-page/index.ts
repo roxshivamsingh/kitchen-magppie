@@ -1,3 +1,4 @@
 import SectionCreateEdit from './SectionCreateEdit'
 import { LandingPage } from './LandingPage'
-export { SectionCreateEdit, LandingPage }
+import LandingAction from '../Landing/LandingAction'
+export { SectionCreateEdit, LandingPage, LandingAction }

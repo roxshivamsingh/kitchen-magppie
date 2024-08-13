@@ -72,7 +72,7 @@ export default function ComponentActionForm(props: TProps) {
 
     return (
         <FormProvider {...methods}>
-            <form onSubmit={onSubmit} className="bg-white p-6 rounded shadow-md overflow-y-scroll h-[80vh]">
+            <form onSubmit={onSubmit} className="bg-white p-6 roundedoverflow-y-scroll h-[80vh]">
                 <div>
                     <label className="block text-sm font-medium text-gray-700">
                         Order ID
