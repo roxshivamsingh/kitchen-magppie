@@ -6,7 +6,8 @@ import { MdPostAdd } from "react-icons/md";
 
 import {
     COMPONENT_MEDIA_ITEM,
-    TComponentMediaItem
+    TComponentMediaItem,
+    ViewPortEnum
 } from "../../../../../types"
 // import { FormToggle } from "../../../components"
 // import { useCallback } from "react"
@@ -26,8 +27,6 @@ export default function FormViewPortMedia(props: TProps) {
         }
         return ''
     }, [errors])
-    console.log(props)
-
     return <div className="flex flex-col gap-2">
 
         {/* <div className=""> */}
@@ -54,7 +53,10 @@ export default function FormViewPortMedia(props: TProps) {
                     onClick={() => {
                         const currentGallery: TComponentMediaItem[] = [
                             ...values.gallery,
-                            COMPONENT_MEDIA_ITEM
+                            {
+                                ...COMPONENT_MEDIA_ITEM,
+                                viewport: props.variant as ViewPortEnum
+                            },
                         ]
                         setValue('gallery', currentGallery)
                     }}
@@ -67,6 +69,17 @@ export default function FormViewPortMedia(props: TProps) {
                 const renderTypography = (<div key={i}>
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700">
+                            Order ID
+                        </label>
+                        <input
+                            type="text"
+                            {...register(`gallery.${i}.orderId`)}
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        />
+                        {renderErrorMessage(`gallery.${i}.typography.secondaryDescription`)}
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700">
                             Main
                         </label>
                         <input
@@ -76,44 +89,8 @@ export default function FormViewPortMedia(props: TProps) {
                         />
                         {renderErrorMessage(`gallery.${i}.typography.main`)}
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Secondary
-                        </label>
-                        <input
-                            type="text"
-                            {...register(`gallery.${i}.typography.secondary`)}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                        {renderErrorMessage(`gallery.${i}.typography.secondary`)}
 
-                    </div>
 
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Subtitle
-                        </label>
-                        <input
-                            type="text"
-                            {...register(`gallery.${i}.typography.subtitle`)}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                        {renderErrorMessage(`gallery.${i}.typography.subtitle`)}
-
-                    </div>
-
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Action
-                        </label>
-                        <input
-                            type="text"
-                            {...register(`gallery.${i}.typography.action`)}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                        {renderErrorMessage(`gallery.${i}.typography.action`)}
-
-                    </div>
 
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700">
@@ -127,17 +104,7 @@ export default function FormViewPortMedia(props: TProps) {
                         {renderErrorMessage(`gallery.${i}.typography.description`)}
                     </div>
 
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Secondary Description
-                        </label>
-                        <input
-                            type="text"
-                            {...register(`gallery.${i}.typography.secondaryDescription`)}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                        {renderErrorMessage(`gallery.${i}.typography.secondaryDescription`)}
-                    </div>
+
                 </div>
                 )
                 return (<div key={i}>

@@ -15,9 +15,17 @@ export enum ViewPortEnum {
     Mobile = 'mobile',
     Desktop = 'desktop'
 }
+
 type TViewPort = ViewPortEnum.None | ViewPortEnum.Mobile | ViewPortEnum.Desktop
 
-export type TComponentMediaItem = { link: string, typography: TComponentTypography, viewport: TViewPort }
+type TComponentMediaTypography = { main: string, description: string }
+
+export type TComponentMediaItem = {
+    orderId: string,
+    link: string,
+    typography: TComponentMediaTypography,
+    viewport: TViewPort
+}
 
 export type TComponentItem = {
     orderId: number,
@@ -47,6 +55,8 @@ export const INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY: TComponentTypography = {
     secondaryDescription: '',
     action: '',
 }
+export const INIT_COMPNENT_MEDIA_TYPOGRAPHY: TComponentMediaTypography = { main: '', description: '' }
+
 const INIT_CUSTOMER_SITE_COMPONENT_LINK: TComponentLink = {
     icon: '',
     bg: '',
@@ -77,7 +87,8 @@ const _prev = INIT_CUSTOMER_SITE_COMPONENT
 
 
 export const COMPONENT_MEDIA_ITEM: TComponentMediaItem = {
-    typography: INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY,
+    orderId: '',
+    typography: INIT_COMPNENT_MEDIA_TYPOGRAPHY,
     link: "",
     viewport: ViewPortEnum.None
 }
@@ -93,266 +104,131 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
         icons: [],
         gallery: [
             {
-                typography: {
-                    main: "",
-                    secondary: "1",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
                 viewport: ViewPortEnum.Mobile,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fmobile%2Fone.png?alt=media&token=049d4bc2-be2d-49b2-a309-0fa68aeb9e5e"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "2",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Mobile,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fmobile%2Ftwo.png?alt=media&token=4c26a865-d923-434b-9cab-117d1b0ad193"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "3",
-                    subtitle: "",
-                    description: "2",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Mobile,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fmobile%2Fthree.png?alt=media&token=63e10c99-ea01-4b74-984d-13ad5d492c40"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "4",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Mobile,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fmobile%2Ffour.png?alt=media&token=9d9639d1-93a9-4b01-ac25-068a71e2d673"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "5",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
                 viewport: ViewPortEnum.Mobile,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fmobile%2Ffive.png?alt=media&token=c9626bb0-9711-4249-816a-58879c75bacb"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "6",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "2",
-                    action: "1"
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Mobile,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fmobile%2Fgallery-9.png?alt=media&token=37ba9696-83b0-4de6-a1be-fa155a70814b"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "7",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "2",
-                    action: "1"
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Mobile,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fmobile%2Fgallery-10.png?alt=media&token=cbbc502c-b711-486a-9568-a17e365c0d2f"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "8",
-                    subtitle: "",
-                    description: "2",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Mobile,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fmobile%2Fgallery-8.png?alt=media&token=44cadc12-9a7c-4f07-8371-a88a3bd3f91d"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "9",
-                    subtitle: "",
-                    description: "2",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Mobile,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fmobile%2Fnine.png?alt=media&token=00974493-92b9-44d0-9fb1-0b159bef33ee"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "10",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Mobile,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fmobile%2Ften.png?alt=media&token=863c78e6-31c2-455f-b435-09821ae97dfa"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "11",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Mobile,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fmobile%2Feleven.png?alt=media&token=93fc86c3-8415-44a4-8da1-f4706f54ce17"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "1",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Desktop,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fdesktop%2Fone.png?alt=media&token=c8e1a09d-c1f4-4ef6-92e6-1bf9183b48a9"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "2",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Desktop,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fdesktop%2Ftwo.png?alt=media&token=65f3ab3a-3a25-4339-8f10-48e09f90f4c8"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "3",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "2",
-                    action: "1"
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Desktop,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fdesktop%2Fgallery-8.png?alt=media&token=ff366f8b-c2f0-4172-b987-69df0622c10f"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "4",
-                    subtitle: "",
-                    description: "2",
-                    secondaryDescription: "0",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Desktop,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fdesktop%2Ffour.png?alt=media&token=6e8ae84f-0b77-4a83-af96-fa0ff9987f8e"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "5",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Desktop,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fdesktop%2Ffive.png?alt=media&token=78a5a648-e2ff-4520-8532-73c6860309a7"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "6",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Desktop,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fdesktop%2Fsix.png?alt=media&token=c9973ccc-fbdd-43c9-90b8-ff3c5eabb445"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "7",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Desktop,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fdesktop%2Fgallery-10.png?alt=media&token=68ff2b01-ee53-4e63-bed0-0f10d5ce20fe"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "8",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "2",
-                    action: "1"
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Desktop,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fdesktop%2Fgallery-9.png?alt=media&token=b5d21521-e127-4897-a002-d4d0d8a9d484"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "9",
-                    subtitle: "",
-                    description: "2",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Desktop,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fdesktop%2Fnine.png?alt=media&token=e4af06a9-eaeb-4fc5-b2bf-27ed7dc4551b"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "10",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
+
                 viewport: ViewPortEnum.Desktop,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fdesktop%2Ften.png?alt=media&token=c482e821-f184-4fec-a7c1-8a329a92ee81"
             },
             {
-                typography: {
-                    main: "",
-                    secondary: "11",
-                    subtitle: "",
-                    description: "1",
-                    secondaryDescription: "1",
-                    action: ""
-                },
+                ...COMPONENT_MEDIA_ITEM,
                 viewport: ViewPortEnum.Desktop,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fgallery%2Fdesktop%2Feleven.png?alt=media&token=949a951f-b434-4ad2-9433-75646b73c116"
             }
@@ -364,17 +240,15 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
             {
                 ...COMPONENT_MEDIA_ITEM,
                 typography: {
-                    ..._prev.typography,
+                    ...COMPONENT_MEDIA_ITEM.typography,
                     main: "100% Made in Stone",
-                    subtitle: "1",
                 },
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fqualities%2Fimage1.png?alt=media&token=d99b7637-3af2-41c5-8275-d81b1b3b6743"
             },
             {
                 ...COMPONENT_MEDIA_ITEM,
                 typography: {
-                    ..._prev.typography,
-                    subtitle: "2",
+                    ...COMPONENT_MEDIA_ITEM.typography,
                     main: "0% Wood",
                 },
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fqualities%2Fimage2.png?alt=media&token=b82d73f3-39b2-478a-94df-962a80ab065e"
@@ -384,8 +258,8 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
 
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fqualities%2Fimage3.png?alt=media&token=8d19b1ec-ccef-4a2c-8283-f57a32726629",
                 typography: {
-                    ..._prev.typography,
-                    subtitle: "3",
+                    ...COMPONENT_MEDIA_ITEM.typography,
+
                     main: "25 years Guarantee",
                 }
             },
@@ -394,18 +268,18 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
 
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fqualities%2Fimage4.png?alt=media&token=21250a83-3408-44d0-b5be-5cfe3d613193",
                 typography: {
-                    ..._prev.typography,
+                    ...COMPONENT_MEDIA_ITEM.typography,
                     main: "75 Complimentary Services",
-                    subtitle: "4"
+
                 }
             },
             {
                 ...COMPONENT_MEDIA_ITEM,
 
                 typography: {
-                    ..._prev.typography,
+                    ...COMPONENT_MEDIA_ITEM.typography,
                     main: "Termite Safe",
-                    subtitle: "5",
+
                 },
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fqualities%2Fimage5.png?alt=media&token=43feb814-0f6e-46b8-b1c9-38619a478501"
             },
@@ -413,16 +287,15 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
                 ...COMPONENT_MEDIA_ITEM,
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fqualities%2Fimage6.png?alt=media&token=b464b837-33d5-498e-b11c-3a03b0363e6c",
                 typography: {
-                    ..._prev.typography,
-                    subtitle: "6",
+                    ...COMPONENT_MEDIA_ITEM.typography,
                     main: "Bacteria Safe",
                 }
             },
             {
                 ...COMPONENT_MEDIA_ITEM,
                 typography: {
-                    ..._prev.typography,
-                    subtitle: "7",
+                    ...COMPONENT_MEDIA_ITEM.typography,
+
                     main: "Cancer Safe"
                 },
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fqualities%2Fimage7.png?alt=media&token=94a6f208-41e8-489a-a634-f0a220b898e1"
@@ -430,8 +303,8 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
             {
                 ...COMPONENT_MEDIA_ITEM,
                 typography: {
-                    ..._prev.typography,
-                    subtitle: "8",
+                    ...COMPONENT_MEDIA_ITEM.typography,
+
                     main: "Fire Safe",
                 },
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fqualities%2Fimage8.png?alt=media&token=da469140-ef48-408a-944a-2bf3143942bf"
@@ -444,259 +317,150 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
         },
         isGallery: true,
     },
-    {
-        ..._prev,
-        name: 'client-component',
-        typography: {
-            ..._prev.typography,
-            main: `The ones who chose <span class="font-bold">MAGPPIE</span> safe kitchens`
-        },
-        isGallery: true,
-        // Column|Row|Height(optional)
-        gallery: [
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fdhoni.png?alt=media&token=9ecab41b-c77f-4c6f-bf66-8208d031a53a",
-                typography: {
-                    main: "MS Dhoni",
-                    secondary: "0|0",
-                    subtitle: "Cricket Captain",
-                    description: "1|1",
-                    secondaryDescription: "2|2",
-                    action: "|"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fpriya.png?alt=media&token=72d87da9-2d57-4778-afac-69cea7edcbcb",
-                typography: {
-                    main: "Priya Paul",
-                    secondary: "7|1",
-                    subtitle: "Chairperson, Park",
-                    description: "1|1",
-                    secondaryDescription: "1|1",
-                    action: "|"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Farshad.png?alt=media&token=ff4b4378-54c7-4071-93b3-13ffdb231ae2",
-                typography: {
-                    main: "Arshad Warsi",
-                    secondary: "1|2",
-                    subtitle: "Actor",
-                    description: "1|1",
-                    secondaryDescription: "1|1",
-                    action: "|"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fchiranjeevi.png?alt=media&token=f4236a9a-b719-43f6-9799-486d59d754b9",
-                typography: {
-                    main: "Chiranjeevi",
-                    secondary: "3|3",
-                    subtitle: "Actor",
-                    description: "1|1",
-                    secondaryDescription: "1|1",
-                    action: "1|"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fharbajan.png?alt=media&token=9eed04d5-22c6-4ec7-b9a4-0a214d45ddae",
-                typography: {
-                    main: "Harbhajan Singh",
-                    secondary: "2|4",
-                    subtitle: "Cricketer",
-                    description: "1|1",
-                    secondaryDescription: "1|1",
-                    action: "|"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fvandana.png?alt=media&token=b7647b5e-c5c2-4ac8-9c28-b2dc3c59abf8",
-                typography: {
-                    main: "Vandana Munjal",
-                    secondary: "5|5",
-                    subtitle: "Owner, Hero",
-                    description: "1|1",
-                    secondaryDescription: "1|1",
-                    action: "|"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fsubhash.png?alt=media&token=bbab07d1-b852-4f86-b463-13a336c6af38",
-                typography: {
-                    main: "Subhash Chandra",
-                    secondary: "10|6",
-                    subtitle: "Chairman, ZeeTv",
-                    description: "1|1",
-                    secondaryDescription: "1|1",
-                    action: "1|1"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Franbir.png?alt=media&token=6b76c6b1-80dd-4d5a-923c-38c2b9f36e10",
-                typography: {
-                    main: "Ranbir Kapoor",
-                    secondary: "4|7",
-                    subtitle: "Actor",
-                    description: "1|1",
-                    secondaryDescription: "2|2",
-                    action: "|"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fsunil.png?alt=media&token=cb7e7e13-4577-4f46-bd22-50dd992b81bd",
-                typography: {
-                    main: "Sunil Bharti Mittal",
-                    secondary: "6|8",
-                    subtitle: "Owner, Airtel",
-                    description: "1|1",
-                    secondaryDescription: "2|2",
-                    action: "|"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fkamal.png?alt=media&token=8330d064-db96-44c2-8cc1-1046fbd54d47",
-                typography: {
-                    main: "Kamal Nath",
-                    secondary: "9|9",
-                    subtitle: "Member of Parliament, India",
-                    description: "1|1",
-                    secondaryDescription: "1|1",
-                    action: "1|1"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fnatasha.png?alt=media&token=3e9379d5-0f7a-4b4a-bd7a-783ded993f5f",
-                typography: {
-                    main: "Natasha Poonawala",
-                    secondary: "8|10",
-                    subtitle: "Philanthropist",
-                    description: "1|1",
-                    secondaryDescription: "1|1",
-                    action: "|"
-                }
-            }
-        ]
-    },
-    {
-        ..._prev,
-        name: "feedback-component",
-        gallery: [
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Franbir.png?alt=media&token=08d63e95-7d2e-4d73-bf50-56aa64798556",
-                typography: {
-                    secondaryDescription: "",
-                    subtitle: "Actor",
-                    description: "",
-                    secondary: "",
-                    action: "",
-                    main: "Ranbir Kapoor"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fharbajan.png?alt=media&token=74829590-e717-4eba-8083-0f2f310be870",
-                typography: {
-                    action: "",
-                    secondary: "",
-                    secondaryDescription: "",
-                    description: "",
-                    subtitle: "Cricketer, Indian Team",
-                    main: "Harbhajan Singh"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                typography: {
-                    secondaryDescription: "",
-                    description: "",
-                    subtitle: "Captain, Indian Cricket Team",
-                    main: "MS Dhoni",
-                    action: "",
-                    secondary: ""
-                },
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fdhoni.png?alt=media&token=d37f9726-a18e-48d3-9877-e08afd77d4a3"
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fwrshad.png?alt=media&token=cc70d597-a871-4490-874f-be4435e826b4",
-                typography: {
-                    action: "",
-                    subtitle: "Actor",
-                    secondaryDescription: "",
-                    secondary: "",
-                    description: "",
-                    main: "Arshad Warsi"
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                typography: {
-                    subtitle: "Chairperson, Park",
-                    action: "",
-                    secondaryDescription: "",
-                    main: "Priya Paul",
-                    description: "",
-                    secondary: ""
-                },
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2FPriya_Paul.png?alt=media&token=52a256b9-a4b0-442e-be9b-c770e26f387b"
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2FSubhash_Chandra.png?alt=media&token=85240335-fa7a-4b46-a94f-2a4634a2bc92",
-                typography: {
-                    subtitle: "Chairman, ZeeTv",
-                    secondary: "",
-                    action: "",
-                    main: "Subhash Chandra",
-                    description: "",
-                    secondaryDescription: ""
-                }
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                typography: {
-                    subtitle: "Actor",
-                    secondaryDescription: "",
-                    description: "",
-                    secondary: "",
-                    main: "Chiranjeevi",
-                    action: ""
-                },
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2FChiranjeevi.png?alt=media&token=146dd141-7425-4f84-b40e-346df083b5c8"
-            },
-            {
-                ...COMPONENT_MEDIA_ITEM,
-                typography: {
-                    action: "",
-                    subtitle: "Owner, Airtel",
-                    secondaryDescription: "",
-                    secondary: "",
-                    description: "",
-                    main: "Sunil Bharti Mittal"
-                },
-                link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2FSunil_Bharti_Mittal.png?alt=media&token=8710940f-34f8-42f7-ac24-aeb701ca9952"
-            }
-        ],
-
-        orderId: 5,
-        typography: {
-            ..._prev.typography,
-            main: "The ones who already <b><em>SWITCHED</em></b>",
-        },
-        isGallery: true,
-    },
+    // {
+    //     ..._prev,
+    //     name: 'client-component',
+    //     typography: {
+    //         ..._prev.typography,
+    //         main: `The ones who chose <span class="font-bold">MAGPPIE</span> safe kitchens`
+    //     },
+    //     isGallery: true,
+    //     // Column|Row|Height(optional)
+    //     gallery: [
+    //         {
+    //             ...COMPONENT_MEDIA_ITEM,
+    //             link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fdhoni.png?alt=media&token=9ecab41b-c77f-4c6f-bf66-8208d031a53a",
+    //             typography: {
+    //                 main: "MS Dhoni",
+    //                 secondary: "0|0",
+    //                 subtitle: "Cricket Captain",
+    //                 description: "1|1",
+    //                 secondaryDescription: "2|2",
+    //                 action: "|"
+    //             }
+    //         },
+    //         {
+    //             ...COMPONENT_MEDIA_ITEM,
+    //             link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fpriya.png?alt=media&token=72d87da9-2d57-4778-afac-69cea7edcbcb",
+    //             typography: {
+    //                 main: "Priya Paul",
+    //                 secondary: "7|1",
+    //                 subtitle: "Chairperson, Park",
+    //                 description: "1|1",
+    //                 secondaryDescription: "1|1",
+    //                 action: "|"
+    //             }
+    //         },
+    //         {
+    //             ...COMPONENT_MEDIA_ITEM,
+    //             link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Farshad.png?alt=media&token=ff4b4378-54c7-4071-93b3-13ffdb231ae2",
+    //             typography: {
+    //                 main: "Arshad Warsi",
+    //                 secondary: "1|2",
+    //                 subtitle: "Actor",
+    //                 description: "1|1",
+    //                 secondaryDescription: "1|1",
+    //                 action: "|"
+    //             }
+    //         },
+    //         {
+    //             ...COMPONENT_MEDIA_ITEM,
+    //             link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fchiranjeevi.png?alt=media&token=f4236a9a-b719-43f6-9799-486d59d754b9",
+    //             typography: {
+    //                 main: "Chiranjeevi",
+    //                 secondary: "3|3",
+    //                 subtitle: "Actor",
+    //                 description: "1|1",
+    //                 secondaryDescription: "1|1",
+    //                 action: "1|"
+    //             }
+    //         },
+    //         {
+    //             ...COMPONENT_MEDIA_ITEM,
+    //             link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fharbajan.png?alt=media&token=9eed04d5-22c6-4ec7-b9a4-0a214d45ddae",
+    //             typography: {
+    //                 main: "Harbhajan Singh",
+    //                 secondary: "2|4",
+    //                 subtitle: "Cricketer",
+    //                 description: "1|1",
+    //                 secondaryDescription: "1|1",
+    //                 action: "|"
+    //             }
+    //         },
+    //         {
+    //             ...COMPONENT_MEDIA_ITEM,
+    //             link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fvandana.png?alt=media&token=b7647b5e-c5c2-4ac8-9c28-b2dc3c59abf8",
+    //             typography: {
+    //                 main: "Vandana Munjal",
+    //                 secondary: "5|5",
+    //                 subtitle: "Owner, Hero",
+    //                 description: "1|1",
+    //                 secondaryDescription: "1|1",
+    //                 action: "|"
+    //             }
+    //         },
+    //         {
+    //             ...COMPONENT_MEDIA_ITEM,
+    //             link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fsubhash.png?alt=media&token=bbab07d1-b852-4f86-b463-13a336c6af38",
+    //             typography: {
+    //                 main: "Subhash Chandra",
+    //                 secondary: "10|6",
+    //                 subtitle: "Chairman, ZeeTv",
+    //                 description: "1|1",
+    //                 secondaryDescription: "1|1",
+    //                 action: "1|1"
+    //             }
+    //         },
+    //         {
+    //             ...COMPONENT_MEDIA_ITEM,
+    //             link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Franbir.png?alt=media&token=6b76c6b1-80dd-4d5a-923c-38c2b9f36e10",
+    //             typography: {
+    //                 main: "Ranbir Kapoor",
+    //                 secondary: "4|7",
+    //                 subtitle: "Actor",
+    //                 description: "1|1",
+    //                 secondaryDescription: "2|2",
+    //                 action: "|"
+    //             }
+    //         },
+    //         {
+    //             ...COMPONENT_MEDIA_ITEM,
+    //             link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fsunil.png?alt=media&token=cb7e7e13-4577-4f46-bd22-50dd992b81bd",
+    //             typography: {
+    //                 main: "Sunil Bharti Mittal",
+    //                 secondary: "6|8",
+    //                 subtitle: "Owner, Airtel",
+    //                 description: "1|1",
+    //                 secondaryDescription: "2|2",
+    //                 action: "|"
+    //             }
+    //         },
+    //         {
+    //             ...COMPONENT_MEDIA_ITEM,
+    //             link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fkamal.png?alt=media&token=8330d064-db96-44c2-8cc1-1046fbd54d47",
+    //             typography: {
+    //                 main: "Kamal Nath",
+    //                 secondary: "9|9",
+    //                 subtitle: "Member of Parliament, India",
+    //                 description: "1|1",
+    //                 secondaryDescription: "1|1",
+    //                 action: "1|1"
+    //             }
+    //         },
+    //         {
+    //             ...COMPONENT_MEDIA_ITEM,
+    //             link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fclients%2Fnatasha.png?alt=media&token=3e9379d5-0f7a-4b4a-bd7a-783ded993f5f",
+    //             typography: {
+    //                 main: "Natasha Poonawala",
+    //                 secondary: "8|10",
+    //                 subtitle: "Philanthropist",
+    //                 description: "1|1",
+    //                 secondaryDescription: "1|1",
+    //                 action: "|"
+    //             }
+    //         }
+    //     ]
+    // },
     {
         ..._prev,
         name: "footer-component",
