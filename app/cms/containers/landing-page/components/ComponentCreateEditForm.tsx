@@ -209,13 +209,11 @@ export default function ComponentCreateEditForm(props: TProps) {
             {/* Is Gallery */}
             <div className="mb-4">
 
-
                 <div className="flex gap-3">
                     Is Gallery
 
                     <CustomToggle
                         onChange={(e) => {
-
                             console.log(e)
                         }} />
                     <input
