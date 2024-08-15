@@ -23,7 +23,7 @@ import { useFirebaseLandingListener } from '../../../utils/firebase'
 // import { Link } from 'react-router-dom'
 // import CustomDumpButton from '../../../components/Dump/CustomDumpButton'
 
-export function LandingHome() {
+export default function LandingHome() {
     useFirebaseLandingListener()
     const navigate = useNavigate()
     const { loading, value } = useAppSelector((state) => state.Cms.Landing)

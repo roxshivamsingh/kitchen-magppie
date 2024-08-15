@@ -1,1 +1,1 @@
-export * from "./LandingHome"
+export { default } from "./LandingHome"

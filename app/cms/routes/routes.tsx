@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { RouteObject } from 'react-router-dom'
 
 //====================================================================
@@ -9,13 +10,15 @@ import {
     KitchenCreateEdit,
     Home,
     User,
-    LandingHome,
-    LandingPage,
-    LandingAction
+    // LandingPage,
 } from '../containers'
 import { useFirebaseCmsAuthListener } from '../utils/firebase'
 import { ProtectedRoute } from '../components'
-import EnquiryPage from '../containers/enquiries/Page'
+import { PageProgress } from '../../../components'
+
+const LandingAction = lazy(() => import('../containers/Landing/LandingAction'))
+const LandingHome = lazy(() => import('../containers/Landing/LandingHome'))
+const EnquiryPage = lazy(() => import('../containers/enquiries/Page'))
 
 export default function CmsRoutes() {
     useFirebaseCmsAuthListener()
@@ -51,25 +54,26 @@ export default function CmsRoutes() {
                 path: '/cms/users',
                 element: <User />,
             },
-            {
-                path: '/cms/landing-page',
-                element: <LandingPage />, // FIXME: To remove this route in future and also container from `cms/landing-page`;
-            },
+            // {
+            //     path: '/cms/landing-page',
+            //     element: <LandingPage />, // FIXME: To remove this route in future and also container from `cms/landing-page`;
+            // },
             {
                 path: '/cms/landing',
-                element: <LandingHome />,
+                element: <Suspense fallback={<PageProgress />}><LandingHome /></Suspense>,
+
             },
             {
                 path: '/cms/landing/component/:id/edit',
-                element: <LandingAction />,
+                element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
             },
             {
                 path: '/cms/landing/component/create',
-                element: <LandingAction />,
+                element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
             },
             {
                 path: '/cms/enquiries',
-                element: <EnquiryPage />,
+                element: <Suspense fallback={<PageProgress />}><EnquiryPage /></Suspense>,
             },
         ],
     } as RouteObject
