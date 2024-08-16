@@ -39,7 +39,7 @@ export function Clients(props: TProps) {
                                     {person.typography.main}
                                 </h3>
                                 <p className="text-center text-xl text-gray-600">
-                                    {person.typography.subtitle}
+                                    {person.typography.description}
                                 </p>
                             </div>
                         </SwiperSlide>

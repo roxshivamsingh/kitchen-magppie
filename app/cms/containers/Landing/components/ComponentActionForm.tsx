@@ -111,12 +111,7 @@ export default function ComponentActionForm(props: TProps) {
                     </div>
                     <FormItemTypography />
                 </MinimalAccordion>
-
-                <MinimalAccordion title='Desktop'>
-                    <FormViewPortMedia variant='desktop' />
-                </MinimalAccordion>
-
-                <MinimalAccordion title='Mobile'>
+                <MinimalAccordion title='Links'>
                     <div className=''>
                         <ImageInput
                             label='Icon'
@@ -153,6 +148,14 @@ export default function ComponentActionForm(props: TProps) {
                     </div>
 
                 </MinimalAccordion>
+
+                <MinimalAccordion title='Desktop'>
+                    <FormViewPortMedia variant='desktop' />
+                </MinimalAccordion>
+                <MinimalAccordion title='Mobile'>
+                    <FormViewPortMedia variant='mobile' />
+                </MinimalAccordion>
+
 
 
                 <button

@@ -65,7 +65,7 @@ export default function FormViewPortMedia(props: TProps) {
                 />
             </div>
 
-            {values.gallery?.map((item, i) => {
+            {values.gallery?.filter((row) => row.viewport === props.variant)?.map((item, i) => {
                 const renderTypography = (<div key={i}>
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700">
