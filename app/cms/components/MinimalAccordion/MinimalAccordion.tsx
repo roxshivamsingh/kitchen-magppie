@@ -6,6 +6,7 @@ export function MinimalAccordion(props: IProps) {
     const onToggle = useCallback(() => { setToggle((prev) => !prev); }, []);
     return (<div className="block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm my-2">
         <button
+            type='button'
             className="w-full flex justify-between items-center p-2 text-left focus:outline-none"
             onClick={onToggle}
         >

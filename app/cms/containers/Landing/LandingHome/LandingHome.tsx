@@ -1,8 +1,7 @@
 import { useCallback, useMemo, useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
-import _ from 'lodash'
 import { Link, useNavigate } from 'react-router-dom'
-
+import { GiScrollQuill } from "react-icons/gi";
 //====================================================================
 
 import { Search } from '../../../components'
@@ -18,12 +17,11 @@ import {
     COMPONENT_META,
     INIT_CUSTOMER_SITE_COMPONENT,
     TComponentItem,
+    _
 } from '../../../../../types'
 import { useFirebaseLandingListener } from '../../../utils/firebase'
-// import { Link } from 'react-router-dom'
-// import CustomDumpButton from '../../../components/Dump/CustomDumpButton'
 
-export function LandingHome() {
+export default function LandingHome() {
     useFirebaseLandingListener()
     const navigate = useNavigate()
     const { loading, value } = useAppSelector((state) => state.Cms.Landing)
@@ -126,8 +124,8 @@ export function LandingHome() {
                     }}
                 />
                 <Link to="/cms/enquiries">
-                    <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-10 flex justify-center items-center w-full">
-                        View Enquiries
+                    <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-10 flex justify-center items-center w-full gap-2">
+                        <GiScrollQuill /> View Enquiries
                     </button>
                 </Link>
             </div>

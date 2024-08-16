@@ -111,12 +111,7 @@ export default function ComponentActionForm(props: TProps) {
                     </div>
                     <FormItemTypography />
                 </MinimalAccordion>
-
-                <MinimalAccordion title='Desktop'>
-                    <FormViewPortMedia variant='desktop' />
-                </MinimalAccordion>
-
-                <MinimalAccordion title='Mobile'>
+                <MinimalAccordion title='Links'>
                     <div className=''>
                         <ImageInput
                             label='Icon'
@@ -154,6 +149,14 @@ export default function ComponentActionForm(props: TProps) {
 
                 </MinimalAccordion>
 
+                <MinimalAccordion title='Desktop'>
+                    <FormViewPortMedia variant='desktop' />
+                </MinimalAccordion>
+                <MinimalAccordion title='Mobile'>
+                    <FormViewPortMedia variant='mobile' />
+                </MinimalAccordion>
+
+
 
                 <button
                     type="submit"
@@ -169,11 +172,11 @@ export default function ComponentActionForm(props: TProps) {
 
 const typographySchema = Yup.object().shape({
     main: Yup.string(),
-    secondary: Yup.string(),
-    subtitle: Yup.string(),
-    action: Yup.string(),
     description: Yup.string(),
-    secondaryDescription: Yup.string(),
+    // secondary: Yup.string(),
+    // subtitle: Yup.string(),
+    // action: Yup.string(),
+    // secondaryDescription: Yup.string(),
 })
 
 const linkSchema = Yup.object().shape({

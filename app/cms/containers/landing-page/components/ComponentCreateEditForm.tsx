@@ -209,13 +209,11 @@ export default function ComponentCreateEditForm(props: TProps) {
             {/* Is Gallery */}
             <div className="mb-4">
 
-
                 <div className="flex gap-3">
                     Is Gallery
 
                     <CustomToggle
                         onChange={(e) => {
-
                             console.log(e)
                         }} />
                     <input
@@ -243,11 +241,15 @@ export default function ComponentCreateEditForm(props: TProps) {
 
 const typographySchema = Yup.object().shape({
     main: Yup.string(),
+    description: Yup.string(),
     secondary: Yup.string(),
     subtitle: Yup.string(),
     action: Yup.string(),
-    description: Yup.string(),
     secondaryDescription: Yup.string(),
+})
+const typographyMediaSchema = Yup.object().shape({
+    main: Yup.string(),
+    description: Yup.string(),
 })
 
 const linkSchema = Yup.object().shape({
@@ -258,7 +260,7 @@ const linkSchema = Yup.object().shape({
 
 const sectionImageItemSchema = Yup.object().shape({
     link: Yup.string().url('Not a valid URL'),
-    typography: typographySchema,
+    typography: typographyMediaSchema,
 })
 
 const schema = Yup.object().shape({
