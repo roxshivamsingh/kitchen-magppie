@@ -6,6 +6,7 @@ import { CircularProgress } from ".."
 
 export default function ImageInput(props: TImageActionProps) {
 
+    //TODO: To add description in single photo;
     const [corpus, setCorpus] = useState<TCorpus>({
         ...INIT_CORPUS,
         values: props.values || []
@@ -45,14 +46,15 @@ export default function ImageInput(props: TImageActionProps) {
         {props.label?.length ? (<label className="block text-sm font-medium text-gray-700">
             {props.label}
         </label>) : ''}
-        <input
+        {(!props.isMulti && !corpus.values?.length) ? (<input
             className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
             multiple={props.isMulti}
             onChange={onChangeInput}
             value={[]}
             type="file"
             accept="image/*"
-        />
+        />) : ''}
+
         <div className="flex flex-wrap">
             {corpus.loading ? <CircularProgress /> : corpus?.values?.map((link, i) => {
                 return <div key={i} className="relative my-2 ">
