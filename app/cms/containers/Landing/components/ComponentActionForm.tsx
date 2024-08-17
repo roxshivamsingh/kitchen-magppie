@@ -12,18 +12,26 @@ import { CiCircleAlert } from "react-icons/ci";
 import {
     INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY,
     TComponentItem,
-    TComponentMeta
+    TComponentMeta,
+    _
 } from '../../../../../types'
 import { ImageInput } from '../../../../../components'
 import { MinimalAccordion } from '../../../components'
-import _ from '../../../../../types/lodash'
 import {
     FormTypography,
     FormItemTypography,
     FormViewPortMedia
 } from '.'
 
+
 export default function ComponentActionForm(props: TProps) {
+
+    // TODO: To check cms on dummy collection;
+    // TODO: To add order id globally and inside every images;
+    // TODO: If we have create action then we have to ensure about global order id will be the unique and next manner;
+    // TODO: To ensure the gallery array is working properly;
+
+
     const { meta, item } = props;
     const schema = Yup.object().shape({
         orderId: Yup.number()
@@ -59,6 +67,8 @@ export default function ComponentActionForm(props: TProps) {
     } = methods
 
     const values = methods.watch()
+
+
 
     const onSubmit = handleSubmit((data) => {
         console.log(data)
@@ -163,9 +173,6 @@ export default function ComponentActionForm(props: TProps) {
                 <MinimalAccordion title='Mobile'>
                     <FormViewPortMedia variant='mobile' />
                 </MinimalAccordion>
-
-
-
                 <button
                     type="submit"
                     className="w-full p-3 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

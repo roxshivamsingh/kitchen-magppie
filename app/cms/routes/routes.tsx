@@ -47,11 +47,11 @@ export default function CmsRoutes() {
                 element: <SignIn />,
             },
             {
-                path: '/cms/projects',
+                path: 'projects',
                 element: <Projects />,
             },
             {
-                path: '/cms/users',
+                path: 'users',
                 element: <User />,
             },
             // {
@@ -59,20 +59,19 @@ export default function CmsRoutes() {
             //     element: <LandingPage />, // FIXME: To remove this route in future and also container from `cms/landing-page`;
             // },
             {
-                path: '/cms/landing',
+                path: 'landing',
                 element: <Suspense fallback={<PageProgress />}><LandingHome /></Suspense>,
-
             },
             {
-                path: '/cms/landing/component/:id/edit',
+                path: 'landing/component/:id/edit',
                 element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
             },
             {
-                path: '/cms/landing/component/create',
+                path: 'landing/component/create',
                 element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
             },
             {
-                path: '/cms/enquiries',
+                path: 'enquiries',
                 element: <Suspense fallback={<PageProgress />}><EnquiryPage /></Suspense>,
             },
         ],
