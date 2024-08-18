@@ -62,7 +62,6 @@ export default function Exporter() {
             APPLY_FILTER(value, data)
             reset()
             setToggle((prev) => ({ ...prev, isLoading: false }))
-
         }, 3000)
     })
 

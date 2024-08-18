@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import * as Yup from 'yup'
 import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { IoCreateOutline } from "react-icons/io5";
 //====================================================================
 
 import {
@@ -27,6 +28,7 @@ import { useAppSelector } from '../../../../../redux'
 
 export default function ComponentActionForm(props: TProps) {
 
+    const [corpus, setCorpus] = useState({ isSubmitting: false })
     const { item } = props;
     // TODO: To check cms on dummy collection;
     // TODO: To add order id globally and inside every images;
@@ -74,8 +76,6 @@ export default function ComponentActionForm(props: TProps) {
 
     }, [filteredOrder.prefer, item, props.mode])
 
-
-
     const methods = useForm({
         defaultValues,
         // mode: 'onBlur',
@@ -96,23 +96,23 @@ export default function ComponentActionForm(props: TProps) {
 
     const values = watch()
 
-
-
-
     const CustomerAction = useFirebaseCustomerSiteComponentAction()
     const onSubmit = handleSubmit((data: TComponentItem) => {
 
-        if (isCreateMode) {
-            CustomerAction.add(data)
+        setCorpus((prev) => ({ ...prev, isSubmitting: true }))
+        setTimeout(() => {
+            if (isCreateMode) {
+                CustomerAction.add(data)
+            } else {
+                CustomerAction.edit({
+                    ...data,
+                    id: item.id
+                })
 
-        } else {
-            CustomerAction.edit({
-                ...data,
-                id: item.id
-            })
+            }
+            setCorpus((prev) => ({ ...prev, isSubmitting: false }))
 
-        }
-        console.log("submitted")
+        }, 2000)
     })
 
     const renderErrorMessage = useCallback((field: string) => {
@@ -216,10 +216,12 @@ export default function ComponentActionForm(props: TProps) {
                     <FormViewPortMedia variant='mobile' />
                 </MinimalAccordion>
                 <button
+                    disabled={corpus.isSubmitting}
                     type="submit"
-                    className="w-full p-3 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className=" flex justify-center gap-3 flex-row align-middle w-full p-3 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                    Create Component
+                    {isCreateMode ? 'Create' : 'Edit'} Component
+                    {corpus.isSubmitting ? <AiOutlineLoading3Quarters className='text-xl animate-spin' /> : <IoCreateOutline className='text-xl' />}
                 </button>
             </form>
         </FormProvider>
