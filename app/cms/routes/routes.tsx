@@ -7,7 +7,7 @@ import {
     Projects,
     Kitchen,
     SignIn,
-    KitchenCreateEdit,
+    // KitchenCreateEdit,
     Home,
     User,
     // LandingPage,
@@ -18,8 +18,8 @@ import { PageProgress } from '../../../components'
 import CustomerLayout from '../containers/Landing/CustomerLayout'
 
 const LandingAction = lazy(() => import('../containers/Landing/LandingAction'))
-const LandingHome = lazy(() => import('../containers/Landing/LandingHome'))
-const EnquiryPage = lazy(() => import('../containers/enquiries/Page'))
+const SiteComponentDashboard = lazy(() => import('../containers/Landing/LandingHome'))
+const EnquiryDashboard = lazy(() => import('../containers/enquiries/Page'))
 
 export default function CmsRoutes() {
     useFirebaseCmsAuthListener()
@@ -35,10 +35,10 @@ export default function CmsRoutes() {
                 path: 'kitchens',
                 element: <Kitchen />,
             },
-            {
-                path: 'kitchen/create',
-                element: <KitchenCreateEdit />,
-            },
+            // {
+            //     path: 'kitchen/create',
+            //     element: <KitchenCreateEdit />,
+            // },
             // {
             //     path: 'kitchen/:id/edit',
             //     element: (<KitchenCreateEdit />),
@@ -65,7 +65,7 @@ export default function CmsRoutes() {
                 children: [
                     {
                         path: '',
-                        element: (<Suspense fallback={<PageProgress />}><LandingHome /></Suspense>),
+                        element: (<Suspense fallback={<PageProgress />}><SiteComponentDashboard /></Suspense>),
                     },
                     {
                         path: ':id/edit',
@@ -80,7 +80,7 @@ export default function CmsRoutes() {
 
             {
                 path: 'enquiries',
-                element: <Suspense fallback={<PageProgress />}><EnquiryPage /></Suspense>,
+                element: <Suspense fallback={<PageProgress />}><EnquiryDashboard /></Suspense>,
             },
         ],
     } as RouteObject
