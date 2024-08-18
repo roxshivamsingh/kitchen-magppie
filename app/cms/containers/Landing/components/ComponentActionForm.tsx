@@ -5,7 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoCreateOutline } from "react-icons/io5";
 import { CiDesktop, CiMobile1 } from "react-icons/ci";
-
+import { BsWindowStack } from "react-icons/bs";
+import { RiText } from "react-icons/ri";
+import { MdTextFields } from "react-icons/md";
 //====================================================================
 
 import {
@@ -26,7 +28,7 @@ import {
     FormViewPortMedia
 } from '.'
 import { FieldCautation } from '.';
-import { useFirebaseCustomerSiteComponentAction } from '../../../utils/firebase/customer/use-firebase-customer-actions'
+import { useFirebaseCustomerSiteComponentAction } from '../../../utils/firebase/customer'
 import { useAppSelector } from '../../../../../redux'
 
 
@@ -156,10 +158,10 @@ export default function ComponentActionForm(props: TProps) {
                     />
                     {renderErrorMessage('name')}
                 </div>
-                <MinimalAccordion isExpanded title='Typography'>
+                <MinimalAccordion isExpanded title='Typography' icon={<RiText />} >
                     <FormTypography />
                 </MinimalAccordion>
-                <MinimalAccordion isExpanded title='Items'>
+                <MinimalAccordion isExpanded title='Items' icon={<MdTextFields />}>
                     <div className="mb-3">
                         <FieldCautation label='Array Field'
                             onClickAdd={() => {
@@ -177,7 +179,7 @@ export default function ComponentActionForm(props: TProps) {
                     </div>
                     <FormItemTypography />
                 </MinimalAccordion>
-                <MinimalAccordion title='Links'>
+                <MinimalAccordion title='Links' icon={<BsWindowStack />}>
                     <div className=''>
                         <ImageInput
                             label='Icon'
