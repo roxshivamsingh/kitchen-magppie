@@ -8,7 +8,7 @@ import _ from "../../../../../types/lodash"
 
 export default function FormItemTypography() {
 
-    const methods = useFormContext<{ items: TComponentTypography[] }>()
+    const methods = useFormContext<{ items: (TComponentTypography & { orderId: string })[] }>()
     const { register, formState: { errors }, watch, setValue } = methods
     const values = watch()
 
@@ -28,6 +28,18 @@ export default function FormItemTypography() {
                 <div className='text-xl text-gray-500 italic'>#{i + 1}.</div>
                 <div className='w-full'>
                     <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Order ID
+                        </label>
+                        <input
+                            type="text"
+                            {...register(`items.${i}.orderId`)}
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        />
+                        {renderErrorMessage(`items.${i}.orderId`)}
+                    </div>
+                    <div className="mb-4">
+
                         <label className="block text-sm font-medium text-gray-700">
                             Main
                         </label>

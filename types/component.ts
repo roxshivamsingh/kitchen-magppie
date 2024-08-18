@@ -15,8 +15,12 @@ export enum ViewPortEnum {
     Mobile = 'mobile',
     Desktop = 'desktop'
 }
+export enum CmsComponentMediaEnum {
+    Gallery = 'gallery',
+    Icon = 'icons'
+}
 
-type TViewPort = ViewPortEnum.None | ViewPortEnum.Mobile | ViewPortEnum.Desktop
+export type TViewPort = ViewPortEnum.None | ViewPortEnum.Mobile | ViewPortEnum.Desktop
 
 type TComponentMediaTypography = { main: string, description: string }
 
@@ -27,11 +31,12 @@ export type TComponentMediaItem = {
     viewport: TViewPort
 }
 
+
 export type TComponentItem = {
     orderId: string,
     id: string,
     typography: TComponentTypography,
-    items: TComponentTypography[],
+    items: (TComponentTypography & { orderId: string })[],
     links: TComponentLink,
     name: string,
     isGallery: boolean,
@@ -476,41 +481,49 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
         items: [
             {
                 ..._prev.typography,
+                orderId: '',
                 secondary: "about-us",
                 main: "About",
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 main: "Gallery",
                 secondary: "gallery",
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 secondary: "products",
                 main: "Products",
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 secondary: "get-in-touch",
                 main: "Get in Touch",
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 main: "Meet our Clients",
                 secondary: "meet-our-clients"
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 main: "Request a Call",
                 secondary: "request-a-call",
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 secondary: "testimonials",
                 main: "Testimonials",
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 secondary: "request-a-call-back",
                 main: "Request a Call Back",
             }
@@ -575,16 +588,19 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
         items: [
             {
                 ..._prev.typography,
+                orderId: '',
                 description: "Description is here",
                 main: "lorem ipsum dolor sit ame.",
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 description: "Description is here",
                 main: "lorem ipsum dolor sit ame.",
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 description: "Description is here",
                 main: "lorem ipsum dolor sit ame.",
             }
@@ -699,18 +715,22 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
         items: [
             {
                 ..._prev.typography,
+                orderId: '',
                 main: "Talk to our executive and discuss your requirement.",
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 main: "Receive a design presentation with detailed cost sheet.",
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 main: "Approve the design and commericals to start production.",
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 main: "Once the Kitchen is ready our teams world bring it and install at your specified location.",
             }
         ],
@@ -734,6 +754,7 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
         items: [
             {
                 ..._prev.typography,
+                orderId: '',
                 main: `Most modular kitchens in the world are made from wooden
                     cabinets, which can be harmful and toxic, leading to various
                     health problems in our families. Research by the World
@@ -751,6 +772,7 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 main: `At Magppie, we've discovered that silver is the best
                     material for kitchen cabinets. By infusing silver into a
                     special stone, we've created a unique, patented material
@@ -760,6 +782,7 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
             },
             {
                 ..._prev.typography,
+                orderId: '',
                 main: `MAGPPIE kitchens are dedicated to safeguarding your family's
                     health and safety.`
             },

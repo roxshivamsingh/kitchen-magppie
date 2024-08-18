@@ -7,7 +7,7 @@ import {
     Projects,
     Kitchen,
     SignIn,
-    KitchenCreateEdit,
+    // KitchenCreateEdit,
     Home,
     User,
     // LandingPage,
@@ -15,11 +15,11 @@ import {
 import { useFirebaseCmsAuthListener } from '../utils/firebase'
 import { ProtectedRoute } from '../components'
 import { PageProgress } from '../../../components'
-import CustomerLayout from '../containers/Landing/CustomerLayout'
+import CustomerLayout from '../containers/SiteComponent/components/CustomerLayout'
 
-const LandingAction = lazy(() => import('../containers/Landing/LandingAction'))
-const LandingHome = lazy(() => import('../containers/Landing/LandingHome'))
-const EnquiryPage = lazy(() => import('../containers/enquiries/Page'))
+const SiteComponentAction = lazy(() => import('../containers/SiteComponent/pages/SiteComponentAction'))
+const SiteComponentDashboard = lazy(() => import('../containers/SiteComponent/pages/SiteComponentDashboard'))
+const EnquiryDashboard = lazy(() => import('../containers/enquiries/Page'))
 
 export default function CmsRoutes() {
     useFirebaseCmsAuthListener()
@@ -35,10 +35,10 @@ export default function CmsRoutes() {
                 path: 'kitchens',
                 element: <Kitchen />,
             },
-            {
-                path: 'kitchen/create',
-                element: <KitchenCreateEdit />,
-            },
+            // {
+            //     path: 'kitchen/create',
+            //     element: <KitchenCreateEdit />,
+            // },
             // {
             //     path: 'kitchen/:id/edit',
             //     element: (<KitchenCreateEdit />),
@@ -60,27 +60,27 @@ export default function CmsRoutes() {
             //     element: <LandingPage />, // FIXME: To remove this route in future and also container from `cms/landing-page`;
             // },
             {
-                path: 'landing',
+                path: 'site/components',
                 element: <CustomerLayout />,
                 children: [
                     {
                         path: '',
-                        element: (<Suspense fallback={<PageProgress />}><LandingHome /></Suspense>),
+                        element: (<Suspense fallback={<PageProgress />}><SiteComponentDashboard /></Suspense>),
                     },
                     {
-                        path: 'component/:id/edit',
-                        element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
+                        path: ':id/edit',
+                        element: <Suspense fallback={<PageProgress />}><SiteComponentAction /></Suspense>,
                     },
                     {
-                        path: 'component/create',
-                        element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
+                        path: 'create',
+                        element: <Suspense fallback={<PageProgress />}><SiteComponentAction /></Suspense>,
                     },
                 ]
             },
 
             {
                 path: 'enquiries',
-                element: <Suspense fallback={<PageProgress />}><EnquiryPage /></Suspense>,
+                element: <Suspense fallback={<PageProgress />}><EnquiryDashboard /></Suspense>,
             },
         ],
     } as RouteObject

@@ -4,6 +4,10 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoCreateOutline } from "react-icons/io5";
+import { CiDesktop, CiMobile1 } from "react-icons/ci";
+import { BsWindowStack } from "react-icons/bs";
+import { RiText } from "react-icons/ri";
+import { MdTextFields } from "react-icons/md";
 //====================================================================
 
 import {
@@ -13,6 +17,8 @@ import {
     TComponentMeta,
     _,
     ComponentModeEnum,
+    ViewPortEnum,
+    CmsComponentMediaEnum,
 } from '../../../../../types'
 import { ImageInput } from '../../../../../components'
 import { MinimalAccordion } from '../../../components'
@@ -22,7 +28,7 @@ import {
     FormViewPortMedia
 } from '.'
 import { FieldCautation } from '.';
-import { useFirebaseCustomerSiteComponentAction } from '../../../utils/firebase/customer/use-firebase-customer-actions'
+import { useFirebaseCustomerSiteComponentAction } from '../../../utils/firebase/customer'
 import { useAppSelector } from '../../../../../redux'
 
 
@@ -62,7 +68,7 @@ export default function ComponentActionForm(props: TProps) {
         ,
         typography: typographySchema,
         links: linkSchema,
-        items: Yup.array().of(typographySchema).required(),
+        items: Yup.array().of(typographyItemSchema).required(),
         name: Yup.string().required('Name is required'),
         isGallery: Yup.boolean(),
         gallery: Yup.array().of(sectionImageItemSchema),
@@ -126,8 +132,6 @@ export default function ComponentActionForm(props: TProps) {
 
     return (
         <FormProvider {...methods}>
-
-
             <form onSubmit={onSubmit} className="bg-white p-6 overflow-y-scroll h-[80vh] ">
                 <div className=" mb-2">
                     <FieldCautation disableAppendButton />
@@ -154,16 +158,20 @@ export default function ComponentActionForm(props: TProps) {
                     />
                     {renderErrorMessage('name')}
                 </div>
-                <MinimalAccordion isExpanded title='Typography'>
+                <MinimalAccordion isExpanded title='Typography' icon={<RiText />} >
                     <FormTypography />
                 </MinimalAccordion>
-                <MinimalAccordion isExpanded title='Items'>
+                <MinimalAccordion isExpanded title='Items' icon={<MdTextFields />}>
                     <div className="mb-3">
                         <FieldCautation label='Array Field'
                             onClickAdd={() => {
+                                const filterOrder = _.applyOrder(_.map(values.items, 'orderId'))
                                 setValue('items',
                                     [...values.items,
-                                        INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY
+                                    {
+                                        ...INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY,
+                                        orderId: filterOrder.prefer
+                                    }
                                     ])
                             }}
                         />
@@ -171,7 +179,7 @@ export default function ComponentActionForm(props: TProps) {
                     </div>
                     <FormItemTypography />
                 </MinimalAccordion>
-                <MinimalAccordion title='Links'>
+                <MinimalAccordion title='Links' icon={<BsWindowStack />}>
                     <div className=''>
                         <ImageInput
                             label='Icon'
@@ -209,11 +217,17 @@ export default function ComponentActionForm(props: TProps) {
 
                 </MinimalAccordion>
 
-                <MinimalAccordion title='Desktop'>
-                    <FormViewPortMedia variant='desktop' />
+                <MinimalAccordion title='Icons' icon={<CiDesktop />}>
+                    <FormViewPortMedia viewport={ViewPortEnum.Desktop} name={CmsComponentMediaEnum.Icon} />
                 </MinimalAccordion>
-                <MinimalAccordion title='Mobile'>
-                    <FormViewPortMedia variant='mobile' />
+                <MinimalAccordion title='Gallery ' icon={<CiDesktop />}>
+                    <FormViewPortMedia viewport={ViewPortEnum.Desktop} name={CmsComponentMediaEnum.Gallery} />
+                </MinimalAccordion>
+                <MinimalAccordion title='Icons' icon={<CiMobile1 />}>
+                    <FormViewPortMedia viewport={ViewPortEnum.Mobile} name={CmsComponentMediaEnum.Gallery} />
+                </MinimalAccordion>
+                <MinimalAccordion title='Gallery' icon={<CiMobile1 />}>
+                    <FormViewPortMedia viewport={ViewPortEnum.Mobile} name={CmsComponentMediaEnum.Icon} />
                 </MinimalAccordion>
                 <button
                     disabled={corpus.isSubmitting}
@@ -232,10 +246,11 @@ export default function ComponentActionForm(props: TProps) {
 const typographySchema = Yup.object().shape({
     main: Yup.string(),
     description: Yup.string(),
-    // secondary: Yup.string(),
-    // subtitle: Yup.string(),
-    // action: Yup.string(),
-    // secondaryDescription: Yup.string(),
+})
+const typographyItemSchema = Yup.object().shape({
+    orderId: Yup.string(),
+    main: Yup.string(),
+    description: Yup.string(),
 })
 
 const linkSchema = Yup.object().shape({
