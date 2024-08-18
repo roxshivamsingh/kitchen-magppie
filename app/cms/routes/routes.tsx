@@ -60,7 +60,7 @@ export default function CmsRoutes() {
             //     element: <LandingPage />, // FIXME: To remove this route in future and also container from `cms/landing-page`;
             // },
             {
-                path: 'landing',
+                path: 'site/components',
                 element: <CustomerLayout />,
                 children: [
                     {
@@ -68,11 +68,11 @@ export default function CmsRoutes() {
                         element: (<Suspense fallback={<PageProgress />}><LandingHome /></Suspense>),
                     },
                     {
-                        path: 'component/:id/edit',
+                        path: ':id/edit',
                         element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
                     },
                     {
-                        path: 'component/create',
+                        path: 'create',
                         element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
                     },
                 ]

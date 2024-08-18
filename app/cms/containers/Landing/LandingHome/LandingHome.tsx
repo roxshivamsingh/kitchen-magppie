@@ -28,11 +28,9 @@ export default function LandingHome() {
     const navigate = useNavigate()
     const { loading, value } = useAppSelector((state) => state.Cms.Landing)
 
-
-
-
     const meta = useMemo(() => COMPONENT_META(value), [value])
     const [corpus, setCorpus] = useState(INIT_CORPUS)
+
     const onChangeModal = useCallback((newValue: Partial<TCorpusModal>) => {
         setCorpus((prev) => ({
             ...prev,
@@ -149,7 +147,7 @@ export default function LandingHome() {
                                         key={i}
                                         item={item}
                                         onEdit={() => {
-                                            navigate(`/cms/landing/component/${item.id}/edit`)
+                                            navigate(`/cms/site/components/${item.id}/edit`)
                                         }}
                                         onRemove={() => {
                                             onClickRemove(item)
@@ -169,7 +167,7 @@ export default function LandingHome() {
                 className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 cursor-pointer focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900
                    flex gap-3"
                 onClick={() => {
-                    navigate('/cms/landing/component/create')
+                    navigate('/cms/site/components/create')
                     // onChangeModal({ open: true, action: 'create' })
                 }}
             >
