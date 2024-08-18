@@ -1,19 +1,17 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import * as Yup from 'yup'
-import { FaExternalLinkAlt } from "react-icons/fa";
-
 import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { MdPostAdd } from "react-icons/md";
-import { CiCircleAlert } from "react-icons/ci";
 
 //====================================================================
 
 import {
     INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY,
+    TComponentMode,
     TComponentItem,
     TComponentMeta,
-    _
+    _,
+    ComponentModeEnum,
 } from '../../../../../types'
 import { ImageInput } from '../../../../../components'
 import { MinimalAccordion } from '../../../components'
@@ -22,27 +20,44 @@ import {
     FormItemTypography,
     FormViewPortMedia
 } from '.'
+import { FieldCautation } from '.';
+import { useFirebaseCustomerSiteComponentAction } from '../../../utils/firebase/customer/use-firebase-customer-actions'
+import { useAppSelector } from '../../../../../redux'
 
 
 export default function ComponentActionForm(props: TProps) {
 
+    const { item } = props;
     // TODO: To check cms on dummy collection;
     // TODO: To add order id globally and inside every images;
     // TODO: If we have create action then we have to ensure about global order id will be the unique and next manner;
     // TODO: To ensure the gallery array is working properly;
+    // FIXME: When we enter directly a url for edit, data not found because of listner not calling;
+    // FIXME: To remove accordion overflow scroll, we have complete height;
 
-
-    const { meta, item } = props;
+    const { value } = useAppSelector((state) => state.Cms.Landing)
+    const isCreateMode = props.mode === ComponentModeEnum.Create
+    const filteredOrder = useMemo(() => {
+        return _.applyOrder(_.map(value, 'orderId'))
+    }, [value])
     const schema = Yup.object().shape({
-        orderId: Yup.number()
-            .min(0, 'The number must be non-negative')
+        orderId: Yup.string()
             .required('Order ID is required')
-            .integer('Order ID must be an integer')
+            // .min(0, 'The number must be non-negative')
+            // .integer('Order ID must be an integer')
             .test('checkValidOrderId',
                 'The given Order ID is invalid.',
                 (currentId) => {
-                    return !meta.order.used?.filter((previousId) => previousId !== item.orderId)?.includes(currentId)
-                }),
+                    const { prev, prefer } = filteredOrder;
+                    if (isCreateMode) {
+                        return !prev?.includes(currentId)
+                    } else {
+                        // const filterCurrent = prev.filter((row) => row !== currentId)
+                        return item.orderId === currentId || Number(prefer) >= Number(item.orderId)
+                    }
+                    return false
+                })
+        ,
         typography: typographySchema,
         links: linkSchema,
         items: Yup.array().of(typographySchema).required(),
@@ -51,27 +66,53 @@ export default function ComponentActionForm(props: TProps) {
         gallery: Yup.array().of(sectionImageItemSchema),
         icons: Yup.array().of(sectionImageItemSchema),
     })
-    const defaultValues = useMemo(() => ({
-        ...item,
-        orderId: item.orderId < 0 ? meta.order.next : item.orderId,
-    }), [item, meta.order.next])
+    const defaultValues = useMemo(() => {
+        return {
+            ...item,
+            orderId: props.mode === ComponentModeEnum.Edit ? item.orderId : filteredOrder.prefer,
+        };
+
+    }, [filteredOrder.prefer, item, props.mode])
+
+
+
     const methods = useForm({
         defaultValues,
+        // mode: 'onBlur',
+        reValidateMode: 'onChange',
         resolver: yupResolver(schema),
     })
     const {
         register,
         setValue,
         handleSubmit,
+        watch,
         formState: { errors },
     } = methods
 
-    const values = methods.watch()
+    useEffect(() => {
+        setValue('orderId', props.mode === ComponentModeEnum.Edit ? item.orderId : filteredOrder.prefer)
+    }, [filteredOrder.prefer, item.orderId, props.mode, setValue])
+
+    const values = watch()
 
 
 
-    const onSubmit = handleSubmit((data) => {
-        console.log(data)
+
+    const CustomerAction = useFirebaseCustomerSiteComponentAction()
+    const onSubmit = handleSubmit((data: TComponentItem) => {
+
+        if (isCreateMode) {
+            CustomerAction.add(data)
+
+        } else {
+            CustomerAction.edit({
+                ...data,
+                id: item.id
+            })
+
+        }
+        console.log("submitted")
     })
 
     const renderErrorMessage = useCallback((field: string) => {
@@ -89,7 +130,7 @@ export default function ComponentActionForm(props: TProps) {
 
             <form onSubmit={onSubmit} className="bg-white p-6 overflow-y-scroll h-[80vh] ">
                 <div className=" mb-2">
-                    <Cautation />
+                    <FieldCautation disableAppendButton />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700">
@@ -117,15 +158,16 @@ export default function ComponentActionForm(props: TProps) {
                     <FormTypography />
                 </MinimalAccordion>
                 <MinimalAccordion isExpanded title='Items'>
-                    <div className="flex flex-row-reverse">
-                        <MdPostAdd className='text-xl text-blue-500 cursor-pointer'
-                            onClick={() => {
+                    <div className="mb-3">
+                        <FieldCautation label='Array Field'
+                            onClickAdd={() => {
                                 setValue('items',
                                     [...values.items,
                                         INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY
                                     ])
                             }}
                         />
+
                     </div>
                     <FormItemTypography />
                 </MinimalAccordion>
@@ -210,34 +252,5 @@ const sectionImageItemSchema = Yup.object().shape({
 type TProps = {
     item: TComponentItem,
     meta: TComponentMeta,
-    mode: 'create' | 'edit' | ''
-}
-
-function Cautation() {
-    return (<div className="p-4 border border-gray-300 rounded-lg bg-gray-50 dark:border-gray-600 dark:bg-gray-800"    >
-        <div className="flex items-center justify-between">
-            <div className="flex flex-row align-middle justify-center items-center gap-2 ">
-                <CiCircleAlert className="inline text-xl text-indigo-800" />
-                <h3 className="text-lg font-medium text-indigo-800 dark:text-gray-300">
-                    Cautation
-                </h3>
-            </div>
-            <div className="">
-
-            </div>
-        </div>
-        <div className="mt-2 mb-4 text-sm text-indigo-800 dark:text-indigo-300">
-            This section contains multiple fields that require your attention. Ensure all the information provided is accurate, as once you submit the form, changes cannot be undone. Double-check your entries before proceeding.</div>
-        <div className="flex">
-            <button
-                type="button"
-                className="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-xs px-3 py-1.5 me-2 text-center items-center dark:bg-indigo-600 dark:hover:bg-indigo-500 dark:focus:ring-indigo-800 flex gap-1"
-            >
-                <FaExternalLinkAlt />
-                Learn more
-            </button>
-
-        </div>
-    </div>
-    )
+    mode: TComponentMode
 }

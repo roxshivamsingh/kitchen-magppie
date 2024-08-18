@@ -15,6 +15,7 @@ import {
 import { useFirebaseCmsAuthListener } from '../utils/firebase'
 import { ProtectedRoute } from '../components'
 import { PageProgress } from '../../../components'
+import CustomerLayout from '../containers/Landing/CustomerLayout'
 
 const LandingAction = lazy(() => import('../containers/Landing/LandingAction'))
 const LandingHome = lazy(() => import('../containers/Landing/LandingHome'))
@@ -60,16 +61,23 @@ export default function CmsRoutes() {
             // },
             {
                 path: 'landing',
-                element: <Suspense fallback={<PageProgress />}><LandingHome /></Suspense>,
+                element: <CustomerLayout />,
+                children: [
+                    {
+                        path: '',
+                        element: (<Suspense fallback={<PageProgress />}><LandingHome /></Suspense>),
+                    },
+                    {
+                        path: 'component/:id/edit',
+                        element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
+                    },
+                    {
+                        path: 'component/create',
+                        element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
+                    },
+                ]
             },
-            {
-                path: 'landing/component/:id/edit',
-                element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
-            },
-            {
-                path: 'landing/component/create',
-                element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
-            },
+
             {
                 path: 'enquiries',
                 element: <Suspense fallback={<PageProgress />}><EnquiryPage /></Suspense>,

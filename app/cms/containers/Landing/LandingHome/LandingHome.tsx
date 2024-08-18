@@ -1,6 +1,6 @@
+import { Link, useNavigate } from 'react-router-dom'
 import { useCallback, useMemo, useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
-import { Link, useNavigate } from 'react-router-dom'
 import { GiScrollQuill } from "react-icons/gi";
 //====================================================================
 
@@ -15,8 +15,10 @@ import {
 } from '../../../../../components'
 import {
     COMPONENT_META,
+    ComponentModeEnum,
     INIT_CUSTOMER_SITE_COMPONENT,
     TComponentItem,
+    TComponentMode,
     _
 } from '../../../../../types'
 import { useFirebaseLandingListener } from '../../../utils/firebase'
@@ -25,6 +27,10 @@ export default function LandingHome() {
     useFirebaseLandingListener()
     const navigate = useNavigate()
     const { loading, value } = useAppSelector((state) => state.Cms.Landing)
+
+
+
+
     const meta = useMemo(() => COMPONENT_META(value), [value])
     const [corpus, setCorpus] = useState(INIT_CORPUS)
     const onChangeModal = useCallback((newValue: Partial<TCorpusModal>) => {
@@ -176,8 +182,11 @@ export default function LandingHome() {
         </div>
     )
 }
-type TMode = 'create' | 'edit' | ''
-type TCorpusModal = { action: TMode; value: TComponentItem; open: boolean }
+type TCorpusModal = {
+    action: TComponentMode;
+    value: TComponentItem;
+    open: boolean
+}
 
 type TCorpusConfirmation = {
     open: boolean
@@ -195,7 +204,7 @@ const INIT_CONFIRMATION: TCorpusConfirmation = {
     id: '',
 }
 const INIT_CORPUS_MODAL: TCorpusModal = {
-    action: '',
+    action: ComponentModeEnum.None,
     value: INIT_CUSTOMER_SITE_COMPONENT,
     open: false,
 }

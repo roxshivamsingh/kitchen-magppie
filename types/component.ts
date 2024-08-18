@@ -28,7 +28,7 @@ export type TComponentMediaItem = {
 }
 
 export type TComponentItem = {
-    orderId: number,
+    orderId: string,
     id: string,
     typography: TComponentTypography,
     items: TComponentTypography[],
@@ -42,7 +42,7 @@ export type TComponentItem = {
 
 
 export const COMPONENT_META = (ar: TComponentItem[]) => {
-    const used = _(ar).map('orderId').value().sort()
+    const used = ar?.map((row) => Number(row.orderId))?.sort()
     const next = _(used).max() + 1
     return ({ order: { used, next } }) as TComponentMeta
 }
@@ -72,7 +72,7 @@ const INIT_CUSTOMER_SITE_COMPONENT_LINK: TComponentLink = {
 export const INIT_CUSTOMER_SITE_COMPONENT: TComponentItem = {
     typography: INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY,
     links: INIT_CUSTOMER_SITE_COMPONENT_LINK,
-    orderId: -1,
+    orderId: '',
     id: '',
     name: '',
     isGallery: false,
@@ -94,11 +94,20 @@ export const COMPONENT_MEDIA_ITEM: TComponentMediaItem = {
 }
 
 
+export enum ComponentModeEnum {
+    Create = 'create',
+    Edit = 'edit',
+    None = ''
+}
+
+export type TComponentMode = ComponentModeEnum.Create
+    | ComponentModeEnum.Edit
+    | ComponentModeEnum.None
 
 export const _LANDING_COMPONENTS: TComponentItem[] = [
     {
         ..._prev,
-        orderId: -1,
+        orderId: '',
         name: "image-gallery-component",
         isGallery: true,
         icons: [],
@@ -512,7 +521,7 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
             main: "Privacy Policy",
             description: "© Copyright 2016 All Rights Reserved by Magppie"
         },
-        orderId: 9,
+        orderId: '9',
     },
     {
         ..._prev,
@@ -539,7 +548,7 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
             ..._prev.typography,
             main: "What makes <b>MAGPPIE</b> different?",
         },
-        orderId: 2,
+        orderId: '2',
         isGallery: true,
     },
     {
@@ -552,7 +561,7 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
             secondary: 'stone kitchens',
             description: "Welcome to the <b><i>SPIRITUAL</i></b> heart of your Home.",
         },
-        orderId: 0,
+        orderId: '0',
         links: {
             ..._prev.links,
             video: 'https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/landing%2Fmobile%2Ffront-reel.mp4?alt=media&token=d6f138c5-c281-4046-88e2-20f0a7f715aa',
@@ -607,11 +616,11 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
                 link: "https://firebasestorage.googleapis.com/v0/b/magppie-e89d7.appspot.com/o/customer%2Fintro.png?alt=media&token=5dedc173-9df0-4b34-be40-11162784f284"
             }
         ],
-        orderId: 6,
+        orderId: '6',
     },
     {
         ..._prev,
-        orderId: 3,
+        orderId: '3',
         name: "kitchen-toggle-component",
         typography: {
             ..._prev.typography,
@@ -621,7 +630,7 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
     },
     {
         ..._prev,
-        orderId: 4,
+        orderId: '4',
         typography: {
             ..._prev.typography,
             main: "What makes <strong>MAGPPIE</strong> different?",
@@ -706,7 +715,7 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
             }
         ],
         isGallery: false,
-        orderId: 7,
+        orderId: '7',
         typography: {
             ..._prev.typography,
             action: "Request a call",
