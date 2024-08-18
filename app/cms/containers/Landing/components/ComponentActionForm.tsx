@@ -62,7 +62,7 @@ export default function ComponentActionForm(props: TProps) {
         ,
         typography: typographySchema,
         links: linkSchema,
-        items: Yup.array().of(typographySchema).required(),
+        items: Yup.array().of(typographyItemSchema).required(),
         name: Yup.string().required('Name is required'),
         isGallery: Yup.boolean(),
         gallery: Yup.array().of(sectionImageItemSchema),
@@ -126,8 +126,6 @@ export default function ComponentActionForm(props: TProps) {
 
     return (
         <FormProvider {...methods}>
-
-
             <form onSubmit={onSubmit} className="bg-white p-6 overflow-y-scroll h-[80vh] ">
                 <div className=" mb-2">
                     <FieldCautation disableAppendButton />
@@ -161,9 +159,13 @@ export default function ComponentActionForm(props: TProps) {
                     <div className="mb-3">
                         <FieldCautation label='Array Field'
                             onClickAdd={() => {
+                                const filterOrder = _.applyOrder(_.map(values.items, 'orderId'))
                                 setValue('items',
                                     [...values.items,
-                                        INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY
+                                    {
+                                        ...INIT_CUSTOMER_SITE_COMPONENT_TYPOGRAPHY,
+                                        orderId: filterOrder.prefer
+                                    }
                                     ])
                             }}
                         />
@@ -230,6 +232,15 @@ export default function ComponentActionForm(props: TProps) {
 }
 
 const typographySchema = Yup.object().shape({
+    main: Yup.string(),
+    description: Yup.string(),
+    // secondary: Yup.string(),
+    // subtitle: Yup.string(),
+    // action: Yup.string(),
+    // secondaryDescription: Yup.string(),
+})
+const typographyItemSchema = Yup.object().shape({
+    orderId: Yup.string(),
     main: Yup.string(),
     description: Yup.string(),
     // secondary: Yup.string(),
