@@ -15,6 +15,7 @@ import {
 import { useFirebaseCmsAuthListener } from '../utils/firebase'
 import { ProtectedRoute } from '../components'
 import { PageProgress } from '../../../components'
+import CustomerLayout from '../containers/Landing/CustomerLayout'
 
 const LandingAction = lazy(() => import('../containers/Landing/LandingAction'))
 const LandingHome = lazy(() => import('../containers/Landing/LandingHome'))
@@ -47,11 +48,11 @@ export default function CmsRoutes() {
                 element: <SignIn />,
             },
             {
-                path: '/cms/projects',
+                path: 'projects',
                 element: <Projects />,
             },
             {
-                path: '/cms/users',
+                path: 'users',
                 element: <User />,
             },
             // {
@@ -59,20 +60,26 @@ export default function CmsRoutes() {
             //     element: <LandingPage />, // FIXME: To remove this route in future and also container from `cms/landing-page`;
             // },
             {
-                path: '/cms/landing',
-                element: <Suspense fallback={<PageProgress />}><LandingHome /></Suspense>,
+                path: 'landing',
+                element: <CustomerLayout />,
+                children: [
+                    {
+                        path: '',
+                        element: (<Suspense fallback={<PageProgress />}><LandingHome /></Suspense>),
+                    },
+                    {
+                        path: 'component/:id/edit',
+                        element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
+                    },
+                    {
+                        path: 'component/create',
+                        element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
+                    },
+                ]
+            },
 
-            },
             {
-                path: '/cms/landing/component/:id/edit',
-                element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
-            },
-            {
-                path: '/cms/landing/component/create',
-                element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
-            },
-            {
-                path: '/cms/enquiries',
+                path: 'enquiries',
                 element: <Suspense fallback={<PageProgress />}><EnquiryPage /></Suspense>,
             },
         ],

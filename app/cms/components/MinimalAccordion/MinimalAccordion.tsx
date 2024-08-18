@@ -15,7 +15,7 @@ export function MinimalAccordion(props: IProps) {
                 {toggle ? <FaChevronUp /> : <FaChevronDown />}
             </span>
         </button>
-        {toggle && (<div className={`transition-all duration-500 overflow-y-scroll max-h-screen p-4`}>{props.children}</div>)}
+        {toggle && (<div className={`transition-all duration-500  p-4`}>{props.children}</div>)}
 
         {/* <div className={`transition-all duration-500 overflow-hidden ${toggle ? 'max-h-screen p-4' : 'max-h-0'}`}>{props.children}</div> */}
     </div>

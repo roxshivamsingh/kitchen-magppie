@@ -9,7 +9,7 @@ export function useFirebaseLandingListener() {
 
     const dispatch = useAppDispatch()
     useEffect(() => {
-        const collectionRef = collection(db, FirebaseCollectionEnum.Landing);
+        const collectionRef = collection(db, FirebaseCollectionEnum.LandingDump);
         onSnapshot(collectionRef, ({ docs }) => {
             const data: TComponentItem[] = [];
             docs?.forEach((doc) => {

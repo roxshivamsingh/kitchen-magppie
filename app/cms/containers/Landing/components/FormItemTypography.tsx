@@ -1,6 +1,7 @@
 import { useCallback } from "react"
 import { useFormContext } from "react-hook-form"
 import { MdDeleteOutline } from "react-icons/md";
+
 //====================================================================
 import { TComponentTypography } from "../../../../../types"
 import _ from "../../../../../types/lodash"
@@ -20,7 +21,7 @@ export default function FormItemTypography() {
         return ''
     }, [errors])
 
-    return values.items.map((typography, i) => {
+    const renderValue = values.items.map((typography, i) => {
 
         return (<div key={i}>
             <div className="flex flex-row gap-2">
@@ -102,7 +103,7 @@ export default function FormItemTypography() {
                 </div>
 
                 <div >
-                    <MdDeleteOutline className='text-xl text-red-700 cursor-pointer'
+                    <MdDeleteOutline className='text-xl text-red-700 cursor-pointer me-4'
                         onClick={() => {
                             setValue('items', values?.items?.filter((item) => item !== typography))
                         }}
@@ -112,4 +113,9 @@ export default function FormItemTypography() {
             </div>
         </div>)
     })
+
+    return <>
+
+        {renderValue}
+    </>
 }

@@ -5,12 +5,15 @@ import { useAppSelector } from "../../../../../redux"
 import {
     _,
     COMPONENT_META,
+    ComponentModeEnum,
     INIT_CUSTOMER_SITE_COMPONENT
 } from "../../../../../types"
 
 export default function LandingAction() {
     const params = useParams()
     const values = useAppSelector((state) => state.Cms.Landing.value);
+
+    console.log(values)
     const currentComponent = values?.find((row) => row.id === _.get(params, 'id', ''))
 
     const meta = useMemo(() => COMPONENT_META(values), [values])
@@ -18,6 +21,6 @@ export default function LandingAction() {
     return <ComponentActionForm
         item={currentComponent || INIT_CUSTOMER_SITE_COMPONENT}
         meta={meta}
-        mode={currentComponent ? 'edit' : 'create'}
+        mode={currentComponent ? ComponentModeEnum.Edit : ComponentModeEnum.Create}
     />
 }

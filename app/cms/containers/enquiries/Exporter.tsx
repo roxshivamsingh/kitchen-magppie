@@ -3,11 +3,10 @@ import { utils, writeFile } from 'xlsx';
 
 import { CONSULT_CITIES, CONSULT_TENTATIVE_BUDGETS } from '../../../../mocks'
 import { useAppSelector } from '../../../../redux'
-import { CONSULTATION_COLUMN_HEADER_OPTIONS, IConsult } from '../../../../types/consultation';
+import { CONSULTATION_COLUMN_HEADER_OPTIONS, IConsult, _ } from '../../../../types';
 import { PiMicrosoftExcelLogoDuotone } from "react-icons/pi";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { GrPowerReset } from "react-icons/gr";
-import { _ } from '../../../../types';
 // import { CONSULTATION_COLUMN_HEADER_OPTIONS } from '../../../../types/consultation'
 // import { _ } from '../../../../types'
 
@@ -63,7 +62,6 @@ export default function Exporter() {
             APPLY_FILTER(value, data)
             reset()
             setToggle((prev) => ({ ...prev, isLoading: false }))
-
         }, 3000)
     })
 
@@ -123,7 +121,6 @@ export default function Exporter() {
                     </label>
                     <Select
                         value={values.city?.value?.length ? values.city : null}
-
                         placeholder="Select City"
                         options={CONSULT_CITIES?.map((value) => ({
                             value,

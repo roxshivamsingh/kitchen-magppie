@@ -3,7 +3,7 @@ import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebas
 //====================================================================
 
 import { storageApp } from "../../config/firebase.config"
-import _ from "../../types/lodash"
+import { _ } from "../../types"
 
 export default function useFirebaseStorageActions() {
 
