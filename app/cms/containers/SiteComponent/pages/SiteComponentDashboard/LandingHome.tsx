@@ -4,15 +4,15 @@ import { FaPlus } from 'react-icons/fa'
 import { GiScrollQuill } from "react-icons/gi";
 //====================================================================
 
-import { Search } from '../../../components'
-import { useAppSelector } from '../../../../../redux'
-import { CmsLandingPageComponentCard, ComponentActionForm } from '../components'
+import { Search } from '../../../../components'
+import { useAppSelector } from '../../../../../../redux'
+import { CmsLandingPageComponentCard, ComponentActionForm } from '../../components'
 
 import {
     CustomConfirmationDialog,
     CustomSimpleModal,
     PageProgress,
-} from '../../../../../components'
+} from '../../../../../../components'
 import {
     COMPONENT_META,
     ComponentModeEnum,
@@ -20,8 +20,8 @@ import {
     TComponentItem,
     TComponentMode,
     _
-} from '../../../../../types'
-import { useFirebaseLandingListener } from '../../../utils/firebase'
+} from '../../../../../../types'
+import { useFirebaseLandingListener } from '../../../../utils/firebase'
 
 export default function LandingHome() {
     useFirebaseLandingListener()

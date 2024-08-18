@@ -1,13 +1,13 @@
 import { useMemo } from "react"
 import { useParams } from "react-router-dom"
-import { ComponentActionForm } from "../components"
-import { useAppSelector } from "../../../../../redux"
+import { ComponentActionForm } from "../../components"
+import { useAppSelector } from "../../../../../../redux"
 import {
     _,
     COMPONENT_META,
     ComponentModeEnum,
     INIT_CUSTOMER_SITE_COMPONENT
-} from "../../../../../types"
+} from "../../../../../../types"
 
 export default function LandingAction() {
     const params = useParams()

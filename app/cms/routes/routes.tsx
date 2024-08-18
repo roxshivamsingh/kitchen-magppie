@@ -15,10 +15,10 @@ import {
 import { useFirebaseCmsAuthListener } from '../utils/firebase'
 import { ProtectedRoute } from '../components'
 import { PageProgress } from '../../../components'
-import CustomerLayout from '../containers/Landing/CustomerLayout'
+import CustomerLayout from '../containers/SiteComponent/components/CustomerLayout'
 
-const LandingAction = lazy(() => import('../containers/Landing/LandingAction'))
-const SiteComponentDashboard = lazy(() => import('../containers/Landing/LandingHome'))
+const SiteComponentAction = lazy(() => import('../containers/SiteComponent/pages/SiteComponentAction'))
+const SiteComponentDashboard = lazy(() => import('../containers/SiteComponent/pages/SiteComponentDashboard'))
 const EnquiryDashboard = lazy(() => import('../containers/enquiries/Page'))
 
 export default function CmsRoutes() {
@@ -69,11 +69,11 @@ export default function CmsRoutes() {
                     },
                     {
                         path: ':id/edit',
-                        element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
+                        element: <Suspense fallback={<PageProgress />}><SiteComponentAction /></Suspense>,
                     },
                     {
                         path: 'create',
-                        element: <Suspense fallback={<PageProgress />}><LandingAction /></Suspense>,
+                        element: <Suspense fallback={<PageProgress />}><SiteComponentAction /></Suspense>,
                     },
                 ]
             },
