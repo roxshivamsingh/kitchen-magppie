@@ -6,6 +6,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 //====================================================================
 
 import {
+    CmsComponentMediaEnum,
     COMPONENT_MEDIA_ITEM,
     TComponentMediaItem,
     ViewPortEnum
@@ -16,7 +17,7 @@ import {
 import { ImageInput } from "../../../../../components"
 import { _ } from "../../../../../types"
 
-export default function FormViewPortMedia(props: TProps) {
+export default function FormViewPortMedia({ viewport, name }: TProps) {
     const methods = useFormContext<TViewPortMedia>()
     const { formState: { errors }, watch, setValue, register } = methods
     const values = watch()
@@ -28,6 +29,7 @@ export default function FormViewPortMedia(props: TProps) {
         }
         return ''
     }, [errors])
+    const currentValues = _.get(values, name, [])?.filter((row) => row.viewport === viewport)
     return <div className="flex flex-col gap-2">
         <div
             className="p-4 border border-gray-300 rounded-lg bg-gray-50 dark:border-gray-600 dark:bg-gray-800"
@@ -42,15 +44,16 @@ export default function FormViewPortMedia(props: TProps) {
                 <div className="">
                     <MdPostAdd
                         onClick={() => {
-                            const currentGallery: TComponentMediaItem[] = [
-                                ...values.gallery,
+                            const orderId = _.applyOrder(_.map(currentValues, 'orderId')).prefer
+                            const currentMutation: TComponentMediaItem[] = [
+                                ...currentValues,
                                 {
                                     ...COMPONENT_MEDIA_ITEM,
-                                    viewport: props.variant as ViewPortEnum,
-                                    orderId: _.applyOrder(_.map(values.gallery?.filter((row) => row.viewport === props.variant), 'orderId')).prefer
+                                    viewport: viewport as ViewPortEnum,
+                                    orderId
                                 },
                             ]
-                            setValue('gallery', currentGallery)
+                            setValue(name, currentMutation)
                         }}
                         className='text-xl text-indigo-500 cursor-pointer'
 
@@ -85,29 +88,11 @@ export default function FormViewPortMedia(props: TProps) {
         <div className="">
             <div className="flex flex-row items-center justify-between gap-2">
                 <div className="flex gap-2">
-                    <div className="font-bold">Gallery</div>
-                    {/* <FormToggle checked={values.isGallery} onToggle={(isGallery) => {
-                        console.log(isGallery)
-                        setValue('isGallery', isGallery)
-                    }} /> */}
+                    <div className="font-bold"> {_.capitalize(name)}</div>
                 </div>
-                {/* <MdPostAdd
-                    onClick={() => {
-                        const currentGallery: TComponentMediaItem[] = [
-                            ...values.gallery,
-                            {
-                                ...COMPONENT_MEDIA_ITEM,
-                                viewport: props.variant as ViewPortEnum
-                            },
-                        ]
-                        setValue('gallery', currentGallery)
-                    }}
-                    className='text-xl text-blue-500 cursor-pointer'
-
-                /> */}
             </div>
 
-            {values.gallery?.filter((row) => row.viewport === props.variant)?.map((item, i) => {
+            {currentValues?.map((item, i) => {
                 const renderTypography = (<div key={i}>
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700">
@@ -115,10 +100,10 @@ export default function FormViewPortMedia(props: TProps) {
                         </label>
                         <input
                             type="text"
-                            {...register(`gallery.${i}.orderId`)}
+                            {...register(`${name}.${i}.orderId`)}
                             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
-                        {renderErrorMessage(`gallery.${i}.typography.secondaryDescription`)}
+                        {renderErrorMessage(`${name}.${i}.typography.secondaryDescription`)}
                     </div>
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700">
@@ -126,10 +111,10 @@ export default function FormViewPortMedia(props: TProps) {
                         </label>
                         <input
                             type="text"
-                            {...register(`gallery.${i}.typography.main`)}
+                            {...register(`${name}.${i}.typography.main`)}
                             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
-                        {renderErrorMessage(`gallery.${i}.typography.main`)}
+                        {renderErrorMessage(`${name}.${i}.typography.main`)}
                     </div>
 
 
@@ -140,10 +125,10 @@ export default function FormViewPortMedia(props: TProps) {
                         </label>
                         <input
                             type="text"
-                            {...register(`gallery.${i}.typography.description`)}
+                            {...register(`${name}.${i}.typography.description`)}
                             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
-                        {renderErrorMessage(`gallery.${i}.typography.description`)}
+                        {renderErrorMessage(`${name}.${i}.typography.description`)}
                     </div>
 
 
@@ -157,7 +142,9 @@ export default function FormViewPortMedia(props: TProps) {
                                 <div className="">
                                     <MdDeleteOutline className='text-xl text-red-700 cursor-pointer me-4'
                                         onClick={() => {
-                                            setValue('gallery', values?.gallery?.filter((prevItem) => prevItem !== item))
+
+                                            const results = currentValues?.filter((prevItem) => prevItem !== item)
+                                            setValue(name, results)
                                         }}
 
                                     />
@@ -167,13 +154,12 @@ export default function FormViewPortMedia(props: TProps) {
                         </div>
                         {renderTypography}
                         <ImageInput
-                            // label='Gallery'
                             values={item.link?.length ? [item.link] : []}
-                            path={`customer-site-components/gallery`}
+                            path={`customer-site-components/${name}`}
 
                             onSuccess={(e) => {
                                 // console.log(e)
-                                setValue(`gallery.${i}.link`, e[0])
+                                setValue(`${name}.${i}.link`, e[0])
                             }}
                         />
                     </div>
@@ -182,25 +168,17 @@ export default function FormViewPortMedia(props: TProps) {
 
 
         </div>
-        {/* {values.isGallery && (<div className="">
-            <ImageInput
-                values={values.gallery?.length ? values.gallery?.map((row) => row.link) : []}
-                path={`customer-site-components/gallery`}
-                onSuccess={(e) => {
-                    console.log(e)
-                }}
-            />
-        </div>)} */}
-
-        {/* {renderErrorMessage('links.icon.message')} */}
-
     </div>
 }
-type TProps = { variant: 'desktop' | 'mobile' }
+
+type TProps = {
+    viewport: ViewPortEnum,
+    name: CmsComponentMediaEnum
+}
 
 type TViewPortMedia = {
     // links: TComponentLink,
-    // icons: TComponentMediaItem[],
+    icons: TComponentMediaItem[],
     gallery: TComponentMediaItem[],
     isGallery: boolean
 }

@@ -15,8 +15,12 @@ export enum ViewPortEnum {
     Mobile = 'mobile',
     Desktop = 'desktop'
 }
+export enum CmsComponentMediaEnum {
+    Gallery = 'gallery',
+    Icon = 'icons'
+}
 
-type TViewPort = ViewPortEnum.None | ViewPortEnum.Mobile | ViewPortEnum.Desktop
+export type TViewPort = ViewPortEnum.None | ViewPortEnum.Mobile | ViewPortEnum.Desktop
 
 type TComponentMediaTypography = { main: string, description: string }
 

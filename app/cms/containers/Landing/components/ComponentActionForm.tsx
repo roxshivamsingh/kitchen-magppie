@@ -13,6 +13,8 @@ import {
     TComponentMeta,
     _,
     ComponentModeEnum,
+    ViewPortEnum,
+    CmsComponentMediaEnum,
 } from '../../../../../types'
 import { ImageInput } from '../../../../../components'
 import { MinimalAccordion } from '../../../components'
@@ -211,11 +213,17 @@ export default function ComponentActionForm(props: TProps) {
 
                 </MinimalAccordion>
 
-                <MinimalAccordion title='Desktop'>
-                    <FormViewPortMedia variant='desktop' />
+                <MinimalAccordion title='Desktop - Icons'>
+                    <FormViewPortMedia viewport={ViewPortEnum.Desktop} name={CmsComponentMediaEnum.Icon} />
                 </MinimalAccordion>
-                <MinimalAccordion title='Mobile'>
-                    <FormViewPortMedia variant='mobile' />
+                <MinimalAccordion title='Desktop - Gallery '>
+                    <FormViewPortMedia viewport={ViewPortEnum.Desktop} name={CmsComponentMediaEnum.Gallery} />
+                </MinimalAccordion>
+                <MinimalAccordion title='Mobile - Icons'>
+                    <FormViewPortMedia viewport={ViewPortEnum.Mobile} name={CmsComponentMediaEnum.Gallery} />
+                </MinimalAccordion>
+                <MinimalAccordion title='Mobile - Gallery'>
+                    <FormViewPortMedia viewport={ViewPortEnum.Mobile} name={CmsComponentMediaEnum.Icon} />
                 </MinimalAccordion>
                 <button
                     disabled={corpus.isSubmitting}
