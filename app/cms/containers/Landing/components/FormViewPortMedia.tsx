@@ -46,7 +46,8 @@ export default function FormViewPortMedia(props: TProps) {
                                 ...values.gallery,
                                 {
                                     ...COMPONENT_MEDIA_ITEM,
-                                    viewport: props.variant as ViewPortEnum
+                                    viewport: props.variant as ViewPortEnum,
+                                    orderId: _.applyOrder(_.map(values.gallery?.filter((row) => row.viewport === props.variant), 'orderId')).prefer
                                 },
                             ]
                             setValue('gallery', currentGallery)
@@ -169,9 +170,10 @@ export default function FormViewPortMedia(props: TProps) {
                             // label='Gallery'
                             values={item.link?.length ? [item.link] : []}
                             path={`customer-site-components/gallery`}
+
                             onSuccess={(e) => {
-                                console.log(e)
-                                // setValue('links.icon', e[0])
+                                // console.log(e)
+                                setValue(`gallery.${i}.link`, e[0])
                             }}
                         />
                     </div>

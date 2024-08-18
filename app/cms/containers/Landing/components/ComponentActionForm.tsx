@@ -234,19 +234,11 @@ export default function ComponentActionForm(props: TProps) {
 const typographySchema = Yup.object().shape({
     main: Yup.string(),
     description: Yup.string(),
-    // secondary: Yup.string(),
-    // subtitle: Yup.string(),
-    // action: Yup.string(),
-    // secondaryDescription: Yup.string(),
 })
 const typographyItemSchema = Yup.object().shape({
     orderId: Yup.string(),
     main: Yup.string(),
     description: Yup.string(),
-    // secondary: Yup.string(),
-    // subtitle: Yup.string(),
-    // action: Yup.string(),
-    // secondaryDescription: Yup.string(),
 })
 
 const linkSchema = Yup.object().shape({
