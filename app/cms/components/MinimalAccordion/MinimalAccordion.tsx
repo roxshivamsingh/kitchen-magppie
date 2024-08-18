@@ -10,7 +10,7 @@ export function MinimalAccordion(props: IProps) {
             className="w-full flex justify-between items-center p-2 text-left focus:outline-none"
             onClick={onToggle}
         >
-            <span className="text-lg font-medium">{props.title}</span>
+            <span className="text-lg font-medium flex items-center gap-2">{props?.icon}{props.title}</span>
             <span>
                 {toggle ? <FaChevronUp /> : <FaChevronDown />}
             </span>
@@ -24,6 +24,7 @@ export function MinimalAccordion(props: IProps) {
 
 interface IProps {
     title: string;
+    icon?: ReactNode,
     isExpanded?: true,
     children: ReactNode;
 }

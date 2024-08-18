@@ -4,6 +4,8 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoCreateOutline } from "react-icons/io5";
+import { CiDesktop, CiMobile1 } from "react-icons/ci";
+
 //====================================================================
 
 import {
@@ -213,16 +215,16 @@ export default function ComponentActionForm(props: TProps) {
 
                 </MinimalAccordion>
 
-                <MinimalAccordion title='Desktop - Icons'>
+                <MinimalAccordion title='Icons' icon={<CiDesktop />}>
                     <FormViewPortMedia viewport={ViewPortEnum.Desktop} name={CmsComponentMediaEnum.Icon} />
                 </MinimalAccordion>
-                <MinimalAccordion title='Desktop - Gallery '>
+                <MinimalAccordion title='Gallery ' icon={<CiDesktop />}>
                     <FormViewPortMedia viewport={ViewPortEnum.Desktop} name={CmsComponentMediaEnum.Gallery} />
                 </MinimalAccordion>
-                <MinimalAccordion title='Mobile - Icons'>
+                <MinimalAccordion title='Icons' icon={<CiMobile1 />}>
                     <FormViewPortMedia viewport={ViewPortEnum.Mobile} name={CmsComponentMediaEnum.Gallery} />
                 </MinimalAccordion>
-                <MinimalAccordion title='Mobile - Gallery'>
+                <MinimalAccordion title='Gallery' icon={<CiMobile1 />}>
                     <FormViewPortMedia viewport={ViewPortEnum.Mobile} name={CmsComponentMediaEnum.Icon} />
                 </MinimalAccordion>
                 <button
