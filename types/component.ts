@@ -477,64 +477,102 @@ export const _LANDING_COMPONENTS: TComponentItem[] = [
     // },
     {
         ..._prev,
-        name: "footer-component",
+        orderId: '7',
+        name: 'footer-component',
+        typography: {
+            ..._prev.typography,
+            subtitle: "MAGPPIE",
+            main: "Privacy Policy",
+            action: "Back to top",
+            description: "© Copyright 2016 All Rights Reserved by Magppie",
+        },
         items: [
             {
                 ..._prev.typography,
-                orderId: '',
+                orderId: '1',
+                main: 'Consultation',
+                subtitle: 'mobile',
+                secondary: ''
+            },
+            {
+                ..._prev.typography,
+                orderId: '2',
+                main: 'Gallery',
+                subtitle: 'mobile',
+                secondary: ''
+            },
+            {
+                ..._prev.typography,
+                orderId: '3',
+                main: 'Clients',
+                subtitle: 'mobile',
+                secondary: ''
+            },
+            {
+                ..._prev.typography,
+                orderId: '4',
+                main: 'Testimonials',
+                subtitle: 'mobile',
+                secondary: ''
+            },
+            {
+                ..._prev.typography,
+                orderId: '5',
+                main: 'FAQs',
+                subtitle: 'mobile',
+                secondary: ''
+            },
+            {
+                ..._prev.typography,
                 secondary: "about-us",
-                main: "About",
+                orderId: "1",
+                main: "About"
             },
             {
                 ..._prev.typography,
-                orderId: '',
-                main: "Gallery",
                 secondary: "gallery",
+                main: "Gallery",
+                orderId: "2"
             },
             {
                 ..._prev.typography,
-                orderId: '',
+                orderId: "3",
                 secondary: "products",
                 main: "Products",
+                action: ""
             },
             {
                 ..._prev.typography,
-                orderId: '',
+                orderId: "4",
                 secondary: "get-in-touch",
-                main: "Get in Touch",
+                main: "Get in Touch"
             },
             {
                 ..._prev.typography,
-                orderId: '',
-                main: "Meet our Clients",
-                secondary: "meet-our-clients"
+                orderId: "5",
+                secondary: "meet-our-clients",
+                main: "Meet our Clients"
             },
             {
                 ..._prev.typography,
-                orderId: '',
+                orderId: "6",
                 main: "Request a Call",
-                secondary: "request-a-call",
+                secondary: "request-a-call"
             },
             {
                 ..._prev.typography,
-                orderId: '',
-                secondary: "testimonials",
+
                 main: "Testimonials",
+                orderId: "7",
+                secondary: "testimonials"
             },
             {
                 ..._prev.typography,
-                orderId: '',
                 secondary: "request-a-call-back",
-                main: "Request a Call Back",
+                orderId: "8",
+                main: "Request a Call Back"
             }
-        ],
-        typography: {
-            ..._prev.typography,
-            action: "Back to top",
-            main: "Privacy Policy",
-            description: "© Copyright 2016 All Rights Reserved by Magppie"
-        },
-        orderId: '9',
+        ]
     },
     {
         ..._prev,

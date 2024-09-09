@@ -7,13 +7,13 @@ import { FirebaseCollectionEnum } from "../../../../../types"
 export function useFirebaseCustomerSiteComponentAction() {
     return ({
         add: (row: Omit<TComponentItem, 'id'>) => {
-            addDoc(collection(db, FirebaseCollectionEnum.LandingDump), _.omit(row, ['id']))
+            addDoc(collection(db, FirebaseCollectionEnum.Landing), _.omit(row, ['id']))
         },
         edit: (row: TComponentItem) => {
-            updateDoc(doc(db, `${FirebaseCollectionEnum.LandingDump}/${row.id}`), _.omit(row, ['id']))
+            updateDoc(doc(db, `${FirebaseCollectionEnum.Landing}/${row.id}`), _.omit(row, ['id']))
         },
         remove: (id: string) => {
-            const docRef = doc(db, `${FirebaseCollectionEnum.LandingDump}/${id}`)
+            const docRef = doc(db, `${FirebaseCollectionEnum.Landing}/${id}`)
             deleteDoc(docRef)
         },
     })
